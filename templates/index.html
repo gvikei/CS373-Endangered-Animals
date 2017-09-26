@@ -1,21 +1,55 @@
 <!DOCTYPE html>
   <head>
+    <link rel="stylesheet" href="static/lib/onsen/onsenui.css">
+    <link rel="stylesheet" href="static/lib/onsen/onsen-css-components.css">
+    <script src="static/lib/react/react.js"></script>
+    <script src="static/lib/react/react-dom.js"></script>
+    <script src="static/lib/onsen/onsenui.js"></script>
+    <script src="static/lib/onsen/react-onsenui.js"></script>
+    <script src="static/js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
   </head>
 
   <body>
     <div id="app"></div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
-    <script type="text/babel">
-        var HelloComponent = React.createClass({
-            render: function() {
-                return (
-                    <h1>Hello, World!</h1>
-                )
-            }
-        })
-        ReactDOM.render(<HelloComponent />, document.querySelector('#app'))
-    </script>
+    <ons-splitter>
+        <ons-splitter-side id="menu" side="left" width="220px" collapse>
+            <ons-page>
+                <ons-list>
+
+                    <!-- Title -->
+                    <ons-list-item>
+                        <i>Kitchen Masters</i>
+                    </ons-list-item>
+
+                    <!-- Spacer -->
+                    <ons-list-item></ons-list-item>
+
+                    <ons-list-item onclick="load('static/html/home.html')">
+                        <div class="left">
+                            //
+                        </div>
+                        <div class="center">
+                            Home
+                        </div>
+                    </ons-list-item>
+
+                    <ons-list-item onclick="load('static/html/animals.html')">
+                        <div class="left">
+                            //
+                        </div>
+                        <div class="center">
+                            Animals
+                        </div>
+                    </ons-list-item>
+                </ons-list> 
+            </ons-page>
+        </ons-splitter-side>
+        
+        <ons-splitter-content>
+            <ons-navigator id="nav" page="static/html/home.html">
+            </ons-navigator>
+        </ons-splitter-content>
+    </ons-splitter>
   </body>
 </html>
