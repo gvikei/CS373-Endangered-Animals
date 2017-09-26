@@ -832,7 +832,7 @@ class Flask(_PackageBoundObject):
             if server_name and ':' in server_name:
                 port = int(server_name.rsplit(':', 1)[1])
             else:
-                port = 5000
+                port = 8080
         if debug is not None:
             self.debug = bool(debug)
         options.setdefault('use_reloader', self.debug)
