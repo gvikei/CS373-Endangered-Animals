@@ -28,9 +28,9 @@ def main():
     return render_template('index.html')
 
 # [START form]
-@app.route('/form')
+@app.route('/new-index')
 def form():
-    return render_template('form.html')
+    return render_template('new-index.html')
 # [END form]
 
 

@@ -1,13 +1,6 @@
 <!DOCTYPE html>
   <head>
-    <link rel="stylesheet" href="static/lib/onsen/onsenui.css">
-    <link rel="stylesheet" href="static/lib/onsen/onsen-css-components.css">
-    <script src="static/lib/react/react.js"></script>
-    <script src="static/lib/react/react-dom.js"></script>
-    <script src="static/lib/onsen/onsenui.js"></script>
-    <script src="static/lib/onsen/react-onsenui.js"></script>
-    <script src="static/js/main.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
   </head>
 
   <body>
@@ -26,27 +19,18 @@
                     <ons-list-item></ons-list-item>
 
                     <ons-list-item onclick="load('static/html/home.html')">
-                        <div class="left">
-                            //
-                        </div>
                         <div class="center">
                             Home
                         </div>
                     </ons-list-item>
 
                     <ons-list-item onclick="load('static/html/animals.html')">
-                        <div class="left">
-                            //
-                        </div>
                         <div class="center">
                             Animals
                         </div>
                     </ons-list-item>
 
                     <ons-list-item onclick="load('static/html/countries.html')">
-                        <div class="left">
-                            //
-                        </div>
                         <div class="center">
                             Countries
                         </div>
@@ -62,3 +46,7 @@
     </ons-splitter>
   </body>
 </html>
+
+{% block scripts %}
+{{ super() }}
+{% endblock %}

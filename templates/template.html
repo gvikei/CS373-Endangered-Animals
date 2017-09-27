@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Declare charset and meta ASAP -->
+    <meta charset="utf-8">
+    <meta name="description" content="Endangered Animals">
+    <title>{% block title %}Pokemans{% endblock title %}</title>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//use.fontawesome.com/5dc0262380.css">
+    <!-- Load Our JS and CSS last -->
+    <link href="/static/css/styles.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">TreeHuggers</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="/">Home</a></li>
+          <li><a href="/static/html/animals">Animals</a></li>
+          <li><a href="/static/html/countries">Countries</a></li>
+          <li><a href="/static/html/habitats">Habitats</a></li>
+          <li><a href="/static/html/threats">Threats</a></li>
+          <li><a href="/static/html/about">About</a></li>
+
+        </ul>
+      </div>
+    </nav>
+    {% block content %}{% endblock %}
+    <!-- Scripts are downloaded last for performance -->
+    {% block scripts %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="static/lib/onsen/onsenui.css">
+    <link rel="stylesheet" href="static/lib/onsen/onsen-css-components.css">
+    <script src="static/lib/react/react.js"></script>
+    <script src="static/lib/react/react-dom.js"></script>
+    <script src="static/lib/onsen/onsenui.js"></script>
+    <script src="static/lib/onsen/react-onsenui.js"></script>
+    <script src="static/js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <!-- active selection for navbar -->
+    <script>$('a[href="' + this.location.pathname + '"]').parents('li,ul').addClass('active');</script>
+    {% endblock scripts %}
+  </body>
+</html>
