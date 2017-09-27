@@ -4,7 +4,7 @@
     <!-- Declare charset and meta ASAP -->
     <meta charset="utf-8">
     <meta name="description" content="Endangered Animals">
-    <title>{% block title %}Pokemans{% endblock title %}</title>
+    <title>{% block title %}Endangered Animals{% endblock title %}</title>
     <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//use.fontawesome.com/5dc0262380.css">
     <!-- Load Our JS and CSS last -->
@@ -17,32 +17,28 @@
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="/">TreeHuggers</a>
+          <a class="navbar-brand" href="/">Animal Huggers</a>
         </div>
         <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav">
           <li><a href="/">Home</a></li>
-          <li><a href="/static/html/animals">Animals</a></li>
-          <li><a href="/static/html/countries">Countries</a></li>
-          <li><a href="/static/html/habitats">Habitats</a></li>
-          <li><a href="/static/html/threats">Threats</a></li>
-          <li><a href="/static/html/about">About</a></li>
-
+          <li><a href="/static/html/animals.html">Animals</a></li>
+          <li><a href="/static/html/countries.html">Countries</a></li>
+          <li><a href="/static/html/habitats.html">Habitats</a></li>
+          <li><a href="/static/html/threats.html">Threats</a></li>
+          <li><a href="/static/html/about.html">About</a></li>
         </ul>
       </div>
     </nav>
     {% block content %}{% endblock %}
     <!-- Scripts are downloaded last for performance -->
     {% block scripts %}
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="static/lib/onsen/onsenui.css">
-    <link rel="stylesheet" href="static/lib/onsen/onsen-css-components.css">
-    <script src="static/lib/react/react.js"></script>
-    <script src="static/lib/react/react-dom.js"></script>
-    <script src="static/lib/onsen/onsenui.js"></script>
-    <script src="static/lib/onsen/react-onsenui.js"></script>
-    <script src="static/js/main.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="/static/lib/react/react.js"></script>
+        <script src="/static/lib/react/react-dom.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+        <script src="/static/lib/onsen/onsenui.js"></script>
     <!-- active selection for navbar -->
     <script>$('a[href="' + this.location.pathname + '"]').parents('li,ul').addClass('active');</script>
     {% endblock scripts %}
