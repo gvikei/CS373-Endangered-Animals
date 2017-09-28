@@ -1,7 +1,7 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
+HOST: docs.idb-simple.apiary.io
 
-# EndangeredAnimals
+# Endangered Animals
 
 Polls is a simple API allowing consumers to view polls and vote in them.
 
@@ -75,6 +75,469 @@ form of choices.
                     }, {
                         "choice": "Ruby",
                         "votes": 0
+                    }
+                ]
+            }
+            
+            
+
+## Videos Collection [/video]
+
+### Retrieve video of query [GET]
+
+    You can make queries to the video collection in order to generate a video 
+    
+    Example:
+    Let's say you want to search up a video on "African Elephants".
+    
+    You would type in:
+    http://docs.idb-simple.apiary.io/video/?q=African Elephant
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "videoId": "OiSf6jvXvT0"
+            }
+
+## Coordinates Collection [/coord]
+
+### Retrieve coordinates of query [GET]
+
+    You can make queries to the cooordinates collection in order to retrieve 
+    coordinates of a location
+    
+    Example:
+    Let's say you want to find the coordinates of "Botswana"
+    
+    You would type in
+    http://docs.idb-simple.apiary.io/coord/?q=Botswana
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "coordinates": {
+                    "lat": -22.328474,
+                    "lng": 24.684866
+                }
+            }
+            
+## Image Collection [/image]
+
+### Retrieve image of query [GET]
+
+    You can make queries to the image collection in order to generate a video 
+    
+    Example:
+    Let's say you want to search up an image of the "National Flag of Mexico".
+    
+    You would type in
+    http://docs.idb-simple.apiary.io/image/?q=National Flag of Mexico
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "imageLink": "https://i.pinimg.com/originals/fd/09/16/fd09164108f6a09188b720e862f7ee8f.png"
+            }
+            
+            
+## Animal Collection [/all_animal_names]
+
+### Get names of all Animals [GET]
+
+    Retrieves the names of all Endangered Animals on IUCN's Endangered Animals List
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "names":[
+                    {
+                        "common_name": "African Elephant",
+                        "scientific_name": "Loxodonta africana"
+                    },
+                    {
+                        "common_name": "Caucasian Fir",
+                        "scientific_name": "Abies nordmanniana"
+                    }
+                ]
+            }
+            
+## Get data for a single animal [/single_animal_data]
+
+### Get data for a single animal[GET]
+
+    Retrieves data for an animal
+    
+    Example:
+    Let's say you want to find data on "African Elephant"
+    
+    You would type in
+    http://docs.idb-simple.apiary.io/single_animal_data/?q=African Elephant
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "common_name": "African Elephant",
+                "scientific_name": "Loxodonta africana",
+                "vulnerability_status":"vulnerable",
+                "citation":"Blanc, J. 2008. Loxodonta africana. The IUCN Red List of Threatened Species 2008: e.T12392A3339343. http://dx.doi.org/10.2305/IUCN.UK.2008.RLTS.T12392A3339343.en",
+                "conservation_measure": "Resource & habitat protection",
+                "assoc_habitats":[
+                    "Desert - Hot",
+                    "Desert - Temperate"
+                ],
+                "assoc_threats":[
+                    "Housing and Urban Areas",
+                    "Commercial and industrial areas"
+                ],
+                "assoc_countries": [
+                    "Botswana",
+                    "Burundi"
+                ]
+            }
+            
+## Get data for all animals [/all_animal_data]
+
+### Get data for all animals[GET]
+
+    Retrieves data for all animals
+    This endpoint basically calls /single_animal_data on each animal
+    in /all_animal_names
+    
+    You would type in
+    http://docs.idb-simple.apiary.io/all_animal_data
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "animals":[
+                    {
+                        "common_name": "African Elephant",
+                        "scientific_name": "Loxodonta africana",
+                        "vulnerability_status":"vulnerable",
+                        "citation":"Blanc, J. 2008. Loxodonta africana. The IUCN Red List of Threatened Species 2008: e.T12392A3339343. http://dx.doi.org/10.2305/IUCN.UK.2008.RLTS.T12392A3339343.en",
+                        "conservation_measure": "Resource & habitat protection",
+                        "assoc_habitats":[
+                            "Desert - Hot",
+                            "Desert - Temperate"
+                        ],
+                        "assoc_threats":[
+                            "Housing and Urban Areas",
+                            "Commercial and industrial areas"
+                        ],
+                        "assoc_countries":[
+                            "Botswana",
+                            "Burundi"
+                        ]
+                    },
+                    {
+                        "common_name": "Caucasian Fir",
+                        "scientific_name": "Abies nordmanniana",
+                        "vulnerability_status":"vulnerable",
+                        "citation":"Knees, S. & Gardner, M. 2011. Abies nordmanniana. The IUCN Red List of Threatened Species 2011: e.T42293A10679078. http://dx.doi.org/10.2305/IUCN.UK.2011-2.RLTS.T42293A10679078.en",
+                        "conservation_measure": "Resource & habitat protection",
+                        "assoc_habitats":[
+                            "Desert - Hot",
+                            "Desert - Temperate"
+                        ],
+                        "assoc_threats":[
+                            "Housing and Urban Areas",
+                            "Commercial and industrial areas"
+                        ],
+                        "assoc_countries":[
+                            "Botswana",
+                            "Burundi"
+                        ]
+                    }
+                ]
+            }
+            
+## Habitat collection [/all_habitat_names]
+
+### Gets the names of all habitats [GET]
+
+    Retrieves the names for all habitats on IUCN's Endangered Animals List
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "names":[
+                    "Forest - Temperate",
+                    "Artificial/Terrestrial - Arable Land",
+                    "Artificial/Terrestrial - Pastureland"
+                ]
+            }
+            
+## Get data for a single habitat [/single_habitat_data]
+
+###  Get data for a single habitat [GET]
+
+    Retrieves data for 1 habitat, given a name
+
+    Example:
+    Let's say you want to find data on "Forest-Temperate"
+    
+    You would type in
+    http://docs.idb-simple.apiary.io/single_habitatl_data/?q=Forest-Temperate 
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "name": "Forest - Temperate",
+                "suitability_status": "suitable",
+                "assoc_animals": [
+                    "African Elephant",
+                    "Kangaroo"
+                ],
+                "assoc_threats": [
+                    "Housing and urban areas", 
+                    "Droughts"
+                 ]
+            }
+
+## Get data for all habitats [/all_habitat_data]
+
+### Get data for all habitats [GET]
+
+    Retrieves data for all habitats
+    This endpoint basically calls /single_habitat_data on each habitat
+    in /all_habitat_names
+    
+    You would type in
+    http://docs.idb-simple.apiary.io/all_habitat_data
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "habitats": [
+                    {
+                        "name": "Forest - Temperate",
+                        "suitability_status": "suitable",
+                        "assoc_animals": [
+                            "African Elephant",
+                            "Kangaroo"
+                        ],
+                        "assoc_threats": [
+                            "Housing and urban areas", 
+                            "Droughts"
+                        ]
+                    },
+                    {
+                        "name": "Desert - Hot",
+                        "suitability_status": "suitable",
+                        "assoc_animals": [
+                            "African Elephant",
+                            "Kangaroo"
+                        ],
+                        "assoc_threats": [
+                            "Housing and urban areas", 
+                            "Droughts"
+                        ]
+                    }
+                ]
+            }
+            
+## Threat Collection [/all_threat_names]
+
+### Get the names of all existing threats [GET]
+
+    Retrieves the names of all existing threats
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "names":[
+                        "Housing & urban areas",
+                        "Commercial & industrial areas",
+                        "Wood & pulp plantations"
+                ]        
+            }
+
+## Get data for a specific threat [/single_threat_data]
+
+### Get data for a specific threat   [GET]
+
+    Retrieves data for a specific threat
+
+    Example:
+    Let's say you want to find data on "Agro-industry farming"
+    
+    You would type in
+    http://docs.idb-simple.apiary.io/single_threat_data/?q=Agro-industry farming
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "name": "Agro-industry farming",
+                "timing": "ongoing",
+                "severity":"3",
+                "assoc_animals": [
+                    "African Elephant",
+                    "Kangaroo"
+                ], 
+                "assoc_habitats": [
+                    "Desert - Temperate",
+                    "Desert - Hot"
+                ]
+            }
+
+## Get data for all threats [/all_threat_data]
+
+### Get data for all threats [GET]
+
+    Retrieves data for all threats
+    This endpoint basically calls /single_threat_data on each threat
+    in /all_threat_names
+    
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "threats": [
+                    {
+                        "name": "Agro-industry farming",
+                        "timing": "ongoing",
+                        "severity":"3",
+                        "assoc_animals": [
+                            "African Elephant",
+                            "Kangaroo"
+                        ], 
+                        "assoc_habitats": [
+                            "Desert - Temperate",
+                            "Desert - Hot"
+                        ]
+                    },
+                    {
+                        "name": "Agro-industry farming",
+                        "timing": "ongoing",
+                        "severity":"3",
+                        "assoc_animals": [
+                            "African Elephant",
+                            "Kangaroo"
+                        ], 
+                        "assoc_habitats": [
+                            "Desert - Temperate",
+                            "Desert - Hot"
+                        ]
+                    },
+                    {
+                        "name": "Wood and Pulp Plantations",
+                        "timing": "ongoing",
+                        "severity":"3",
+                        "assoc_animals": [
+                            "African Elephant",
+                            "Kangaroo"
+                        ], 
+                        "assoc_habitats": [
+                            "Desert - Temperate",
+                            "Desert - Hot"
+                        ]
+                    }                
+                ]
+            }
+
+## Country Collections  [/all_countries_names]
+
+### Get the names of all countries in the IUCN Red List API  [GET]
+
+    Retrieves the names of all countries in the IUCN Red List API 
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "names":[
+                    "Botswana",
+                    "Burundi",
+                    "Cameroon"
+                ]
+            }
+
+## Get data for a specific country [/single_country_data]
+
+### Get data for a specific country  [GET]
+
+    Retrieves data for a specific country
+
+    Example:
+    Let's say you want to find data on "Burundi"
+    
+    You would type in
+    http://docs.idb-simple.apiary.io/single_country_data/?q=Burundi
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "name":"Burundi",
+                "assoc_animals": [
+                    "African Elephant",
+                    "Kangaroo"
+                ],
+                "assoc_habitats": [
+                    "Housing and urban areas",
+                    "Droughts"
+                ]
+            }
+
+## Get data for all countries [/all_country_data]
+
+### Get data for all countries[GET]
+
+    Retrieves data for all countries
+    This endpoint basically calls /single_country_data on each country
+    in /all_country_names
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "countries": [
+                    {
+                        "name":"Burundi",
+                        "assoc_animals": [
+                            "African Elephant",
+                            "Kangaroo"
+                        ],
+                        "assoc_habitats": [
+                            "Housing and urban areas",
+                            "Droughts"
+                        ]
+                    },
+                    {
+                        "name":"Cameroon",
+                        "assoc_animals": [
+                            "African Elephant",
+                            "Kangaroo"
+                        ],
+                        "assoc_habitats": [
+                            "Housing and urban areas",
+                            "Droughts"
+                        ]
                     }
                 ]
             }
