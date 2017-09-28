@@ -25,7 +25,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-    return render_template('index.html')
+    return render_template('new-index.html')
 
 # [START new-index]
 @app.route('/new-index')
