@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: docs.idb-simple.apiary.io
+HOST: docs.idb.apiary.io
 
 # Endangered Animals
 
@@ -87,10 +87,10 @@ form of choices.
     You can make queries to the video collection in order to generate a video 
     
     Example:
-    Let's say you want to search up a video on "African Elephants".
+    Let's say you want to search for a video on "African Elephants".
     
     You would type in:
-    http://docs.idb-simple.apiary.io/video/?q=African Elephant
+    http://docs.idb.apiary.io/video/?q=African Elephant
 
 + Response 200 (application/json)
 
@@ -108,10 +108,10 @@ form of choices.
     coordinates of a location
     
     Example:
-    Let's say you want to find the coordinates of "Botswana"
+    Say you want to find the coordinates of "Botswana"
     
     You would type in
-    http://docs.idb-simple.apiary.io/coord/?q=Botswana
+    http://docs.idb.apiary.io/coord/?q=Botswana
 
 + Response 200 (application/json)
 
@@ -133,8 +133,8 @@ form of choices.
     Example:
     Let's say you want to search up an image of the "National Flag of Mexico".
     
-    You would type in
-    http://docs.idb-simple.apiary.io/image/?q=National Flag of Mexico
+    You would type in:
+    http://docs.idb.apiary.io/image/?q=National+Flag+of+Mexico
 
 + Response 200 (application/json)
 
@@ -150,7 +150,11 @@ form of choices.
 ### Get names of all Animals [GET]
 
     Retrieves the names of all Endangered Animals on IUCN's Endangered Animals List
-
+    
+    Example:
+    http://docs.idb.apiary.io/all_animal_names
+    
+    
 + Response 200 (application/json)
 
     + Body
@@ -178,7 +182,7 @@ form of choices.
     Let's say you want to find data on "African Elephant"
     
     You would type in
-    http://docs.idb-simple.apiary.io/single_animal_data/?q=African Elephant
+    http://docs.idb.apiary.io/single_animal_data/?q=African Elephant
 
 + Response 200 (application/json)
 
@@ -213,7 +217,7 @@ form of choices.
     in /all_animal_names
     
     You would type in
-    http://docs.idb-simple.apiary.io/all_animal_data
+    http://docs.idb.apiary.io/all_animal_data
 
 + Response 200 (application/json)
 
@@ -267,7 +271,10 @@ form of choices.
 ### Gets the names of all habitats [GET]
 
     Retrieves the names for all habitats on IUCN's Endangered Animals List
-
+    
+    Example:
+    http://docs.idb.apiary.io/all_habitat_names
+    
 + Response 200 (application/json)
 
     + Body
@@ -290,7 +297,7 @@ form of choices.
     Let's say you want to find data on "Forest-Temperate"
     
     You would type in
-    http://docs.idb-simple.apiary.io/single_habitatl_data/?q=Forest-Temperate 
+    http://docs.idb.apiary.io/single_habitatl_data/?q=Forest-Temperate 
 
 + Response 200 (application/json)
 
@@ -318,7 +325,7 @@ form of choices.
     in /all_habitat_names
     
     You would type in
-    http://docs.idb-simple.apiary.io/all_habitat_data
+    http://docs.idb.apiary.io/all_habitat_data
 
 + Response 200 (application/json)
 
@@ -358,6 +365,10 @@ form of choices.
 ### Get the names of all existing threats [GET]
 
     Retrieves the names of all existing threats
+    
+    Example:
+    http://docs.idb.apiary.io/all_threat_names
+    
 + Response 200 (application/json)
 
     + Body
@@ -380,7 +391,7 @@ form of choices.
     Let's say you want to find data on "Agro-industry farming"
     
     You would type in
-    http://docs.idb-simple.apiary.io/single_threat_data/?q=Agro-industry farming
+    http://docs.idb.apiary.io/single_threat_data/?q=Agro-industry farming
 
 + Response 200 (application/json)
 
@@ -461,6 +472,9 @@ form of choices.
 ### Get the names of all countries in the IUCN Red List API  [GET]
 
     Retrieves the names of all countries in the IUCN Red List API 
+    
+    Example:
+    http://docs.idb.apiary.io/all_countries_names
 
 + Response 200 (application/json)
 
@@ -484,7 +498,7 @@ form of choices.
     Let's say you want to find data on "Burundi"
     
     You would type in
-    http://docs.idb-simple.apiary.io/single_country_data/?q=Burundi
+    http://docs.idb.apiary.io/single_country_data/?q=Burundi
 
 + Response 200 (application/json)
 
