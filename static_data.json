@@ -1,0 +1,90 @@
+{
+	"animals": [{
+		"name": "African Elephant",
+		"scientific": "Loxodonta africana",
+		"image": "https://iucnredlist-photos.s3.amazonaws.com/thumb/1315258020.jpg?AWSAccessKeyId=AKIAJIJQNN2N2SMHLZJA&Expires=1536230105&Signature=Hcr7ZZv9PwtYvWSkOjgdZR2tJTc%3D",
+		"vulnerability": "Vulnerable",
+		"link": "http://dx.doi.org/10.2305/IUCN.UK.2008.RLTS.T12392A3339343.en",
+		"video": "https://www.youtube.com/watch?v=0vO-H-Nr2y0",
+		"habitats": ["Forest", "Savanna"],
+		"threats": ["Poaching"],
+		"countries": ["Angola","Tanzania, United Republic of","Uganda"]
+	},{
+		"name": "Red Colobus",
+		"scientific": "PilioColobus tephresceles",
+		"image": "http://www.neprimateconservancy.org/uploads/1/5/3/8/15380094/438080415.jpg?345",
+		"vulnerability": "Endangered",
+		"link": "http://dx.doi.org/10.2305/IUCN.UK.2016-1.RLTS.T18256A92660998.en",
+		"video": "https://www.youtube.com/watch?v=YZM_5LAv9m8",
+		"habitats": ["Savanna", "Forest"],
+		"threats": ["Habitat loss"],
+		"countries": ["Tanzania, United Republic of","Uganda"]
+	},{
+		"name": "African Manatee",
+		"scientific": "Trichechus senegalensis",
+		"image": "https://iucnredlist-photos.s3.amazonaws.com/thumb/595328784.jpg?AWSAccessKeyId=AKIAJIJQNN2N2SMHLZJA&Expires=1536275645&Signature=H07WtBYKdAQMyOHhhbMB5DxRlJw%3D",
+		"vulnerability": "Vulnerable",
+		"link": "http://dx.doi.org/10.2305/IUCN.UK.2015-4.RLTS.T22104A81904980.en",
+		"video": "https://www.youtube.com/watch?v=_YwGcQwE31s",
+		"habitats": ["Estuary"],
+		"threats": ["Hunting"],
+		"countries": ["Angola"]
+	}],
+	"habitats": [{
+		"name": "Estuary",
+		"image": "https://media.nationalgeographic.org/assets/photos/000/277/27763.jpg",
+		"suitability": "Unsuitable",
+		"animals": ["African Manatee"],
+		"threats": ["Habitat loss"],
+	},{
+		"name": "Savanna",
+		"image": "https://undark.org/wp-content/uploads/sites/2/2016/09/savana.jpg",
+		"suitability": "Suitable",
+		"animals": ["African Elephant", "Red Colobus"],
+		"threats": ["Habitat loss"],
+	},{
+		"name": "Forest",
+		"image": "http://pza.sanbi.org/sites/default/files/funderstoreyzululand3.jpg",
+		"suitability": "Suitable",
+		"animals": ["African Elephant", "Red Colobus"],
+		"threats": ["Habitat loss"],
+	}],
+	"threats": [{
+		"name": "Poaching",
+		"timing": "Ongoing",
+		"severity": "High",
+		"animals": ["African Elephant", "African Manatee"],
+		"habitats": ["Savanna", "Forest", "Estuary"]
+	},{
+		"name": "Habitat loss",
+		"timing": "Ongoing",
+		"severity": "Medium",
+		"animals": ["African Elephant", "Red Colobus", "African Manatee"],
+		"habitats": ["Forest", "Savanna", "Estuary"]
+	},{
+		"name": "Predation",
+		"timing": "Ongoing",
+		"severity": "High",
+		"animals": ["African Elephant", "Red Colobus"],
+		"habitats": ["Savanna", "Forest"]
+	}],
+	"countries": [{
+		"name": "Angola",
+		"image": "http://d2z7bzwflv7old.cloudfront.net/cdn_image/exW_1200/images/maps/en/ao/ao-area.gif",
+		"flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Flag_of_Angola.svg/1200px-Flag_of_Angola.svg.png",
+		"animals": ["African Elephant", "African Manatee"],
+		"habitats": ["Forest", "Estuary"]
+	},{
+		"name": "Uganda",
+		"image": "https://alainainuganda.files.wordpress.com/2011/06/africa.jpg",
+		"flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Flag_of_Uganda.svg/1200px-Flag_of_Uganda.svg.png",
+		"animals": ["African Elephant", "Red Colobus"],
+		"habitats": ["Forest", "Savanna"]
+	},{
+		"name": "Tanzania, United Republic of",
+		"image": "https://static1.squarespace.com/static/56b521f4f699bb15649ef804/t/58b4c8824402439d62459a15/1488242933588/Tanzania.jpg",
+		"flag": "",
+		"animals": ["African Elephant", "Red Colobus"],
+		"habitats": ["Forest", "Savanna"]
+	}]
+}
