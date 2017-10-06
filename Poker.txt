@@ -9,4 +9,4 @@ Create UI Navbar                                   	100      23/09/2017 18:28:27
 Create UI skeleton framework                       	40       23/09/2017 18:27:40 00:00:27        00:00:12        Bryan Leung Mantu Nguyen 
 Setup our databases on Google Cloud Platform (GCP)  40       23/09/2017 18:26:33 00:00:50        00:00:17        Bryan Leung Mantu Nguyen 
 Decide on which roles each person is going to play	5        23/09/2017 18:24:40 00:01:17        00:00:30        Bryan Leung Shiva Velingker 
-Set up PlanItPoker and Trello                       ?        23/09/2017 17:37:53 00:04:51        00:04:43        Bryan Leung Dat Vu 
+Set up PlanItPoker and Trello                       ?        24/09/2017 17:37:53 00:04:51        00:04:43        Bryan Leung Dat Vu 
