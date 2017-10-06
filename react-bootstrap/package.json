@@ -123,6 +123,7 @@
     "yargs": "^4.7.1"
   },
   "dependencies": {
+    "axios": "^0.16.2",
     "babel-plugin-transform-es3-member-expression-literals": "^6.22.0",
     "babel-plugin-transform-es3-modules-literals": "0.0.3",
     "babel-runtime": "^6.11.6",

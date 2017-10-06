@@ -11,9 +11,44 @@
   import Thumbnail from '../../src/Thumbnail';
   import Button from '../../src/Button';
 
+  var axios = require('axios');
+
   export default class Page extends React.Component {
+
+    constructor(props) {
+      super(props);
+      this.state = {
+        stats: [],
+        ids: ["gvikei", "shivavelingker", "datvu2110", "bryanlng", "mantunguyen"]
+      };
+      
+      var id;
+      for (id in this.state.ids) {
+        var github_id = this.state.ids[id]
+        this.state.stats[github_id] = 0;
+      }
+
+      var that = this;
+      axios.get('https://api.github.com/repos/gvikei/idb/contributors')
+        .then(function(data) {
+
+          var member;
+          var my_stats = [];
+          for (id in data.data) {
+            member = data.data[id];
+            my_stats[member["login"]]= member["contributions"];
+          }
+
+          that.setState({
+            stats: my_stats
+          });
+        });
+    }
+
+    
+
     shouldComponentUpdate() {
-      return false;
+      return true;
     }
 
     render() {
@@ -37,7 +72,7 @@
         <h6 class="card-subtitle mb-3 text-muted">Worked on back-end &amp; database</h6>
       <p class="card-text">I’m currently a third year CS major at UT, who enjoys coding and playing super smash bros.</p>
       <Row className="show-grid">
-        <Col xs={12} md={12}>Number of commits: 1</Col>
+        <Col xs={12} md={12}>Number of commits: {this.state.stats["bryanlng"]}</Col>
       <Col xs={12} md={12}>Number of issues: 14</Col>
       <Col xs={12} md={12}>Number of unit tests: 0</Col>
       </Row>
@@ -54,7 +89,7 @@
         I'm a senior in CS at UT Austin. <br/><br/> I worked at Oklahoma State University (2013), Google (2014 & 2015), Ecole Polytechnique Fédérale de Lausanne (2016) and Dun & Bradstreet (2017).
       </p>
       <Row className="show-grid">
-        <Col xs={12} md={12}>Number of commits: 15</Col>
+        <Col xs={12} md={12}>Number of commits: {this.state.stats["gvikei"]}</Col>
       <Col xs={12} md={12}>Number of issues: 5</Col>
       <Col xs={12} md={12}>Number of unit tests: 0</Col>
       </Row>
@@ -74,7 +109,7 @@
         <a href="https://shivavelingker.github.io" target="_blank">https://shivavelingker.github.io</a>
       </p>
       <Row className="show-grid">
-        <Col xs={12} md={12}>Number of commits: 15</Col>
+        <Col xs={12} md={12}>Number of commits: {this.state.stats["shivavelingker"]}</Col>
       <Col xs={12} md={12}>Number of issues: 5</Col>
       <Col xs={12} md={12}>Number of unit tests: 0</Col>
       </Row>
@@ -91,7 +126,7 @@
         Senior CS major.
       </p>
       <Row className="show-grid">
-        <Col xs={12} md={12}>Number of commits: 15</Col>
+        <Col xs={12} md={12}>Number of commits: {this.state.stats["mantunguyen"]}</Col>
       <Col xs={12} md={12}>Number of issues: 5</Col>
       <Col xs={12} md={12}>Number of unit tests: 0</Col>
       </Row>
@@ -108,7 +143,7 @@
         I'm a Senior CS major at UT Austin.
     </p>
       <Row className="show-grid">
-        <Col xs={12} md={12}>Number of commits: 9</Col>
+        <Col xs={12} md={12}>Number of commits: {this.state.stats["datvu2110"]}</Col>
       <Col xs={12} md={12}>Number of issues: 15</Col>
       <Col xs={12} md={12}>Number of unit tests: 0</Col>
       </Row>
