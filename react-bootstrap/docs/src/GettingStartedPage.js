@@ -8,6 +8,8 @@ import Anchor from './Anchor';
 import Row from '../../src/Row';
 import Col from '../../src/Col';
 import Panel from '../../src/Panel';
+import Thumbnail from '../../src/Thumbnail';
+import Button from '../../src/Button';
 
 export default class Page extends React.Component {
   shouldComponentUpdate() {
@@ -20,15 +22,15 @@ export default class Page extends React.Component {
         <NavMain activePage="getting-started" />
 
         <PageHeader
-          title="Getting started"
-          subTitle="An overview of React-Bootstrap and how to install and use."
+          title="About us & Our website"
+          subTitle="The issue of endangered animals and species extinction has always been a major concern of animal conservationists and environmentalists alike. Unfortunately, throughout the years, there has been less and less care and concern for the protection and preservation of endangered animals. We chose this topic in order to promote and spread awareness of this issue. This task will be accomplished by making information about endangered animals and their threats more widely available."
         />
 
         <div className="container bs-docs-container bs-docs-single-col-container">
           <div className="bs-docs-section">
-            <h2 className="page-header"><Anchor id="install">Install</Anchor></h2>
+            <h2 className="page-header"><Anchor id="team">Our team</Anchor></h2>
             <Row>
-              <Col sm={6}>
+              <Col sm={3}>
                 <Panel header="npm (recommended)" className="bs-docs-code-panel">
                   <CodeExample
                     codeText={
@@ -38,7 +40,23 @@ $ npm install --save react-bootstrap`
                   />
                 </Panel>
               </Col>
-              <Col sm={6}>
+
+              <Col sm={4}>
+              <Thumbnail src="https://raw.githubusercontent.com/bryanlng/jekyll-now/master/images/IMG_9269.JPG" alt="242x200">
+                <h3>Bryan Leung</h3>
+              <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">Worked on back-end &amp; database</h6>
+                <p class="card-text">I’m currently a third year CS major at UT, who enjoys coding and playing super smash bros.</p>
+                <Row className="show-grid">
+                  <Col xs={12} md={8}>Number of commits: 1</Col>
+                  <Col xs={12} md={8}>Number of issues: 14</Col>
+                  <Col xs={12} md={8}>Number of unit tests: 0</Col>
+                </Row>
+              </div>
+              </Thumbnail>
+              </Col>
+
+              <Col sm={3}>
                 <Panel header="bower" className="bs-docs-code-panel">
                   <CodeExample
                     codeText={
