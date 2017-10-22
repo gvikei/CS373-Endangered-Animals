@@ -5,13 +5,13 @@ import Navbar from '../../src/Navbar';
 import Nav from '../../src/Nav';
 
 const NAV_LINKS = {
+  'about': {
+    link: '/about.html',
+    title: 'About Us',
+  },
   introduction: {
     link: '/introduction.html',
     title: 'Introduction',
-  },
-  'getting-started': {
-    link: '/getting-started.html',
-    title: 'Getting started',
   },
   components: {
     link: '/components.html',
@@ -45,7 +45,7 @@ function NavMain({ activePage }) {
     >
       <Navbar.Header>
         <Navbar.Brand>
-          <Link to="/">React-Bootstrap</Link>
+          <Link to="/">Planet Animalz</Link>
         </Navbar.Brand>
         <Navbar.Toggle />
       </Navbar.Header>
@@ -63,9 +63,8 @@ function NavMain({ activePage }) {
           <Wrapper>
             <li>
               <a
-                href="https://github.com/react-bootstrap/react-bootstrap"
-                target="_blank"
-              >
+                href="https://github.com/gvikei/idb"
+                target="_blank">
                 GitHub
               </a>
             </li>
