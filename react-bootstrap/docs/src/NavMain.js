@@ -9,17 +9,21 @@ const NAV_LINKS = {
     link: '/about.html',
     title: 'About Us',
   },
-  introduction: {
-    link: '/introduction.html',
-    title: 'Introduction',
+  'animals': {
+    link: '/animals.html',
+    title: 'Animals',
   },
-  components: {
-    link: '/components.html',
-    title: 'Components',
+  'threats': {
+    link: '/threats.html',
+    title: 'Threats',
   },
-  support: {
-    link: '/support.html',
-    title: 'Support',
+  'habitats': {
+    link: '/habitats.html',
+    title: 'Habitats',
+  },
+  'countries': {
+    link: '/countries.html',
+    title: 'Countries',
   },
 };
 
@@ -45,7 +49,7 @@ function NavMain({ activePage }) {
     >
       <Navbar.Header>
         <Navbar.Brand>
-          <Link to="/">Planet Animalz</Link>
+          <Link to="/">Planet Animal</Link>
         </Navbar.Brand>
         <Navbar.Toggle />
       </Navbar.Header>

@@ -3,19 +3,22 @@ import { IndexRoute, Route } from 'react-router';
 
 import ComponentsPage from './ComponentsPage';
 import About from './About';
+import Animals from './Animals';
+import Threats from './Threats';
+import Habitats from './Habitats';
+import Countries from './Countries';
 import HomePage from './HomePage';
-import IntroductionPage from './IntroductionPage';
 import NotFoundPage from './NotFoundPage';
 import Root from './Root';
-import SupportPage from './SupportPage';
 
 export default (
   <Route path="/" component={Root}>
     <IndexRoute component={HomePage} />
-    <Route path="introduction.html" component={IntroductionPage} />
     <Route path="about.html" component={About} />
-    <Route path="components.html" component={ComponentsPage} />
-    <Route path="support.html" component={SupportPage} />
+    <Route path="animals.html" component={Animals} />
+    <Route path="threats.html" component={Threats} />
+    <Route path="habitats.html" component={Habitats} />
+    <Route path="countries.html" component={Countries} />
 
     <Route path="*" component={NotFoundPage} />
   </Route>
