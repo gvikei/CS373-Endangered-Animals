@@ -15,10 +15,11 @@ const Root = React.createClass({
     getPages() {
       return [
         'index.html',
-        'introduction.html',
-        'getting-started.html',
-        'components.html',
-        'support.html',
+        'about.html',
+        'animals.html',
+        'threats.html',
+        'habitats.html',
+        'countries.html'
       ];
     },
   },

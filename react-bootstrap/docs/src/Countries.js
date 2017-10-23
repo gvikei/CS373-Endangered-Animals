@@ -48,7 +48,7 @@
     render() {
       return (
         <div>
-          <NavMain activePage="countries" />
+          <NavMain activePage="habitats" />
 
           <PageHeader
             title="About Us"
