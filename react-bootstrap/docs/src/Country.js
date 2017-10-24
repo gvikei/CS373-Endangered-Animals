@@ -9,12 +9,7 @@
 
   var axios = require('axios');
 
-  var countries = [{"flag": "http://cdn.wonderfulengineering.com/wp-content/uploads/2015/07/Albania-Flag-6.png", "name": "Albania", "coordinates": {"lat": 41.153332, "lng": 20.168331}},
-                   {"flag": "http://cdn.wonderfulengineering.com/wp-content/uploads/2015/07/Algeria-Flag-12.png", "name": "Algeria", "coordinates": {"lat": 28.033886, "lng": 1.659626}},
-                   {"flag": "http://cdn.wonderfulengineering.com/wp-content/uploads/2015/07/American-Samoa-Flag-3.png", "name": "American Samoa", "coordinates": {"lat": -14.270972, "lng": -170.132217}},
-                   {"flag": "http://cdn.wonderfulengineering.com/wp-content/uploads/2015/07/Flag_of_Angola.svg-1.png", "name": "Angola", "coordinates": {"lat": -11.202692, "lng": 17.873887}},
-                   {"flag": "http://2.bp.blogspot.com/-wXeA_hX1S14/ThMD5VlDy_I/AAAAAAAAAlw/XyLANs2pW0M/s1600/Flag+of+Anguilla.gif", "name": "Anguilla", "coordinates": {"lat": 18.220554, "lng": -63.06861499999999}},
-                   {"flag": "http://3.bp.blogspot.com/-NDr2OV7QqJk/UFQcYSMvXGI/AAAAAAAABl0/-ll4BiNGlZk/s1600/Flag+of+Antigua+and+Barbuda+(1).jpg", "name": "Antigua and Barbuda", "coordinates": {"lat": 17.060816, "lng": -61.796428}}];
+  var countries = [{"flag": "http://cdn.wonderfulengineering.com/wp-content/uploads/2015/07/Albania-Flag-6.png", "name": "Albania", "coordinates": {"lat": 41.153332, "lng": 20.168331}}];
 
   export default class Page extends React.Component {
 
@@ -32,7 +27,7 @@
       return (
         <Col sm={4}>
           <Thumbnail src={ country.flag } width="100%" height="33%">
-            <h3><a href="country.html">{ country.name }</a></h3>
+            <h3>{ country.name }</h3>
 
             <Row>
               <a href="animals.html">Animals</a>: 0

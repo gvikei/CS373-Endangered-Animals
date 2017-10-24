@@ -7,6 +7,7 @@ import Animals from './Animals';
 import Threats from './Threats';
 import Habitats from './Habitats';
 import Countries from './Countries';
+import Country from './Country';
 import HomePage from './HomePage';
 import NotFoundPage from './NotFoundPage';
 import Root from './Root';
@@ -19,6 +20,7 @@ export default (
     <Route path="threats.html" component={Threats} />
     <Route path="habitats.html" component={Habitats} />
     <Route path="countries.html" component={Countries} />
+    <Route path="country.html" component={Country} />
 
     <Route path="*" component={NotFoundPage} />
   </Route>
