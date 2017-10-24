@@ -9,7 +9,7 @@
 
   var axios = require('axios');
 
-  var countries = [{"flag": "http://cdn.wonderfulengineering.com/wp-content/uploads/2015/07/Albania-Flag-6.png", "name": "Albania", "coordinates": {"lat": 41.153332, "lng": 20.168331}}];
+  var country = {"flag": "http://cdn.wonderfulengineering.com/wp-content/uploads/2015/07/Albania-Flag-6.png", "name": "Albania", "coordinates": {"lat": 41.153332, "lng": 20.168331}};
 
   export default class Page extends React.Component {
 
@@ -23,26 +23,42 @@
       return true;
     };
 
-    renderCountry(country) {
+    renderCountry() {
       return (
-        <Col sm={4}>
-          <Thumbnail src={ country.flag } width="100%" height="33%">
-            <h3>{ country.name }</h3>
+        <Thumbnail src={ country.flag } width="100%" height="33%">
 
-            <Row>
-              <a href="animals.html">Animals</a>: 0
-            </Row>
-            <Row>
-              <a href="threats.html">Threats</a>: 0
-            </Row>
-            <Row>
-              <a href="habitats.html">Habitats</a>: 0
-            </Row>
-            
-            <iframe id="gmap_canvas" width="100%" src={ "https://maps.google.com/maps?q=" + country.name + "&t=k&z=6&ie=UTF8&iwloc=&output=embed" } frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0">
-            </iframe>
-          </Thumbnail>
-        </Col>
+          <br/><br/>
+
+          <Row>
+            <Col sm={2}>
+              <b><a href="animals.html">Animals</a>:</b>
+            </Col>
+            <Col sm={2}>
+              0
+            </Col>
+          </Row>
+          <Row>
+            <Col sm={2}>
+              <b><a href="threats.html">Threats</a>:</b>
+            </Col>
+            <Col sm={2}>
+              0
+            </Col>
+          </Row>
+          <Row>
+            <Col sm={2}>
+              <b><a href="habitats.html">Habitats</a>:</b>
+            </Col>
+            <Col sm={2}>
+              0
+            </Col>
+          </Row>
+
+          <br/><br/>
+          
+          <iframe id="gmap_canvas" width="100%" src={ "https://maps.google.com/maps?q=" + country.name + "&t=k&z=6&ie=UTF8&iwloc=&output=embed" } frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0">
+          </iframe>
+        </Thumbnail>
       );
     };
 
@@ -52,8 +68,7 @@
           <NavMain activePage="countries" />
 
           <PageHeader
-            title="Countries"
-            subTitle="Click on a country to begin exploring its ecosystem."/>
+            title={ country.name } />
 
             <div className="container bs-docs-container bs-docs-single-col-container">
               <div className="bs-docs-section">
@@ -61,9 +76,7 @@
                 { /* Countries */ }
                 <Row>
                   { 
-                    countries.map(function(country, i){
-                      return this.renderCountry(country);
-                    }.bind(this))
+                    this.renderCountry()
                   }
                 </Row>
 
