@@ -6,14 +6,13 @@
   import Row from '../../src/Row';
   import Col from '../../src/Col';
   import Thumbnail from '../../src/Thumbnail';
-  import Image from '../../src/Image';
-  import Panel from '../../src/Panel';
   import Button from '../../src/Button';
   import Collapse from '../../src/Collapse';
   import Well from '../../src/Well';
+  import Image from '../../src/Image';
+  import Panel from '../../src/Panel';
 
   const axios = require('axios');
-
   const animals = {
                     "Accipiter gentilis": {
                       "threats": [
