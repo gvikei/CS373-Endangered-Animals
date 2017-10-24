@@ -1,193 +1,77 @@
-  import React from 'react';
+import React from 'react';
 
-  import NavMain from './NavMain';
-  import PageHeader from './PageHeader';
-  import PageFooter from './PageFooter';
-  import Row from '../../src/Row';
-  import Col from '../../src/Col';
-  import Thumbnail from '../../src/Thumbnail';
+import NavMain from './NavMain';
+import PageHeader from './PageHeader';
+import PageFooter from './PageFooter';
+import Row from '../../src/Row';
+import Col from '../../src/Col';
+import Thumbnail from '../../src/Thumbnail';
+import Image from '../../src/Image';
+import Panel from '../../src/Panel';
+import Button from '../../src/Button';
+import Collapse from '../../src/Collapse';
+import Well from '../../src/Well';
 
-  var axios = require('axios');
+const axios = require('axios');
 
-  export default class Page extends React.Component {
+const habitats = [{"imageUrl": "http://thumb1.shutterstock.com/display_pic_with_logo/1771478/323878760/stock-photo-small-artificial-decorative-pond-with-rocks-and-plants-on-the-backyard-in-summer-323878760.jpg", "suitability": "Suitable", "name": "Artificial/Aquatic - Ponds (below 8ha)"}, {"imageUrl": "https://www.polyworld.com.au/wp-content/uploads/2015/03/16000L-Poly-Pool1.jpg", "suitability": "Suitable", "name": "Artificial/Aquatic - Water Storage Areas (over 8ha)"}, {"imageUrl": "http://zipcodezoo.com/images/thumb/b/ba/Rhizophora_racemosa_1.jpg/300px-Rhizophora_racemosa_1.jpg", "suitability": "Suitable", "name": "Artificial/Marine - Mari/Brackishculture Ponds"}, {"imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Risks_aquaculture_550.jpg/450px-Risks_aquaculture_550.jpg", "suitability": "Suitable", "name": "Artificial/Marine - Mariculture Cages"}, {"imageUrl": "http://upload.wikimedia.org/wikipedia/commons/e/e8/Arable_land%2C_Hambleden_-_geograph.org.uk_-_1050821.jpg", "suitability": "Suitable", "name": "Artificial/Terrestrial - Arable Land"}, {"imageUrl": "http://www.oiseaux.net/photos/henrik.gronvold/images/rale.ypecaha.hegr.0p.jpg", "suitability": "Suitable", "name": "Artificial/Terrestrial - Pastureland"}, {"imageUrl": "http://www.oiseaux.net/photos/frederic.pelsy/images/lori.tricolore.frpe.2g.jpg", "suitability": "Suitable", "name": "Artificial/Terrestrial - Plantations"}, {"imageUrl": "https://usercontent1.hubstatic.com/11906574_f520.jpg", "suitability": "Suitable", "name": "Artificial/Terrestrial - Rural Gardens"}, {"imageUrl": "http://www.oiseaux.net/maps/images/elenie.olivatre.1.275.w.png", "suitability": "Suitable", "name": "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest"}, {"imageUrl": "https://www.eea.europa.eu/articles/analysing-and-managing-urban-growth/intensityartificiallandtake.png/image_large", "suitability": "Suitable", "name": "Artificial/Terrestrial - Urban Areas"}, {"imageUrl": "http://www.fao.org/docrep/X0622E/x0622e1o.gif", "suitability": "Marginal", "name": "Back Slope"}, {"imageUrl": "http://s3.amazonaws.com/rapgenius/filepicker/sFCTedRrS6eErJ7b0cwY_hot_desert.jpg", "suitability": "Marginal", "name": "Desert - Hot"}, {"imageUrl": "http://img-aws.ehowcdn.com/600x600p/photos.demandstudios.com/getty/article/251/168/87776061.jpg", "suitability": "Marginal", "name": "Desert - Temperate"}, {"imageUrl": "http://slideplayer.com/9101211/27/images/16/Barrier+Reefs+Back+-+reef+slope+%28inner+slope%29+is+protected.jpg", "suitability": "Marginal", "name": "Foreslope (Outer Reef Slope)"}, {"imageUrl": "http://cgf3m-2albertaoilsands.wikispaces.com/file/view/Boreal_Forest.jpg/207145204/Boreal_Forest.jpg", "suitability": "Marginal", "name": "Forest - Boreal"}, {"imageUrl": "http://ichef.bbci.co.uk/naturelibrary/images/ic/credit/640x395/t/tr/tropical_and_subtropical_dry_broadleaf_forests/tropical_and_subtropical_dry_broadleaf_forests_1.jpg", "suitability": "Marginal", "name": "Forest - Subtropical/Tropical Dry"}, {"imageUrl": "http://www.oiseaux.net/photos/loic.epelboin/images/paroare.masque.loep.1g.jpg", "suitability": "Marginal", "name": "Forest - Subtropical/Tropical Mangrove Vegetation Above High Tide Level"}, {"imageUrl": "http://m3.i.pbase.com/o3/18/884818/1/133754633.QpDAvhQY.DSCN9669a.jpg", "suitability": "Marginal", "name": "Forest - Subtropical/Tropical Moist Lowland"}, {"imageUrl": "http://img.readtiger.com/wkp/en/Subtropical_semi-evergreen_seasonal_forest_in_Northern_Thailand.JPG", "suitability": "Marginal", "name": "Forest - Subtropical/Tropical Moist Montane"}, {"imageUrl": "http://bioimages.cas.vanderbilt.edu/bioimages/biohires/ecoregions/h70106alakai-swamp04627.jpg", "suitability": "Marginal", "name": "Forest - Subtropical/Tropical Swamp"}, {"imageUrl": "http://upload.wikimedia.org/wikipedia/commons/b/b4/Temperate_rainforest_in_Great_Otway_National_Park%2C_Victoria.JPG", "suitability": "Marginal", "name": "Forest - Temperate"}, {"imageUrl": "http://www.cas.vanderbilt.edu/bioimages/biohires/ecoregions/h70701mauna-loa04225.jpg", "suitability": "Suitable", "name": "Grassland - Subtropical/Tropical Dry"}, {"imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Circus_buffoni1.jpg", "suitability": "Suitable", "name": "Grassland - Subtropical/Tropical Seasonally Wet/Flooded"}, {"imageUrl": "http://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Grasslands-menggu.JPG/800px-Grasslands-menggu.JPG", "suitability": "Suitable", "name": "Grassland - Temperate"}, {"imageUrl": "http://3.bp.blogspot.com/-DCgtlbfDJas/T6U7eKuBFZI/AAAAAAAAS9M/LyNavxiCE-s/s1600/800px-Road_dip_caused_by_melting_permafrost.jpg", "suitability": "Suitable", "name": "Grassland - Tundra"}, {"imageUrl": "http://commondatastorage.googleapis.com/aimscoral/images/largest/0123_C1_03.jpg", "suitability": "Suitable", "name": "Inter-Reef Rubble Substrate"}, {"imageUrl": "http://commondatastorage.googleapis.com/aimscoral/images/largest/0133_C1_01.jpg", "suitability": "Suitable", "name": "Inter-Reef Soft Substrate"}, {"imageUrl": "http://upload.wikimedia.org/wikipedia/commons/7/75/Blue_Lagoon.JPG", "suitability": "Marginal", "name": "Lagoon"}, {"imageUrl": "http://s0.geograph.org.uk/geophotos/02/88/65/2886501_92ee5398.jpg", "suitability": "Suitable", "name": "Marine Coastal/Supratidal - Coastal Freshwater Lakes"}, {"imageUrl": "http://img04.deviantart.net/acc4/i/2012/224/a/e/coastal_sand_dunes_painting_by_artsaus-d5atcqv.jpg", "suitability": "Suitable", "name": "Marine Coastal/Supratidal - Coastal Sand Dunes"}, {"imageUrl": "http://ashdown4628.clients.cmdwebsites.com/blog/wp-content/uploads/2015/08/Image-3_c-Ashdown-1024x664.jpg", "suitability": "Suitable", "name": "Marine Intertidal - Mangrove Submerged Roots"}, {"imageUrl": "http://slideplayer.com/6219874/20/images/4/Intertidal+zonation+%28rocky+shore%29.jpg", "suitability": "Suitable", "name": "Marine Intertidal - Rocky Shoreline"}, {"imageUrl": "http://www.lajollabluebook.com/blog/wp-content/uploads/2016/02/Tidepools-20140313-DEZ-585x393.jpg", "suitability": "Suitable", "name": "Marine Intertidal - Tidepools"}, {"imageUrl": "https://sciencewithmsbarton.files.wordpress.com/2015/03/ocean-zones-diagram-1.jpg", "suitability": "Suitable", "name": "Marine Neritic - Estuaries"}, {"imageUrl": "http://media.opencurriculum.org/articles_manual/ck12_biology/aquatic-biomes/1.png", "suitability": "Suitable", "name": "Marine Neritic - Pelagic"}, {"imageUrl": "http://oceans.mit.edu/wp-content/uploads/http-www.photolib.noaa_.gov700ssanc0213.jpg", "suitability": "Suitable", "name": "Marine Neritic - Seagrass (Submerged)"}, {"imageUrl": "http://n7.alamy.com/zooms/031265ef3acb42838c7a925c29ba2c4f/rounded-pebble-stones-cement-on-the-walkway-en0jjt.jpg", "suitability": "Suitable", "name": "Marine Neritic - Subtidal Loose Rock/pebble/gravel"}, {"imageUrl": "https://www.for.gov.bc.ca/hts/risc/pubs/coastal/estuary/assets/estuary-4.jpg", "suitability": "Suitable", "name": "Marine Neritic - Subtidal Muddy"}, {"imageUrl": "https://s-media-cache-ak0.pinimg.com/originals/de/2e/c2/de2ec2270cba17d0d0e9fa1d2594e82b.jpg", "suitability": "Suitable", "name": "Marine Neritic - Subtidal Rock and Rocky Reefs"}, {"imageUrl": "https://s-media-cache-ak0.pinimg.com/originals/de/2e/c2/de2ec2270cba17d0d0e9fa1d2594e82b.jpg", "suitability": "Suitable", "name": "Marine Neritic - Subtidal Sandy"}, {"imageUrl": "https://razottoli.files.wordpress.com/2011/10/zonation-rocky-intertidal-lubec-jetty-aug1.jpg", "suitability": "Suitable", "name": "Marine Neritic - Subtidal Sandy-Mud"}, {"imageUrl": "http://slideplayer.com/7987686/25/images/15/The+Ocean+Divisions+There+are+two+basic+divisions+of+the+ocean%3A.jpg", "suitability": "Suitable", "name": "Marine Oceanic - Epipelagic (0-200m)"}, {"imageUrl": "https://thumb9.shutterstock.com/display_pic_with_logo/2287103/338605952/stock-photo-outer-reef-channel-passage-great-barrier-reef-whitsundays-338605952.jpg", "suitability": "Suitable", "name": "Outer Reef Channel"}, {"imageUrl": "http://files.ornithologiki.gr/images/iba/photos/gr079_AChristopoulos.jpg", "suitability": "Marginal", "name": "Rocky areas (eg. inland cliffs, mountain peaks)"}, {"imageUrl": "https://groceries.morrisons.com/productImages/119/119434011_0_640x640.jpg?identifier=31d2324e82bf7bb05f2e0e7dc74cc680", "suitability": "Suitable", "name": "Savanna - Dry"}, {"imageUrl": "http://www.geog.cam.ac.uk/research/projects/mediterraneanecosystem/5.jpg", "suitability": "Suitable", "name": "Shrubland - Mediterranean-type Shrubby Vegetation"}, {"imageUrl": "https://barajas707.files.wordpress.com/2013/11/tropical_and_subtropical_dry_broadleaf_forests_1.jpg", "suitability": "Suitable", "name": "Shrubland - Subtropical/Tropical Dry"}, {"imageUrl": "https://upload.wikimedia.org/wikipedia/commons/0/04/Hylocharis_cyanus_2.jpg", "suitability": "Suitable", "name": "Shrubland - Subtropical/Tropical Moist"}, {"imageUrl": "http://upload.wikimedia.org/wikipedia/commons/8/88/Starr_010831-0016_Morella_faya.jpg", "suitability": "Suitable", "name": "Shrubland - Temperate"}, {"imageUrl": "http://www.warnerbros.com/sites/default/files/styles/juicebox_medium/public/unknown_posterlarge_1-796659102.jpg?itok=kKVT7EfX", "suitability": "Suitable", "name": "Unknown"}, {"imageUrl": "http://ww1.hdnux.com/photos/40/02/44/8399132/5/rawImage.jpg", "suitability": "Suitable", "name": "Wetlands (inland) - Freshwater Springs and Oases"}, {"imageUrl": "http://people.deu.edu.tr/melis.somay/resimler/swamps.jpg", "suitability": "Suitable", "name": "Wetlands (inland) - Permanent Freshwater Lakes (over 8ha)"}, {"imageUrl": "http://www.oiseaux.net/photos/daniel.pernet/images/aigrette.ardoisee.dape.2p.jpg", "suitability": "Suitable", "name": "Wetlands (inland) - Permanent Freshwater Marshes/Pools (under 8ha)"}, {"imageUrl": "http://ih3.redbubble.net/image.10333072.9230/flat,800x800,070,f.jpg", "suitability": "Suitable", "name": "Wetlands (inland) - Permanent Rivers/Streams/Creeks (includes waterfalls)"}, {"imageUrl": "http://www.oiseaux.net/photos/jacques.buvat/images/chouette-pecheuse.de.pel.jabu.1p.200.w.jpg", "suitability": "Suitable", "name": "Wetlands (inland) - Seasonal/Intermittent Freshwater Marshes/Pools (under 8ha)"}, {"imageUrl": "http://people.deu.edu.tr/melis.somay/resimler/swamps.jpg", "suitability": "Suitable", "name": "Wetlands (inland) - Seasonal/Intermittent/Irregular Rivers/Streams/Creeks"}, {"imageUrl": "http://www.inlandbays.org/wp-content/images/freshwater_wetlands_tributaries.jpg", "suitability": "Suitable", "name": "Wetlands (inland) - Shrub Dominated Wetlands"}]
 
-    constructor(props) {
-      super(props);
-      this.state = {
-        stats: [],
-        ids: ["gvikei", "shivavelingker", "datvu2110", "bryanlng", "mantunguyen"]
-      };
-      
-      var id;
-      for (id in this.state.ids) {
-        var github_id = this.state.ids[id]
-        this.state.stats[github_id] = 0;
-      }
+export default class Habitats extends React.Component {
 
-      var that = this;
-      axios.get('https://api.github.com/repos/gvikei/idb/contributors')
-        .then(function(data) {
-
-          var member;
-          var my_stats = [];
-          for (id in data.data) {
-            member = data.data[id];
-            my_stats[member["login"]]= member["contributions"];
-          }
-
-          that.setState({
-            stats: my_stats
-          });
-        });
-    }
-
-    shouldComponentUpdate() {
-      return true;
-    }
-
-    render() {
-      return (
-        <div>
-          <NavMain activePage="habitats" />
-
-          <PageHeader
-            title="About Us"
-            subTitle="The issue of endangered animals and species extinction has always been a major concern of animal conservationists and environmentalists alike. Unfortunately, throughout the years, there has been less and less care and concern for the protection and preservation of endangered animals. We chose this topic in order to promote and spread awareness of this issue. This task will be accomplished by making information about endangered animals and their threats more widely available."/>
-
-            <div className="container bs-docs-container bs-docs-single-col-container">
-              <div className="bs-docs-section">
-                <h2> Our Team </h2>
-            
-                { /* Profiles */ }
-                <Row>
-                  <Col sm={4}>
-                    <Thumbnail src="https://raw.githubusercontent.com/bryanlng/jekyll-now/master/images/IMG_9269.JPG" alt="242x200">
-                    <h3>Bryan Leung</h3>
-                      <div class="card-body">
-                        <h6 class="card-subtitle mb-3 text-muted">Worked on back-end &amp; database</h6>
-                        <p class="card-text">
-                          I’m currently a third year CS major at UT, who enjoys coding and playing super smash bros.
-                        </p>
-                        <Row className="show-grid">
-                          <Col xs={12} md={12}>Number of commits: {this.state.stats["bryanlng"]}</Col>
-                          <Col xs={12} md={12}>Number of issues: 14</Col>
-                          <Col xs={12} md={12}>Number of unit tests: 0</Col>
-                        </Row>
-                      </div>
-                    </Thumbnail>
-                  </Col>
-
-                  <Col sm={4}>
-                    <Thumbnail src="https://scontent.fftw1-1.fna.fbcdn.net/v/t1.0-9/13516299_10207873551411360_9045318712286918375_n.jpg?oh=9c880396ff5c8a8ac48c991637b732c1&oe=5A49092A" alt="242x200">
-                    <h3>Khuyen Duong</h3>
-                      <div class="card-body">
-                        <h6 class="card-subtitle mb-3 text-muted">Worked full-stack</h6>
-                        <p class="card-text">
-                          I’m a senior in CS at UT Austin. <br/><br/> I worked at Oklahoma State University (2013), Google (2014 & 2015), Ecole Polytechnique Fédérale de Lausanne (2016) and Dun & Bradstreet (2017).
-                        </p>
-                        <Row className="show-grid">
-                          <Col xs={12} md={12}>Number of commits: {this.state.stats["gvikei"]}</Col>
-                          <Col xs={12} md={12}>Number of issues: 5</Col>
-                          <Col xs={12} md={12}>Number of unit tests: 0</Col>
-                        </Row>
-                      </div>
-                    </Thumbnail>
-                  </Col>
-
-                  <Col sm={4}>
-                    <Thumbnail src="https://shivavelingker.files.wordpress.com/2017/09/headshot.jpg" alt="242x200">
-                    <h3>Shiva Velingker</h3>
-                      <div class="card-body">
-                        <h6 class="card-subtitle mb-3 text-muted">Worked on front-end</h6>
-                        <p class="card-text">
-                          I’m a junior in Computer Science and Humanities (a design-your-own major) at The University of Texas at Austin.  <br/><br/>
-                          Check out my portfolio!
-                          <br/>
-                          <a href="https://shivavelingker.github.io" target="_blank">https://shivavelingker.github.io</a>
-                        </p>
-                        <Row className="show-grid">
-                          <Col xs={12} md={12}>Number of commits: {this.state.stats["shivavelingker"]}</Col>
-                          <Col xs={12} md={12}>Number of issues: 5</Col>
-                          <Col xs={12} md={12}>Number of unit tests: 0</Col>
-                        </Row>
-                      </div>
-                    </Thumbnail>
-                  </Col>
-
-                  <Col sm={4}>
-                    <Thumbnail src="https://i2.wp.com/mantunguyen.files.wordpress.com/2017/09/dsc_0221.jpg" alt="242x200">
-                    <h3>Mantu Nguyen</h3>
-                      <div class="card-body">
-                        <h6 class="card-subtitle mb-3 text-muted">Worked on front-end</h6>
-                        <p class="card-text">
-                          Senior CS major.
-                        </p>
-                        <Row className="show-grid">
-                          <Col xs={12} md={12}>Number of commits: {this.state.stats["mantunguyen"]}</Col>
-                          <Col xs={12} md={12}>Number of issues: 5</Col>
-                          <Col xs={12} md={12}>Number of unit tests: 0</Col>
-                        </Row>
-                      </div>
-                    </Thumbnail>
-                  </Col>
-
-                  <Col sm={4}>
-                    <Thumbnail src="https://scontent-dft4-1.xx.fbcdn.net/v/t1.0-9/1506886_753512884678059_561446582_n.jpg?oh=5923ed9975b1e3bcda90fd59e4dcd0b1&oe=5A12E93B" alt="242x200">
-                    <h3>Dat Vu</h3>
-                      <div class="card-body">
-                        <h6 class="card-subtitle mb-3 text-muted">Worked on back-end & database.</h6>
-                        <p class="card-text">
-                          I’m a Senior CS major at UT Austin.
-                        </p>
-                        <Row className="show-grid">
-                          <Col xs={12} md={12}>Number of commits: {this.state.stats["datvu2110"]}</Col>
-                          <Col xs={12} md={12}>Number of issues: 15</Col>
-                          <Col xs={12} md={12}>Number of unit tests: 0</Col>
-                        </Row>
-                      </div>
-                    </Thumbnail>
-                  </Col>
-                </Row>
-
-                { /* Tools */ }
-                <Row>
-                  <Col sm={4}>
-                    <h2> Tools </h2>
-                      <p><a href="http://www.apiary.io" target="_blank">Apiary</a>: Documentation tool for our RESTful API, used to document our RESTful API. <a href="http://docs.endangeredanimals.apiary.io/" target="_blank">Link to our API documentation.</a></p>
-                      <p><a href="http://www.trello.com" target="_blank">Trello</a>: Project management tool used to track tasks and issues. <a href="https://trello.com/b/9W2VbqWT/part-1" target="_blank">Link to our Trello</a></p>
-                      <p><a href="http://www.planitpoker.com" target="_blank">PlanItPoker</a>: Project management tool used to estimate the amount of time a task would take to complete.</p>
-                      <p><a href="http://www.nc.me" target="_blank">Namecheap</a>: Domain name registration site used to obtain a name for our website.</p>
-                      <p><a href="http://flask.pocoo.org/" target="_blank">Flask</a>: Web microframework for backend Python that was used to connect our HTML templates to our URL address, as well as develop a RESTful API.</p>
-                      <p><a href="http://www.github.com" target="_blank">Github</a>: Web-based Git version control software that was used to maintain the source code. <a href="https://github.com/gvikei/idb/" target="_blank">Link to our Github repo</a></p>
-                      <p><a href="http://getbootstrap.com/" target="_blank">Bootstrap</a>: Front-end framework used to design our webpages.</p>
-                  </Col>
-
-                  <Col sm={4}>
-                    <h2> Data Sources </h2>
-                      <a class="text-justify" href="http://apiv3.iucnredlist.org/api/v3/docs">IUCN Red List API - v3</a>
-                      <p>This API was used to pull the majority of our data on endangered animals. Data was scraped by calling the provided URLs using our provided REST service.</p>
-                  
-                      <a class="text-justify" href="https://developers.google.com/youtube/v3/docs/search/list">Youtube Data API</a>
-                      <p>This API was used to pull video data for each of the endangered animals. Data was scraped by calling the provided URLs using our provided REST service.</p>
-
-                      <a class="text-justify" href="https://developers.google.com/maps/documentation/geocoding/start">Google Geocoding API</a>
-                      <p>This API was used to pull location and coordinate data for habitats.  Data was scraped by calling the provided URLs using our provided REST service.</p>
-
-                      <a class="text-justify" href="https://azure.microsoft.com/en-us/services/cognitive-services/bing-image-search-api/">Bing Image Search</a>
-                      <p>This API was used to pull image data for the endangered animals.  Data was scraped by calling the provided URLs using our provided REST service.</p>
-                  </Col>
-
-                  <Col sm={4}>
-                    <h2> Technical​​ Report </h2>
-                    <p><a href="https://utexas.box.com/s/nlpzpj3ji08qu4sy7urxirgu1jb9pcsr">Technical​​ Report​​ for​​ Group​​ 22</a></p>
-                  </Col>
-                </Row>
-
-              </div>
-            </div>
-
-          <PageFooter />
-        </div>
-    );
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: true,
+    };
   }
+
+  shouldComponentUpdate() {
+    return true;
+  }
+
+  renderHabitats(habitat) {
+    return (
+
+      <Col sm={6} className="bs-docs-body">
+        <Thumbnail src={ habitat.imageUrl } width="100%" height="33%">
+          <h3>{ habitat.name }</h3>
+          <p>Suitability: {habitat.suitability}</p>
+
+        </Thumbnail>
+      </Col>
+    );
+  };
+
+  render() {
+    return (
+      <div>
+        <NavMain activePage="habitats" />
+
+        <PageHeader
+          title="Habitats"
+          subTitle=""/>
+
+        <div className="container-fluid">
+
+          { /* Habitats */ }
+
+          <Row className="container-fluid">
+            {
+
+              habitats.map(function(habitat, i){
+                return this.renderHabitats(habitat);
+              }.bind(this))
+
+            }
+
+
+          </Row>
+
+
+        </div>
+
+        <PageFooter />
+      </div>
+    );
+  }
+}

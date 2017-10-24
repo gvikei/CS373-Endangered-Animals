@@ -6,184 +6,539 @@
   import Row from '../../src/Row';
   import Col from '../../src/Col';
   import Thumbnail from '../../src/Thumbnail';
+  import Image from '../../src/Image';
+  import Panel from '../../src/Panel';
+  import Button from '../../src/Button';
+  import Collapse from '../../src/Collapse';
+  import Well from '../../src/Well';
 
-  var axios = require('axios');
+  const axios = require('axios');
 
-  export default class Page extends React.Component {
+  const animals = {
+                    "Accipiter gentilis": {
+                      "threats": [
+                        "Wood & pulp plantations",
+                        "Agro-industry plantations",
+                        "Renewable energy",
+                        "Hunting & trapping terrestrial animals",
+                        "Intentional use (species is the target)",
+                        "Persecution/control",
+                        "Agricultural & forestry effluents",
+                        "Herbicides and pesticides"
+                      ],
+                      "video_url": "https://www.youtube.com/watch?v=58gmF85FOGA",
+                      "countries": [
+                        "Andorra",
+                        "United Arab Emirates",
+                        "Afghanistan",
+                        "Albania",
+                        "Armenia",
+                        "Austria",
+                        "Azerbaijan",
+                        "Bosnia and Herzegovina",
+                        "Bangladesh",
+                        "Belgium",
+                        "Bulgaria",
+                        "Bermuda",
+                        "Bhutan",
+                        "Belarus",
+                        "Canada",
+                        "Switzerland",
+                        "China",
+                        "Cyprus",
+                        "Czech Republic",
+                        "Germany",
+                        "Denmark",
+                        "Algeria",
+                        "Estonia",
+                        "Egypt",
+                        "Spain",
+                        "Finland",
+                        "France",
+                        "United Kingdom",
+                        "Georgia",
+                        "Gibraltar",
+                        "Greece",
+                        "Hong Kong",
+                        "Croatia",
+                        "Hungary",
+                        "Ireland",
+                        "Israel",
+                        "India",
+                        "Iraq",
+                        "Iran, Islamic Republic of",
+                        "Italy",
+                        "Jordan",
+                        "Japan",
+                        "Kyrgyzstan",
+                        "Korea, Democratic People's Republic of",
+                        "Korea, Republic of",
+                        "Kuwait",
+                        "Kazakhstan",
+                        "Lao People's Democratic Republic",
+                        "Lebanon",
+                        "Liechtenstein",
+                        "Lithuania",
+                        "Luxembourg",
+                        "Latvia",
+                        "Libya",
+                        "Morocco",
+                        "Moldova",
+                        "Montenegro",
+                        "Macedonia, the former Yugoslav Republic of",
+                        "Myanmar",
+                        "Mongolia",
+                        "Mexico",
+                        "Netherlands",
+                        "Norway",
+                        "Nepal",
+                        "Oman",
+                        "Pakistan",
+                        "Poland",
+                        "Saint Pierre and Miquelon",
+                        "Palestinian Territory, Occupied",
+                        "Portugal",
+                        "Romania",
+                        "Serbia",
+                        "Russian Federation",
+                        "Saudi Arabia",
+                        "Sweden",
+                        "Slovenia",
+                        "Slovakia",
+                        "Syrian Arab Republic",
+                        "Thailand",
+                        "Tajikistan",
+                        "Turkmenistan",
+                        "Tunisia",
+                        "Turkey",
+                        "Taiwan, Province of China",
+                        "Ukraine",
+                        "United States",
+                        "Uzbekistan",
+                        "Viet Nam"
+                      ],
+                      "web_link": "http://apiv3.iucnredlist.org/api/v3/website/Accipiter gentilis",
+                      "habitats": [
+                        "Forest - Boreal",
+                        "Forest - Temperate",
+                        "Artificial/Terrestrial - Urban Areas",
+                        "Artificial/Terrestrial - Urban Areas",
+                        "Grassland - Tundra"
+                      ],
+                      "citation_link": "BirdLife International 2016. Accipiter gentilis. The IUCN Red List of Threatened Species 2016: e.T22695683A93522852. http://dx.doi.org/10.2305/IUCN.UK.2016-3.RLTS.T22695683A93522852.en",
+                      "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/81/Northern_Goshawk_ad_M2.jpg",
+                      "common_name": "Northern Goshawk",
+                      "conservation_measures": "Species recovery",
+                      "vulnerability_status": "Least Concern"
+                      },
+                    "Acanthocybium solandri": {
+                      "threats": [
+                        "Fishing & harvesting aquatic resources",
+                        "Unintentional effects: (large scale) [harvest]"
+                      ],
+                      "video_url": "https://www.youtube.com/watch?v=3uLYJuN_FOA",
+                      "countries": [
+                        "Antigua and Barbuda",
+                        "Anguilla",
+                        "Albania",
+                        "Australia",
+                        "Aruba",
+                        "Bosnia and Herzegovina",
+                        "Barbados",
+                        "Bermuda",
+                        "Bonaire, Sint Eustatius and Saba",
+                        "Brazil",
+                        "Bahamas",
+                        "Belize",
+                        "Cocos (Keeling) Islands",
+                        "Cook Islands",
+                        "Cameroon",
+                        "China",
+                        "Colombia",
+                        "Costa Rica",
+                        "Cuba",
+                        "Cape Verde",
+                        "Christmas Island",
+                        "Cyprus",
+                        "Dominica",
+                        "Dominican Republic",
+                        "Algeria",
+                        "Ecuador",
+                        "Egypt",
+                        "Spain",
+                        "Fiji",
+                        "Micronesia, Federated States of ",
+                        "France",
+                        "Grenada",
+                        "French Guiana",
+                        "Guadeloupe",
+                        "Equatorial Guinea",
+                        "Greece",
+                        "Guatemala",
+                        "Guam",
+                        "Guyana",
+                        "Hong Kong",
+                        "Honduras",
+                        "Croatia",
+                        "Haiti",
+                        "Indonesia",
+                        "Israel",
+                        "India",
+                        "Italy",
+                        "Jamaica",
+                        "Japan",
+                        "Kenya",
+                        "Kiribati",
+                        "Comoros",
+                        "Saint Kitts and Nevis",
+                        "Cayman Islands",
+                        "Lebanon",
+                        "Saint Lucia",
+                        "Sri Lanka",
+                        "Libya",
+                        "Morocco",
+                        "Monaco",
+                        "Saint Martin (French part)",
+                        "Madagascar",
+                        "Marshall Islands",
+                        "Northern Mariana Islands",
+                        "Martinique",
+                        "Mauritania",
+                        "Montserrat",
+                        "Malta",
+                        "Mauritius",
+                        "Maldives",
+                        "Mexico",
+                        "Malaysia",
+                        "Mozambique",
+                        "New Caledonia",
+                        "Nigeria",
+                        "Nicaragua",
+                        "Oman",
+                        "Panama",
+                        "Peru",
+                        "French Polynesia",
+                        "Papua New Guinea",
+                        "Philippines",
+                        "Pakistan",
+                        "Puerto Rico",
+                        "Palau",
+                        "Saudi Arabia",
+                        "Solomon Islands",
+                        "Seychelles",
+                        "Saint Helena, Ascension and Tristan da Cunha",
+                        "Slovenia",
+                        "Somalia",
+                        "Suriname",
+                        "El Salvador",
+                        "Sint Maarten (Dutch part)",
+                        "Syrian Arab Republic",
+                        "Turks and Caicos Islands",
+                        "Tokelau",
+                        "Tunisia",
+                        "Tonga",
+                        "Turkey",
+                        "Trinidad and Tobago",
+                        "Tuvalu",
+                        "Taiwan, Province of China",
+                        "Tanzania, United Republic of",
+                        "United States",
+                        "Saint Vincent and the Grenadines",
+                        "Venezuela, Bolivarian Republic of",
+                        "Virgin Islands, British",
+                        "Virgin Islands, U.S.",
+                        "Viet Nam",
+                        "Vanuatu",
+                        "Samoa",
+                        "Yemen",
+                        "South Africa"
+                      ],
+                      "web_link": "http://apiv3.iucnredlist.org/api/v3/website/Acanthocybium solandri",
+                      "habitats": [
+                        "Marine Oceanic - Epipelagic (0-200m)",
+                        "Marine Neritic - Pelagic"
+                      ],
+                      "citation_link": "Collette, B., Acero, A., Amorim, A.F., Boustany, A., Canales Ramirez, C., Cardenas, G., Carpenter, K.E., de Oliveira Leite Jr., N., Di Natale, A., Die, D., Fox, W., Fredou, F.L., Graves, J., Guzman-Mora, A., Viera Hazin, F.H., Hinton, M., Juan Jorda, M., Kada, O., Minte Vera, C., Miyabe, N., Montano Cruz, R., Nelson, R., Oxenford, H., Restrepo, V., Salas, E., Schaefer, K., Schratwieser, J., Serra, R., Sun, C., Teixeira Lessa, R.P., Pires Ferreira Travassos, P.E., Uozumi, Y. & Yanez, E. 2011. Acanthocybium solandri. The IUCN Red List of Threatened Species 2011: e.T170331A6750961. http://dx.doi.org/10.2305/IUCN.UK.2011-2.RLTS.T170331A6750961.en",
+                      "image_url": "https://www.delphfishing.com/wp-content/gallery/wahoo/wahoo_IMG_6094.jpg",
+                      "common_name": "Wahoo",
+                      "conservation_measures": "Species recovery",
+                      "vulnerability_status": "Least Concern"
+                      },
+                    "Acanthurus blochii": {
+      "threats": [
+        "Fishing & harvesting aquatic resources",
+        "Intentional use: (subsistence/small scale) [harvest]"
+      ],
+      "video_url": "https://www.youtube.com/watch?v=HLg-o4i-f-Q",
+      "countries": [
+        "American Samoa",
+        "Australia",
+        "Brunei Darussalam",
+        "Cocos (Keeling) Islands",
+        "Cook Islands",
+        "Christmas Island",
+        "Djibouti",
+        "Disputed Territory",
+        "Fiji",
+        "Micronesia, Federated States of ",
+        "Guam",
+        "Indonesia",
+        "British Indian Ocean Territory",
+        "Japan",
+        "Kenya",
+        "Kiribati",
+        "Comoros",
+        "Madagascar",
+        "Marshall Islands",
+        "Northern Mariana Islands",
+        "Mauritius",
+        "Malaysia",
+        "Mozambique",
+        "New Caledonia",
+        "Nauru",
+        "Niue",
+        "French Polynesia",
+        "Papua New Guinea",
+        "Philippines",
+        "Palau",
+        "Solomon Islands",
+        "Seychelles",
+        "Somalia",
+        "French Southern Territories",
+        "Tokelau",
+        "Timor-Leste",
+        "Tonga",
+        "Tuvalu",
+        "United States Minor Outlying Islands",
+        "United States",
+        "Viet Nam",
+        "Vanuatu",
+        "Wallis and Futuna",
+        "Samoa",
+        "Yemen",
+        "Mayotte",
+        "South Africa"
+      ],
+      "web_link": "http://apiv3.iucnredlist.org/api/v3/website/Acanthurus blochii",
+      "habitats": [
+        "Outer Reef Channel",
+        "Back Slope",
+        "Foreslope (Outer Reef Slope)",
+        "Lagoon",
+        "Inter-Reef Soft Substrate",
+        "Inter-Reef Rubble Substrate",
+        "Marine Neritic - Seagrass (Submerged)"
+      ],
+      "citation_link": "Choat, J.H., Abesamis, R., Clements, K.D., McIlwain, J., Myers, R., Nanola, C., Rocha, L.A., Russell, B. & Stockwell, B. 2012. Acanthurus blochii. The IUCN Red List of Threatened Species 2012: e.T177971A1507181. http://dx.doi.org/10.2305/IUCN.UK.2012.RLTS.T177971A1507181.en",
+      "image_url": "http://images.fineartamerica.com/images-medium-large/ringtail-surgeonfish-michael-peychich.jpg",
+      "common_name": "Ringtail Surgeonfish",
+      "conservation_measures": "Species recovery",
+      "vulnerability_status": "Least Concern"
+    },
+                    "Abudefduf taurus": {
+      "threats": [
+        "Fishing & harvesting aquatic resources",
+        "Intentional use: (subsistence/small scale) [harvest]"
+      ],
+      "video_url": "https://www.youtube.com/watch?v=upNPQWrhMWQ",
+      "countries": [
+        "Antigua and Barbuda",
+        "Anguilla",
+        "Angola",
+        "Aruba",
+        "Barbados",
+        "Benin",
+        "Bahamas",
+        "Belize",
+        "Congo, The Democratic Republic of the",
+        "Congo",
+        "Cameroon",
+        "Colombia",
+        "Costa Rica",
+        "Cuba",
+        "Cape Verde",
+        "Dominica",
+        "Dominican Republic",
+        "Gabon",
+        "Grenada",
+        "French Guiana",
+        "Ghana",
+        "Gambia",
+        "Guinea",
+        "Guadeloupe",
+        "Equatorial Guinea",
+        "Guatemala",
+        "Guinea-Bissau",
+        "Guyana",
+        "Honduras",
+        "Haiti",
+        "Jamaica",
+        "Saint Kitts and Nevis",
+        "Cayman Islands",
+        "Saint Lucia",
+        "Liberia",
+        "Martinique",
+        "Montserrat",
+        "Mexico",
+        "Nigeria",
+        "Nicaragua",
+        "Panama",
+        "Puerto Rico",
+        "Sierra Leone",
+        "Senegal",
+        "Suriname",
+        "Turks and Caicos Islands",
+        "Togo",
+        "Trinidad and Tobago",
+        "United States",
+        "Saint Vincent and the Grenadines",
+        "Venezuela, Bolivarian Republic of",
+        "Virgin Islands, British",
+        "Virgin Islands, U.S."
+      ],
+      "web_link": "http://apiv3.iucnredlist.org/api/v3/website/Abudefduf taurus",
+      "habitats": [
+        "Marine Intertidal - Rocky Shoreline",
+        "Marine Intertidal - Tidepools",
+        "Marine Neritic - Subtidal Rock and Rocky Reefs"
+      ],
+      "citation_link": "Rocha, L.A. & Myers, R. 2015. Abudefduf taurus. The IUCN Red List of Threatened Species 2015: e.T188434A1874356. http://dx.doi.org/10.2305/IUCN.UK.2015-4.RLTS.T188434A1874356.en",
+      "image_url": "https://i1.wp.com/www.mexican-fish.com/wp-content/uploads/F245-Night-Sergeant.jpg",
+      "common_name": "Night Sergeant",
+      "conservation_measures": "Species recovery",
+      "vulnerability_status": "Least Concern"
+    },
+                    "Acanthochelys pallidipectoris": {
+      "threats": [
+        "Droughts",
+        "Temperature extremes",
+        "Annual & perennial non-timber crops",
+        "Agro-industry farming",
+        "Livestock farming & ranching",
+        "Agro-industry grazing, ranching or farming",
+        "Fishing & harvesting aquatic resources",
+        "Intentional use: (subsistence/small scale) [harvest]",
+        "Problematic native species/diseases"
+      ],
+      "video_url": "https://www.youtube.com/watch?v=VbQfUFrQZ44",
+      "countries": [
+        "Argentina",
+        "Bolivia, Plurinational States of",
+        "Paraguay"
+      ],
+      "web_link": "http://apiv3.iucnredlist.org/api/v3/website/Acanthochelys pallidipectoris",
+      "habitats": [
+        "Artificial/Aquatic - Ponds (below 8ha)",
+        "Grassland - Subtropical/Tropical Seasonally Wet/Flooded",
+        "Wetlands (inland) - Shrub Dominated Wetlands",
+        "Wetlands (inland) - Seasonal/Intermittent Freshwater Marshes/Pools (under 8ha)"
+      ],
+      "citation_link": "Vinke, T. & Vinke, S. 2016. Acanthochelys pallidipectoris. The IUCN Red List of Threatened Species 2016: e.T75A3139283. http://dx.doi.org/10.2305/IUCN.UK.2016-1.RLTS.T75A3139283.en",
+      "image_url": "http://cdn2.arkive.org/media/87/8710949A-22FB-4CDC-A0F7-A29C0DD97F1A/Presentation.Large/chaco-side-necked-turtle.jpg",
+      "common_name": "Chaco Side-necked Turtle",
+      "conservation_measures": "Site/area protection",
+      "vulnerability_status": "Endangered"
+    },
+                    "Abrawayaomys ruschii": {
+      "threats": [
+        "Logging & wood harvesting",
+        "Motivation Unknown/Unrecorded"
+      ],
+      "video_url": "https://www.youtube.com/watch?v=Lqld9_4JG4A",
+      "countries": [
+        "Argentina",
+        "Brazil"
+      ],
+      "web_link": "http://apiv3.iucnredlist.org/api/v3/website/Abrawayaomys ruschii",
+      "habitats": [
+        "Forest - Subtropical/Tropical Moist Montane"
+      ],
+      "citation_link": "Pardinas, U., Teta, P. & Percequillo, A. 2016. Abrawayaomys ruschii. The IUCN Red List of Threatened Species 2016: e.T47760825A22335735. http://dx.doi.org/10.2305/IUCN.UK.2016-2.RLTS.T47760825A22335735.en",
+      "image_url": "http://cdn1.arkive.org/media/1B/1BDE8340-59B0-49EC-A664-5766C2113A29/Presentation.Large/Ruschis-rat-specimen-close-up-of-foot.jpg",
+      "common_name": "Ruschi's Rat",
+      "conservation_measures": "Species recovery",
+      "vulnerability_status": "Least Concern"
+    }
+                  }
+
+  export default class Animals extends React.Component {
 
     constructor(props) {
       super(props);
       this.state = {
-        stats: [],
-        ids: ["gvikei", "shivavelingker", "datvu2110", "bryanlng", "mantunguyen"]
+          open: true,
       };
-      
-      var id;
-      for (id in this.state.ids) {
-        var github_id = this.state.ids[id]
-        this.state.stats[github_id] = 0;
-      }
-
-      var that = this;
-      axios.get('https://api.github.com/repos/gvikei/idb/contributors')
-        .then(function(data) {
-
-          var member;
-          var my_stats = [];
-          for (id in data.data) {
-            member = data.data[id];
-            my_stats[member["login"]]= member["contributions"];
-          }
-
-          that.setState({
-            stats: my_stats
-          });
-        });
     }
 
     shouldComponentUpdate() {
       return true;
     }
 
+    renderAnimals(animals, keyName) {
+      return (
+        <Col sm={6} className="bs-docs-body" >
+          <Thumbnail src={animals[keyName].image_url}>
+            <h3>{keyName}</h3>
+            <p>Common name: {animals[keyName].common_name}</p>
+            <p>Vulnerability Status: {animals[keyName].vulnerability_status}</p>
+            <p>Threats: {animals[keyName].threats}</p>
+            Video:
+
+            <Button onClick={ ()=> this.setState({ open: !this.state.open })}>
+              Video
+            </Button>
+            <Collapse in={this.state.open}>
+
+              <Well>
+                {animals[keyName].video_url}
+              </Well>
+
+            </Collapse>
+
+
+
+
+
+            <p>Countries: {animals[keyName].countries} {" "}</p>
+            <p>Habitats: {animals[keyName].habitats} {" "}</p>
+          </Thumbnail>
+        </Col>
+
+
+      );
+    };
+
     render() {
       return (
         <div>
           <NavMain activePage="animals" />
 
-          <PageHeader
-            title="About Us"
-            subTitle="The issue of endangered animals and species extinction has always been a major concern of animal conservationists and environmentalists alike. Unfortunately, throughout the years, there has been less and less care and concern for the protection and preservation of endangered animals. We chose this topic in order to promote and spread awareness of this issue. This task will be accomplished by making information about endangered animals and their threats more widely available."/>
+           <PageHeader
+            title="Animals"
+            subTitle=""/>
 
-            <div className="container bs-docs-container bs-docs-single-col-container">
-              <div className="bs-docs-section">
-                <h2> Our Team </h2>
+            <div className="container-fluid">
+
+
             
-                { /* Profiles */ }
-                <Row>
-                  <Col sm={4}>
-                    <Thumbnail src="https://raw.githubusercontent.com/bryanlng/jekyll-now/master/images/IMG_9269.JPG" alt="242x200">
-                    <h3>Bryan Leung</h3>
-                      <div class="card-body">
-                        <h6 class="card-subtitle mb-3 text-muted">Worked on back-end &amp; database</h6>
-                        <p class="card-text">
-                          I’m currently a third year CS major at UT, who enjoys coding and playing super smash bros.
-                        </p>
-                        <Row className="show-grid">
-                          <Col xs={12} md={12}>Number of commits: {this.state.stats["bryanlng"]}</Col>
-                          <Col xs={12} md={12}>Number of issues: 14</Col>
-                          <Col xs={12} md={12}>Number of unit tests: 0</Col>
-                        </Row>
-                      </div>
-                    </Thumbnail>
-                  </Col>
+                { /* Animals */ }
 
-                  <Col sm={4}>
-                    <Thumbnail src="https://scontent.fftw1-1.fna.fbcdn.net/v/t1.0-9/13516299_10207873551411360_9045318712286918375_n.jpg?oh=9c880396ff5c8a8ac48c991637b732c1&oe=5A49092A" alt="242x200">
-                    <h3>Khuyen Duong</h3>
-                      <div class="card-body">
-                        <h6 class="card-subtitle mb-3 text-muted">Worked full-stack</h6>
-                        <p class="card-text">
-                          I’m a senior in CS at UT Austin. <br/><br/> I worked at Oklahoma State University (2013), Google (2014 & 2015), Ecole Polytechnique Fédérale de Lausanne (2016) and Dun & Bradstreet (2017).
-                        </p>
-                        <Row className="show-grid">
-                          <Col xs={12} md={12}>Number of commits: {this.state.stats["gvikei"]}</Col>
-                          <Col xs={12} md={12}>Number of issues: 5</Col>
-                          <Col xs={12} md={12}>Number of unit tests: 0</Col>
-                        </Row>
-                      </div>
-                    </Thumbnail>
-                  </Col>
+                <Row className="container-fluid">
+                  {
 
-                  <Col sm={4}>
-                    <Thumbnail src="https://shivavelingker.files.wordpress.com/2017/09/headshot.jpg" alt="242x200">
-                    <h3>Shiva Velingker</h3>
-                      <div class="card-body">
-                        <h6 class="card-subtitle mb-3 text-muted">Worked on front-end</h6>
-                        <p class="card-text">
-                          I’m a junior in Computer Science and Humanities (a design-your-own major) at The University of Texas at Austin.  <br/><br/>
-                          Check out my portfolio!
-                          <br/>
-                          <a href="https://shivavelingker.github.io" target="_blank">https://shivavelingker.github.io</a>
-                        </p>
-                        <Row className="show-grid">
-                          <Col xs={12} md={12}>Number of commits: {this.state.stats["shivavelingker"]}</Col>
-                          <Col xs={12} md={12}>Number of issues: 5</Col>
-                          <Col xs={12} md={12}>Number of unit tests: 0</Col>
-                        </Row>
-                      </div>
-                    </Thumbnail>
-                  </Col>
 
-                  <Col sm={4}>
-                    <Thumbnail src="https://i2.wp.com/mantunguyen.files.wordpress.com/2017/09/dsc_0221.jpg" alt="242x200">
-                    <h3>Mantu Nguyen</h3>
-                      <div class="card-body">
-                        <h6 class="card-subtitle mb-3 text-muted">Worked on front-end</h6>
-                        <p class="card-text">
-                          Senior CS major.
-                        </p>
-                        <Row className="show-grid">
-                          <Col xs={12} md={12}>Number of commits: {this.state.stats["mantunguyen"]}</Col>
-                          <Col xs={12} md={12}>Number of issues: 5</Col>
-                          <Col xs={12} md={12}>Number of unit tests: 0</Col>
-                        </Row>
-                      </div>
-                    </Thumbnail>
-                  </Col>
+                    Object.keys(animals).map(function(keyName, keyIndex) {
+                      return this.renderAnimals(animals, keyName);
+                    }.bind(this))
 
-                  <Col sm={4}>
-                    <Thumbnail src="https://scontent-dft4-1.xx.fbcdn.net/v/t1.0-9/1506886_753512884678059_561446582_n.jpg?oh=5923ed9975b1e3bcda90fd59e4dcd0b1&oe=5A12E93B" alt="242x200">
-                    <h3>Dat Vu</h3>
-                      <div class="card-body">
-                        <h6 class="card-subtitle mb-3 text-muted">Worked on back-end & database.</h6>
-                        <p class="card-text">
-                          I’m a Senior CS major at UT Austin.
-                        </p>
-                        <Row className="show-grid">
-                          <Col xs={12} md={12}>Number of commits: {this.state.stats["datvu2110"]}</Col>
-                          <Col xs={12} md={12}>Number of issues: 15</Col>
-                          <Col xs={12} md={12}>Number of unit tests: 0</Col>
-                        </Row>
-                      </div>
-                    </Thumbnail>
-                  </Col>
+
+
+                  }
+
+
                 </Row>
 
-                { /* Tools */ }
-                <Row>
-                  <Col sm={4}>
-                    <h2> Tools </h2>
-                      <p><a href="http://www.apiary.io" target="_blank">Apiary</a>: Documentation tool for our RESTful API, used to document our RESTful API. <a href="http://docs.endangeredanimals.apiary.io/" target="_blank">Link to our API documentation.</a></p>
-                      <p><a href="http://www.trello.com" target="_blank">Trello</a>: Project management tool used to track tasks and issues. <a href="https://trello.com/b/9W2VbqWT/part-1" target="_blank">Link to our Trello</a></p>
-                      <p><a href="http://www.planitpoker.com" target="_blank">PlanItPoker</a>: Project management tool used to estimate the amount of time a task would take to complete.</p>
-                      <p><a href="http://www.nc.me" target="_blank">Namecheap</a>: Domain name registration site used to obtain a name for our website.</p>
-                      <p><a href="http://flask.pocoo.org/" target="_blank">Flask</a>: Web microframework for backend Python that was used to connect our HTML templates to our URL address, as well as develop a RESTful API.</p>
-                      <p><a href="http://www.github.com" target="_blank">Github</a>: Web-based Git version control software that was used to maintain the source code. <a href="https://github.com/gvikei/idb/" target="_blank">Link to our Github repo</a></p>
-                      <p><a href="http://getbootstrap.com/" target="_blank">Bootstrap</a>: Front-end framework used to design our webpages.</p>
-                  </Col>
 
-                  <Col sm={4}>
-                    <h2> Data Sources </h2>
-                      <a class="text-justify" href="http://apiv3.iucnredlist.org/api/v3/docs">IUCN Red List API - v3</a>
-                      <p>This API was used to pull the majority of our data on endangered animals. Data was scraped by calling the provided URLs using our provided REST service.</p>
-                  
-                      <a class="text-justify" href="https://developers.google.com/youtube/v3/docs/search/list">Youtube Data API</a>
-                      <p>This API was used to pull video data for each of the endangered animals. Data was scraped by calling the provided URLs using our provided REST service.</p>
-
-                      <a class="text-justify" href="https://developers.google.com/maps/documentation/geocoding/start">Google Geocoding API</a>
-                      <p>This API was used to pull location and coordinate data for habitats.  Data was scraped by calling the provided URLs using our provided REST service.</p>
-
-                      <a class="text-justify" href="https://azure.microsoft.com/en-us/services/cognitive-services/bing-image-search-api/">Bing Image Search</a>
-                      <p>This API was used to pull image data for the endangered animals.  Data was scraped by calling the provided URLs using our provided REST service.</p>
-                  </Col>
-
-                  <Col sm={4}>
-                    <h2> Technical​​ Report </h2>
-                    <p><a href="https://utexas.box.com/s/nlpzpj3ji08qu4sy7urxirgu1jb9pcsr">Technical​​ Report​​ for​​ Group​​ 22</a></p>
-                  </Col>
-                </Row>
-
-              </div>
             </div>
 
           <PageFooter />

@@ -12,6 +12,16 @@ body {
   background-color: #222;
 }
 
+.bs-docs-body {
+  background-color: #ffffff;
+}
+
+.bs-docs-body-alt {
+  background-color: #fefefe;
+}
+
+
+
 .bs-docs-nav .navbar-nav>li>a {
   color: #aaa;
   font-weight: normal;

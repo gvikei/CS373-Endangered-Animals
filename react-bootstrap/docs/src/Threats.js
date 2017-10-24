@@ -1,193 +1,76 @@
-  import React from 'react';
+import React from 'react';
 
-  import NavMain from './NavMain';
-  import PageHeader from './PageHeader';
-  import PageFooter from './PageFooter';
-  import Row from '../../src/Row';
-  import Col from '../../src/Col';
-  import Thumbnail from '../../src/Thumbnail';
+import NavMain from './NavMain';
+import PageHeader from './PageHeader';
+import PageFooter from './PageFooter';
+import Row from '../../src/Row';
+import Col from '../../src/Col';
+import Thumbnail from '../../src/Thumbnail';
+import Image from '../../src/Image';
+import Panel from '../../src/Panel';
+import Button from '../../src/Button';
+import Collapse from '../../src/Collapse';
+import Well from '../../src/Well';
 
-  var axios = require('axios');
+const axios = require('axios');
 
-  export default class Page extends React.Component {
+const threats = [{"timing": "ongoing", "score": 4.6, "name": "Annual & perennial non-timber crops"}, {"timing": "ongoing", "score": 1.17, "name": "Invasive non-native/alien species/diseases (Vulpes vulpes)"}, {"timing": "ongoing", "score": 3.0, "name": "Dams (size unknown)"}, {"timing": "ongoing", "score": 4.6, "name": "Intentional use: (subsistence/small scale) [harvest]"}, {"timing": "ongoing", "score": 3.0, "name": "Tourism & recreation areas"}, {"timing": "ongoing", "score": 1.17, "name": "Invasive non-native/alien species/diseases (Abudefduf vaigiensis)"}, {"timing": "ongoing", "score": 3.0, "name": "Habitat shifting & alteration"}, {"timing": "ongoing", "score": 4.5, "name": "Problematic native species/diseases"}, {"timing": "ongoing", "score": 6.333333333333333, "name": "Droughts"}, {"timing": "ongoing", "score": 4.0, "name": "Mining & quarrying"}, {"timing": "ongoing", "score": 6.666666666666667, "name": "Abstraction of ground water (agricultural use)"}, {"timing": "ongoing", "score": 1.17, "name": "Other impacts"}, {"timing": "ongoing", "score": 5.0, "name": "Increase in fire frequency/intensity"}, {"timing": "ongoing", "score": 3.9, "name": "Fishing & harvesting aquatic resources"}, {"timing": "ongoing", "score": 3.6666666666666665, "name": "Small-holder grazing, ranching or farming"}, {"timing": "ongoing", "score": 1.17, "name": "Abstraction of ground water (unknown use)"}, {"timing": "ongoing", "score": 4.5, "name": "Large dams"}, {"timing": "ongoing", "score": 5.0, "name": "Abstraction of surface water (unknown use)"}, {"timing": "ongoing", "score": 3.857142857142857, "name": "Logging & wood harvesting"}, {"timing": "ongoing", "score": 5.0, "name": "Herbicides and pesticides"}, {"timing": "ongoing", "score": 1.17, "name": "Named species (Abudefduf vaigiensis)"}, {"timing": "ongoing", "score": 1.17, "name": "Earthquakes/tsunamis"}, {"timing": "ongoing", "score": 5.222222222222222, "name": "Dams & water management/use"}, {"timing": "ongoing", "score": 4.0, "name": "Unintentional effects (species is not the target)"}, {"timing": "ongoing", "score": 4.666666666666667, "name": "Unintentional effects: (subsistence/small scale) [harvest]"}, {"timing": "ongoing", "score": 4.0, "name": "Scale Unknown/Unrecorded"}, {"timing": "ongoing", "score": 1.17, "name": "Work & other activities"}, {"timing": "ongoing", "score": 3.0, "name": "Garbage & solid waste"}, {"timing": "ongoing", "score": 5.0, "name": "Sewage"}, {"timing": "ongoing", "score": 3.0, "name": "Intentional use: (large scale) [harvest]"}, {"timing": "ongoing", "score": 1.17, "name": "Nutrient loads"}, {"timing": "ongoing", "score": 4.5, "name": "Hunting & trapping terrestrial animals"}, {"timing": "ongoing", "score": 3.0, "name": "Type Unknown/Unrecorded"}, {"timing": "ongoing", "score": 4.125, "name": "Livestock farming & ranching"}, {"timing": "ongoing", "score": 3.0, "name": "Soil erosion, sedimentation"}, {"timing": "ongoing", "score": 4.0, "name": "Fire & fire suppression"}, {"timing": "ongoing", "score": 4.5, "name": "Agro-industry grazing, ranching or farming"}, {"timing": "ongoing", "score": 4.5, "name": "Small-holder farming"}, {"timing": "ongoing", "score": 4.5, "name": "Agro-industry farming"}, {"timing": "ongoing", "score": 5.5, "name": "Wood & pulp plantations"}, {"timing": "ongoing", "score": 3.3333333333333335, "name": "Roads & railroads"}, {"timing": "ongoing", "score": 4.0, "name": "Unintentional effects: (large scale) [harvest]"}, {"timing": "ongoing", "score": 1.17, "name": "Abstraction of ground water (domestic use)"}, {"timing": "ongoing", "score": 3.0, "name": "Other ecosystem modifications"}, {"timing": "ongoing", "score": 1.17, "name": "Storms & flooding"}, {"timing": "ongoing", "score": 1.17, "name": "Abstraction of surface water (domestic use)"}, {"timing": "ongoing", "score": 4.0, "name": "Temperature extremes"}, {"timing": "ongoing", "score": 5.0, "name": "Small dams"}, {"timing": "ongoing", "score": 1.17, "name": "Named species (Vulpes vulpes)"}, {"timing": "ongoing", "score": 1.17, "name": "War, civil unrest & military exercises"}, {"timing": "ongoing", "score": 4.666666666666667, "name": "Intentional use (species is the target)"}, {"timing": "ongoing", "score": 3.0, "name": "Motivation Unknown/Unrecorded"}, {"timing": "ongoing", "score": 1.17, "name": "Named species (Felis catus)"}, {"timing": "ongoing", "score": 3.0, "name": "Trend Unknown/Unrecorded"}, {"timing": "ongoing", "score": 5.5, "name": "Agro-industry plantations"}, {"timing": "ongoing", "score": 1.17, "name": "Recreational activities"}, {"timing": "ongoing", "score": 4.0, "name": "Commercial & industrial areas"}, {"timing": "ongoing", "score": 3.0, "name": "Industrial & military effluents"}, {"timing": "ongoing", "score": 5.5, "name": "Shifting agriculture"}, {"timing": "ongoing", "score": 4.0, "name": "Agricultural & forestry effluents"}, {"timing": "ongoing", "score": 4.2, "name": "Housing & urban areas"}, {"timing": "ongoing", "score": 5.0, "name": "Domestic & urban waste water"}, {"timing": "ongoing", "score": 6.5, "name": "Abstraction of surface water (agricultural use)"}, {"timing": "ongoing", "score": 5.0, "name": "Renewable energy"}, {"timing": "ongoing", "score": 4.0, "name": "Nomadic grazing"}, {"timing": "ongoing", "score": 1.17, "name": "Invasive non-native/alien species/diseases (Felis catus)"}, {"timing": "ongoing", "score": 5.0, "name": "Persecution/control"}]
 
-    constructor(props) {
-      super(props);
-      this.state = {
-        stats: [],
-        ids: ["gvikei", "shivavelingker", "datvu2110", "bryanlng", "mantunguyen"]
-      };
-      
-      var id;
-      for (id in this.state.ids) {
-        var github_id = this.state.ids[id]
-        this.state.stats[github_id] = 0;
-      }
+export default class Threats extends React.Component {
 
-      var that = this;
-      axios.get('https://api.github.com/repos/gvikei/idb/contributors')
-        .then(function(data) {
-
-          var member;
-          var my_stats = [];
-          for (id in data.data) {
-            member = data.data[id];
-            my_stats[member["login"]]= member["contributions"];
-          }
-
-          that.setState({
-            stats: my_stats
-          });
-        });
-    }
-
-    shouldComponentUpdate() {
-      return true;
-    }
-
-    render() {
-      return (
-        <div>
-          <NavMain activePage="threats" />
-
-          <PageHeader
-            title="About Us"
-            subTitle="The issue of endangered animals and species extinction has always been a major concern of animal conservationists and environmentalists alike. Unfortunately, throughout the years, there has been less and less care and concern for the protection and preservation of endangered animals. We chose this topic in order to promote and spread awareness of this issue. This task will be accomplished by making information about endangered animals and their threats more widely available."/>
-
-            <div className="container bs-docs-container bs-docs-single-col-container">
-              <div className="bs-docs-section">
-                <h2> Our Team </h2>
-            
-                { /* Profiles */ }
-                <Row>
-                  <Col sm={4}>
-                    <Thumbnail src="https://raw.githubusercontent.com/bryanlng/jekyll-now/master/images/IMG_9269.JPG" alt="242x200">
-                    <h3>Bryan Leung</h3>
-                      <div class="card-body">
-                        <h6 class="card-subtitle mb-3 text-muted">Worked on back-end &amp; database</h6>
-                        <p class="card-text">
-                          I’m currently a third year CS major at UT, who enjoys coding and playing super smash bros.
-                        </p>
-                        <Row className="show-grid">
-                          <Col xs={12} md={12}>Number of commits: {this.state.stats["bryanlng"]}</Col>
-                          <Col xs={12} md={12}>Number of issues: 14</Col>
-                          <Col xs={12} md={12}>Number of unit tests: 0</Col>
-                        </Row>
-                      </div>
-                    </Thumbnail>
-                  </Col>
-
-                  <Col sm={4}>
-                    <Thumbnail src="https://scontent.fftw1-1.fna.fbcdn.net/v/t1.0-9/13516299_10207873551411360_9045318712286918375_n.jpg?oh=9c880396ff5c8a8ac48c991637b732c1&oe=5A49092A" alt="242x200">
-                    <h3>Khuyen Duong</h3>
-                      <div class="card-body">
-                        <h6 class="card-subtitle mb-3 text-muted">Worked full-stack</h6>
-                        <p class="card-text">
-                          I’m a senior in CS at UT Austin. <br/><br/> I worked at Oklahoma State University (2013), Google (2014 & 2015), Ecole Polytechnique Fédérale de Lausanne (2016) and Dun & Bradstreet (2017).
-                        </p>
-                        <Row className="show-grid">
-                          <Col xs={12} md={12}>Number of commits: {this.state.stats["gvikei"]}</Col>
-                          <Col xs={12} md={12}>Number of issues: 5</Col>
-                          <Col xs={12} md={12}>Number of unit tests: 0</Col>
-                        </Row>
-                      </div>
-                    </Thumbnail>
-                  </Col>
-
-                  <Col sm={4}>
-                    <Thumbnail src="https://shivavelingker.files.wordpress.com/2017/09/headshot.jpg" alt="242x200">
-                    <h3>Shiva Velingker</h3>
-                      <div class="card-body">
-                        <h6 class="card-subtitle mb-3 text-muted">Worked on front-end</h6>
-                        <p class="card-text">
-                          I’m a junior in Computer Science and Humanities (a design-your-own major) at The University of Texas at Austin.  <br/><br/>
-                          Check out my portfolio!
-                          <br/>
-                          <a href="https://shivavelingker.github.io" target="_blank">https://shivavelingker.github.io</a>
-                        </p>
-                        <Row className="show-grid">
-                          <Col xs={12} md={12}>Number of commits: {this.state.stats["shivavelingker"]}</Col>
-                          <Col xs={12} md={12}>Number of issues: 5</Col>
-                          <Col xs={12} md={12}>Number of unit tests: 0</Col>
-                        </Row>
-                      </div>
-                    </Thumbnail>
-                  </Col>
-
-                  <Col sm={4}>
-                    <Thumbnail src="https://i2.wp.com/mantunguyen.files.wordpress.com/2017/09/dsc_0221.jpg" alt="242x200">
-                    <h3>Mantu Nguyen</h3>
-                      <div class="card-body">
-                        <h6 class="card-subtitle mb-3 text-muted">Worked on front-end</h6>
-                        <p class="card-text">
-                          Senior CS major.
-                        </p>
-                        <Row className="show-grid">
-                          <Col xs={12} md={12}>Number of commits: {this.state.stats["mantunguyen"]}</Col>
-                          <Col xs={12} md={12}>Number of issues: 5</Col>
-                          <Col xs={12} md={12}>Number of unit tests: 0</Col>
-                        </Row>
-                      </div>
-                    </Thumbnail>
-                  </Col>
-
-                  <Col sm={4}>
-                    <Thumbnail src="https://scontent-dft4-1.xx.fbcdn.net/v/t1.0-9/1506886_753512884678059_561446582_n.jpg?oh=5923ed9975b1e3bcda90fd59e4dcd0b1&oe=5A12E93B" alt="242x200">
-                    <h3>Dat Vu</h3>
-                      <div class="card-body">
-                        <h6 class="card-subtitle mb-3 text-muted">Worked on back-end & database.</h6>
-                        <p class="card-text">
-                          I’m a Senior CS major at UT Austin.
-                        </p>
-                        <Row className="show-grid">
-                          <Col xs={12} md={12}>Number of commits: {this.state.stats["datvu2110"]}</Col>
-                          <Col xs={12} md={12}>Number of issues: 15</Col>
-                          <Col xs={12} md={12}>Number of unit tests: 0</Col>
-                        </Row>
-                      </div>
-                    </Thumbnail>
-                  </Col>
-                </Row>
-
-                { /* Tools */ }
-                <Row>
-                  <Col sm={4}>
-                    <h2> Tools </h2>
-                      <p><a href="http://www.apiary.io" target="_blank">Apiary</a>: Documentation tool for our RESTful API, used to document our RESTful API. <a href="http://docs.endangeredanimals.apiary.io/" target="_blank">Link to our API documentation.</a></p>
-                      <p><a href="http://www.trello.com" target="_blank">Trello</a>: Project management tool used to track tasks and issues. <a href="https://trello.com/b/9W2VbqWT/part-1" target="_blank">Link to our Trello</a></p>
-                      <p><a href="http://www.planitpoker.com" target="_blank">PlanItPoker</a>: Project management tool used to estimate the amount of time a task would take to complete.</p>
-                      <p><a href="http://www.nc.me" target="_blank">Namecheap</a>: Domain name registration site used to obtain a name for our website.</p>
-                      <p><a href="http://flask.pocoo.org/" target="_blank">Flask</a>: Web microframework for backend Python that was used to connect our HTML templates to our URL address, as well as develop a RESTful API.</p>
-                      <p><a href="http://www.github.com" target="_blank">Github</a>: Web-based Git version control software that was used to maintain the source code. <a href="https://github.com/gvikei/idb/" target="_blank">Link to our Github repo</a></p>
-                      <p><a href="http://getbootstrap.com/" target="_blank">Bootstrap</a>: Front-end framework used to design our webpages.</p>
-                  </Col>
-
-                  <Col sm={4}>
-                    <h2> Data Sources </h2>
-                      <a class="text-justify" href="http://apiv3.iucnredlist.org/api/v3/docs">IUCN Red List API - v3</a>
-                      <p>This API was used to pull the majority of our data on endangered animals. Data was scraped by calling the provided URLs using our provided REST service.</p>
-                  
-                      <a class="text-justify" href="https://developers.google.com/youtube/v3/docs/search/list">Youtube Data API</a>
-                      <p>This API was used to pull video data for each of the endangered animals. Data was scraped by calling the provided URLs using our provided REST service.</p>
-
-                      <a class="text-justify" href="https://developers.google.com/maps/documentation/geocoding/start">Google Geocoding API</a>
-                      <p>This API was used to pull location and coordinate data for habitats.  Data was scraped by calling the provided URLs using our provided REST service.</p>
-
-                      <a class="text-justify" href="https://azure.microsoft.com/en-us/services/cognitive-services/bing-image-search-api/">Bing Image Search</a>
-                      <p>This API was used to pull image data for the endangered animals.  Data was scraped by calling the provided URLs using our provided REST service.</p>
-                  </Col>
-
-                  <Col sm={4}>
-                    <h2> Technical​​ Report </h2>
-                    <p><a href="https://utexas.box.com/s/nlpzpj3ji08qu4sy7urxirgu1jb9pcsr">Technical​​ Report​​ for​​ Group​​ 22</a></p>
-                  </Col>
-                </Row>
-
-              </div>
-            </div>
-
-          <PageFooter />
-        </div>
-    );
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: true,
+    };
   }
+
+  shouldComponentUpdate() {
+    return true;
+  }
+
+  renderThreats(threat) {
+    return (
+
+      <Col sm={6} className="bs-docs-body">
+        <h4>Name: {threat.name}</h4>
+        <p>Score: {threat.score}</p>
+        <p>Timing: { threat.timing}</p>
+      </Col>
+
+    );
+  };
+
+  render() {
+    return (
+      <div>
+        <NavMain activePage="threats" />
+
+        <PageHeader
+          title="Threats"
+          subTitle=""/>
+
+          <div className="container-fluid">
+
+          { /* Threats */ }
+
+          <Row className="container-fluid">
+            {
+
+                threats.map(function(threat, i){
+                return this.renderThreats(threat);
+              }.bind(this))
+
+            }
+
+
+          </Row>
+
+
+        </div>
+
+        <PageFooter />
+      </div>
+    );
+  }
+}
