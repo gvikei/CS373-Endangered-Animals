@@ -54,7 +54,8 @@
               <b>Video</b>
             </Button>
             <Collapse in={!this.state.open}>
-                <iframe class="col-sm-12" height="333" frameborder="0" allowfullscreen="" src={this.reformatYoutubeURL(animals[keyName].video_url)}/>
+                <iframe class="col-sm-12" height="333" frameborder="0" allowfullscreen="" display="block" width="100%"
+                        src={this.reformatYoutubeURL(animals[keyName].video_url)}/>
             </Collapse>
             <p><b>Countries: &nbsp; </b>
               {Object.keys(animals[keyName].countries).map(
