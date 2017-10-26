@@ -19,8 +19,14 @@
       };
 
       var that = this;
-      axios.get('https://raw.githubusercontent.com/gvikei/idb/react-khuyen/static/countries_data.json')
+      axios.create({
+        baseURL: 'https://swe-endangered-animals.appspot.com/',
+        headers: {"Access-Control-Allow-Origin": "*"}
+      });
+
+      axios.get('/all_country_data')
         .then(function(data) {
+          console.log(data);
           that.setState({
             countries: data.data
           });
