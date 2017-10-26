@@ -1,188 +1,19 @@
 FORMAT: 1A
-HOST: docs.idb.apiary.io
+HOST: docs.endangeredanimals.apiary.io
 
 # Endangered Animals
 
 
-## Questions Collection [/questions]
+## Animal [/single_animal_data]
 
-### List All Questions [GET]
+### /single_animal_data/?q=ANIMAL [GET]
 
-+ Response 200 (application/json)
-
-        [
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
-            }
-        ]
-
-### Create a New Question [POST]
-
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
-
-+ Request (application/json)
-
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
-        }
-
-+ Response 201 (application/json)
-
-    + Headers
-
-            Location: /questions/2
-
-    + Body
-
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
-            
-            
-
-## Videos Collection [/video]
-
-### Retrieve video of query [GET]
-
-    You can make queries to the video collection in order to generate a video 
+Retrieves data for an animal: common name, scientific name, vulnerability, original citation, conservation measures, associated threats/habitats/countries.
     
-    Example:
-    Let's say you want to search for a video on "African Elephants".
+Example: Let's say you want to find data on "African Elephant."
     
-    You would type in:
-    http://docs.idb.apiary.io/video/?q=African Elephant
-
-+ Response 200 (application/json)
-
-    + Body
-    
-            {
-                "videoId": "OiSf6jvXvT0"
-            }
-
-## Coordinates Collection [/coord]
-
-### Retrieve coordinates of query [GET]
-
-    You can make queries to the cooordinates collection in order to retrieve 
-    coordinates of a location
-    
-    Example:
-    Say you want to find the coordinates of "Botswana"
-    
-    You would type in
-    http://docs.idb.apiary.io/coord/?q=Botswana
-
-+ Response 200 (application/json)
-
-    + Body
-    
-            {
-                "coordinates": {
-                    "lat": -22.328474,
-                    "lng": 24.684866
-                }
-            }
-            
-## Image Collection [/image]
-
-### Retrieve image of query [GET]
-
-    You can make queries to the image collection in order to generate a video 
-    
-    Example:
-    Let's say you want to search up an image of the "National Flag of Mexico".
-    
-    You would type in:
-    http://docs.idb.apiary.io/image/?q=National+Flag+of+Mexico
-
-+ Response 200 (application/json)
-
-    + Body
-    
-            {
-                "imageLink": "https://i.pinimg.com/originals/fd/09/16/fd09164108f6a09188b720e862f7ee8f.png"
-            }
-            
-            
-## Animal Collection [/all_animal_names]
-
-### Get names of all Animals [GET]
-
-    Retrieves the names of all Endangered Animals on IUCN's Endangered Animals List
-    
-    Example:
-    http://docs.idb.apiary.io/all_animal_names
-    
-    
-+ Response 200 (application/json)
-
-    + Body
-    
-            {
-                "names":[
-                    {
-                        "common_name": "African Elephant",
-                        "scientific_name": "Loxodonta africana"
-                    },
-                    {
-                        "common_name": "Caucasian Fir",
-                        "scientific_name": "Abies nordmanniana"
-                    }
-                ]
-            }
-            
-## Get data for a single animal [/single_animal_data]
-
-### Get data for a single animal[GET]
-
-    Retrieves data for an animal
-    
-    Example:
-    Let's say you want to find data on "African Elephant"
-    
-    You would type in
-    http://docs.idb.apiary.io/single_animal_data/?q=African Elephant
+**HTTP Request:**
+`http://docs.endangeredanimals.apiary.io/single_animal_data/?q=African Elephant`
 
 + Response 200 (application/json)
 
@@ -208,16 +39,13 @@ form of choices.
                 ]
             }
             
-## Get data for all animals [/all_animal_data]
+## All Animals [/all_animal_data]
 
-### Get data for all animals[GET]
+### /all_animal_data [GET]
 
-    Retrieves data for all animals
-    This endpoint basically calls /single_animal_data on each animal
-    in /all_animal_names
-    
-    You would type in
-    http://docs.idb.apiary.io/all_animal_data
+Retrieves data for all animals.
+
+This endpoint basically calls /single_animal_data on each animal.
 
 + Response 200 (application/json)
 
@@ -263,41 +91,20 @@ form of choices.
                             "Burundi"
                         ]
                     }
+                    ...
                 ]
             }
-            
-## Habitat collection [/all_habitat_names]
 
-### Gets the names of all habitats [GET]
+## Habitat [/single_habitat_data]
 
-    Retrieves the names for all habitats on IUCN's Endangered Animals List
+###  /single_habitatl_data/?q=HABITAT [GET]
+
+Retrieves data for a given habitat: name, suitability status, associated animals/threats.
+
+Example: Let's say you want to find data on "Forest-Temperate."
     
-    Example:
-    http://docs.idb.apiary.io/all_habitat_names
-    
-+ Response 200 (application/json)
-
-    + Body
-    
-            {
-                "names":[
-                    "Forest - Temperate",
-                    "Artificial/Terrestrial - Arable Land",
-                    "Artificial/Terrestrial - Pastureland"
-                ]
-            }
-            
-## Get data for a single habitat [/single_habitat_data]
-
-###  Get data for a single habitat [GET]
-
-    Retrieves data for 1 habitat, given a name
-
-    Example:
-    Let's say you want to find data on "Forest-Temperate"
-    
-    You would type in
-    http://docs.idb.apiary.io/single_habitatl_data/?q=Forest-Temperate 
+**HTTP Request:**
+`http://docs.endangeredanimals.apiary.io/single_habitatl_data/?q=Forest-Temperate`
 
 + Response 200 (application/json)
 
@@ -316,16 +123,13 @@ form of choices.
                  ]
             }
 
-## Get data for all habitats [/all_habitat_data]
+## All Habitats [/all_habitat_data]
 
-### Get data for all habitats [GET]
+### /all_habitat_names [GET]
 
-    Retrieves data for all habitats
-    This endpoint basically calls /single_habitat_data on each habitat
-    in /all_habitat_names
-    
-    You would type in
-    http://docs.idb.apiary.io/all_habitat_data
+Retrieves data for all habitats.
+
+This endpoint basically calls /single_habitat_data on each habitat.
 
 + Response 200 (application/json)
 
@@ -357,41 +161,20 @@ form of choices.
                             "Droughts"
                         ]
                     }
+                    ...
                 ]
             }
             
-## Threat Collection [/all_threat_names]
+## Threat [/single_threat_data]
 
-### Get the names of all existing threats [GET]
+### /single_threat_data/?q=THREAT   [GET]
 
-    Retrieves the names of all existing threats
+Retrieves data for a specific threat: name, timing, severity, associated animals/habitats.
+
+Example: Let's say you want to find data on "Agro-industry farming."
     
-    Example:
-    http://docs.idb.apiary.io/all_threat_names
-    
-+ Response 200 (application/json)
-
-    + Body
-    
-            {
-                "names":[
-                        "Housing & urban areas",
-                        "Commercial & industrial areas",
-                        "Wood & pulp plantations"
-                ]        
-            }
-
-## Get data for a specific threat [/single_threat_data]
-
-### Get data for a specific threat   [GET]
-
-    Retrieves data for a specific threat
-
-    Example:
-    Let's say you want to find data on "Agro-industry farming"
-    
-    You would type in
-    http://docs.idb.apiary.io/single_threat_data/?q=Agro-industry farming
+**HTTP Request:**
+`http://docs.endangeredanimals.apiary.io/single_threat_data/?q=Agro-industry farming`
 
 + Response 200 (application/json)
 
@@ -411,13 +194,13 @@ form of choices.
                 ]
             }
 
-## Get data for all threats [/all_threat_data]
+## All Threats [/all_threat_data]
 
-### Get data for all threats [GET]
+### /all_threat_names [GET]
 
-    Retrieves data for all threats
-    This endpoint basically calls /single_threat_data on each threat
-    in /all_threat_names
+Retrieves data for all threats.
+
+This endpoint basically calls /single_threat_data on each threat.
     
 + Response 200 (application/json)
 
@@ -463,66 +246,53 @@ form of choices.
                             "Desert - Temperate",
                             "Desert - Hot"
                         ]
-                    }                
+                    }
+                    ...
                 ]
             }
 
-## Country Collections  [/all_countries_names]
+## Country [/single_country_data]
 
-### Get the names of all countries in the IUCN Red List API  [GET]
+### /single_country_data/?q=COUNTRY  [GET]
 
-    Retrieves the names of all countries in the IUCN Red List API 
-    
-    Example:
-    http://docs.idb.apiary.io/all_countries_names
+Retrieves data for a specific country: name, flag, coordinates, and associated animals/threats/habitats.
+
+Example: Let's say you want to find data on "Albania."
+
+**HTTP Request:**
+`http://docs.endangeredanimals.apiary.io/single_country_data/?q=Albania`
 
 + Response 200 (application/json)
 
     + Body
     
             {
-                "names":[
-                    "Botswana",
-                    "Burundi",
-                    "Cameroon"
-                ]
-            }
-
-## Get data for a specific country [/single_country_data]
-
-### Get data for a specific country  [GET]
-
-    Retrieves data for a specific country
-
-    Example:
-    Let's say you want to find data on "Burundi"
-    
-    You would type in
-    http://docs.idb.apiary.io/single_country_data/?q=Burundi
-
-+ Response 200 (application/json)
-
-    + Body
-    
-            {
-                "name":"Burundi",
+                "name": "Albania",
+                "flag": "http://cdn.wonderfulengineering.com/wp-content/uploads/2015/07/Albania-Flag-6.png",
+                "coordinates": {
+                    "lat": 41.153332,
+                    "lng": 20.168331
+                },
                 "assoc_animals": [
                     "African Elephant",
                     "Kangaroo"
                 ],
-                "assoc_habitats": [
+                "assoc_threats": [
                     "Housing and urban areas",
                     "Droughts"
+                ],
+                "assoc_habitats": [
+                    "Desert"
                 ]
             }
 
-## Get data for all countries [/all_country_data]
+## All Countries [/all_country_data]
 
-### Get data for all countries[GET]
+### /all_countries_names [GET]
 
-    Retrieves data for all countries
-    This endpoint basically calls /single_country_data on each country
-    in /all_country_names
+Retrieves data for all countries.
+
+This endpoint basically calls /single_country_data on each country.
 
 + Response 200 (application/json)
 
@@ -531,26 +301,33 @@ form of choices.
             {
                 "countries": [
                     {
-                        "name":"Burundi",
+                        "name": "Burundi",
                         "assoc_animals": [
                             "African Elephant",
                             "Kangaroo"
                         ],
-                        "assoc_habitats": [
+                        "assoc_threats": [
                             "Housing and urban areas",
                             "Droughts"
+                        ],
+                        "assoc_habitats": [
+                            "Desert"
                         ]
                     },
                     {
-                        "name":"Cameroon",
+                        "name": "Cameroon",
                         "assoc_animals": [
                             "African Elephant",
                             "Kangaroo"
                         ],
-                        "assoc_habitats": [
+                        "assoc_threats": [
                             "Housing and urban areas",
                             "Droughts"
+                        ],
+                        "assoc_habitats": [
+                            "Desert"
                         ]
                     }
+                    ...
                 ]
             }
