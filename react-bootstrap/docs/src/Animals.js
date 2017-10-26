@@ -37,35 +37,33 @@
       return true;
     }
 
+    reformatYoutubeURL(url) {
+      var videoID = url.substring(url.indexOf("v=") + 2, url.length);
+      return "https://www.youtube.com/embed/" + videoID;
+    }
+
     renderAnimals(animals, keyName) {
       return (
-        <Col sm={6} className="bs-docs-body" >
+        <Col sm={3} className="bs-docs-body">
           <Thumbnail src={animals[keyName].image_url}>
-            <h3>{keyName}</h3>
-            <p>Common name: {animals[keyName].common_name}</p>
-            <p>Vulnerability Status: {animals[keyName].vulnerability_status}</p>
-            <p>Threats: {animals[keyName].threats}</p>
-            Video:
-
-            <Button onClick={ ()=> this.setState({ open: !this.state.open })}>
-              Video
+            <h3>{animals[keyName].common_name}</h3>
+            <p><b>Scientific name: &nbsp; </b>{keyName}</p>
+            <p><b>Vulnerability status: &nbsp; </b>{animals[keyName].vulnerability_status}</p>
+            <p><b>Threats: &nbsp; </b> {animals[keyName].threats}</p>
+            <Button onClick={(e)=> this.setState({ open: !this.state.open })}>
+              <b>Video</b>
             </Button>
-            <Collapse in={this.state.open}>
-
-              <Well>
-                {animals[keyName].video_url}
-              </Well>
-
+            <Collapse in={!this.state.open}>
+                <iframe class="col-sm-12" height="333" frameborder="0" allowfullscreen="" src={this.reformatYoutubeURL(animals[keyName].video_url)}/>
             </Collapse>
-
-            <p>Countries:
+            <p><b>Countries: &nbsp; </b>
               {Object.keys(animals[keyName].countries).map(
                  (x, i) => (
                     animals[keyName].countries[x] + ", "
                  )
               )}
             </p>
-            <p>Habitats: {animals[keyName].habitats} </p>
+            <p><b>Habitats: &nbsp; </b>: {animals[keyName].habitats} </p>
           </Thumbnail>
         </Col>
 
@@ -86,7 +84,7 @@
 
                 { /* Animals */ }
 
-                  <Row className="container-fluid">
+                <Row max-height="100px" overflow="scroll">
                   {
                     Object.keys(this.state.animals).map(function(keyName, keyIndex) {
                       return this.renderAnimals(this.state.animals, keyName);
