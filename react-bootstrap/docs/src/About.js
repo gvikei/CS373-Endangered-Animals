@@ -178,8 +178,9 @@
                   </Col>
 
                   <Col sm={4}>
-                    <h2> Technical​​ Report </h2>
+                    <h2> Additional Information </h2>
                     <p><a href="https://utexas.box.com/s/nlpzpj3ji08qu4sy7urxirgu1jb9pcsr">Technical​​ Report​​ for​​ Group​​ 22</a></p>
+                    <p><a href="https://utexas.app.box.com/s/jt8v5blmmxemsq27f3s35tzo197qmosv">UML Design for Group​​ 22</a></p>
                   </Col>
                 </Row>
 
