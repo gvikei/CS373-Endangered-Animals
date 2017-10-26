@@ -49,22 +49,30 @@
             <h3>{animals[keyName].common_name}</h3>
             <p><b>Scientific name: &nbsp; </b>{keyName}</p>
             <p><b>Vulnerability status: &nbsp; </b>{animals[keyName].vulnerability_status}</p>
-            <p><b>Threats: &nbsp; </b> {animals[keyName].threats}</p>
+            <p><b>Threats: &nbsp; </b></p>
+              <p className="pre-scrollable" max-height="150">{animals[keyName].threats}</p>
+
             <Button onClick={(e)=> this.setState({ open: !this.state.open })}>
               <b>Video</b>
             </Button>
             <Collapse in={!this.state.open}>
-                <iframe class="col-sm-12" height="333" frameborder="0" allowfullscreen="" display="block" width="100%"
+                <iframe className="col-sm-12" height="333" frameborder="0" display="block" width="100%"
                         src={this.reformatYoutubeURL(animals[keyName].video_url)}/>
             </Collapse>
-            <p><b>Countries: &nbsp; </b>
-              {Object.keys(animals[keyName].countries).map(
+            <p><b>Countries: </b></p>
+              <p className="pre-scrollable" max-height="150">
+                {Object.keys(animals[keyName].countries).map(
                  (x, i) => (
                     animals[keyName].countries[x] + ", "
                  )
               )}
-            </p>
-            <p><b>Habitats: &nbsp; </b>: {animals[keyName].habitats} </p>
+              </p>
+
+            <p><b>Habitats:</b></p>
+              <p className="pre-scrollable" max-height="150">
+                {animals[keyName].habitats}
+              </p>
+
           </Thumbnail>
         </Col>
 
@@ -85,7 +93,7 @@
 
                 { /* Animals */ }
 
-                <Row max-height="100px" overflow="scroll">
+                <Row>
                   {
                     Object.keys(this.state.animals).map(function(keyName, keyIndex) {
                       return this.renderAnimals(this.state.animals, keyName);
