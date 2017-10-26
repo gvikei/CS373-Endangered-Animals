@@ -3,6 +3,25 @@ HOST: swe-endangered-animals.appspot.com
 
 # Endangered Animals
 
+## Common name of Animal [/get_common_name_of_animal/]
+
+### GET: /get_common_name_of_animal/?sci_name [GET]
+
+Given a scientific name, retrieves the common name for an animal..
+    
+Example: Let's say you want to find the common name for the animal "Accipiter gentilis"
+    
+**HTTP Request:**
+`https://swe-endangered-animals.appspot.com/get_common_name_of_animal/?sci_name=Accipiter gentilis`
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "common_name": "Northern Goshawk"
+            }
+            
 ## Animal [/single_animal_data/]
 
 ### GET: /single_animal_data/?animal_name [GET]
@@ -327,5 +346,4 @@ This endpoint basically calls /single_country_data on each country.
                         "Droughts"
                     ]
                 }
-                ...
             ]
