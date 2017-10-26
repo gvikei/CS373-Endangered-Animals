@@ -1,19 +1,18 @@
 FORMAT: 1A
-HOST: docs.endangeredanimals.apiary.io
+HOST: swe-endangered-animals.appspot.com
 
 # Endangered Animals
 
+## Animal [/single_animal_data/{animal_name}]
 
-## Animal [/single_animal_data]
+### GET: /single_animal_data/ANIMAL [GET]
 
-### /single_animal_data/?q=ANIMAL [GET]
-
-Retrieves data for an animal: common name, scientific name, vulnerability, original citation, conservation measures, associated threats/habitats/countries.
+Retrieves data for an animal: common name, scientific name, image, video, vulnerability, conservation measures, citation link, associated habitats/threats/countries.
     
 Example: Let's say you want to find data on "African Elephant."
     
 **HTTP Request:**
-`http://docs.endangeredanimals.apiary.io/single_animal_data/?q=African Elephant`
+`https://swe-endangered-animals.appspot.com/single_animal_data/African Elephant`
 
 + Response 200 (application/json)
 
@@ -25,6 +24,9 @@ Example: Let's say you want to find data on "African Elephant."
                 "vulnerability_status":"vulnerable",
                 "citation":"Blanc, J. 2008. Loxodonta africana. The IUCN Red List of Threatened Species 2008: e.T12392A3339343. http://dx.doi.org/10.2305/IUCN.UK.2008.RLTS.T12392A3339343.en",
                 "conservation_measure": "Resource & habitat protection",
+                "video_url": "https://www.youtube.com/watch?v=kcGX_7n_JXY",
+                "imageLink": "https://iucnredlist-photos.s3.amazonaws.com/thumb/1315258020.jpg?AWSAccessKeyId=AKIAJIJQNN2N2SMHLZJA&Expires=1536230105&Signature=Hcr7ZZv9PwtYvWSkOjgdZR2tJTc%3D",
+                "web_link": "http://apiv3.iucnredlist.org/api/v3/website/Abudefduf vaigiensis",
                 "assoc_habitats":[
                     "Desert - Hot",
                     "Desert - Temperate"
@@ -41,140 +43,77 @@ Example: Let's say you want to find data on "African Elephant."
             
 ## All Animals [/all_animal_data]
 
-### /all_animal_data [GET]
+### GET: /all_animal_data/ [GET]
 
 Retrieves data for all animals.
 
 This endpoint basically calls /single_animal_data on each animal.
 
-+ Response 200 (application/json)
-
-    + Body
-    
-            {
-                "animals":[
-                    {
-                        "common_name": "African Elephant",
-                        "scientific_name": "Loxodonta africana",
-                        "vulnerability_status":"vulnerable",
-                        "citation":"Blanc, J. 2008. Loxodonta africana. The IUCN Red List of Threatened Species 2008: e.T12392A3339343. http://dx.doi.org/10.2305/IUCN.UK.2008.RLTS.T12392A3339343.en",
-                        "conservation_measure": "Resource & habitat protection",
-                        "assoc_habitats":[
-                            "Desert - Hot",
-                            "Desert - Temperate"
-                        ],
-                        "assoc_threats":[
-                            "Housing and Urban Areas",
-                            "Commercial and industrial areas"
-                        ],
-                        "assoc_countries":[
-                            "Botswana",
-                            "Burundi"
-                        ]
-                    },
-                    {
-                        "common_name": "Caucasian Fir",
-                        "scientific_name": "Abies nordmanniana",
-                        "vulnerability_status":"vulnerable",
-                        "citation":"Knees, S. & Gardner, M. 2011. Abies nordmanniana. The IUCN Red List of Threatened Species 2011: e.T42293A10679078. http://dx.doi.org/10.2305/IUCN.UK.2011-2.RLTS.T42293A10679078.en",
-                        "conservation_measure": "Resource & habitat protection",
-                        "assoc_habitats":[
-                            "Desert - Hot",
-                            "Desert - Temperate"
-                        ],
-                        "assoc_threats":[
-                            "Housing and Urban Areas",
-                            "Commercial and industrial areas"
-                        ],
-                        "assoc_countries":[
-                            "Botswana",
-                            "Burundi"
-                        ]
-                    }
-                    ...
-                ]
-            }
-
-## Habitat [/single_habitat_data]
-
-###  /single_habitatl_data/?q=HABITAT [GET]
-
-Retrieves data for a given habitat: name, suitability status, associated animals/threats.
-
-Example: Let's say you want to find data on "Forest-Temperate."
-    
 **HTTP Request:**
-`http://docs.endangeredanimals.apiary.io/single_habitatl_data/?q=Forest-Temperate`
+`https://swe-endangered-animals.appspot.com/single_animal_data/African Elephant`
 
 + Response 200 (application/json)
 
     + Body
     
-            {
-                "name": "Forest - Temperate",
-                "suitability_status": "suitable",
-                "assoc_animals": [
-                    "African Elephant",
-                    "Kangaroo"
-                ],
-                "assoc_threats": [
-                    "Housing and urban areas", 
-                    "Droughts"
-                 ]
-            }
+            [
+                {
+                    "common_name": "African Elephant",
+                    "scientific_name": "Loxodonta africana",
+                    "vulnerability_status":"vulnerable",
+                    "citation":"Blanc, J. 2008. Loxodonta africana. The IUCN Red List of Threatened Species 2008: e.T12392A3339343. http://dx.doi.org/10.2305/IUCN.UK.2008.RLTS.T12392A3339343.en",
+                    "conservation_measure": "Resource & habitat protection",
+                    "video_url": "https://www.youtube.com/watch?v=kcGX_7n_JXY",
+                    "imageLink": "https://iucnredlist-photos.s3.amazonaws.com/thumb/1315258020.jpg?AWSAccessKeyId=AKIAJIJQNN2N2SMHLZJA&Expires=1536230105&Signature=Hcr7ZZv9PwtYvWSkOjgdZR2tJTc%3D",
+                    "web_link": "http://apiv3.iucnredlist.org/api/v3/website/Abudefduf vaigiensis",
+                    "assoc_habitats":[
+                        "Desert - Hot",
+                        "Desert - Temperate"
+                    ],
+                    "assoc_threats":[
+                        "Housing and Urban Areas",
+                        "Commercial and industrial areas"
+                    ],
+                    "assoc_countries": [
+                        "Botswana",
+                        "Burundi"
+                    ]
+                },
+                {
+                    "common_name": "African Elephant",
+                    "scientific_name": "Loxodonta africana",
+                    "vulnerability_status":"vulnerable",
+                    "citation":"Blanc, J. 2008. Loxodonta africana. The IUCN Red List of Threatened Species 2008: e.T12392A3339343. http://dx.doi.org/10.2305/IUCN.UK.2008.RLTS.T12392A3339343.en",
+                    "conservation_measure": "Resource & habitat protection",
+                    "video_url": "https://www.youtube.com/watch?v=kcGX_7n_JXY",
+                    "imageLink": "https://iucnredlist-photos.s3.amazonaws.com/thumb/1315258020.jpg?AWSAccessKeyId=AKIAJIJQNN2N2SMHLZJA&Expires=1536230105&Signature=Hcr7ZZv9PwtYvWSkOjgdZR2tJTc%3D",
+                    "web_link": "http://apiv3.iucnredlist.org/api/v3/website/Abudefduf vaigiensis",
+                    "assoc_habitats":[
+                        "Desert - Hot",
+                        "Desert - Temperate"
+                    ],
+                    "assoc_threats":[
+                        "Housing and Urban Areas",
+                        "Commercial and industrial areas"
+                    ],
+                    "assoc_countries": [
+                        "Botswana",
+                        "Burundi"
+                    ]
+                }
+                ...
+            ]
 
-## All Habitats [/all_habitat_data]
+## Threat [/single_threat_data/{threat_name}]
 
-### /all_habitat_names [GET]
+### GET: /single_threat_data/THREAT   [GET]
 
-Retrieves data for all habitats.
-
-This endpoint basically calls /single_habitat_data on each habitat.
-
-+ Response 200 (application/json)
-
-    + Body
-    
-            {
-                "habitats": [
-                    {
-                        "name": "Forest - Temperate",
-                        "suitability_status": "suitable",
-                        "assoc_animals": [
-                            "African Elephant",
-                            "Kangaroo"
-                        ],
-                        "assoc_threats": [
-                            "Housing and urban areas", 
-                            "Droughts"
-                        ]
-                    },
-                    {
-                        "name": "Desert - Hot",
-                        "suitability_status": "suitable",
-                        "assoc_animals": [
-                            "African Elephant",
-                            "Kangaroo"
-                        ],
-                        "assoc_threats": [
-                            "Housing and urban areas", 
-                            "Droughts"
-                        ]
-                    }
-                    ...
-                ]
-            }
-            
-## Threat [/single_threat_data]
-
-### /single_threat_data/?q=THREAT   [GET]
-
-Retrieves data for a specific threat: name, timing, severity, associated animals/habitats.
+Retrieves data for a specific threat: name, image, timing, severity, associated animals/habitats.
 
 Example: Let's say you want to find data on "Agro-industry farming."
     
 **HTTP Request:**
-`http://docs.endangeredanimals.apiary.io/single_threat_data/?q=Agro-industry farming`
+`https://swe-endangered-animals.appspot.com/single_threat_data/Agro-industry farming`
 
 + Response 200 (application/json)
 
@@ -183,7 +122,8 @@ Example: Let's say you want to find data on "Agro-industry farming."
             {
                 "name": "Agro-industry farming",
                 "timing": "ongoing",
-                "severity":"3",
+                "severity":"3.57",
+                "image":"https://iucnredlist-photos.s3.amazonaws.com/thumb/1315258020.jpg?AWSAccessKeyId=AKIAJIJQNN2N2SMHLZJA&Expires=1536230105&Signature=Hcr7ZZv9PwtYvWSkOjgdZR2tJTc%3D",
                 "assoc_animals": [
                     "African Elephant",
                     "Kangaroo"
@@ -196,138 +136,197 @@ Example: Let's say you want to find data on "Agro-industry farming."
 
 ## All Threats [/all_threat_data]
 
-### /all_threat_names [GET]
+### GET: /all_threat_data/ [GET]
 
 Retrieves data for all threats.
 
 This endpoint basically calls /single_threat_data on each threat.
-    
-+ Response 200 (application/json)
-
-    + Body
-    
-            {
-                "threats": [
-                    {
-                        "name": "Agro-industry farming",
-                        "timing": "ongoing",
-                        "severity":"3",
-                        "assoc_animals": [
-                            "African Elephant",
-                            "Kangaroo"
-                        ], 
-                        "assoc_habitats": [
-                            "Desert - Temperate",
-                            "Desert - Hot"
-                        ]
-                    },
-                    {
-                        "name": "Agro-industry farming",
-                        "timing": "ongoing",
-                        "severity":"3",
-                        "assoc_animals": [
-                            "African Elephant",
-                            "Kangaroo"
-                        ], 
-                        "assoc_habitats": [
-                            "Desert - Temperate",
-                            "Desert - Hot"
-                        ]
-                    },
-                    {
-                        "name": "Wood and Pulp Plantations",
-                        "timing": "ongoing",
-                        "severity":"3",
-                        "assoc_animals": [
-                            "African Elephant",
-                            "Kangaroo"
-                        ], 
-                        "assoc_habitats": [
-                            "Desert - Temperate",
-                            "Desert - Hot"
-                        ]
-                    }
-                    ...
-                ]
-            }
-
-## Country [/single_country_data]
-
-### /single_country_data/?q=COUNTRY  [GET]
-
-Retrieves data for a specific country: name, flag, coordinates, and associated animals/threats/habitats.
-
-Example: Let's say you want to find data on "Albania."
 
 **HTTP Request:**
-`http://docs.endangeredanimals.apiary.io/single_country_data/?q=Albania`
+`https://swe-endangered-animals.appspot.com/all_threat_data/`
+    
++ Response 200 (application/json)
+
+    + Body
+    
+
+            [
+                {
+                    "name": "Agro-industry farming",
+                    "timing": "ongoing",
+                    "severity":"3.57",
+                    "image":"https://iucnredlist-photos.s3.amazonaws.com/thumb/1315258020.jpg?AWSAccessKeyId=AKIAJIJQNN2N2SMHLZJA&Expires=1536230105&Signature=Hcr7ZZv9PwtYvWSkOjgdZR2tJTc%3D",
+                    "assoc_animals": [
+                        "African Elephant",
+                        "Kangaroo"
+                    ], 
+                    "assoc_habitats": [
+                        "Desert - Temperate",
+                        "Desert - Hot"
+                    ]
+                },
+                {
+                    "name": "Agro-industry farming",
+                    "timing": "ongoing",
+                    "severity":"3.57",
+                    "image":"https://iucnredlist-photos.s3.amazonaws.com/thumb/1315258020.jpg?AWSAccessKeyId=AKIAJIJQNN2N2SMHLZJA&Expires=1536230105&Signature=Hcr7ZZv9PwtYvWSkOjgdZR2tJTc%3D",
+                    "assoc_animals": [
+                        "African Elephant",
+                        "Kangaroo"
+                    ], 
+                    "assoc_habitats": [
+                        "Desert - Temperate",
+                        "Desert - Hot"
+                    ]
+                }
+                ...
+            ]
+
+## Habitat [/single_habitat_data/{habitat_name}]
+
+### GET: /single_habitat_data/HABITAT [GET]
+
+Retrieves data for a given habitat: name, image, suitability, associated animals/threats.
+
+Example: Let's say you want to find data on "Forest-Temperate."
+    
+**HTTP Request:**
+`https://swe-endangered-animals.appspot.com/single_habitat_data/Forest-Temperate`
 
 + Response 200 (application/json)
 
     + Body
     
             {
-                "name": "Albania",
-                "flag": "http://cdn.wonderfulengineering.com/wp-content/uploads/2015/07/Albania-Flag-6.png",
-                "coordinates": {
-                    "lat": 41.153332,
-                    "lng": 20.168331
-                },
+                "name": "Forest - Temperate",
+                "suitability_status": "suitable",
+                "imageUrl": "https://www.polyworld.com.au/wp-content/uploads/2015/03/16000L-Poly-Pool1.jpg",
                 "assoc_animals": [
                     "African Elephant",
                     "Kangaroo"
                 ],
                 "assoc_threats": [
-                    "Housing and urban areas",
+                    "Housing and urban areas", 
                     "Droughts"
-                ],
-                "assoc_habitats": [
-                    "Desert"
-                ]
+                 ]
             }
 
-## All Countries [/all_country_data]
+## All Habitats [/all_habitat_data]
 
-### /all_countries_names [GET]
+### GET: /all_habitat_data/ [GET]
 
-Retrieves data for all countries.
+Retrieves data for all habitats.
 
-This endpoint basically calls /single_country_data on each country.
+This endpoint basically calls /single_habitat_data on each habitat.
+
+**HTTP Request:**
+`https://swe-endangered-animals.appspot.com/all_habitat_data/`
+
++ Response 200 (application/json)
+
+    + Body
+    
+            [
+                {
+                    "name": "Forest - Temperate",
+                    "suitability_status": "suitable",
+                    "imageUrl": "https://www.polyworld.com.au/wp-content/uploads/2015/03/16000L-Poly-Pool1.jpg",
+                    "assoc_animals": [
+                        "African Elephant",
+                        "Kangaroo"
+                    ],
+                    "assoc_threats": [
+                        "Housing and urban areas", 
+                        "Droughts"
+                     ]
+                },
+                {
+                    "name": "Forest - Temperate",
+                    "suitability_status": "suitable",
+                    "imageUrl": "https://www.polyworld.com.au/wp-content/uploads/2015/03/16000L-Poly-Pool1.jpg",
+                    "assoc_animals": [
+                        "African Elephant",
+                        "Kangaroo"
+                    ],
+                    "assoc_threats": [
+                        "Housing and urban areas", 
+                        "Droughts"
+                     ]
+                }
+                ...
+            ]
+
+## Country [/single_country_data/{country_name}]
+
+### GET: /single_country_data/COUNTRY [GET]
+
+Retrieves data for a specific country: name, flag, coordinates, associated animals/habitats.
+
+Example: Let's say you want to find data on "Burundi."
+    
+**HTTP Request:**
+`https://swe-endangered-animals.appspot.com/single_country_data/Burundi`
 
 + Response 200 (application/json)
 
     + Body
     
             {
-                "countries": [
-                    {
-                        "name": "Burundi",
-                        "assoc_animals": [
-                            "African Elephant",
-                            "Kangaroo"
-                        ],
-                        "assoc_threats": [
-                            "Housing and urban areas",
-                            "Droughts"
-                        ],
-                        "assoc_habitats": [
-                            "Desert"
-                        ]
-                    },
-                    {
-                        "name": "Cameroon",
-                        "assoc_animals": [
-                            "African Elephant",
-                            "Kangaroo"
-                        ],
-                        "assoc_threats": [
-                            "Housing and urban areas",
-                            "Droughts"
-                        ],
-                        "assoc_habitats": [
-                            "Desert"
-                        ]
-                    }
-                    ...
+                "name":"Burundi",
+                "flag": "https://iucnredlist-photos.s3.amazonaws.com/thumb/1315258020.jpg?AWSAccessKeyId=AKIAJIJQNN2N2SMHLZJA&Expires=1536230105&Signature=Hcr7ZZv9PwtYvWSkOjgdZR2tJTc%3D",
+                "coordinates": "lat: 28.033886 lng: 1.659626",
+                "assoc_animals": [
+                    "African Elephant",
+                    "Kangaroo"
+                ],
+                "assoc_habitats": [
+                    "Housing and urban areas",
+                    "Droughts"
                 ]
             }
+
+## All Countries [/all_country_data]
+
+### GET: /all_country_data [GET]
+
+Retrieves data for all countries.
+    
+This endpoint basically calls /single_country_data on each country.
+
+**HTTP Request:**
+`https://swe-endangered-animals.appspot.com/all_country_data/`
+
++ Response 200 (application/json)
+
+    + Body
+    
+            [
+                {
+                    "name":"Burundi",
+                    "flag": "https://iucnredlist-photos.s3.amazonaws.com/thumb/1315258020.jpg?AWSAccessKeyId=AKIAJIJQNN2N2SMHLZJA&Expires=1536230105&Signature=Hcr7ZZv9PwtYvWSkOjgdZR2tJTc%3D",
+                    "coordinates": "lat: 28.033886 lng: 1.659626",
+                    "assoc_animals": [
+                        "African Elephant",
+                        "Kangaroo"
+                    ],
+                    "assoc_habitats": [
+                        "Housing and urban areas",
+                        "Droughts"
+                    ]
+                },
+                {
+                    "name":"Burundi",
+                    "flag": "https://iucnredlist-photos.s3.amazonaws.com/thumb/1315258020.jpg?AWSAccessKeyId=AKIAJIJQNN2N2SMHLZJA&Expires=1536230105&Signature=Hcr7ZZv9PwtYvWSkOjgdZR2tJTc%3D",
+                    "coordinates": "lat: 28.033886 lng: 1.659626",
+                    "assoc_animals": [
+                        "African Elephant",
+                        "Kangaroo"
+                    ],
+                    "assoc_habitats": [
+                        "Housing and urban areas",
+                        "Droughts"
+                    ]
+                }
+                ...
+            ]
+            
