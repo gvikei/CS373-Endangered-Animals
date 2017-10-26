@@ -58,8 +58,14 @@
 
             </Collapse>
 
-            <p>Countries: {animals[keyName].countries} {" "}</p>
-            <p>Habitats: {animals[keyName].habitats} {" "}</p>
+            <p>Countries:
+              {Object.keys(animals[keyName].countries).map(
+                 (x, i) => (
+                    animals[keyName].countries[x] + ", "
+                 )
+              )}
+            </p>
+            <p>Habitats: {animals[keyName].habitats} </p>
           </Thumbnail>
         </Col>
 
