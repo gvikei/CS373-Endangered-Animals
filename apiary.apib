@@ -3,16 +3,16 @@ HOST: swe-endangered-animals.appspot.com
 
 # Endangered Animals
 
-## Animal [/single_animal_data/{animal_name}]
+## Animal [/single_animal_data/]
 
-### GET: /single_animal_data/ANIMAL [GET]
+### GET: /single_animal_data/?animal_name [GET]
 
 Retrieves data for an animal: common name, scientific name, image, video, vulnerability, conservation measures, citation link, associated habitats/threats/countries.
     
 Example: Let's say you want to find data on "African Elephant."
     
 **HTTP Request:**
-`https://swe-endangered-animals.appspot.com/single_animal_data/African Elephant`
+`https://swe-endangered-animals.appspot.com/single_animal_data?animal_name=African Elephant`
 
 + Response 200 (application/json)
 
@@ -43,7 +43,7 @@ Example: Let's say you want to find data on "African Elephant."
             
 ## All Animals [/all_animal_data]
 
-### GET: /all_animal_data/ [GET]
+### GET: /all_animal_data [GET]
 
 Retrieves data for all animals.
 
@@ -104,16 +104,16 @@ This endpoint basically calls /single_animal_data on each animal.
                 ...
             ]
 
-## Threat [/single_threat_data/{threat_name}]
+## Threat [/single_threat_data/]
 
-### GET: /single_threat_data/THREAT   [GET]
+### GET: /single_threat_data/?threat_name   [GET]
 
 Retrieves data for a specific threat: name, image, timing, severity, associated animals/habitats.
 
 Example: Let's say you want to find data on "Agro-industry farming."
     
 **HTTP Request:**
-`https://swe-endangered-animals.appspot.com/single_threat_data/Agro-industry farming`
+`https://swe-endangered-animals.appspot.com/single_threat_data?threat_name=Agro-industry farming`
 
 + Response 200 (application/json)
 
@@ -136,7 +136,7 @@ Example: Let's say you want to find data on "Agro-industry farming."
 
 ## All Threats [/all_threat_data]
 
-### GET: /all_threat_data/ [GET]
+### GET: /all_threat_data [GET]
 
 Retrieves data for all threats.
 
@@ -182,16 +182,16 @@ This endpoint basically calls /single_threat_data on each threat.
                 ...
             ]
 
-## Habitat [/single_habitat_data/{habitat_name}]
+## Habitat [/single_habitat_data/]
 
-### GET: /single_habitat_data/HABITAT [GET]
+### GET: /single_habitat_data/?habitat_name [GET]
 
 Retrieves data for a given habitat: name, image, suitability, associated animals/threats.
 
 Example: Let's say you want to find data on "Forest-Temperate."
     
 **HTTP Request:**
-`https://swe-endangered-animals.appspot.com/single_habitat_data/Forest-Temperate`
+`https://swe-endangered-animals.appspot.com/single_habitat_data/?habitat_name=Forest-Temperate`
 
 + Response 200 (application/json)
 
@@ -213,7 +213,7 @@ Example: Let's say you want to find data on "Forest-Temperate."
 
 ## All Habitats [/all_habitat_data]
 
-### GET: /all_habitat_data/ [GET]
+### GET: /all_habitat_data [GET]
 
 Retrieves data for all habitats.
 
@@ -256,16 +256,16 @@ This endpoint basically calls /single_habitat_data on each habitat.
                 ...
             ]
 
-## Country [/single_country_data/{country_name}]
+## Country [/single_country_data/]
 
-### GET: /single_country_data/COUNTRY [GET]
+### GET: /single_country_data/?country_name [GET]
 
 Retrieves data for a specific country: name, flag, coordinates, associated animals/habitats.
 
 Example: Let's say you want to find data on "Burundi."
     
 **HTTP Request:**
-`https://swe-endangered-animals.appspot.com/single_country_data/Burundi`
+`https://swe-endangered-animals.appspot.com/single_country_data/?country_name=Burundi`
 
 + Response 200 (application/json)
 
@@ -329,4 +329,3 @@ This endpoint basically calls /single_country_data on each country.
                 }
                 ...
             ]
-            
