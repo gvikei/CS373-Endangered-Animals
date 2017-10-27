@@ -32,7 +32,7 @@
         .then(function(data) {
           console.log(data.data);
           that.setState({
-            animals: data.data
+            animals: data.data.slice(0,10)
           });
       });
     }

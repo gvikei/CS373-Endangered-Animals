@@ -31,7 +31,7 @@ export default class Threats extends React.Component {
         .then(function(data) {
           console.log(data.data);
           that.setState({
-            threats: data.data
+            threats: data.data.slice(0,10)
           });
       });
   }
@@ -44,9 +44,10 @@ export default class Threats extends React.Component {
     return (
 
       <Col sm={3} className="bs-docs-body">
-        <h4>{threat.name}</h4>
-        <p>Score: {threat.score}</p>
-        <p>Timing: { threat.timing}</p>
+        <h4>{ threat.name }</h4>
+        <p><img src={threat.image }/></p>
+        <p>Score: {threat.score }</p>
+        <p>Timing: { threat.timing }</p>
       </Col>
 
     );

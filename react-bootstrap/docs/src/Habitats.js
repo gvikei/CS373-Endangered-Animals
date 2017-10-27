@@ -31,7 +31,7 @@ export default class Habitats extends React.Component {
         .then(function(data) {
           console.log(data.data);
           that.setState({
-            habitats: data.data
+            habitats: data.data.slice(0,10)
           });
       });
   }
