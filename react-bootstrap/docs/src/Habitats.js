@@ -29,7 +29,6 @@ export default class Habitats extends React.Component {
         headers: {"Access-Control-Allow-Origin": "*"}
       }).get('/all_habitat_data')
         .then(function(data) {
-          console.log(data.data);
           that.setState({
             habitats: data.data.slice(0,10)
           });
@@ -44,9 +43,17 @@ export default class Habitats extends React.Component {
     return (
 
       <Col sm={3} className="bs-docs-body">
-        <Thumbnail src={ habitat.imageUrl } width="100%" height="33%">
+        <Thumbnail src={ habitat.image } width="100%" height="33%">
           <h3>{ habitat.name }</h3>
           <p>Suitability: {habitat.suitability}</p>
+          <p><b>Countries: </b></p>
+              <p className="pre-scrollable" max-height="150">
+                {Object.keys(habitat.assoc_countries).map(
+                  (x, i) =>
+                    <a onClick={() => {global.country = habitat.assoc_countries[x];
+                    this.props.history.pushState(null,'/country.html/') }}> {habitat.assoc_countries[x]}  </a>
+                )}
+              </p>
 
         </Thumbnail>
       </Col>
