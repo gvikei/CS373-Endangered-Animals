@@ -17,7 +17,7 @@
 
       this.renderCountry = this.renderCountry.bind(this);
       this.state = {
-        countryData: {}
+        animal: {}
       };
 
       var that = this;
@@ -27,7 +27,7 @@
       }).get('/single_country_data/?country_name='+global.animal)
         .then(function(data) {
           that.setState({
-            countryData: data.data
+            animal: data.data
           });
       });
     };
@@ -38,50 +38,38 @@
 
     renderCountry() {
       return (
-        <Thumbnail src={ this.state.countryData.flag } width="100%" height="33%">
+        <Thumbnail src={this.state.animal.imageLink}>
+            <h3>{this.state.animal.common_name}</h3>
+            <p><b>Scientific name: &nbsp; </b>{this.state.animal.scientific_name}</p>
+            <p><b>Vulnerability status: &nbsp; </b>{this.state.animal.vulnerability_status}</p>
+            <p><b>Threats: &nbsp; </b></p>
+              <p className="pre-scrollable" max-height="150">{.threats}</p>
 
-          <br/><br/>
+            <p><b>Countries: </b></p>
+              <p className="pre-scrollable" max-height="150">
+                {Object.keys(this.state.animal.assoc_countries).map(
+                 (x, i) => (
+                    animals[keyName].countries[x] + ", "
+                 )
+              )}
+              </p>
 
-          <Row>
-            <Col sm={2}>
-              <b><a href="animals.html">Animals</a>:</b>
-            </Col>
-            <Col sm={2}>
-              0
-            </Col>
-          </Row>
-          <Row>
-            <Col sm={2}>
-              <b><a href="threats.html">Threats</a>:</b>
-            </Col>
-            <Col sm={2}>
-              0
-            </Col>
-          </Row>
-          <Row>
-            <Col sm={2}>
-              <b><a href="habitats.html">Habitats</a>:</b>
-            </Col>
-            <Col sm={2}>
-              0
-            </Col>
-          </Row>
+            <p><b>Habitats:</b></p>
+              <p className="pre-scrollable" max-height="150">
+                {animals.assoc_habitats}
+              </p>
 
-          <br/><br/>
-          
-          <iframe id="gmap_canvas" width="100%" src={ "https://maps.google.com/maps?q=" + country.name + "&t=k&z=6&ie=UTF8&iwloc=&output=embed" } frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0">
-          </iframe>
-        </Thumbnail>
+          </Thumbnail>
       );
     };
 
     render() {
       return (
         <div>
-          <NavMain activePage="countries" />
+          <NavMain activePage="animals" />
 
           <PageHeader
-            title={ this.state.countryData.name } />
+            title={ this.state.animal.common_name } />
 
             <div className="container bs-docs-container bs-docs-single-col-container">
               <div className="bs-docs-section">
