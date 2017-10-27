@@ -44,7 +44,7 @@ if (development) {
     app.use((req, res) => {
       res.header('Access-Control-Allow-Origin', '*');
       res.header('Access-Control-Allow-Methods','GET, POST, PATCH, PUT, DELETE, OPTIONS');
-      res.header('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+      res.header('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token, X-Requested-With');
       res.header('Access-Control-Expose-Headers', 'Access-Token, Uid');
 
       const location = req.url;

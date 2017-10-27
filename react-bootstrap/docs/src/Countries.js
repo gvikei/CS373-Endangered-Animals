@@ -36,19 +36,18 @@
     };
 
     renderCountry(country) {
+      var animals = (country.assoc_animals ? country.assoc_animals.length : 0);
+      var habitats = (country.assoc_habitats ? country.assoc_habitats.length : 0);
       return (
         <Col sm={4}>
           <Thumbnail src={ country.flag } width="100%" height="33%">
             <h3><a href="country.html">{ country.name }</a></h3>
 
             <Row>
-              <a href="animals.html">Animals</a>: 0
+              <a href="animals.html">Animals</a>: { animals }
             </Row>
             <Row>
-              <a href="threats.html">Threats</a>: 0
-            </Row>
-            <Row>
-              <a href="habitats.html">Habitats</a>: 0
+              <a href="habitats.html">Habitats</a>: { habitats }
             </Row>
             
             <iframe id="gmap_canvas" width="100%" src={ "https://maps.google.com/maps?q=" + country.name + "&t=k&z=6&ie=UTF8&iwloc=&output=embed" } frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0">
