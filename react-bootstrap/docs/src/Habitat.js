@@ -25,7 +25,7 @@
       axios.create({
         baseURL: 'https://swe-endangered-animals.appspot.com/',
         headers: {"Access-Control-Allow-Origin": "*"}
-      }).get('/single_animal_data/?animal_name='+global.animal)
+      }).get('/single_habitat_data/?habitat_name='+global.habitat)
         .then(function(data) {
           console.log(data);
           that.setState({
@@ -39,31 +39,19 @@
     };
 
     renderCountry() {
-      console.log(global.animal);
-      console.log(this.state.animal);
       return (
-        <Thumbnail src={this.state.animal.imageLink}>
-            <h3>{this.state.animal.common_name}</h3>
-            <p><b>Scientific name: &nbsp; </b>{this.state.animal.scientific_name}</p>
-            <p><b>Vulnerability status: &nbsp; </b>{this.state.animal.vulnerability_status}</p>
-            <p><b>Threats: &nbsp; </b></p>
-              <p className="pre-scrollable" max-height="150">{this.state.animal.assoc_threats}</p>
-
-            <p><b>Countries: </b></p>
+        <Thumbnail src={ this.state.animal.image } width="100%" height="33%">
+          <p>Suitability: {this.state.animal.suitability}</p>
+          <p><b>Countries: </b></p>
               <p className="pre-scrollable" max-height="150">
                 {Object.keys(this.state.animal.assoc_countries).map(
-                 (x, i) => (
-                    animals[keyName].countries[x] + ", "
-                 )
-              )}
+                  (x, i) =>
+                    <a onClick={() => {global.country = this.state.animal.assoc_countries[x];
+                    this.props.history.pushState(null,'/country.html/') }}> {this.state.animal.assoc_countries[x]}  </a>
+                )}
               </p>
 
-            <p><b>Habitats:</b></p>
-              <p className="pre-scrollable" max-height="150">
-                {animals.assoc_habitats}
-              </p>
-
-          </Thumbnail>
+        </Thumbnail>
       );
     };
 
@@ -73,7 +61,7 @@
           <NavMain activePage="animals" />
 
           <PageHeader
-            title={ this.state.animal.common_name } />
+            title={ global.habitat } />
 
             <div className="container bs-docs-container bs-docs-single-col-container">
               <div className="bs-docs-section">

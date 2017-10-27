@@ -58,7 +58,7 @@
               <p className="pre-scrollable" max-height="150">
                 {Object.keys(animals[keyName].assoc_threats).map(
                   (x, i) =>
-                    <a onClick={() => {global.country = animals[keyName].assoc_threats[x];
+                    <a onClick={() => {global.threat = animals[keyName].assoc_threats[x];
                     this.props.history.pushState(null,'/threat.html/') }}> {animals[keyName].assoc_threats[x]}  </a>
                 )}
               </p>
@@ -74,10 +74,10 @@
               <p className="pre-scrollable" max-height="150">
 
               {Object.keys(animals[keyName].assoc_countries).map(
-                  (x, i) =>
-                    <a onClick={() => {global.country = animals[keyName].assoc_countries[x];
-                    this.props.history.pushState(null,'/country.html/') }}> {animals[keyName].assoc_countries[x]}  </a>
-                )}
+                (x, i) =>
+                  <a onClick={() => {global.country = animals[keyName].assoc_countries[x];
+                  this.props.history.pushState(null,'/country.html/') }}> {animals[keyName].assoc_countries[x]}  </a>
+              )}
               </p>
 
             <p><b>Habitats:</b></p>
@@ -91,6 +91,7 @@
 
           </Thumbnail>
         </Col>
+
 
       );
     };
