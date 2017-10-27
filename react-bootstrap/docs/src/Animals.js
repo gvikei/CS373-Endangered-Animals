@@ -50,7 +50,7 @@
       return (
         <Col sm={3} className="bs-docs-body">
           <Thumbnail src={animals[keyName].image_url}>
-            <h3>{animals[keyName].name}</h3>
+            <h3><a onClick={ () => { global.animal = animals[keyName].name; this.props.history.pushState(null, '/animal.html/') } } >{animals[keyName].name}</a></h3>
             <p><b>Scientific name: &nbsp; </b>{animals[keyName].scientificName}</p>
             <p><b>Vulnerability status: &nbsp; </b>{animals[keyName].vulnerability}</p>
             <p><b>Threats: &nbsp; </b></p>
