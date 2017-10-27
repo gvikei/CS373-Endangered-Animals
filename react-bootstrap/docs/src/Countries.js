@@ -7,6 +7,7 @@
   import Col from '../../src/Col';
   import Thumbnail from '../../src/Thumbnail';
 
+
   var axios = require('axios');
 
   export default class Page extends React.Component {
