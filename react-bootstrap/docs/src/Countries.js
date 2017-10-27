@@ -25,7 +25,6 @@
         headers: {"Access-Control-Allow-Origin": "*"}
       }).get('/all_country_data')
         .then(function(data) {
-          console.log(data.data);
           that.setState({
             countries: data.data
           });

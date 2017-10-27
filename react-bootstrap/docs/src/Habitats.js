@@ -24,7 +24,10 @@ export default class Habitats extends React.Component {
     };
 
     var that = this;
-      axios.get('https://raw.githubusercontent.com/gvikei/idb/react-khuyen/static/habitats_data.json')
+    axios.create({
+        baseURL: 'https://swe-endangered-animals.appspot.com/',
+        headers: {"Access-Control-Allow-Origin": "*"}
+      }).get('/all_habitat_data')
         .then(function(data) {
           that.setState({
             habitats: data.data

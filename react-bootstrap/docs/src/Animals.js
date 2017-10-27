@@ -25,7 +25,10 @@
       };
 
       var that = this;
-      axios.get('https://raw.githubusercontent.com/gvikei/idb/react-khuyen/static/animals_data.json')
+       axios.create({
+        baseURL: 'https://swe-endangered-animals.appspot.com/',
+        headers: {"Access-Control-Allow-Origin": "*"}
+      }).get('/all_animal_data')
         .then(function(data) {
           that.setState({
             animals: data.data
