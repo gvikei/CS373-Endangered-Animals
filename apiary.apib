@@ -1,56 +1,79 @@
 FORMAT: 1A
-HOST: swe-endangered-animals.appspot.com
+HOST: https://swe-endangered-animals.appspot.com
 
 # Endangered Animals
 
-## Animal [/single_animal_data/{animal_name}]
+## Common name of Animal [/get_common_name_of_animal/]
 
-### GET: /single_animal_data/ANIMAL [GET]
+### GET: /get_common_name_of_animal/?sci_name [GET]
 
-Retrieves data for an animal: common name, scientific name, image, video, vulnerability, conservation measures, citation link, associated habitats/threats/countries.
+Given a scientific name, retrieves the common name for an animal..
     
-Example: Let's say you want to find data on "African Elephant."
+Example: Let's say you want to find the common name for the animal "Accipiter gentilis"
     
 **HTTP Request:**
-`https://swe-endangered-animals.appspot.com/single_animal_data/African Elephant`
+`https://swe-endangered-animals.appspot.com/get_common_name_of_animal/?sci_name=Accipiter gentilis`
 
 + Response 200 (application/json)
 
     + Body
     
             {
-                "common_name": "African Elephant",
-                "scientific_name": "Loxodonta africana",
+                "common_name": "Northern Goshawk"
+            }
+            
+## Animal [/single_animal_data/]
+
+### GET: /single_animal_data/?animal_name [GET]
+
+Retrieves data for an animal: common name, scientific name, image, video, vulnerability, conservation measures, citation link, associated habitats/threats/countries.
+    
+Example: Let's say you want to find data on "Semi-collared Hawk"
+    
+**HTTP Request:**
+`https://swe-endangered-animals.appspot.com/single_animal_data?animal_name=Semi-collared Hawk`
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "common_name": "Semi-collared Hawk",
+                "scientific_name": "Accipiter collaris",
                 "vulnerability_status":"vulnerable",
-                "citation":"Blanc, J. 2008. Loxodonta africana. The IUCN Red List of Threatened Species 2008: e.T12392A3339343. http://dx.doi.org/10.2305/IUCN.UK.2008.RLTS.T12392A3339343.en",
+                "citation":"Campbell, J. 2007. Abronia oaxacae. The IUCN Red List of Threatened Species 2007: e.T63685A12697055. http://dx.doi.org/10.2305/IUCN.UK.2007.RLTS.T63685A12697055.en",
                 "conservation_measure": "Resource & habitat protection",
-                "video_url": "https://www.youtube.com/watch?v=kcGX_7n_JXY",
-                "imageLink": "https://iucnredlist-photos.s3.amazonaws.com/thumb/1315258020.jpg?AWSAccessKeyId=AKIAJIJQNN2N2SMHLZJA&Expires=1536230105&Signature=Hcr7ZZv9PwtYvWSkOjgdZR2tJTc%3D",
-                "web_link": "http://apiv3.iucnredlist.org/api/v3/website/Abudefduf vaigiensis",
+                "video_url": "https://www.youtube.com/watch?v=vy2RKH2v5_E",
+                "imageLink": "http://www.planetofbirds.com/Master/ACCIPITRIFORMES/Accipitridae/pics/Nicobar%20Sparrowhawk.jpg",
+                "web_link": "http://apiv3.iucnredlist.org/api/v3/website/Accipiter collaris",
                 "assoc_habitats":[
-                    "Desert - Hot",
-                    "Desert - Temperate"
+                    "Forest - Subtropical/Tropical Moist Montane"
                 ],
                 "assoc_threats":[
-                    "Housing and Urban Areas",
-                    "Commercial and industrial areas"
+                    "Annual & perennial non-timber crops",
+                    "Agro-industry farming",
+                    "Livestock farming & ranching",
+                    "Agro-industry grazing, ranching or farming",
+                    "Work & other activities"
                 ],
                 "assoc_countries": [
-                    "Botswana",
-                    "Burundi"
+                    "Colombia",
+                    "Ecuador",
+                    "Peru",
+                    "Venezuela, Bolivarian Republic of"
                 ]
             }
             
 ## All Animals [/all_animal_data]
 
-### GET: /all_animal_data/ [GET]
+### GET: /all_animal_data [GET]
 
 Retrieves data for all animals.
 
 This endpoint basically calls /single_animal_data on each animal.
 
 **HTTP Request:**
-`https://swe-endangered-animals.appspot.com/single_animal_data/African Elephant`
+`https://swe-endangered-animals.appspot.com/all_animal_data`
 
 + Response 200 (application/json)
 
@@ -58,92 +81,119 @@ This endpoint basically calls /single_animal_data on each animal.
     
             [
                 {
-                    "common_name": "African Elephant",
-                    "scientific_name": "Loxodonta africana",
+                    "common_name": "Semi-collared Hawk",
+                    "scientific_name": "Accipiter collaris",
                     "vulnerability_status":"vulnerable",
-                    "citation":"Blanc, J. 2008. Loxodonta africana. The IUCN Red List of Threatened Species 2008: e.T12392A3339343. http://dx.doi.org/10.2305/IUCN.UK.2008.RLTS.T12392A3339343.en",
+                    "citation":"Campbell, J. 2007. Abronia oaxacae. The IUCN Red List of Threatened Species 2007: e.T63685A12697055. http://dx.doi.org/10.2305/IUCN.UK.2007.RLTS.T63685A12697055.en",
                     "conservation_measure": "Resource & habitat protection",
-                    "video_url": "https://www.youtube.com/watch?v=kcGX_7n_JXY",
-                    "imageLink": "https://iucnredlist-photos.s3.amazonaws.com/thumb/1315258020.jpg?AWSAccessKeyId=AKIAJIJQNN2N2SMHLZJA&Expires=1536230105&Signature=Hcr7ZZv9PwtYvWSkOjgdZR2tJTc%3D",
-                    "web_link": "http://apiv3.iucnredlist.org/api/v3/website/Abudefduf vaigiensis",
+                    "video_url": "https://www.youtube.com/watch?v=vy2RKH2v5_E",
+                    "imageLink": "http://www.planetofbirds.com/Master/ACCIPITRIFORMES/Accipitridae/pics/Nicobar%20Sparrowhawk.jpg",
+                    "web_link": "http://apiv3.iucnredlist.org/api/v3/website/Accipiter collaris",
                     "assoc_habitats":[
-                        "Desert - Hot",
-                        "Desert - Temperate"
+                        "Forest - Subtropical/Tropical Moist Montane"
                     ],
                     "assoc_threats":[
-                        "Housing and Urban Areas",
-                        "Commercial and industrial areas"
+                        "Annual & perennial non-timber crops",
+                        "Agro-industry farming",
+                        "Livestock farming & ranching",
+                        "Agro-industry grazing, ranching or farming",
+                        "Work & other activities"
                     ],
                     "assoc_countries": [
-                        "Botswana",
-                        "Burundi"
+                        "Colombia",
+                        "Ecuador",
+                        "Peru",
+                        "Venezuela, Bolivarian Republic of"
                     ]
                 },
                 {
-                    "common_name": "African Elephant",
-                    "scientific_name": "Loxodonta africana",
-                    "vulnerability_status":"vulnerable",
-                    "citation":"Blanc, J. 2008. Loxodonta africana. The IUCN Red List of Threatened Species 2008: e.T12392A3339343. http://dx.doi.org/10.2305/IUCN.UK.2008.RLTS.T12392A3339343.en",
-                    "conservation_measure": "Resource & habitat protection",
-                    "video_url": "https://www.youtube.com/watch?v=kcGX_7n_JXY",
-                    "imageLink": "https://iucnredlist-photos.s3.amazonaws.com/thumb/1315258020.jpg?AWSAccessKeyId=AKIAJIJQNN2N2SMHLZJA&Expires=1536230105&Signature=Hcr7ZZv9PwtYvWSkOjgdZR2tJTc%3D",
-                    "web_link": "http://apiv3.iucnredlist.org/api/v3/website/Abudefduf vaigiensis",
+                    "common_name": "Reid's Arboreal Alligator Lizard",
+                    "scientific_name": "Abronia reidi",
+                    "vulnerability_status":"Data Deficient",
+                    "citation":"Flores-Villela, O. & Lopez-Luna, M.A. 2007. Abronia reidi. The IUCN Red List of Threatened Species 2007: e.T63689A12697921. http://dx.doi.org/10.2305/IUCN.UK.2007.RLTS.T63689A12697921.en",
+                    "conservation_measure": "Site/area management",
+                    "video_url": "https://www.youtube.com/watch?v=cUgHxoI3mFk",
+                    "imageLink": "http://www.adrianpetch.com/Absmith.jpeg",
+                    "web_link": "http://apiv3.iucnredlist.org/api/v3/website/Abronia reidi",
                     "assoc_habitats":[
-                        "Desert - Hot",
-                        "Desert - Temperate"
+                        "Forest - Subtropical/Tropical Moist Montane"
                     ],
                     "assoc_threats":[
-                        "Housing and Urban Areas",
-                        "Commercial and industrial areas"
+                        "Annual & perennial non-timber crops",
+                        "Small-holder farming",
+                        "Logging & wood harvesting",
+                        "Motivation Unknown/Unrecorded"
                     ],
                     "assoc_countries": [
-                        "Botswana",
-                        "Burundi"
+                        "Mexico"
                     ]
                 }
-                ...
             ]
 
-## Threat [/single_threat_data/{threat_name}]
+## Threat [/single_threat_data/]
 
-### GET: /single_threat_data/THREAT   [GET]
+### GET: /single_threat_data/?threat_name   [GET]
 
 Retrieves data for a specific threat: name, image, timing, severity, associated animals/habitats.
 
-Example: Let's say you want to find data on "Agro-industry farming."
+Example: Let's say you want to find data on "Agro-industry farming"
     
 **HTTP Request:**
-`https://swe-endangered-animals.appspot.com/single_threat_data/Agro-industry farming`
+`https://swe-endangered-animals.appspot.com/single_threat_data?threat_name=Agro-industry farming`
 
 + Response 200 (application/json)
 
     + Body
     
-            {
-                "name": "Agro-industry farming",
-                "timing": "ongoing",
-                "severity":"3.57",
-                "image":"https://iucnredlist-photos.s3.amazonaws.com/thumb/1315258020.jpg?AWSAccessKeyId=AKIAJIJQNN2N2SMHLZJA&Expires=1536230105&Signature=Hcr7ZZv9PwtYvWSkOjgdZR2tJTc%3D",
-                "assoc_animals": [
-                    "African Elephant",
-                    "Kangaroo"
-                ], 
-                "assoc_habitats": [
-                    "Desert - Temperate",
-                    "Desert - Hot"
-                ]
-            }
+               {
+                    "name": "Agro-industry farming",
+                    "image": "https://vermont4evolution.files.wordpress.com/2011/07/mono1.jpg",
+                    "timing": "ongoing",
+                    "severity": "4.5",
+                    "assoc_animals": [
+                        "Accipiter butleri",
+                        "Accipiter butleri",
+                        "Ablepharus bivittatus",
+                        "Accipiter collaris",
+                        "Abronia oaxacae",
+                        "Acanthochelys pallidipectoris",
+                        "Acanthosaura lepidogaster",
+                        "Abronia graminea",
+                        "Ablepharus deserti",
+                        "Acanthodactylus beershebensis",
+                        "Aburria aburri",
+                        "Acantopsis octoactinotos"
+                    ],
+                    "assoc_habitats": [
+                        "Wetlands (inland) - Shrub Dominated Wetlands",
+                        "Wetlands (inland) - Permanent Rivers/Streams/Creeks (includes waterfalls)",
+                        "Forest - Temperate",
+                        "Grassland - Temperate",
+                        "Forest - Subtropical/Tropical Moist Lowland",
+                        "Desert - Temperate",
+                        "Artificial/Aquatic - Ponds (below 8ha)",
+                        "Shrubland - Subtropical/Tropical Dry",
+                        "Artificial/Terrestrial - Rural Gardens",
+                        "Wetlands (inland) - Seasonal/Intermittent Freshwater Marshes/Pools (under 8ha)",
+                        "Forest - Subtropical/Tropical Moist Montane",
+                        "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+                        "Wetlands (inland) - Freshwater Springs and Oases",
+                        "Artificial/Terrestrial - Plantations",
+                        "Shrubland - Temperate",
+                        "Grassland - Subtropical/Tropical Seasonally Wet/Flooded"
+                    ]
+                }
 
 ## All Threats [/all_threat_data]
 
-### GET: /all_threat_data/ [GET]
+### GET: /all_threat_data [GET]
 
 Retrieves data for all threats.
 
 This endpoint basically calls /single_threat_data on each threat.
 
 **HTTP Request:**
-`https://swe-endangered-animals.appspot.com/all_threat_data/`
+`https://swe-endangered-animals.appspot.com/all_threat_data`
     
 + Response 200 (application/json)
 
@@ -151,76 +201,107 @@ This endpoint basically calls /single_threat_data on each threat.
     
 
             [
-                {
+               {
                     "name": "Agro-industry farming",
+                    "image": "https://vermont4evolution.files.wordpress.com/2011/07/mono1.jpg",
                     "timing": "ongoing",
-                    "severity":"3.57",
-                    "image":"https://iucnredlist-photos.s3.amazonaws.com/thumb/1315258020.jpg?AWSAccessKeyId=AKIAJIJQNN2N2SMHLZJA&Expires=1536230105&Signature=Hcr7ZZv9PwtYvWSkOjgdZR2tJTc%3D",
+                    "severity": "4.5",
                     "assoc_animals": [
-                        "African Elephant",
-                        "Kangaroo"
-                    ], 
+                        "Accipiter butleri",
+                        "Accipiter butleri",
+                        "Ablepharus bivittatus",
+                        "Accipiter collaris",
+                        "Abronia oaxacae",
+                        "Acanthochelys pallidipectoris",
+                        "Acanthosaura lepidogaster",
+                        "Abronia graminea",
+                        "Ablepharus deserti",
+                        "Acanthodactylus beershebensis",
+                        "Aburria aburri",
+                        "Acantopsis octoactinotos"
+                    ],
                     "assoc_habitats": [
+                        "Wetlands (inland) - Shrub Dominated Wetlands",
+                        "Wetlands (inland) - Permanent Rivers/Streams/Creeks (includes waterfalls)",
+                        "Forest - Temperate",
+                        "Grassland - Temperate",
+                        "Forest - Subtropical/Tropical Moist Lowland",
                         "Desert - Temperate",
-                        "Desert - Hot"
+                        "Artificial/Aquatic - Ponds (below 8ha)",
+                        "Shrubland - Subtropical/Tropical Dry",
+                        "Artificial/Terrestrial - Rural Gardens",
+                        "Wetlands (inland) - Seasonal/Intermittent Freshwater Marshes/Pools (under 8ha)",
+                        "Forest - Subtropical/Tropical Moist Montane",
+                        "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+                        "Wetlands (inland) - Freshwater Springs and Oases",
+                        "Artificial/Terrestrial - Plantations",
+                        "Shrubland - Temperate",
+                        "Grassland - Subtropical/Tropical Seasonally Wet/Flooded"
                     ]
                 },
                 {
-                    "name": "Agro-industry farming",
+                    "name": "Problematic native species/diseases",
+                    "image": "http://www.gardeningknowhow.com/wp-content/uploads/2014/12/insv.jpg",
                     "timing": "ongoing",
-                    "severity":"3.57",
-                    "image":"https://iucnredlist-photos.s3.amazonaws.com/thumb/1315258020.jpg?AWSAccessKeyId=AKIAJIJQNN2N2SMHLZJA&Expires=1536230105&Signature=Hcr7ZZv9PwtYvWSkOjgdZR2tJTc%3D",
+                    "severity": "4.5",
                     "assoc_animals": [
-                        "African Elephant",
-                        "Kangaroo"
-                    ], 
+                        "Acanthodactylus blanci",
+                        "Acanthochelys pallidipectoris",
+                        "Acanthodactylus beershebensis"
+                    ],
                     "assoc_habitats": [
-                        "Desert - Temperate",
-                        "Desert - Hot"
+                        "Wetlands (inland) - Shrub Dominated Wetlands",
+                        "Forest - Temperate",
+                        "Artificial/Aquatic - Ponds (below 8ha)",
+                        "Shrubland - Subtropical/Tropical Dry",
+                        "Wetlands (inland) - Seasonal/Intermittent Freshwater Marshes/Pools (under 8ha)",
+                        "Artificial/Terrestrial - Plantations",
+                        "Shrubland - Mediterranean-type Shrubby Vegetation",
+                        "Marine Coastal/Supratidal - Coastal Sand Dunes",
+                        "Grassland - Subtropical/Tropical Seasonally Wet/Flooded"
                     ]
                 }
-                ...
             ]
 
-## Habitat [/single_habitat_data/{habitat_name}]
+## Habitat [/single_habitat_data/]
 
-### GET: /single_habitat_data/HABITAT [GET]
+### GET: /single_habitat_data/?habitat_name [GET]
 
 Retrieves data for a given habitat: name, image, suitability, associated animals/threats.
 
-Example: Let's say you want to find data on "Forest-Temperate."
+Example: Let's say you want to find data on the habitat "Artificial/Aquatic - Ponds (below 8ha)"
     
 **HTTP Request:**
-`https://swe-endangered-animals.appspot.com/single_habitat_data/Forest-Temperate`
+`https://swe-endangered-animals.appspot.com/single_habitat_data/?habitat_name=Artificial/Aquatic - Ponds (below 8ha)`
 
 + Response 200 (application/json)
 
     + Body
     
             {
-                "name": "Forest - Temperate",
-                "suitability_status": "suitable",
-                "imageUrl": "https://www.polyworld.com.au/wp-content/uploads/2015/03/16000L-Poly-Pool1.jpg",
+                "name": "Artificial/Aquatic - Ponds (below 8ha)",
+                "image": "http://thumb1.shutterstock.com/display_pic_with_logo/1771478/323878760/stock-photo-small-artificial-decorative-pond-with-rocks-and-plants-on-the-backyard-in-summer-323878760.jpg",
+                "suitability": "Suitable",
                 "assoc_animals": [
-                    "African Elephant",
-                    "Kangaroo"
+                    "Acanthochelys pallidipectoris"
                 ],
-                "assoc_threats": [
-                    "Housing and urban areas", 
-                    "Droughts"
-                 ]
+                "assoc_countries": [
+                    "Paraguay",
+                    "Argentina",
+                    "Bolivia, Plurinational States of"
+                ]
             }
 
 ## All Habitats [/all_habitat_data]
 
-### GET: /all_habitat_data/ [GET]
+### GET: /all_habitat_data [GET]
 
 Retrieves data for all habitats.
 
 This endpoint basically calls /single_habitat_data on each habitat.
 
 **HTTP Request:**
-`https://swe-endangered-animals.appspot.com/all_habitat_data/`
+`https://swe-endangered-animals.appspot.com/all_habitat_data`
 
 + Response 200 (application/json)
 
@@ -228,60 +309,86 @@ This endpoint basically calls /single_habitat_data on each habitat.
     
             [
                 {
-                    "name": "Forest - Temperate",
-                    "suitability_status": "suitable",
-                    "imageUrl": "https://www.polyworld.com.au/wp-content/uploads/2015/03/16000L-Poly-Pool1.jpg",
+                    "name": "Artificial/Aquatic - Ponds (below 8ha)",
+                    "image": "http://thumb1.shutterstock.com/display_pic_with_logo/1771478/323878760/stock-photo-small-artificial-decorative-pond-with-rocks-and-plants-on-the-backyard-in-summer-323878760.jpg",
+                    "suitability": "Suitable",
                     "assoc_animals": [
-                        "African Elephant",
-                        "Kangaroo"
+                        "Acanthochelys pallidipectoris"
                     ],
-                    "assoc_threats": [
-                        "Housing and urban areas", 
-                        "Droughts"
-                     ]
+                    "assoc_countries": [
+                        "Paraguay",
+                        "Argentina",
+                        "Bolivia, Plurinational States of"
+                    ]
                 },
                 {
-                    "name": "Forest - Temperate",
-                    "suitability_status": "suitable",
-                    "imageUrl": "https://www.polyworld.com.au/wp-content/uploads/2015/03/16000L-Poly-Pool1.jpg",
+                    "name": "Wetlands (inland) - Permanent Freshwater Lakes (over 8ha)",
+                    "image": "http://people.deu.edu.tr/melis.somay/resimler/swamps.jpg",
+                    "suitability": "Suitable",
                     "assoc_animals": [
-                        "African Elephant",
-                        "Kangaroo"
+                        "Acanthobrama lissneri",
+                        "Acanthobrama microlepis",
+                        "Acanthobrama centisquama",
+                        "Acanthobrama tricolor"
                     ],
-                    "assoc_threats": [
-                        "Housing and urban areas", 
-                        "Droughts"
-                     ]
+                    "assoc_countries": [
+                        "Turkey",
+                        "Israel",
+                        "Georgia",
+                        "Iran, Islamic Republic of",
+                        "Azerbaijan",
+                        "Syrian Arab Republic",
+                        "Jordan",
+                        "Armenia",
+                        "Palestinian Territory, Occupied"
+                    ]
                 }
-                ...
             ]
 
-## Country [/single_country_data/{country_name}]
+## Country [/single_country_data/]
 
-### GET: /single_country_data/COUNTRY [GET]
+### GET: /single_country_data/?country_name [GET]
 
 Retrieves data for a specific country: name, flag, coordinates, associated animals/habitats.
 
-Example: Let's say you want to find data on "Burundi."
+Example: Let's say you want to find data on "Azerbaijan"
     
 **HTTP Request:**
-`https://swe-endangered-animals.appspot.com/single_country_data/Burundi`
+`https://swe-endangered-animals.appspot.com/single_country_data/?country_name=Azerbaijan`
 
 + Response 200 (application/json)
 
     + Body
     
             {
-                "name":"Burundi",
-                "flag": "https://iucnredlist-photos.s3.amazonaws.com/thumb/1315258020.jpg?AWSAccessKeyId=AKIAJIJQNN2N2SMHLZJA&Expires=1536230105&Signature=Hcr7ZZv9PwtYvWSkOjgdZR2tJTc%3D",
-                "coordinates": "lat: 28.033886 lng: 1.659626",
+                "name": "Azerbaijan",
+                "flag": "http://cdn.wonderfulengineering.com/wp-content/uploads/2015/07/azerbaijan-flag-13.png",
+                "coordinate": "lat: 40.143105 lng: 47.576927",
                 "assoc_animals": [
-                    "African Elephant",
-                    "Kangaroo"
+                    "Ablepharus bivittatus",
+                    "Accipiter badius",
+                    "Acanthobrama microlepis",
+                    "Accipiter gentilis",
+                    "Acanthis flammea",
+                    "Accipiter brevipes"
                 ],
                 "assoc_habitats": [
-                    "Housing and urban areas",
-                    "Droughts"
+                    "Forest - Boreal",
+                    "Artificial/Terrestrial - Urban Areas",
+                    "Wetlands (inland) - Permanent Rivers/Streams/Creeks (includes waterfalls)",
+                    "Savanna - Dry",
+                    "Forest - Temperate",
+                    "Grassland - Temperate",
+                    "Forest - Subtropical/Tropical Moist Lowland",
+                    "Shrubland - Subtropical/Tropical Dry",
+                    "Artificial/Terrestrial - Rural Gardens",
+                    "Wetlands (inland) - Permanent Freshwater Marshes/Pools (under 8ha)",
+                    "Grassland - Subtropical/Tropical Dry",
+                    "Artificial/Terrestrial - Plantations",
+                    "Shrubland - Mediterranean-type Shrubby Vegetation",
+                    "Wetlands (inland) - Permanent Freshwater Lakes (over 8ha)",
+                    "Grassland - Tundra",
+                    "Shrubland - Temperate"
                 ]
             }
 
@@ -294,7 +401,7 @@ Retrieves data for all countries.
 This endpoint basically calls /single_country_data on each country.
 
 **HTTP Request:**
-`https://swe-endangered-animals.appspot.com/all_country_data/`
+`https://swe-endangered-animals.appspot.com/all_country_data`
 
 + Response 200 (application/json)
 
@@ -302,31 +409,58 @@ This endpoint basically calls /single_country_data on each country.
     
             [
                 {
-                    "name":"Burundi",
-                    "flag": "https://iucnredlist-photos.s3.amazonaws.com/thumb/1315258020.jpg?AWSAccessKeyId=AKIAJIJQNN2N2SMHLZJA&Expires=1536230105&Signature=Hcr7ZZv9PwtYvWSkOjgdZR2tJTc%3D",
-                    "coordinates": "lat: 28.033886 lng: 1.659626",
+                    "name": "Azerbaijan",
+                    "flag": "http://cdn.wonderfulengineering.com/wp-content/uploads/2015/07/azerbaijan-flag-13.png",
+                    "coordinate": "lat: 40.143105 lng: 47.576927",
                     "assoc_animals": [
-                        "African Elephant",
-                        "Kangaroo"
+                        "Ablepharus bivittatus",
+                        "Accipiter badius",
+                        "Acanthobrama microlepis",
+                        "Accipiter gentilis",
+                        "Acanthis flammea",
+                        "Accipiter brevipes"
                     ],
                     "assoc_habitats": [
-                        "Housing and urban areas",
-                        "Droughts"
+                        "Forest - Boreal",
+                        "Artificial/Terrestrial - Urban Areas",
+                        "Wetlands (inland) - Permanent Rivers/Streams/Creeks (includes waterfalls)",
+                        "Savanna - Dry",
+                        "Forest - Temperate",
+                        "Grassland - Temperate",
+                        "Forest - Subtropical/Tropical Moist Lowland",
+                        "Shrubland - Subtropical/Tropical Dry",
+                        "Artificial/Terrestrial - Rural Gardens",
+                        "Wetlands (inland) - Permanent Freshwater Marshes/Pools (under 8ha)",
+                        "Grassland - Subtropical/Tropical Dry",
+                        "Artificial/Terrestrial - Plantations",
+                        "Shrubland - Mediterranean-type Shrubby Vegetation",
+                        "Wetlands (inland) - Permanent Freshwater Lakes (over 8ha)",
+                        "Grassland - Tundra",
+                        "Shrubland - Temperate"
                     ]
                 },
                 {
-                    "name":"Burundi",
-                    "flag": "https://iucnredlist-photos.s3.amazonaws.com/thumb/1315258020.jpg?AWSAccessKeyId=AKIAJIJQNN2N2SMHLZJA&Expires=1536230105&Signature=Hcr7ZZv9PwtYvWSkOjgdZR2tJTc%3D",
-                    "coordinates": "lat: 28.033886 lng: 1.659626",
+                    "name": "Bhutan",
+                    "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Flag_of_Bhutan.svg/2000px-Flag_of_Bhutan.svg.png",
+                    "coordinate": "lat: 27.514162 lng: 90.433601",
                     "assoc_animals": [
-                        "African Elephant",
-                        "Kangaroo"
+                        "Acanthocobitis botia",
+                        "Accipiter badius",
+                        "Accipiter gentilis"
                     ],
                     "assoc_habitats": [
-                        "Housing and urban areas",
-                        "Droughts"
+                        "Forest - Boreal",
+                        "Artificial/Terrestrial - Urban Areas",
+                        "Wetlands (inland) - Permanent Rivers/Streams/Creeks (includes waterfalls)",
+                        "Savanna - Dry",
+                        "Forest - Temperate",
+                        "Grassland - Temperate",
+                        "Forest - Subtropical/Tropical Moist Lowland",
+                        "Shrubland - Subtropical/Tropical Dry",
+                        "Artificial/Terrestrial - Rural Gardens",
+                        "Grassland - Subtropical/Tropical Dry",
+                        "Artificial/Terrestrial - Plantations",
+                        "Grassland - Tundra"
                     ]
                 }
-                ...
             ]
-            
