@@ -54,7 +54,14 @@
             <p><b>Scientific name: &nbsp; </b>{animals[keyName].scientificName}</p>
             <p><b>Vulnerability status: &nbsp; </b>{animals[keyName].vulnerability}</p>
             <p><b>Threats: &nbsp; </b></p>
-              <p className="pre-scrollable" max-height="150">{animals[keyName].assoc_threats}</p>
+
+              <p className="pre-scrollable" max-height="150">
+                {Object.keys(animals[keyName].assoc_threats).map(
+                  (x, i) =>
+                    <a onClick={() => {global.country = animals[keyName].assoc_threats[x];
+                    this.props.history.pushState(null,'/threat.html/') }}> {animals[keyName].assoc_threats[x]}  </a>
+                )}
+              </p>
 
             <Button onClick={(e)=> this.setState({ open: !this.state.open })}>
               <b>Video</b>
@@ -65,18 +72,21 @@
             </Collapse>
             <p><b>Countries: </b></p>
               <p className="pre-scrollable" max-height="150">
-                {Object.keys(animals[keyName].assoc_countries).map(
-                 function(x, i) {
-                   return (
-                   <a href={"/animals/animals[keyName].assoc_countries[x]"}>{animals[keyName].assoc_countries[x]}</a> + ", "
-                 );
-                }
-              )}
+
+              {Object.keys(animals[keyName].assoc_countries).map(
+                  (x, i) =>
+                    <a onClick={() => {global.country = animals[keyName].assoc_countries[x];
+                    this.props.history.pushState(null,'/country.html/') }}> {animals[keyName].assoc_countries[x]}  </a>
+                )}
               </p>
 
             <p><b>Habitats:</b></p>
               <p className="pre-scrollable" max-height="150">
-                {animals[keyName].assoc_habitats}
+                {Object.keys(animals[keyName].assoc_habitats).map(
+                  (x, i) =>
+                    <a onClick={() => {global.country = animals[keyName].assoc_habitats[x];
+                    this.props.history.pushState(null,'/habitat.html/') }}> {animals[keyName].assoc_habitats[x]}  </a>
+                )}
               </p>
 
           </Thumbnail>
