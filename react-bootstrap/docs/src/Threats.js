@@ -44,7 +44,7 @@ export default class Threats extends React.Component {
     return (
 
       <Col sm={3} className="bs-docs-body">
-        <h4>{ threat.name }</h4>
+        <h4><a onClick={ () => { global.threat = threat.name; this.props.history.pushState(null, '/threat.html/') } } >{ threat.name }</a></h4>
         <p><img src={threat.image }/></p>
         <p>Score: {threat.score }</p>
         <p>Timing: { threat.timing }</p>

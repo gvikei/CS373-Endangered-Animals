@@ -44,7 +44,7 @@ export default class Habitats extends React.Component {
 
       <Col sm={3} className="bs-docs-body">
         <Thumbnail src={ habitat.image } width="100%" height="33%">
-          <h3>{ habitat.name }</h3>
+          <h3><a onClick={ () => { global.habitat = habitat.name; this.props.history.pushState(null, '/habitat.html/') } } >{ habitat.name }</a></h3>
           <p>Suitability: {habitat.suitability}</p>
           <p><b>Countries: </b></p>
               <p className="pre-scrollable" max-height="150">
