@@ -49,31 +49,33 @@
       return (
         <Col sm={3} className="bs-docs-body">
           <Thumbnail src={animals[keyName].image_url}>
-            <h3>{animals[keyName].common_name}</h3>
-            <p><b>Scientific name: &nbsp; </b>{keyName}</p>
-            <p><b>Vulnerability status: &nbsp; </b>{animals[keyName].vulnerability_status}</p>
+            <h3>{animals[keyName].name}</h3>
+            <p><b>Scientific name: &nbsp; </b>{animals[keyName].scientificName}</p>
+            <p><b>Vulnerability status: &nbsp; </b>{animals[keyName].vulnerability}</p>
             <p><b>Threats: &nbsp; </b></p>
-              <p className="pre-scrollable" max-height="150">{animals[keyName].threats}</p>
+              <p className="pre-scrollable" max-height="150">{animals[keyName].assoc_threats}</p>
 
             <Button onClick={(e)=> this.setState({ open: !this.state.open })}>
               <b>Video</b>
             </Button>
             <Collapse in={!this.state.open}>
                 <iframe className="col-sm-12" height="333" frameborder="0" display="block" width="100%"
-                        src={this.reformatYoutubeURL(animals[keyName].video_url)}/>
+                        src={this.reformatYoutubeURL(animals[keyName].videoLink)}/>
             </Collapse>
             <p><b>Countries: </b></p>
               <p className="pre-scrollable" max-height="150">
-                {Object.keys(animals[keyName].countries).map(
-                 (x, i) => (
-                    animals[keyName].countries[x] + ", "
-                 )
+                {Object.keys(animals[keyName].assoc_countries).map(
+                 function(x, i) {
+                   return (
+                   <a href={"/animals/animals[keyName].assoc_countries[x]"}>{animals[keyName].assoc_countries[x]}</a> + ", "
+                 );
+                }
               )}
               </p>
 
             <p><b>Habitats:</b></p>
               <p className="pre-scrollable" max-height="150">
-                {animals[keyName].habitats}
+                {animals[keyName].assoc_habitats}
               </p>
 
           </Thumbnail>
