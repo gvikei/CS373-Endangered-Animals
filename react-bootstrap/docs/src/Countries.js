@@ -22,11 +22,9 @@
       axios.create({
         baseURL: 'https://swe-endangered-animals.appspot.com/',
         headers: {"Access-Control-Allow-Origin": "*"}
-      });
-
-      axios.get('/all_country_data')
+      }).get('/all_country_data')
         .then(function(data) {
-          console.log(data);
+          console.log(data.data);
           that.setState({
             countries: data.data
           });
