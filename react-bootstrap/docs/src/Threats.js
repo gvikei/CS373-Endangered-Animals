@@ -24,8 +24,12 @@ export default class Threats extends React.Component {
     };
 
     var that = this;
-      axios.get('https://raw.githubusercontent.com/gvikei/idb/react-khuyen/static/threats_data.json')
+      axios.create({
+        baseURL: 'https://swe-endangered-animals.appspot.com/',
+        headers: {"Access-Control-Allow-Origin": "*"}
+      }).get('/all_threat_data')
         .then(function(data) {
+          console.log(data.data);
           that.setState({
             threats: data.data
           });

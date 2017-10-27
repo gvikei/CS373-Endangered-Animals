@@ -25,9 +25,8 @@
         headers: {"Access-Control-Allow-Origin": "*"}
       }).get('/all_country_data')
         .then(function(data) {
-          console.log(data.data);
           that.setState({
-            countries: data.data
+            countries: data.data.slice(0,10)
           });
       });
     };
@@ -42,7 +41,7 @@
       return (
         <Col sm={4}>
           <Thumbnail src={ country.flag } width="100%" height="33%">
-            <h3><a href="country.html">{ country.name }</a></h3>
+            <h3><a onClick={ () => { global.country = country.name; this.props.history.pushState(null, '/country.html/') } } >{ country.name }</a></h3>
 
             <Row>
               <a href="animals.html">Animals</a>: { animals }

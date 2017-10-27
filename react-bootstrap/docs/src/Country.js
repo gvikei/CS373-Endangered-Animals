@@ -7,9 +7,8 @@
   import Col from '../../src/Col';
   import Thumbnail from '../../src/Thumbnail';
 
-  var axios = require('axios');
 
-  var country = {"flag": "http://cdn.wonderfulengineering.com/wp-content/uploads/2015/07/Albania-Flag-6.png", "name": "Albania", "coordinates": {"lat": 41.153332, "lng": 20.168331}};
+  var axios = require('axios');
 
   export default class Page extends React.Component {
 
@@ -17,6 +16,20 @@
       super(props);
 
       this.renderCountry = this.renderCountry.bind(this);
+      this.state = {
+        countryData: {}
+      };
+
+      var that = this;
+      axios.create({
+        baseURL: 'https://swe-endangered-animals.appspot.com/',
+        headers: {"Access-Control-Allow-Origin": "*"}
+      }).get('/single_country_data/?country_name='+global.country)
+        .then(function(data) {
+          that.setState({
+            countryData: data.data
+          });
+      });
     };
 
     shouldComponentUpdate() {
@@ -25,7 +38,7 @@
 
     renderCountry() {
       return (
-        <Thumbnail src={ country.flag } width="100%" height="33%">
+        <Thumbnail src={ this.state.countryData.flag } width="100%" height="33%">
 
           <br/><br/>
 
@@ -68,7 +81,7 @@
           <NavMain activePage="countries" />
 
           <PageHeader
-            title={ country.name } />
+            title={ this.state.countryData.name } />
 
             <div className="container bs-docs-container bs-docs-single-col-container">
               <div className="bs-docs-section">
