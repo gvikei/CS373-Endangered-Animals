@@ -29,7 +29,6 @@ export default class Habitats extends React.Component {
         headers: {"Access-Control-Allow-Origin": "*"}
       }).get('/all_habitat_data')
         .then(function(data) {
-          console.log(data.data);
           that.setState({
             habitats: data.data.slice(0,10)
           });
