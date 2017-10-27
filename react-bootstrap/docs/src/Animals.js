@@ -54,7 +54,14 @@
             <p><b>Scientific name: &nbsp; </b>{animals[keyName].scientificName}</p>
             <p><b>Vulnerability status: &nbsp; </b>{animals[keyName].vulnerability}</p>
             <p><b>Threats: &nbsp; </b></p>
-              <p className="pre-scrollable" max-height="150">{animals[keyName].assoc_threats}</p>
+
+              <p className="pre-scrollable" max-height="150">
+                {Object.keys(animals[keyName].assoc_threats).map(
+                  (x, i) =>
+                    <a onClick={() => {global.country = animals[keyName].assoc_threats[x];
+                    this.props.history.pushState(null,'/threat.html/') }}> {animals[keyName].assoc_threats[x]}  </a>
+                )}
+              </p>
 
             <Button onClick={(e)=> this.setState({ open: !this.state.open })}>
               <b>Video</b>
