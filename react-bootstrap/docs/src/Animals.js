@@ -25,13 +25,14 @@
       };
 
       var that = this;
-       axios.create({
+      axios.create({
         baseURL: 'https://swe-endangered-animals.appspot.com/',
         headers: {"Access-Control-Allow-Origin": "*"}
       }).get('/all_animal_data')
         .then(function(data) {
+          console.log(data.data);
           that.setState({
-            animals: data.data
+            animals: data.data.slice(0,10)
           });
       });
     }
