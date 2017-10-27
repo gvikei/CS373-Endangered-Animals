@@ -7,7 +7,7 @@
   import Col from '../../src/Col';
   import Thumbnail from '../../src/Thumbnail';
 
-  var axios = require('axios');
+  var jsonp = require('jsonp');
 
   export default class Page extends React.Component {
 
@@ -19,17 +19,12 @@
       };
 
       var that = this;
-      axios.create({
-        baseURL: 'https://swe-endangered-animals.appspot.com/',
-        headers: {"Access-Control-Allow-Origin": "*"}
-      });
-
-      axios.get('/all_country_data')
-        .then(function(data) {
+      jsonp('https://en.wikipedia.org/w/api.php?action=opensearch&search=frog&format=json', null, function (err, data) {
+        if (err) {
+          console.error(err.message);
+        } else {
           console.log(data);
-          that.setState({
-            countries: data.data
-          });
+        }
       });
     };
 
