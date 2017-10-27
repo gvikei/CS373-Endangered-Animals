@@ -14,19 +14,20 @@
 
     constructor(props) {
       super(props);
+
       this.renderCountry = this.renderCountry.bind(this);
       this.state = {
-        countries: []
+        countryData: {}
       };
 
       var that = this;
       axios.create({
         baseURL: 'https://swe-endangered-animals.appspot.com/',
         headers: {"Access-Control-Allow-Origin": "*"}
-      }).get('/all_country_data')
+      }).get('/single_country_data/?country_name='+global.animal)
         .then(function(data) {
           that.setState({
-            countries: data.data.slice(0,10)
+            countryData: data.data
           });
       });
     };
@@ -35,25 +36,42 @@
       return true;
     };
 
-    renderCountry(country) {
-      var animals = (country.assoc_animals ? country.assoc_animals.length : 0);
-      var habitats = (country.assoc_habitats ? country.assoc_habitats.length : 0);
+    renderCountry() {
       return (
-        <Col sm={4}>
-          <Thumbnail src={ country.flag } width="100%" height="33%">
-            <h3><a onClick={ () => { global.country = country.name; this.props.history.pushState(null, '/country.html/') } } >{ country.name }</a></h3>
+        <Thumbnail src={ this.state.countryData.flag } width="100%" height="33%">
 
-            <Row>
-              <a href="animals.html">Animals</a>: { animals }
-            </Row>
-            <Row>
-              <a href="habitats.html">Habitats</a>: { habitats }
-            </Row>
-            
-            <iframe id="gmap_canvas" width="100%" src={ "https://maps.google.com/maps?q=" + country.name + "&t=k&z=6&ie=UTF8&iwloc=&output=embed" } frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0">
-            </iframe>
-          </Thumbnail>
-        </Col>
+          <br/><br/>
+
+          <Row>
+            <Col sm={2}>
+              <b><a href="animals.html">Animals</a>:</b>
+            </Col>
+            <Col sm={2}>
+              0
+            </Col>
+          </Row>
+          <Row>
+            <Col sm={2}>
+              <b><a href="threats.html">Threats</a>:</b>
+            </Col>
+            <Col sm={2}>
+              0
+            </Col>
+          </Row>
+          <Row>
+            <Col sm={2}>
+              <b><a href="habitats.html">Habitats</a>:</b>
+            </Col>
+            <Col sm={2}>
+              0
+            </Col>
+          </Row>
+
+          <br/><br/>
+          
+          <iframe id="gmap_canvas" width="100%" src={ "https://maps.google.com/maps?q=" + country.name + "&t=k&z=6&ie=UTF8&iwloc=&output=embed" } frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0">
+          </iframe>
+        </Thumbnail>
       );
     };
 
@@ -63,8 +81,7 @@
           <NavMain activePage="countries" />
 
           <PageHeader
-            title="Countries"
-            subTitle="Click on a country to begin exploring its ecosystem."/>
+            title={ this.state.countryData.name } />
 
             <div className="container bs-docs-container bs-docs-single-col-container">
               <div className="bs-docs-section">
@@ -72,9 +89,7 @@
                 { /* Countries */ }
                 <Row>
                   { 
-                    this.state.countries.map(function(country, i){
-                      return this.renderCountry(country);
-                    }.bind(this))
+                    this.renderCountry()
                   }
                 </Row>
 

@@ -24,13 +24,14 @@ export default class Habitats extends React.Component {
     };
 
     var that = this;
-    axios.create({
+      axios.create({
         baseURL: 'https://swe-endangered-animals.appspot.com/',
         headers: {"Access-Control-Allow-Origin": "*"}
       }).get('/all_habitat_data')
         .then(function(data) {
+          console.log(data.data);
           that.setState({
-            habitats: data.data
+            habitats: data.data.slice(0,10)
           });
       });
   }
