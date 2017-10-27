@@ -42,15 +42,10 @@ if (development) {
     Root.propData = props;
 
     app.use((req, res) => {
-<<<<<<< HEAD
       res.header('Access-Control-Allow-Origin', '*');
       res.header('Access-Control-Allow-Methods','GET, POST, PATCH, PUT, DELETE, OPTIONS');
-      res.header('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+      res.header('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token, X-Requested-With');
       res.header('Access-Control-Expose-Headers', 'Access-Token, Uid');
-=======
-      res.header('Access-Control-Allow-Origin', "*");
-      res.header('Access-Control-Allow-Headers', 'X-Requested-With');
->>>>>>> 98fa19e627dd56991f9e6cb9df60e7293a290196
 
       const location = req.url;
       match({ routes, location }, (error, redirectLocation, renderProps) => {
