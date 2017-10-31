@@ -15,7 +15,7 @@
   var axios = require('axios');
   var animals;
 
-  export default class Animals extends React.Component {
+  class Animals extends React.Component {
 
     constructor(props) {
       super(props);
@@ -30,64 +30,59 @@
         headers: {"Access-Control-Allow-Origin": "*"}
       }).get('/all_animal_data')
         .then(function(data) {
-          console.log(data.data);
           that.setState({
             animals: data.data.slice(0,10)
           });
       });
-    }
+    };
 
     shouldComponentUpdate() {
       return true;
+    };
+
+
+    changeURL(type, data) {
+      global.instance = data;
+      this.context.router.push('/'+type+".html/");
     }
 
-    reformatYoutubeURL(url) {
-      var videoID = url.substring(url.indexOf("v=") + 2, url.length);
-      return "https://www.youtube.com/embed/" + videoID;
-    }
+    renderAnimals(keyName) {
+      var animal = this.state.animals[keyName];
 
-    renderAnimals(animals, keyName) {
       return (
-        <Col sm={3} className="bs-docs-body">
-          <Thumbnail src={animals[keyName].image_url}>
-            <h3><a onClick={ () => { global.animal = animals[keyName].name; this.props.history.pushState(null, '/animal.html/') } } >{animals[keyName].name}</a></h3>
-            <p><b>Scientific name: &nbsp; </b>{animals[keyName].scientificName}</p>
-            <p><b>Vulnerability status: &nbsp; </b>{animals[keyName].vulnerability}</p>
-            <p><b>Threats: &nbsp; </b></p>
+        <Col sm={3} className="bs-docs-body" key={ keyName }>
+          <Thumbnail src={ animal.imageLink }>
+            <h3>
+              <a onClick={ () => { 
+                this.changeURL('animal', animal.name) } } >
+                {animal.name}
+              </a>
+            </h3>
 
-              <p className="pre-scrollable" max-height="150">
-                {Object.keys(animals[keyName].assoc_threats).map(
-                  (x, i) =>
-                    <a onClick={() => {global.threat = animals[keyName].assoc_threats[x];
-                    this.props.history.pushState(null,'/threat.html/') }}> {animals[keyName].assoc_threats[x]}  </a>
-                )}
-              </p>
+            <Row>
+              <Col><b> Scientific name: </b></Col>
+              <Col>{animal.scientificName}</Col>
+            </Row>
 
-            <Button onClick={(e)=> this.setState({ open: !this.state.open })}>
-              <b>Video</b>
-            </Button>
-            <Collapse in={!this.state.open}>
-                <iframe className="col-sm-12" height="333" frameborder="0" display="block" width="100%"
-                        src={this.reformatYoutubeURL(animals[keyName].videoLink)}/>
-            </Collapse>
-            <p><b>Countries: </b></p>
-              <p className="pre-scrollable" max-height="150">
-
-              {Object.keys(animals[keyName].assoc_countries).map(
-                (x, i) =>
-                  <a onClick={() => {global.country = animals[keyName].assoc_countries[x];
-                  this.props.history.pushState(null,'/country.html/') }}> {animals[keyName].assoc_countries[x]}  </a>
-              )}
-              </p>
-
-            <p><b>Habitats:</b></p>
-              <p className="pre-scrollable" max-height="150">
-                {Object.keys(animals[keyName].assoc_habitats).map(
-                  (x, i) =>
-                    <a onClick={() => {global.country = animals[keyName].assoc_habitats[x];
-                    this.props.history.pushState(null,'/habitat.html/') }}> {animals[keyName].assoc_habitats[x]}  </a>
-                )}
-              </p>
+            <Row>
+              <Col><b> Vulnerability: </b></Col>
+              <Col>{animal.vulnerability}</Col>
+            </Row>
+            
+            <Row>
+              <Col><b> Threats: </b></Col>
+              <Col>{ animal.assoc_threats.length }</Col>
+            </Row>
+            
+            <Row>
+              <Col><b> Habitats: </b></Col>
+              <Col>{ animal.assoc_habitats.length }</Col>
+            </Row>
+            
+            <Row>
+              <Col><b> Countries: </b></Col>
+              <Col>{ animal.assoc_countries.length }</Col>
+            </Row>
 
           </Thumbnail>
         </Col>
@@ -97,6 +92,9 @@
     };
 
     render() {
+      if(!this.state.animals.length)
+        return ( <div /> )
+
       return (
         <div>
           <NavMain activePage="animals" />
@@ -112,7 +110,7 @@
                 <Row>
                   {
                     Object.keys(this.state.animals).map(function(keyName, keyIndex) {
-                      return this.renderAnimals(this.state.animals, keyName);
+                      return this.renderAnimals(keyName);
                     }.bind(this))
                   }
                 </Row>
@@ -124,3 +122,9 @@
     );
     }
   }
+
+  Animals.contextTypes = {
+      router: React.PropTypes.object.isRequired
+  };
+
+  export default Animals;
