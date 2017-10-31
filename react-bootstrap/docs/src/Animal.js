@@ -26,6 +26,7 @@
         headers: {"Access-Control-Allow-Origin": "*"}
       }).get('/single_animal_data/?animal_name='+global.instance)
         .then(function(data) {
+          console.log(data);
           that.setState({
             animal: data.data
           });
@@ -38,7 +39,8 @@
 
 
     changeURL(type, data) {
-      global.instance = data;
+      if(typeof data !== "undefined")
+        global.instance = data;
       this.context.router.push('/'+type+".html/");
     };
 

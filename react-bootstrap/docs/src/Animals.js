@@ -33,6 +33,7 @@
           that.setState({
             animals: data.data.slice(0,10)
           });
+          console.log(data)
       });
     };
 
@@ -42,9 +43,10 @@
 
 
     changeURL(type, data) {
-      global.instance = data;
+      if(typeof data !== "undefined")
+        global.instance = data;
       this.context.router.push('/'+type+".html/");
-    }
+    };
 
     renderAnimals(keyName) {
       var animal = this.state.animals[keyName];

@@ -10,7 +10,7 @@
 
   var axios = require('axios');
 
-  export default class Page extends React.Component {
+  class Country extends React.Component {
 
     constructor(props) {
       super(props);
@@ -36,6 +36,13 @@
       return true;
     };
 
+
+    changeURL(type, data) {
+      if(typeof data !== "undefined")
+        global.instance = "Delicate Judy";
+      this.context.router.push('/'+type+".html/");
+    };
+
     renderCountry() {
       return (
         <Thumbnail src={ this.state.country.flag } width="100%" height="33%">
@@ -47,15 +54,17 @@
               <b><a href="animals.html">Animals</a>:</b>
             </Col>
             <Col sm={2}>
-              0
-            </Col>
-          </Row>
-          <Row>
-            <Col sm={2}>
-              <b><a href="threats.html">Threats</a>:</b>
-            </Col>
-            <Col sm={2}>
-              0
+              <ul>
+                {
+                  this.state.country.assoc_animals.map(function(animal, i){
+                    return (
+                      <a key={"ah"+i} onClick={() => { this.changeURL('animal', animal) }} >
+                        <li key={"h"+i}>{ animal }</li>
+                      </a>
+                    )
+                  }.bind(this))
+                }
+              </ul>
             </Col>
           </Row>
           <Row>
@@ -63,7 +72,17 @@
               <b><a href="habitats.html">Habitats</a>:</b>
             </Col>
             <Col sm={2}>
-              0
+              <ul>
+                {
+                  this.state.country.assoc_habitats.map(function(habitat, i){
+                    return (
+                      <a key={"ah"+i} onClick={() => { this.changeURL('habitat', habitat) }} >
+                        <li key={"h"+i}>{ habitat }</li>
+                      </a>
+                    )
+                  }.bind(this))
+                }
+              </ul>
             </Col>
           </Row>
 
@@ -78,6 +97,7 @@
     render() {
       if(typeof this.state.country.name == "undefined")
         return <div />
+      
       return (
         <div>
           <NavMain activePage="countries" />
@@ -103,3 +123,9 @@
       );
     };
   }
+
+  Country.contextTypes = {
+      router: React.PropTypes.object.isRequired
+  };
+
+  export default Country;

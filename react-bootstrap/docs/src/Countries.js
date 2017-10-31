@@ -10,7 +10,7 @@
 
   var axios = require('axios');
 
-  export default class Page extends React.Component {
+  class Countries extends React.Component {
 
     constructor(props) {
       super(props);
@@ -35,13 +35,20 @@
       return true;
     };
 
+
+    changeURL(type, data) {
+      if(typeof data !== "undefined")
+        global.instance = data;
+      this.context.router.push('/'+type+".html/");
+    };
+
     renderCountry(country) {
       var animals = (country.assoc_animals ? country.assoc_animals.length : 0);
       var habitats = (country.assoc_habitats ? country.assoc_habitats.length : 0);
       return (
-        <Col sm={4}>
+        <Col key={country.name} sm={4}>
           <Thumbnail src={ country.flag } width="100%" height="33%">
-            <h3><a onClick={ () => { global.country = country.name; this.props.history.pushState(null, '/country.html/') } } >{ country.name }</a></h3>
+            <h3><a onClick={ () => { this.changeURL("country", country.name) } } >{ country.name }</a></h3>
 
             <Row>
               <a href="animals.html">Animals</a>: { animals }
@@ -86,3 +93,9 @@
       );
     };
   }
+
+  Countries.contextTypes = {
+      router: React.PropTypes.object.isRequired
+  };
+
+  export default Countries;
