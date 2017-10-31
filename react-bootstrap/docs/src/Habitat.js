@@ -1,83 +1,82 @@
-  import React from 'react';
+import React from 'react';
 
-  import NavMain from './NavMain';
-  import PageHeader from './PageHeader';
-  import PageFooter from './PageFooter';
-  import Row from '../../src/Row';
-  import Col from '../../src/Col';
-  import Thumbnail from '../../src/Thumbnail';
+import NavMain from './NavMain';
+import PageHeader from './PageHeader';
+import PageFooter from './PageFooter';
+import Row from '../../src/Row';
+import Col from '../../src/Col';
+import Thumbnail from '../../src/Thumbnail';
 
 
-  var axios = require('axios');
+var axios = require('axios');
 
-  export default class Page extends React.Component {
+export default class Page extends React.Component {
 
-    constructor(props) {
-      super(props);
+  constructor(props) {
+    super(props);
 
-      this.renderCountry = this.renderCountry.bind(this);
-      this.state = {
-        animal: {}
-      };
-
-      console.log(global.animal);
-      var that = this;
-      axios.create({
-        baseURL: 'https://swe-endangered-animals.appspot.com/',
-        headers: {"Access-Control-Allow-Origin": "*"}
-      }).get('/single_habitat_data/?habitat_name='+global.habitat)
-        .then(function(data) {
-          console.log(data);
-          that.setState({
-            animal: data.data
-          });
-      });
+    this.renderCountry = this.renderCountry.bind(this);
+    this.state = {
+      animal: {}
     };
 
-    shouldComponentUpdate() {
-      return true;
-    };
+    var that = this;
+    axios.create({
+      baseURL: 'https://swe-endangered-animals.appspot.com/',
+      headers: {"Access-Control-Allow-Origin": "*"}
+    }).get('/single_habitat_data/?habitat_name='+global.instance)
+      .then(function(data) {
+        console.log(data);
+        that.setState({
+          animal: data.data
+        });
+    });
+  };
 
-    renderCountry() {
-      return (
-        <Thumbnail src={ this.state.animal.image } width="100%" height="33%">
-          <p>Suitability: {this.state.animal.suitability}</p>
-          <p><b>Countries: </b></p>
-              <p className="pre-scrollable" max-height="150">
-                {Object.keys(this.state.animal.assoc_countries).map(
-                  (x, i) =>
-                    <a onClick={() => {global.country = this.state.animal.assoc_countries[x];
-                    this.props.history.pushState(null,'/country.html/') }}> {this.state.animal.assoc_countries[x]}  </a>
-                )}
-              </p>
+  shouldComponentUpdate() {
+    return true;
+  };
 
-        </Thumbnail>
-      );
-    };
+  renderCountry() {
+    return (
+      <Thumbnail src={ this.state.animal.image } width="100%" height="33%">
+        <p>Suitability: {this.state.animal.suitability}</p>
+        <p><b>Countries: </b></p>
+            <p className="pre-scrollable" max-height="150">
+              {Object.keys(this.state.animal.assoc_countries).map(
+                (x, i) =>
+                  <a onClick={() => {global.country = this.state.animal.assoc_countries[x];
+                  this.props.history.pushState(null,'/country.html/') }}> {this.state.animal.assoc_countries[x]}  </a>
+              )}
+            </p>
 
-    render() {
-      return (
-        <div>
-          <NavMain activePage="animals" />
+      </Thumbnail>
+    );
+  };
 
-          <PageHeader
-            title={ global.habitat } />
+  render() {
+    return (
+      <div>
+        <NavMain activePage="animals" />
 
-            <div className="container bs-docs-container bs-docs-single-col-container">
-              <div className="bs-docs-section">
-            
-                { /* Countries */ }
-                <Row>
-                  { 
-                    this.renderCountry()
-                  }
-                </Row>
+        <PageHeader
+          title={ global.habitat } />
 
-              </div>
+          <div className="container bs-docs-container bs-docs-single-col-container">
+            <div className="bs-docs-section">
+          
+              { /* Countries */ }
+              <Row>
+                { 
+                  this.renderCountry()
+                }
+              </Row>
+
             </div>
+          </div>
 
-          <PageFooter />
-        </div>
-      );
-    };
-  }
+        <PageFooter />
+      </div>
+    );
+  };
+}

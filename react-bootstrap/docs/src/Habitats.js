@@ -14,7 +14,7 @@ import Well from '../../src/Well';
 
 var axios = require('axios');
 
-export default class Habitats extends React.Component {
+class Habitats extends React.Component {
 
   constructor(props) {
     super(props);
@@ -39,28 +39,30 @@ export default class Habitats extends React.Component {
     return true;
   }
 
+
+  changeURL(type, data) {
+      if(typeof data !== "undefined")
+        global.instance = data;
+      this.context.router.push('/'+type+".html/");
+  };
+
   renderHabitats(habitat) {
     return (
-
-      <Col sm={3} className="bs-docs-body">
+      <Col key={ habitat.name } sm={ 3 }>
         <Thumbnail src={ habitat.image } width="100%" height="33%">
-          <h3><a onClick={ () => { global.habitat = habitat.name; this.props.history.pushState(null, '/habitat.html/') } } >{ habitat.name }</a></h3>
-          <p>Suitability: {habitat.suitability}</p>
-          <p><b>Countries: </b></p>
-              <p className="pre-scrollable" max-height="150">
-                {Object.keys(habitat.assoc_countries).map(
-                  (x, i) =>
-                    <a onClick={() => {global.country = habitat.assoc_countries[x];
-                    this.props.history.pushState(null,'/country.html/') }}> {habitat.assoc_countries[x]}  </a>
-                )}
-              </p>
-
+          <h3><a onClick={ () => { this.changeURL("habitat", habitat.name) } } >{ habitat.name }</a></h3>
+          <Row><Col><b>Suitability:</b></Col><Col>{ habitat.suitability }</Col></Row>
+          <Row><Col><a href="animals.html">Animals:</a></Col><Col>{ habitat.assoc_animals.length }</Col></Row>
+          <Row><Col><a href="countries.html">Countries:</a></Col><Col>{ habitat.assoc_countries.length }</Col></Row>
         </Thumbnail>
       </Col>
     );
   };
 
   render() {
+    if(!this.state.habits.length)
+      return ( <div /> );
+    
     return (
       <div>
         <NavMain activePage="habitats" />
@@ -75,7 +77,7 @@ export default class Habitats extends React.Component {
 
           <Row className="container-fluid">
             {
-              (this.state.habitats).map(function(habitat, i){
+              (this.state.habitats).map(function(habitat){
                 return this.renderHabitats(habitat);
               }.bind(this))
             }
@@ -90,3 +92,9 @@ export default class Habitats extends React.Component {
     );
   }
 }
+
+Habitats.contextTypes = {
+      router: React.PropTypes.object.isRequired
+  };
+
+export default Habitats;
