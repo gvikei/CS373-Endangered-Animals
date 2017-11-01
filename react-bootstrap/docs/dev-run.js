@@ -5,7 +5,7 @@ import portfinder from 'portfinder';
 import { exec } from 'child-process-promise';
 import ip from 'ip';
 
-portfinder.basePort = 4000;
+portfinder.basePort = 8080;
 
 const SIGINT = 'SIGINT';
 let processMap = {};
