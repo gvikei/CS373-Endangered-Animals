@@ -1,4 +1,5 @@
+service: my-service
 runtime: nodejs
 env: flex
 manual_scaling:
-  instances: 1
+  instances: 5
