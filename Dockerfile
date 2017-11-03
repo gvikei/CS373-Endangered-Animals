@@ -8,11 +8,8 @@ COPY . /app
 # Change working directory
 WORKDIR /app/react-bootstrap
 
-# Install dependencies
-RUN npm install
-
 # Expose API port to the outside
 EXPOSE 8080
 
 # Launch application
-CMD ["npm","run","docs"]
+CMD ["npm","run", "docs-prod"]
