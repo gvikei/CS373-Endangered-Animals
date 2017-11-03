@@ -60,7 +60,7 @@ class Habitats extends React.Component {
   };
 
   render() {
-    if(!this.state.habits.length)
+    if(!this.state.habitats.length)
       return ( <div /> );
     
     return (
