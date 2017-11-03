@@ -10,7 +10,7 @@
   "scripts": {
     "bundle": "webpack --config webpack.config.js",
     "prestart": "npm run bundle",
-    "start": "npm install && npm run build && && npm start",
+    "start": "npm install && npm run build && npm run docs",
     "build": "babel-node tools/build-cli.js",
     "docs": "babel-node docs/dev-run.js",
     "docs-build": "babel-node tools/build-cli.js --docs-only",
