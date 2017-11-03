@@ -69,17 +69,17 @@ class Animals extends React.Component {
           </Row>
           
           <Row>
-            <Col><b> Threats: </b></Col>
+            <Col><a href="threats.html"> Threats: </a></Col>
             <Col>{ animal.assoc_threats.length }</Col>
           </Row>
           
           <Row>
-            <Col><b> Habitats: </b></Col>
+            <Col><a href="habitats.html"> Habitats: </a></Col>
             <Col>{ animal.assoc_habitats.length }</Col>
           </Row>
           
           <Row>
-            <Col><b> Countries: </b></Col>
+            <Col><a href="countries.html"> Countries: </a></Col>
             <Col>{ animal.assoc_countries.length }</Col>
           </Row>
 
