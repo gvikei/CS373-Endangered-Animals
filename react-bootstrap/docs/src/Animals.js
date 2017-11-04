@@ -11,9 +11,47 @@ import Collapse from '../../src/Collapse';
 import Well from '../../src/Well';
 import Image from '../../src/Image';
 import Panel from '../../src/Panel';
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import _ from "lodash";
 
 var axios = require('axios');
 var animals;
+
+const requestData = (pageSize, page, sorted, filtered) => {
+  return new Promise((resolve, reject) => {
+
+    var filteredData;
+
+    axios.create({
+      baseURL: 'https://swe-endangered-animals.appspot.com/',
+      headers: {"Access-Control-Allow-Origin": "*"}
+    }).get('/all_animal_data')
+      .then(function(data) {
+        filteredData = data.data;
+
+        const sortedData = _.orderBy(
+          filteredData,
+          sorted.map(sort => {
+            return row => {
+              if (row[sort.id] === null || row[sort.id] == undefined) {
+                return -Infinity;
+              }
+              return typeof row[sort.id] === "string" ?
+                row[sort.id].toLowerCase() : row[sort.id];
+            }
+          }),
+          sorted.map(d => (d.desc ? "desc" : "asc"))
+        );
+
+        const res = {
+          rows: sortedData.slice(pageSize * page, pageSize * page + pageSize),
+          pages: Math.ceil(filteredData.length / pageSize)
+        }
+
+        return res;
+      });
+  });
+};
 
 class Animals extends React.Component {
 
@@ -21,8 +59,24 @@ class Animals extends React.Component {
     super(props);
     this.state = {
         open: true,
-        animals: []
+        animals: [],
+        pages: null,
+        loading: true
     };
+
+    // requestData(
+    //   state.pageSize,
+    //   state.page,
+    //   state.sorted,
+    //   state.filtered
+    // ).then(res => {
+    //   // Now just get the rows of data to your React Table (and update anything else like total pages or loading)
+    //   this.setState({
+    //     animals: res.rows,
+    //     pages: res.pages,
+    //     loading: false
+    //   });
+    // });
 
     var that = this;
     axios.create({
@@ -31,7 +85,7 @@ class Animals extends React.Component {
     }).get('/all_animal_data')
       .then(function(data) {
         that.setState({
-          animals: data.data.slice(0,10)
+          animals: data.data
         });
     });
   };
@@ -102,18 +156,11 @@ class Animals extends React.Component {
           title="Animals"
           subTitle=""/>
 
-          <div className="container-fluid">
-
-              { /* Animals */ }
-              <Row>
-                {
-                  this.state.animals.map(function(animal) {
-                    return this.renderAnimal(animal);
-                  }.bind(this))
-                }
-              </Row>
-
-          </div>
+         <BootstrapTable data={this.state.animals} striped={true} hover={true}>
+            <TableHeaderColumn dataField="name" isKey={true} dataAlign="center" dataSort={true}>Product ID</TableHeaderColumn>
+            <TableHeaderColumn dataField="scientificName" dataSort={true}>Product Name</TableHeaderColumn>
+            <TableHeaderColumn dataField="vulnerability">Product Price</TableHeaderColumn>
+        </BootstrapTable>,
 
         <PageFooter />
       </div>
