@@ -39,13 +39,15 @@ class Country extends React.Component {
 
   changeURL(type, data) {
     if(typeof data !== "undefined")
-      global.instance = "Delicate Judy";
+      global.instance = data;
     this.context.router.push('/'+type+".html/");
   };
 
   renderCountry() {
+    var country = this.state.country;
+
     return (
-      <Thumbnail src={ this.state.country.flag } width="100%" height="33%">
+      <Thumbnail src={ country.flag } width="100%" height="33%">
 
         <br/><br/>
 
@@ -56,7 +58,7 @@ class Country extends React.Component {
           <Col sm={2}>
             <ul>
               {
-                this.state.country.assoc_animals.map(function(animal, i){
+                country.assoc_animals.map(function(animal, i){
                   return (
                     <a key={"ah"+i} onClick={() => { this.changeURL('animal', animal) }} >
                       <li key={"h"+i}>{ animal }</li>
@@ -74,7 +76,7 @@ class Country extends React.Component {
           <Col sm={2}>
             <ul>
               {
-                this.state.country.assoc_habitats.map(function(habitat, i){
+                country.assoc_habitats.map(function(habitat, i){
                   return (
                     <a key={"ah"+i} onClick={() => { this.changeURL('habitat', habitat) }} >
                       <li key={"h"+i}>{ habitat }</li>
@@ -88,7 +90,7 @@ class Country extends React.Component {
 
         <br/><br/>
         
-        <iframe id="gmap_canvas" width="100%" src={ "https://maps.google.com/maps?q=" + this.state.country.name + "&t=k&z=6&ie=UTF8&iwloc=&output=embed" } frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0">
+        <iframe id="gmap_canvas" width="100%" src={ "https://maps.google.com/maps?q=" + country.name + "&t=k&z=6&ie=UTF8&iwloc=&output=embed" } frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0">
         </iframe>
       </Thumbnail>
     );
@@ -105,18 +107,9 @@ class Country extends React.Component {
         <PageHeader
           title={ this.state.country.name } />
 
-          <div className="container bs-docs-container bs-docs-single-col-container">
-            <div className="bs-docs-section">
-          
-              { /* Countries */ }
               <Row>
-                { 
-                  this.renderCountry()
-                }
+                { this.renderCountry() }
               </Row>
-
-            </div>
-          </div>
 
         <PageFooter />
       </div>

@@ -10,14 +10,14 @@ import Thumbnail from '../../src/Thumbnail';
 
 var axios = require('axios');
 
-export default class Page extends React.Component {
+class Habitat extends React.Component {
 
   constructor(props) {
     super(props);
 
-    this.renderCountry = this.renderCountry.bind(this);
+    this.renderHabitat = this.renderHabitat.bind(this);
     this.state = {
-      animal: {}
+      habitat: {}
     };
 
     var that = this;
@@ -26,9 +26,8 @@ export default class Page extends React.Component {
       headers: {"Access-Control-Allow-Origin": "*"}
     }).get('/single_habitat_data/?habitat_name='+global.instance)
       .then(function(data) {
-        console.log(data);
         that.setState({
-          animal: data.data
+          habitat: data.data
         });
     });
   };
@@ -37,46 +36,91 @@ export default class Page extends React.Component {
     return true;
   };
 
-  renderCountry() {
-    return (
-      <Thumbnail src={ this.state.animal.image } width="100%" height="33%">
-        <p>Suitability: {this.state.animal.suitability}</p>
-        <p><b>Countries: </b></p>
-            <p className="pre-scrollable" max-height="150">
-              {Object.keys(this.state.animal.assoc_countries).map(
-                (x, i) =>
-                  <a onClick={() => {global.country = this.state.animal.assoc_countries[x];
-                  this.props.history.pushState(null,'/country.html/') }}> {this.state.animal.assoc_countries[x]}  </a>
-              )}
-            </p>
 
-      </Thumbnail>
+  changeURL(type, data) {
+    if(typeof data !== "undefined")
+      global.instance = data;
+    this.context.router.push('/'+type+".html/");
+  };
+
+  renderHabitat() {
+    var habitat = this.state.habitat;
+
+    return (
+      <Col key={ habitat.name } sm={ 3 }>
+        <Thumbnail src={ habitat.image } width="100%" height="33%">
+          <Row>
+            <Col sm={2}>
+              <b>Suitability:</b>
+            </Col>
+            <Col sm={2}>
+              { habitat.suitability }
+            </Col>
+          </Row>
+          <Row>
+            <Col sm={2}>
+              <a href="animals.html">Animals:</a>
+            </Col>
+            <Col sm={2}>
+              <ul>
+              {
+                habitat.assoc_animals.map(function(animal, i){
+                  return (
+                    <a key={"ah"+i} onClick={() => { this.changeURL('animal', animal) }} >
+                      <li key={"h"+i}>{ animal }</li>
+                    </a>
+                  )
+                }.bind(this))
+              }
+              </ul>
+            </Col>
+          </Row>
+          <Row>
+            <Col sm={2}>
+              <a href="countries.html">Countries:</a>
+            </Col>
+            <Col sm={2}>
+              <ul>
+              {
+                habitat.assoc_countries.map(function(country, i){
+                  return (
+                    <a key={"ac"+i} onClick={() => { this.changeURL('country', country) }} >
+                      <li key={"c"+i}>{ country }</li>
+                    </a>
+                  )
+                }.bind(this))
+              }
+              </ul>
+            </Col>
+          </Row>
+        </Thumbnail>
+      </Col>
     );
   };
 
   render() {
+    if(typeof this.state.habitat.name == "undefined")
+      return ( <div /> );
+
     return (
       <div>
-        <NavMain activePage="animals" />
+        <NavMain activePage="habitats" />
 
         <PageHeader
-          title={ global.habitat } />
+          title={ this.state.habitat.name } />
 
-          <div className="container bs-docs-container bs-docs-single-col-container">
-            <div className="bs-docs-section">
-          
-              { /* Countries */ }
-              <Row>
-                { 
-                  this.renderCountry()
-                }
-              </Row>
-
-            </div>
-          </div>
+            <Row>
+              { this.renderHabitat() }
+            </Row>
 
         <PageFooter />
       </div>
     );
   };
 }
+
+Habitat.contextTypes = {
+    router: React.PropTypes.object.isRequired
+};
+
+export default Habitat;

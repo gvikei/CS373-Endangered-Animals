@@ -49,7 +49,7 @@ const Root = React.createClass({
     };
 
     let head = {
-      __html: `<title>React-Bootstrap</title>
+      __html: `<title>Planet Animal - Endangered Animals</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="${Root.assetBaseUrl}/assets/bundle.css" rel="stylesheet">

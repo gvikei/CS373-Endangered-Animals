@@ -50,16 +50,18 @@ class Animal extends React.Component {
   };
 
   renderAnimal() {
+    var animal = this.state.animal;
+
     return (
-      <Thumbnail src={ this.state.animal.imageLink }>
-          <p><b>Scientific name: &nbsp; </b>{ this.state.animal.scientificName }</p>
-          <p><b>Vulnerability status: &nbsp; </b>{ this.state.animal.vulnerability }</p>
-          <p><iframe display="block" height="500px" width="100%" src={ this.formatYoutubeURL(this.state.animal.videoLink) }/></p>
+      <Thumbnail src={ animal.imageLink }>
+          <p><b>Scientific name: &nbsp; </b>{ animal.scientificName }</p>
+          <p><b>Vulnerability status: &nbsp; </b>{ animal.vulnerability }</p>
+          <p><iframe display="block" height="500px" width="100%" src={ this.formatYoutubeURL(animal.videoLink) }/></p>
 
           <p><b>Threats: &nbsp; </b></p>
             <ul>
               {
-                this.state.animal.assoc_threats.map(function(threat, i){
+                animal.assoc_threats.map(function(threat, i){
                   return (
                     <a key={"at"+i} onClick={() => { this.changeURL('threat', threat) }} >
                       <li key={"t"+i}>{ threat }</li>
@@ -73,7 +75,7 @@ class Animal extends React.Component {
           <p><b>Habitats:</b></p>
             <ul>
               {
-                this.state.animal.assoc_habitats.map(function(habitat, i){
+                animal.assoc_habitats.map(function(habitat, i){
                   return (
                     <a key={"ah"+i} onClick={() => { this.changeURL('habitat', habitat) }} >
                       <li key={"h"+i}>{ habitat }</li>
@@ -86,7 +88,7 @@ class Animal extends React.Component {
           <p><b>Countries:</b></p>
             <ul>
               {
-                this.state.animal.assoc_countries.map(function(country, i){
+                animal.assoc_countries.map(function(country, i){
                   return (
                     <a key={"ac"+i} onClick={() => { this.changeURL('country', country) }} >
                       <li key={"c"+i}>{ country }</li>
@@ -111,17 +113,9 @@ class Animal extends React.Component {
         <PageHeader
           title={ this.state.animal.name } />
 
-          <div className="container bs-docs-container bs-docs-single-col-container">
-            <div className="bs-docs-section">
-          
               <Row>
-                { 
-                  this.renderAnimal()
-                }
+                { this.renderAnimal() }
               </Row>
-
-            </div>
-          </div>
 
         <PageFooter />
       </div>
