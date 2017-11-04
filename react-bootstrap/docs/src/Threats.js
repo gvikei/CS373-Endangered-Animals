@@ -14,7 +14,7 @@ import Well from '../../src/Well';
 
 var axios = require('axios');
 
-export default class Threats extends React.Component {
+class Threats extends React.Component {
 
   constructor(props) {
     super(props);
@@ -36,6 +36,13 @@ export default class Threats extends React.Component {
       });
   }
 
+
+  changeURL(type, data) {
+      if(typeof data !== "undefined")
+        global.instance = data;
+      this.context.router.push('/'+type+".html/");
+  };
+
   shouldComponentUpdate() {
     return true;
   }
@@ -44,7 +51,7 @@ export default class Threats extends React.Component {
     return (
 
       <Col sm={3} className="bs-docs-body">
-        <h4><a onClick={ () => { global.threat = threat.name; this.props.history.pushState(null, '/threat.html/') } } >{ threat.name }</a></h4>
+        <h4><a onClick={ () => { this.changeURL("threat", threat.name) } } >{ threat.name }</a></h4>
         <p><img src={threat.image }/></p>
         <p>Score: {threat.score }</p>
         <p>Timing: { threat.timing }</p>
@@ -63,8 +70,6 @@ export default class Threats extends React.Component {
 
           <div className="container-fluid">
 
-          { /* Threats */ }
-
           <Row className="container-fluid">
             {
 
@@ -73,8 +78,6 @@ export default class Threats extends React.Component {
               }.bind(this))
 
             }
-
-
           </Row>
 
 
@@ -85,3 +88,9 @@ export default class Threats extends React.Component {
     );
   }
 }
+
+Threats.contextTypes = {
+      router: React.PropTypes.object.isRequired
+  };
+
+export default Threats;
