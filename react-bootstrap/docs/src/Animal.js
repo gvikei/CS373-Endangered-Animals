@@ -49,19 +49,18 @@ class Animal extends React.Component {
     return "https://www.youtube.com/embed/" + videoID;
   };
 
-  renderAnimal() {
-    var animal = this.state.animal;
-
+  renderAnimal(instance) {
+    console.log(instance)
     return (
-      <Thumbnail src={ animal.imageLink }>
-          <p><b>Scientific name: &nbsp; </b>{ animal.scientificName }</p>
-          <p><b>Vulnerability status: &nbsp; </b>{ animal.vulnerability }</p>
-          <p><iframe display="block" height="500px" width="100%" src={ this.formatYoutubeURL(animal.videoLink) }/></p>
+      <Thumbnail src={ instance.imageLink }>
+          <p><b>Scientific name: &nbsp; </b>{ instance.scientificName }</p>
+          <p><b>Vulnerability status: &nbsp; </b>{ instance.vulnerability }</p>
+          <p><iframe display="block" height="500px" width="100%" src={ this.formatYoutubeURL(instance.videoLink) }/></p>
 
           <p><b>Threats: &nbsp; </b></p>
             <ul>
               {
-                animal.assoc_threats.map(function(threat, i){
+                instance.assoc_threats.map(function(threat, i){
                   return (
                     <a key={"at"+i} onClick={() => { this.changeURL('threat', threat) }} >
                       <li key={"t"+i}>{ threat }</li>
@@ -75,7 +74,7 @@ class Animal extends React.Component {
           <p><b>Habitats:</b></p>
             <ul>
               {
-                animal.assoc_habitats.map(function(habitat, i){
+                instance.assoc_habitats.map(function(habitat, i){
                   return (
                     <a key={"ah"+i} onClick={() => { this.changeURL('habitat', habitat) }} >
                       <li key={"h"+i}>{ habitat }</li>
@@ -88,7 +87,7 @@ class Animal extends React.Component {
           <p><b>Countries:</b></p>
             <ul>
               {
-                animal.assoc_countries.map(function(country, i){
+                instance.assoc_countries.map(function(country, i){
                   return (
                     <a key={"ac"+i} onClick={() => { this.changeURL('country', country) }} >
                       <li key={"c"+i}>{ country }</li>
@@ -104,7 +103,7 @@ class Animal extends React.Component {
 
   render() {
     if(typeof this.state.animal.name == "undefined")
-      return ( <div /> )
+      return ( <div /> );
 
     return (
       <div>
@@ -114,7 +113,6 @@ class Animal extends React.Component {
           title={ this.state.animal.name } />
 
               <Row>
-                { this.renderAnimal() }
               </Row>
 
         <PageFooter />

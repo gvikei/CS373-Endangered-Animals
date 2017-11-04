@@ -43,18 +43,16 @@ class Habitat extends React.Component {
     this.context.router.push('/'+type+".html/");
   };
 
-  renderHabitat() {
-    var habitat = this.state.habitat;
-
+  renderHabitat(instance) {
     return (
-      <Col key={ habitat.name } sm={ 3 }>
-        <Thumbnail src={ habitat.image } width="100%" height="33%">
+      <Col key={ instance.name } sm={ 3 }>
+        <Thumbnail src={ instance.image } width="100%" height="33%">
           <Row>
             <Col sm={2}>
               <b>Suitability:</b>
             </Col>
             <Col sm={2}>
-              { habitat.suitability }
+              { instance.suitability }
             </Col>
           </Row>
           <Row>
@@ -64,7 +62,7 @@ class Habitat extends React.Component {
             <Col sm={2}>
               <ul>
               {
-                habitat.assoc_animals.map(function(animal, i){
+                instance.assoc_animals.map(function(animal, i){
                   return (
                     <a key={"ah"+i} onClick={() => { this.changeURL('animal', animal) }} >
                       <li key={"h"+i}>{ animal }</li>
@@ -82,7 +80,7 @@ class Habitat extends React.Component {
             <Col sm={2}>
               <ul>
               {
-                habitat.assoc_countries.map(function(country, i){
+                instance.assoc_countries.map(function(country, i){
                   return (
                     <a key={"ac"+i} onClick={() => { this.changeURL('country', country) }} >
                       <li key={"c"+i}>{ country }</li>
@@ -110,7 +108,7 @@ class Habitat extends React.Component {
           title={ this.state.habitat.name } />
 
             <Row>
-              { this.renderHabitat() }
+              { this.renderHabitat(this.state.habitat) }
             </Row>
 
         <PageFooter />

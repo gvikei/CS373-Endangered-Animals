@@ -43,11 +43,9 @@ class Country extends React.Component {
     this.context.router.push('/'+type+".html/");
   };
 
-  renderCountry() {
-    var country = this.state.country;
-
+  renderCountry(instance) {
     return (
-      <Thumbnail src={ country.flag } width="100%" height="33%">
+      <Thumbnail src={ instance.flag } width="100%" height="33%">
 
         <br/><br/>
 
@@ -58,7 +56,7 @@ class Country extends React.Component {
           <Col sm={2}>
             <ul>
               {
-                country.assoc_animals.map(function(animal, i){
+                instance.assoc_animals.map(function(animal, i){
                   return (
                     <a key={"ah"+i} onClick={() => { this.changeURL('animal', animal) }} >
                       <li key={"h"+i}>{ animal }</li>
@@ -76,7 +74,7 @@ class Country extends React.Component {
           <Col sm={2}>
             <ul>
               {
-                country.assoc_habitats.map(function(habitat, i){
+                instance.assoc_habitats.map(function(habitat, i){
                   return (
                     <a key={"ah"+i} onClick={() => { this.changeURL('habitat', habitat) }} >
                       <li key={"h"+i}>{ habitat }</li>
@@ -90,7 +88,7 @@ class Country extends React.Component {
 
         <br/><br/>
         
-        <iframe id="gmap_canvas" width="100%" src={ "https://maps.google.com/maps?q=" + country.name + "&t=k&z=6&ie=UTF8&iwloc=&output=embed" } frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0">
+        <iframe id="gmap_canvas" width="100%" src={ "https://maps.google.com/maps?q=" + instance.name + "&t=k&z=6&ie=UTF8&iwloc=&output=embed" } frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0">
         </iframe>
       </Thumbnail>
     );
@@ -108,7 +106,7 @@ class Country extends React.Component {
           title={ this.state.country.name } />
 
               <Row>
-                { this.renderCountry() }
+                { this.renderCountry(this.state.country) }
               </Row>
 
         <PageFooter />

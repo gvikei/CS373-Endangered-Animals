@@ -1,95 +1,135 @@
-  import React from 'react';
+import React from 'react';
 
-  import NavMain from './NavMain';
-  import PageHeader from './PageHeader';
-  import PageFooter from './PageFooter';
-  import Row from '../../src/Row';
-  import Col from '../../src/Col';
-  import Thumbnail from '../../src/Thumbnail';
+import NavMain from './NavMain';
+import PageHeader from './PageHeader';
+import PageFooter from './PageFooter';
+import Row from '../../src/Row';
+import Col from '../../src/Col';
+import Thumbnail from '../../src/Thumbnail';
 
 
-  var axios = require('axios');
+var axios = require('axios');
 
-  export default class Page extends React.Component {
+class Threat extends React.Component {
 
-    constructor(props) {
-      super(props);
+  constructor(props) {
+    super(props);
 
-      this.renderCountry = this.renderCountry.bind(this);
-      this.state = {
-        animal: {}
-      };
-
-      console.log(global.animal);
-      var that = this;
-      axios.create({
-        baseURL: 'https://swe-endangered-animals.appspot.com/',
-        headers: {"Access-Control-Allow-Origin": "*"}
-      }).get('/single_animal_data/?animal_name='+global.animal)
-        .then(function(data) {
-          console.log(data);
-          that.setState({
-            animal: data.data
-          });
-      });
+    this.renderThreat = this.renderThreat.bind(this);
+    this.state = {
+      threat: {}
     };
 
-    shouldComponentUpdate() {
-      return true;
-    };
+    var that = this;
+    axios.create({
+      baseURL: 'https://swe-endangered-animals.appspot.com/',
+      headers: {"Access-Control-Allow-Origin": "*"}
+    }).get('/single_threat_data/?threat_name='+global.instance)
+      .then(function(data) {
+        console.log(data);
+        that.setState({
+          threat: data.data
+        });
+    });
+  };
 
-    renderCountry() {
-      console.log(global.animal);
-      console.log(this.state.animal);
-      return (
-        <Thumbnail src={this.state.animal.imageLink}>
-            <h3>{this.state.animal.common_name}</h3>
-            <p><b>Scientific name: &nbsp; </b>{this.state.animal.scientific_name}</p>
-            <p><b>Vulnerability status: &nbsp; </b>{this.state.animal.vulnerability_status}</p>
-            <p><b>Threats: &nbsp; </b></p>
-              <p className="pre-scrollable" max-height="150">{this.state.animal.assoc_threats}</p>
+  shouldComponentUpdate() {
+    return true;
+  };
 
-            <p><b>Countries: </b></p>
-              <p className="pre-scrollable" max-height="150">
-                {Object.keys(this.state.animal.assoc_countries).map(
-                 (x, i) => (
-                    animals[keyName].countries[x] + ", "
-                 )
-              )}
-              </p>
 
-            <p><b>Habitats:</b></p>
-              <p className="pre-scrollable" max-height="150">
-                {animals.assoc_habitats}
-              </p>
+  changeURL(type, data) {
+      if(typeof data !== "undefined")
+        global.instance = data;
+      this.context.router.push('/'+type+".html/");
+  };
 
-          </Thumbnail>
-      );
-    };
+  renderThreat(instance) {
+    return (
+      <Thumbnail src={instance.image}>
+        <Row>
+          <Col>
+            Severity
+          </Col>
+          <Col>
+            { instance.severity }
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            Timing
+          </Col>
+          <Col>
+            { instance.timing }
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            Animals
+          </Col>
+          <Col>
+            <ul>
+              {
+                instance.assoc_animals.map(function(animal, i){
+                    return (
+                      <a key={"ah"+i} onClick={() => { this.changeURL('animal', animal) }} >
+                        <li key={"h"+i}>{ animal }</li>
+                      </a>
+                    )
+                }.bind(this))
+              }
+            </ul>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            Habitats
+          </Col>
+          <Col>
+            <ul>
+              {
+                instance.assoc_habitats.map(function(habitat, i){
+                    return (
+                      <a key={"ah"+i} onClick={() => { this.changeURL('habitat', habitat) }} >
+                        <li key={"h"+i}>{ habitat }</li>
+                      </a>
+                    )
+                }.bind(this))
+              }
+            </ul>
+          </Col>
+        </Row>
+      </Thumbnail>
+    );
+  };
 
-    render() {
-      return (
-        <div>
-          <NavMain activePage="animals" />
+  render() {
+    if(typeof this.state.threat.name == "undefined")
+      return ( <div /> );
 
-          <PageHeader
-            title={ this.state.animal.common_name } />
+    return (
+      <div>
+        <NavMain activePage="threats" />
 
-            <div className="container bs-docs-container bs-docs-single-col-container">
-              <div className="bs-docs-section">
-            
-                { /* Countries */ }
-                <Row>
-                  { 
-                    this.renderCountry()
-                  }
-                </Row>
+        <PageHeader
+          title={ this.state.threat.name } />
 
-              </div>
+          <div className="container bs-docs-container bs-docs-single-col-container">
+            <div className="bs-docs-section">
+              <Row>
+                { this.renderThreat(this.state.threat) }
+              </Row>
             </div>
+          </div>
 
-          <PageFooter />
-        </div>
-      );
-    };
-  }
+        <PageFooter />
+      </div>
+    );
+  };
+}
+
+Threat.contextTypes = {
+    router: React.PropTypes.object.isRequired
+};
+
+export default Threat;
