@@ -157,17 +157,17 @@ class Animals extends React.Component {
           subTitle=""/>
 
          <BootstrapTable data={this.state.animals} striped={true} hover={true}>
-            <TableHeaderColumn dataField="name" isKey={true} dataAlign="center" dataSort={true}>Name</TableHeaderColumn>
+           <TableHeaderColumn dataField="imageLink" dataAlign="center" dataSort={true}>Image</TableHeaderColumn>
+            <TableHeaderColumn dataField="name" dataAlign="center" dataSort={true}>Name</TableHeaderColumn>
             <TableHeaderColumn dataField="scientificName" isKey={true} dataAlign="center" dataSort={true}>Scientific Name</TableHeaderColumn>
-            <TableHeaderColumn dataField="vulnerability" isKey={true} dataAlign="center" dataSort={true}>Vulnerability</TableHeaderColumn>
-            <TableHeaderColumn dataField="citationLink" isKey={true} dataAlign="center" dataSort={true}>Citation Link</TableHeaderColumn> 
-            <TableHeaderColumn dataField="conservationMeasure" isKey={true} dataAlign="center" dataSort={true}>Conservation Measure</TableHeaderColumn>
-            <TableHeaderColumn dataField="videoLink" isKey={true} dataAlign="center" dataSort={true}>Video</TableHeaderColumn>
-            <TableHeaderColumn dataField="imageLink" isKey={true} dataAlign="center" dataSort={true}>Image</TableHeaderColumn>
-            <TableHeaderColumn dataField="webLink" isKey={true} dataAlign="center" dataSort={true}>Web Link</TableHeaderColumn>
-            <TableHeaderColumn dataField="assoc_habitats" isKey={true} dataAlign="center" dataSort={true}>Associated Habitats</TableHeaderColumn> 
-            <TableHeaderColumn dataField="assoc_threats" isKey={true} dataAlign="center" dataSort={true}>Associated Threats</TableHeaderColumn> 
-            <TableHeaderColumn dataField="assoc_countries" isKey={true} dataAlign="center" dataSort={true}>Associated Countries</TableHeaderColumn> 
+            <TableHeaderColumn dataField="vulnerability" dataAlign="center" dataSort={true}>Vulnerability</TableHeaderColumn>
+            <TableHeaderColumn dataField="videoLink"  dataAlign="center" dataSort={true}>Video</TableHeaderColumn>
+            <TableHeaderColumn dataField="citationLink" dataAlign="center" dataSort={true}>Citation Link</TableHeaderColumn>
+            <TableHeaderColumn dataField="conservationMeasure"  dataAlign="center" dataSort={true}>Conservation Measure</TableHeaderColumn>
+            <TableHeaderColumn dataField="webLink" dataAlign="center" dataSort={true}>Web Link</TableHeaderColumn>
+            <TableHeaderColumn dataField="assoc_habitats" dataAlign="center" dataSort={true}>Associated Habitats</TableHeaderColumn>
+            <TableHeaderColumn dataField="assoc_threats" dataAlign="center" dataSort={true}>Associated Threats</TableHeaderColumn>
+            <TableHeaderColumn dataField="assoc_countries" dataAlign="center" dataSort={true}>Associated Countries</TableHeaderColumn>
         </BootstrapTable>,
 
         <PageFooter />
