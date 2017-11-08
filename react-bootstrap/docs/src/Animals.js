@@ -63,6 +63,10 @@ class Animals extends React.Component {
         pages: null,
         loading: true
     };
+    this.instanceFormatter = this.instanceFormatter.bind(this);
+    this.countryFormatter = this.countryFormatter.bind(this);
+    this.habitatFormatter = this.habitatFormatter.bind(this);
+    this.threatFormatter = this.threatFormatter.bind(this);
 
     var that = this;
     axios.create({
@@ -87,21 +91,71 @@ class Animals extends React.Component {
     this.context.router.push('/'+type+".html/");
   };
 
-  instanceFormatter(data){
-    return <a onClick={ () => { that.changeURL("animal", data) } } >{ data }</a>;
+  countryFormatter(list){
+    var type = "country";
+
+    var links = list.map(function(x, i){
+      return ( <li key={type+x+i}> { this.instanceFormatter(x, null, type) } </li> );
+    }.bind(this));
+
+    return (
+      <div>
+        <ul>
+          { links }
+        </ul>
+      </div>
+    );
+  };
+
+  habitatFormatter(list){
+    var type = "habitat";
+    
+    var links = list.map(function(x, i){
+      return ( <li key={type+x+i}> { this.instanceFormatter(x, null, type) } </li> );
+    }.bind(this));
+
+    return (
+      <div>
+        <ul>
+          { links }
+        </ul>
+      </div>
+    );
   };
 
   imageFormatter(data){
     return <img src={ data } height="250px" width="250px" />;
   };
 
+  instanceFormatter(data, row, type){
+    if(typeof type == "undefined")
+      type = "animal";
+    return <a onClick={ () => { this.changeURL(type, data) } } >{ data }</a>;
+  };
+
   linkFormatter(data){
     return <a href={ data } target="_blank">{ data }</a>
   };
 
-  countriesFormatter(data){
-    return;
-  }
+  listFormatter(list){
+    return list.length;
+  };
+
+  threatFormatter(list){
+    var type = "threat";
+    
+    var links = list.map(function(x, i){
+      return ( <li key={type+x+i}> { this.instanceFormatter(x, null, type) } </li> );
+    }.bind(this));
+
+    return (
+      <div>
+        <ul>
+          { links }
+        </ul>
+      </div>
+    );
+  };
 
   render() {
     if(!this.state.animals.length)
@@ -124,9 +178,9 @@ class Animals extends React.Component {
             <TableHeaderColumn dataField="citationLink"         dataAlign="center" dataSort={true}                                      > Citation             </TableHeaderColumn>
             <TableHeaderColumn dataField="conservationMeasure"  dataAlign="center" dataSort={true}                                      > Conservation Measure </TableHeaderColumn>
             <TableHeaderColumn dataField="webLink"              dataAlign="center" dataSort={true}  dataFormat={this.linkFormatter}     > Source               </TableHeaderColumn>
-            <TableHeaderColumn dataField="assoc_habitats"       dataAlign="center" dataSort={true}                                      > Associated Habitats  </TableHeaderColumn>
-            <TableHeaderColumn dataField="assoc_threats"        dataAlign="center" dataSort={true}                                      > Associated Threats   </TableHeaderColumn>
-            <TableHeaderColumn dataField="assoc_countries"      dataAlign="center" dataSort={true}                                      > Associated Countries </TableHeaderColumn>
+            <TableHeaderColumn dataField="assoc_threats"        dataAlign="center" dataSort={true}  dataFormat={this.threatFormatter}   > Associated Threats   </TableHeaderColumn>
+            <TableHeaderColumn dataField="assoc_habitats"       dataAlign="center" dataSort={true}  dataFormat={this.habitatFormatter}  > Associated Habitats  </TableHeaderColumn>
+            <TableHeaderColumn dataField="assoc_countries"      dataAlign="center" dataSort={true}  dataFormat={this.countryFormatter}  > Associated Countries </TableHeaderColumn>
           </BootstrapTable>
 
         <PageFooter />
