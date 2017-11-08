@@ -3,55 +3,9 @@ import React from 'react';
 import NavMain from './NavMain';
 import PageHeader from './PageHeader';
 import PageFooter from './PageFooter';
-import Row from '../../src/Row';
-import Col from '../../src/Col';
-import Thumbnail from '../../src/Thumbnail';
-import Button from '../../src/Button';
-import Collapse from '../../src/Collapse';
-import Well from '../../src/Well';
-import Image from '../../src/Image';
-import Panel from '../../src/Panel';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
-import _ from "lodash";
 
 var axios = require('axios');
-var animals;
-
-const requestData = (pageSize, page, sorted, filtered) => {
-  return new Promise((resolve, reject) => {
-
-    var filteredData;
-
-    axios.create({
-      baseURL: 'https://swe-endangered-animals.appspot.com/',
-      headers: {"Access-Control-Allow-Origin": "*"}
-    }).get('/all_animal_data')
-      .then(function(data) {
-        filteredData = data.data;
-
-        const sortedData = _.orderBy(
-          filteredData,
-          sorted.map(sort => {
-            return row => {
-              if (row[sort.id] === null || row[sort.id] == undefined) {
-                return -Infinity;
-              }
-              return typeof row[sort.id] === "string" ?
-                row[sort.id].toLowerCase() : row[sort.id];
-            }
-          }),
-          sorted.map(d => (d.desc ? "desc" : "asc"))
-        );
-
-        const res = {
-          rows: sortedData.slice(pageSize * page, pageSize * page + pageSize),
-          pages: Math.ceil(filteredData.length / pageSize)
-        }
-
-        return res;
-      });
-  });
-};
 
 class Animals extends React.Component {
 
@@ -135,10 +89,6 @@ class Animals extends React.Component {
 
   linkFormatter(data){
     return <a href={ data } target="_blank">{ data }</a>
-  };
-
-  listFormatter(list){
-    return list.length;
   };
 
   threatFormatter(list){
