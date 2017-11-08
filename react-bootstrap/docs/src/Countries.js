@@ -3,10 +3,7 @@ import React from 'react';
 import NavMain from './NavMain';
 import PageHeader from './PageHeader';
 import PageFooter from './PageFooter';
-import Row from '../../src/Row';
-import Col from '../../src/Col';
-import Thumbnail from '../../src/Thumbnail';
-
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 
 var axios = require('axios');
 
@@ -14,10 +11,16 @@ class Countries extends React.Component {
 
   constructor(props) {
     super(props);
-    this.renderCountry = this.renderCountry.bind(this);
     this.state = {
-      countries: []
+        open: true,
+        countries: [],
+        pages: null,
+        loading: true
     };
+    this.instanceFormatter = this.instanceFormatter.bind(this);
+    this.animalFormatter = this.animalFormatter.bind(this);
+    this.habitatFormatter = this.habitatFormatter.bind(this);
+    this.threatFormatter = this.threatFormatter.bind(this);
 
     var that = this;
     axios.create({
@@ -26,7 +29,7 @@ class Countries extends React.Component {
     }).get('/all_country_data')
       .then(function(data) {
         that.setState({
-          countries: data.data.slice(0,10)
+          countries: data.data
         });
     });
   };
@@ -36,62 +39,105 @@ class Countries extends React.Component {
   };
 
 
-  changeURL(type, data) {
+  changeURL(type, data){
     if(typeof data !== "undefined")
       global.instance = data;
     this.context.router.push('/'+type+".html/");
   };
 
-  renderCountry(country) {
-    var animals = (country.assoc_animals ? country.assoc_animals.length : 0);
-    var habitats = (country.assoc_habitats ? country.assoc_habitats.length : 0);
-    return (
-      <Col key={country.name} sm={4}>
-        <Thumbnail src={ country.flag } width="100%" height="33%">
-          <h3><a onClick={ () => { this.changeURL("country", country.name) } } >{ country.name }</a></h3>
+  animalFormatter(list){
+    var type = "animal";
 
-          <Row>
-            <a href="animals.html">Animals</a>: { animals }
-          </Row>
-          <Row>
-            <a href="habitats.html">Habitats</a>: { habitats }
-          </Row>
-          
-          <iframe id="gmap_canvas" width="100%" src={ "https://maps.google.com/maps?q=" + country.name + "&t=k&z=6&ie=UTF8&iwloc=&output=embed" } frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0">
-          </iframe>
-        </Thumbnail>
-      </Col>
+    var links = list.map(function(x, i){
+      return ( <li key={type+x+i}> { this.instanceFormatter(x, null, type) } </li> );
+    }.bind(this));
+
+    return (
+      <div>
+        <ul>
+          { links }
+        </ul>
+      </div>
+    );
+  };
+
+  habitatFormatter(list){
+    var type = "habitat";
+    
+    var links = list.map(function(x, i){
+      return ( <li key={type+x+i}> { this.instanceFormatter(x, null, type) } </li> );
+    }.bind(this));
+
+    return (
+      <div>
+        <ul>
+          { links }
+        </ul>
+      </div>
+    );
+  };
+
+  imageFormatter(data){
+    return <img src={ data } height="250px" width="250px" />;
+  };
+
+  instanceFormatter(data, row, type){
+    if(typeof type == "undefined")
+      type = "country";
+    return <a onClick={ () => { this.changeURL(type, data) } } >{ data }</a>;
+  };
+
+  linkFormatter(data){
+    return <a href={ data } target="_blank">{ data }</a>
+  };
+
+  mapFormatter(name){
+    return (
+      <iframe id="gmap_canvas" width="100%" src={ "https://maps.google.com/maps?q=" + name + "&t=k&z=6&ie=UTF8&iwloc=&output=embed" } frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0">
+      </iframe>
+    );
+  };
+
+  threatFormatter(list){
+    var type = "threat";
+    
+    var links = list.map(function(x, i){
+      return ( <li key={type+x+i}> { this.instanceFormatter(x, null, type) } </li> );
+    }.bind(this));
+
+    return (
+      <div>
+        <ul>
+          { links }
+        </ul>
+      </div>
     );
   };
 
   render() {
+    if(!this.state.countries.length)
+      return ( <div /> )
+
     return (
       <div>
         <NavMain activePage="countries" />
 
-        <PageHeader
+         <PageHeader
           title="Countries"
           subTitle="Click on a country to begin exploring its ecosystem."/>
 
-          <div className="container bs-docs-container bs-docs-single-col-container">
-            <div className="bs-docs-section">
-          
-              { /* Countries */ }
-              <Row>
-                { 
-                  this.state.countries.map(function(country, i){
-                    return this.renderCountry(country);
-                  }.bind(this))
-                }
-              </Row>
-
-            </div>
-          </div>
+           <BootstrapTable data={this.state.countries} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={true}>
+            <TableHeaderColumn dataField="flag"             dataAlign="center"                                dataFormat={this.imageFormatter}    > Image                </TableHeaderColumn>
+            <TableHeaderColumn dataField="name"             dataAlign="center" dataSort={true} isKey={true}   dataFormat={this.instanceFormatter} > Name                 </TableHeaderColumn>
+            <TableHeaderColumn dataField="assoc_animals"    dataAlign="center"                                dataFormat={this.animalFormatter}   > Associated Animals   </TableHeaderColumn>
+            <TableHeaderColumn dataField="assoc_habitats"   dataAlign="center"                                dataFormat={this.habitatFormatter}  > Associated Habitats  </TableHeaderColumn>
+            <TableHeaderColumn dataField="name"             dataAlign="center"                                dataFormat={this.mapFormatter}      > Map                  </TableHeaderColumn>
+          </BootstrapTable>
 
         <PageFooter />
       </div>
-    );
-  };
+  );
+  }
 }
 
 Countries.contextTypes = {
