@@ -13,9 +13,12 @@ class Animals extends React.Component {
     super(props);
     this.state = {
         open: true,
-        animals: [],
+        model: [],
         pages: null,
-        loading: true
+        loading: true,
+        type: "animal",
+        typeProper: "Animals",
+        subTitle: "Explore the diversity of our world"
     };
     this.instanceFormatter = this.instanceFormatter.bind(this);
     this.countryFormatter = this.countryFormatter.bind(this);
@@ -26,10 +29,10 @@ class Animals extends React.Component {
     axios.create({
       baseURL: 'https://swe-endangered-animals.appspot.com/',
       headers: {"Access-Control-Allow-Origin": "*"}
-    }).get('/all_animal_data')
+    }).get('/all_'+this.state.type+'_data')
       .then(function(data) {
         that.setState({
-          animals: data.data
+          model: data.data
         });
     });
   };
@@ -83,7 +86,7 @@ class Animals extends React.Component {
 
   instanceFormatter(data, row, type){
     if(typeof type == "undefined")
-      type = "animal";
+      type = this.state.type;
     return <a onClick={ () => { this.changeURL(type, data) } } >{ data }</a>;
   };
 
@@ -108,18 +111,18 @@ class Animals extends React.Component {
   };
 
   render() {
-    if(!this.state.animals.length)
+    if(!this.state.model.length)
       return ( <div /> )
 
     return (
       <div>
-        <NavMain activePage="animals" />
+        <NavMain activePage={this.state.type} />
 
          <PageHeader
-          title="Animals"
-          subTitle=""/>
+          title={this.state.typeProper}
+          subTitle={this.state.subTitle}/>
 
-           <BootstrapTable data={this.state.animals} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={true}>
+           <BootstrapTable data={this.state.model} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={true}>
             <TableHeaderColumn dataField="imageLink"            dataAlign="center"                  dataFormat={this.imageFormatter}    > Image                </TableHeaderColumn>
             <TableHeaderColumn dataField="name"                 dataAlign="center" dataSort={true}  dataFormat={this.instanceFormatter} > Name                 </TableHeaderColumn>
             <TableHeaderColumn dataField="scientificName"       dataAlign="center" dataSort={true}  isKey={true}                        > Scientific Name      </TableHeaderColumn>

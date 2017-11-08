@@ -17,7 +17,8 @@ class Animal extends React.Component {
 
     this.renderAnimal = this.renderAnimal.bind(this);
     this.state = {
-      animal: {}
+      animal: {},
+      type: "animal"
     };
 
     var that = this;
@@ -26,7 +27,6 @@ class Animal extends React.Component {
       headers: {"Access-Control-Allow-Origin": "*"}
     }).get('/single_animal_data/?animal_name='+global.instance)
       .then(function(data) {
-        console.log(data);
         that.setState({
           animal: data.data
         });
@@ -113,7 +113,7 @@ class Animal extends React.Component {
 
     return (
       <div>
-        <NavMain activePage="animals" />
+        <NavMain activePage={this.state.type} />
 
         <PageHeader
           title={ this.state.animal.name } />

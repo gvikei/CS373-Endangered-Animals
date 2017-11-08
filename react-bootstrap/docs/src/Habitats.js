@@ -13,9 +13,12 @@ class Habitats extends React.Component {
     super(props);
     this.state = {
         open: true,
-        habitats: [],
+        model: [],
         pages: null,
-        loading: true
+        loading: true,
+        type: "habitat",
+        typeProper: "Habitats",
+        subTitle: "Witness the beauty of nature"
     };
     this.instanceFormatter = this.instanceFormatter.bind(this);
     this.animalFormatter = this.animalFormatter.bind(this);
@@ -25,10 +28,10 @@ class Habitats extends React.Component {
     axios.create({
       baseURL: 'https://swe-endangered-animals.appspot.com/',
       headers: {"Access-Control-Allow-Origin": "*"}
-    }).get('/all_habitat_data')
+    }).get('/all_'+this.state.type+'_data')
       .then(function(data) {
         that.setState({
-          habitats: data.data
+          model: data.data
         });
     });
   };
@@ -82,7 +85,7 @@ class Habitats extends React.Component {
 
   instanceFormatter(data, row, type){
     if(typeof type == "undefined")
-      type = "habitat";
+      type = this.state.type;
     return <a onClick={ () => { this.changeURL(type, data) } } >{ data }</a>;
   };
 
@@ -91,18 +94,18 @@ class Habitats extends React.Component {
   };
 
   render() {
-    if(!this.state.habitats.length)
+    if(!this.state.model.length)
       return ( <div /> )
 
     return (
       <div>
-        <NavMain activePage="habitats" />
+        <NavMain activePage={this.state.type} />
 
          <PageHeader
-          title="Habitats"
-          subTitle=""/>
+          title={this.state.typeProper}
+          subTitle={this.state.subTitle}/>
 
-           <BootstrapTable data={this.state.habitats} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={true}>
+           <BootstrapTable data={this.state.model} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={true}>
             <TableHeaderColumn dataField="image"            dataAlign="center"                                dataFormat={this.imageFormatter}    > Image                 </TableHeaderColumn>
             <TableHeaderColumn dataField="name"             dataAlign="center" dataSort={true} isKey={true}   dataFormat={this.instanceFormatter} > Name                  </TableHeaderColumn>
             <TableHeaderColumn dataField="suitability"      dataAlign="center" dataSort={true}                                                    > Suitability           </TableHeaderColumn>

@@ -17,7 +17,8 @@ class Threat extends React.Component {
 
     this.renderThreat = this.renderThreat.bind(this);
     this.state = {
-      threat: {}
+      threat: {},
+      type: "threat"
     };
 
     var that = this;
@@ -26,7 +27,6 @@ class Threat extends React.Component {
       headers: {"Access-Control-Allow-Origin": "*"}
     }).get('/single_threat_data/?threat_name='+global.instance)
       .then(function(data) {
-        console.log(data);
         that.setState({
           threat: data.data
         });
@@ -109,7 +109,7 @@ class Threat extends React.Component {
 
     return (
       <div>
-        <NavMain activePage="threats" />
+        <NavMain activePage={this.state.type} />
 
         <PageHeader
           title={ this.state.threat.name } />

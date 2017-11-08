@@ -17,7 +17,8 @@ class Country extends React.Component {
 
     this.renderCountry = this.renderCountry.bind(this);
     this.state = {
-      country: {}
+      country: {},
+      type: "country"
     };
 
     var that = this;
@@ -100,7 +101,7 @@ class Country extends React.Component {
     
     return (
       <div>
-        <NavMain activePage="countries" />
+        <NavMain activePage={this.state.type} />
 
         <PageHeader
           title={ this.state.country.name } />

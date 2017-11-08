@@ -17,7 +17,8 @@ class Habitat extends React.Component {
 
     this.renderHabitat = this.renderHabitat.bind(this);
     this.state = {
-      habitat: {}
+      habitat: {},
+      type: "habitat"
     };
 
     var that = this;
@@ -102,7 +103,7 @@ class Habitat extends React.Component {
 
     return (
       <div>
-        <NavMain activePage="habitats" />
+        <NavMain activePage={this.state.type} />
 
         <PageHeader
           title={ this.state.habitat.name } />
