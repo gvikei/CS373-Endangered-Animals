@@ -44,9 +44,16 @@ class Animal extends React.Component {
     this.context.router.push('/'+type+".html/");
   };
 
-  formatYoutubeURL(url) {
+  formatVideo(url) {
+    if(!url)
+      return;
+
     var videoID = url.substring(url.indexOf("v=") + 2, url.length);
-    return "https://www.youtube.com/embed/" + videoID;
+    var videoURL = "https://www.youtube.com/embed/" + videoID;
+
+    return (
+      <iframe display="block" height="500px" width="100%" src={ videoURL }/>
+    );
   };
 
   renderAnimal() {
@@ -54,7 +61,7 @@ class Animal extends React.Component {
       <Thumbnail src={ this.state.animal.imageLink }>
           <p><b>Scientific name: &nbsp; </b>{ this.state.animal.scientificName }</p>
           <p><b>Vulnerability status: &nbsp; </b>{ this.state.animal.vulnerability }</p>
-          <p><iframe display="block" height="500px" width="100%" src={ this.formatYoutubeURL(this.state.animal.videoLink) }/></p>
+          <p>{ this.formatVideo(this.state.animal.videoLink) }</p>
 
           <p><b>Threats: &nbsp; </b></p>
             <ul>
