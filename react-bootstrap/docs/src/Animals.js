@@ -64,20 +64,6 @@ class Animals extends React.Component {
         loading: true
     };
 
-    // requestData(
-    //   state.pageSize,
-    //   state.page,
-    //   state.sorted,
-    //   state.filtered
-    // ).then(res => {
-    //   // Now just get the rows of data to your React Table (and update anything else like total pages or loading)
-    //   this.setState({
-    //     animals: res.rows,
-    //     pages: res.pages,
-    //     loading: false
-    //   });
-    // });
-
     var that = this;
     axios.create({
       baseURL: 'https://swe-endangered-animals.appspot.com/',
@@ -95,61 +81,26 @@ class Animals extends React.Component {
   };
 
 
-  changeURL(type, data) {
+  changeURL(type, data){
     if(typeof data !== "undefined")
       global.instance = data;
     this.context.router.push('/'+type+".html/");
   };
 
-  renderAnimal(animal) {
-    return (
-      <Col sm={3} className="bs-docs-body" key={ animal.name }>
-        <Thumbnail src={ animal.imageLink }>
-          <h3>
-            <a onClick={ () => { 
-              this.changeURL('animal', animal.name) } } >
-              {animal.name}
-            </a>
-          </h3>
-
-          <Row>
-            <Col><b> Scientific name: </b></Col>
-            <Col>{animal.scientificName}</Col>
-          </Row>
-
-          <Row>
-            <Col><b> Vulnerability: </b></Col>
-            <Col>{animal.vulnerability}</Col>
-          </Row>
-          
-          <Row>
-            <Col><b> Threats: </b></Col>
-            <Col>{ animal.assoc_threats.length }</Col>
-          </Row>
-          
-          <Row>
-            <Col><b> Habitats: </b></Col>
-            <Col>{ animal.assoc_habitats.length }</Col>
-          </Row>
-          
-          <Row>
-            <Col><b> Countries: </b></Col>
-            <Col>{ animal.assoc_countries.length }</Col>
-          </Row>
-
-        </Thumbnail>
-      </Col>
-
-
-    );
+  instanceFormatter(data){
+    return <a onClick={ () => { that.changeURL("animal", data) } } >{ data }</a>;
   };
 
-  imageFormatter(cell, row){
-    return "<img src='"+cell+"' height=250px width=250px>";
-  }
+  imageFormatter(data){
+    return <img src={ data } height="250px" width="250px" />;
+  };
 
-  videoFormatter(cell, row) {
-    return "<a href='"+cell+"'>" + cell + "</a>"
+  linkFormatter(data){
+    return <a href={ data } target="_blank">{ data }</a>
+  };
+
+  countriesFormatter(data){
+    return;
   }
 
   render() {
@@ -164,19 +115,19 @@ class Animals extends React.Component {
           title="Animals"
           subTitle=""/>
 
-         <BootstrapTable data={this.state.animals} striped={true} hover={true} ref='table' pagination={ true } search={true} columnFilter={true}>
-           <TableHeaderColumn dataField="imageLink" dataFormat={this.imageFormatter} dataAlign="center" > Image </TableHeaderColumn>
-            <TableHeaderColumn dataField="name" dataAlign="center" dataSort={true}>Name</TableHeaderColumn>
-            <TableHeaderColumn dataField="scientificName" isKey={true} dataAlign="center" dataSort={true}>Scientific Name</TableHeaderColumn>
-            <TableHeaderColumn dataField="vulnerability" dataAlign="center" dataSort={true}>Vulnerability</TableHeaderColumn>
-            <TableHeaderColumn dataField="videoLink" dataFormat={this.videoFormatter} dataAlign="center" dataSort={true}>Video</TableHeaderColumn>
-            <TableHeaderColumn dataField="citationLink" dataAlign="center" dataSort={true}>Citation Link</TableHeaderColumn>
-            <TableHeaderColumn dataField="conservationMeasure"  dataAlign="center" dataSort={true}>Conservation Measure</TableHeaderColumn>
-            <TableHeaderColumn dataField="webLink" dataAlign="center" dataSort={true}>Web Link</TableHeaderColumn>
-            <TableHeaderColumn dataField="assoc_habitats" dataAlign="center" dataSort={true}>Associated Habitats</TableHeaderColumn>
-            <TableHeaderColumn dataField="assoc_threats" dataAlign="center" dataSort={true}>Associated Threats</TableHeaderColumn>
-            <TableHeaderColumn dataField="assoc_countries" dataAlign="center" dataSort={true}>Associated Countries</TableHeaderColumn>
-        </BootstrapTable>,
+           <BootstrapTable data={this.state.animals} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={true}>
+            <TableHeaderColumn dataField="imageLink"            dataAlign="center"                  dataFormat={this.imageFormatter}    > Image                </TableHeaderColumn>
+            <TableHeaderColumn dataField="name"                 dataAlign="center" dataSort={true}  dataFormat={this.instanceFormatter} > Name                 </TableHeaderColumn>
+            <TableHeaderColumn dataField="scientificName"       dataAlign="center" dataSort={true}  isKey={true}                        > Scientific Name      </TableHeaderColumn>
+            <TableHeaderColumn dataField="vulnerability"        dataAlign="center" dataSort={true}                                      > Vulnerability        </TableHeaderColumn>
+            <TableHeaderColumn dataField="videoLink"            dataAlign="center" dataSort={true}  dataFormat={this.linkFormatter}     > Video                </TableHeaderColumn>
+            <TableHeaderColumn dataField="citationLink"         dataAlign="center" dataSort={true}                                      > Citation             </TableHeaderColumn>
+            <TableHeaderColumn dataField="conservationMeasure"  dataAlign="center" dataSort={true}                                      > Conservation Measure </TableHeaderColumn>
+            <TableHeaderColumn dataField="webLink"              dataAlign="center" dataSort={true}  dataFormat={this.linkFormatter}     > Source               </TableHeaderColumn>
+            <TableHeaderColumn dataField="assoc_habitats"       dataAlign="center" dataSort={true}                                      > Associated Habitats  </TableHeaderColumn>
+            <TableHeaderColumn dataField="assoc_threats"        dataAlign="center" dataSort={true}                                      > Associated Threats   </TableHeaderColumn>
+            <TableHeaderColumn dataField="assoc_countries"      dataAlign="center" dataSort={true}                                      > Associated Countries </TableHeaderColumn>
+          </BootstrapTable>
 
         <PageFooter />
       </div>
