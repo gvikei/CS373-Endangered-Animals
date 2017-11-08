@@ -144,6 +144,14 @@ class Animals extends React.Component {
     );
   };
 
+  imageFormatter(cell, row){
+    return "<img src='"+cell+"' height=250px width=250px>";
+  }
+
+  videoFormatter(cell, row) {
+    return "<a href='"+cell+"'>" + cell + "</a>"
+  }
+
   render() {
     if(!this.state.animals.length)
       return ( <div /> )
@@ -157,11 +165,11 @@ class Animals extends React.Component {
           subTitle=""/>
 
          <BootstrapTable data={this.state.animals} striped={true} hover={true}>
-           <TableHeaderColumn dataField="imageLink" dataAlign="center" dataSort={true}>Image</TableHeaderColumn>
+           <TableHeaderColumn dataField="imageLink" dataFormat={this.imageFormatter} dataAlign="center" > Image </TableHeaderColumn>
             <TableHeaderColumn dataField="name" dataAlign="center" dataSort={true}>Name</TableHeaderColumn>
             <TableHeaderColumn dataField="scientificName" isKey={true} dataAlign="center" dataSort={true}>Scientific Name</TableHeaderColumn>
             <TableHeaderColumn dataField="vulnerability" dataAlign="center" dataSort={true}>Vulnerability</TableHeaderColumn>
-            <TableHeaderColumn dataField="videoLink"  dataAlign="center" dataSort={true}>Video</TableHeaderColumn>
+            <TableHeaderColumn dataField="videoLink" dataFormat={this.videoFormatter} dataAlign="center" dataSort={true}>Video</TableHeaderColumn>
             <TableHeaderColumn dataField="citationLink" dataAlign="center" dataSort={true}>Citation Link</TableHeaderColumn>
             <TableHeaderColumn dataField="conservationMeasure"  dataAlign="center" dataSort={true}>Conservation Measure</TableHeaderColumn>
             <TableHeaderColumn dataField="webLink" dataAlign="center" dataSort={true}>Web Link</TableHeaderColumn>
