@@ -144,6 +144,14 @@ class Animals extends React.Component {
     );
   };
 
+  imageFormatter(cell, row){
+    return "<img src='"+cell+"' height=250px width=250px>";
+  }
+
+  videoFormatter(cell, row) {
+    return "<a href='"+cell+"'>" + cell + "</a>"
+  }
+
   render() {
     if(!this.state.animals.length)
       return ( <div /> )
@@ -156,10 +164,18 @@ class Animals extends React.Component {
           title="Animals"
           subTitle=""/>
 
-         <BootstrapTable data={this.state.animals} striped={true} hover={true}>
-            <TableHeaderColumn dataField="name" isKey={true} dataAlign="center" dataSort={true}>Product ID</TableHeaderColumn>
-            <TableHeaderColumn dataField="scientificName" dataSort={true}>Product Name</TableHeaderColumn>
-            <TableHeaderColumn dataField="vulnerability">Product Price</TableHeaderColumn>
+         <BootstrapTable data={this.state.animals} striped={true} hover={true} ref='table' pagination={ true } search={true} columnFilter={true}>
+           <TableHeaderColumn dataField="imageLink" dataFormat={this.imageFormatter} dataAlign="center" > Image </TableHeaderColumn>
+            <TableHeaderColumn dataField="name" dataAlign="center" dataSort={true}>Name</TableHeaderColumn>
+            <TableHeaderColumn dataField="scientificName" isKey={true} dataAlign="center" dataSort={true}>Scientific Name</TableHeaderColumn>
+            <TableHeaderColumn dataField="vulnerability" dataAlign="center" dataSort={true}>Vulnerability</TableHeaderColumn>
+            <TableHeaderColumn dataField="videoLink" dataFormat={this.videoFormatter} dataAlign="center" dataSort={true}>Video</TableHeaderColumn>
+            <TableHeaderColumn dataField="citationLink" dataAlign="center" dataSort={true}>Citation Link</TableHeaderColumn>
+            <TableHeaderColumn dataField="conservationMeasure"  dataAlign="center" dataSort={true}>Conservation Measure</TableHeaderColumn>
+            <TableHeaderColumn dataField="webLink" dataAlign="center" dataSort={true}>Web Link</TableHeaderColumn>
+            <TableHeaderColumn dataField="assoc_habitats" dataAlign="center" dataSort={true}>Associated Habitats</TableHeaderColumn>
+            <TableHeaderColumn dataField="assoc_threats" dataAlign="center" dataSort={true}>Associated Threats</TableHeaderColumn>
+            <TableHeaderColumn dataField="assoc_countries" dataAlign="center" dataSort={true}>Associated Countries</TableHeaderColumn>
         </BootstrapTable>,
 
         <PageFooter />
