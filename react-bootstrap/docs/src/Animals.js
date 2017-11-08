@@ -164,7 +164,7 @@ class Animals extends React.Component {
           title="Animals"
           subTitle=""/>
 
-         <BootstrapTable data={this.state.animals} striped={true} hover={true}>
+         <BootstrapTable data={this.state.animals} striped={true} hover={true}   ref='table' pagination={ true } search={ true }>
            <TableHeaderColumn dataField="imageLink" dataFormat={this.imageFormatter} dataAlign="center" > Image </TableHeaderColumn>
             <TableHeaderColumn dataField="name" dataAlign="center" dataSort={true}>Name</TableHeaderColumn>
             <TableHeaderColumn dataField="scientificName" isKey={true} dataAlign="center" dataSort={true}>Scientific Name</TableHeaderColumn>
