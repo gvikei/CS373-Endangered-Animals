@@ -21,11 +21,21 @@ class Habitat extends React.Component {
       type: "habitat"
     };
 
+    //Following snippet of code from ideasandpixels.com
+    var $_GET = {};
+    document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+        function decode(s) {
+            return decodeURIComponent(s.split("+").join(" "));
+        }
+
+        $_GET[decode(arguments[1])] = decode(arguments[2]);
+    });
+
     var that = this;
     axios.create({
       baseURL: 'https://swe-endangered-animals.appspot.com/',
       headers: {"Access-Control-Allow-Origin": "*"}
-    }).get('/single_habitat_data/?habitat_name='+global.instance)
+    }).get('/single_habitat_data/?habitat_name='+$_GET['q'])
       .then(function(data) {
         that.setState({
           habitat: data.data
@@ -38,10 +48,10 @@ class Habitat extends React.Component {
   };
 
 
-  changeURL(type, data) {
-    if(typeof data !== "undefined")
-      global.instance = data;
-    this.context.router.push('/'+type+".html/");
+  changeURL(type, data){
+    if(typeof data == "undefined")
+      data = "";
+    this.context.router.push("/"+type+".html/?q="+data);
   };
 
   renderHabitat(instance) {

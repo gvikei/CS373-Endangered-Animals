@@ -43,9 +43,9 @@ class Animals extends React.Component {
 
 
   changeURL(type, data){
-    if(typeof data !== "undefined")
-      global.instance = data;
-    this.context.router.push('/'+type+".html/");
+    if(typeof data == "undefined")
+      data = "";
+    this.context.router.push("/"+type+".html/?q="+data);
   };
 
   countryFormatter(list){
