@@ -3,14 +3,7 @@ import React from 'react';
 import NavMain from './NavMain';
 import PageHeader from './PageHeader';
 import PageFooter from './PageFooter';
-import Row from '../../src/Row';
-import Col from '../../src/Col';
-import Thumbnail from '../../src/Thumbnail';
-import Image from '../../src/Image';
-import Panel from '../../src/Panel';
-import Button from '../../src/Button';
-import Collapse from '../../src/Collapse';
-import Well from '../../src/Well';
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 
 var axios = require('axios');
 
@@ -19,82 +12,112 @@ class Habitats extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: true,
-      habitats: []
+        open: true,
+        habitats: [],
+        pages: null,
+        loading: true
     };
+    this.instanceFormatter = this.instanceFormatter.bind(this);
+    this.animalFormatter = this.animalFormatter.bind(this);
+    this.countryFormatter = this.countryFormatter.bind(this);
 
     var that = this;
-      axios.create({
-        baseURL: 'https://swe-endangered-animals.appspot.com/',
-        headers: {"Access-Control-Allow-Origin": "*"}
-      }).get('/all_habitat_data')
-        .then(function(data) {
-          that.setState({
-            habitats: data.data.slice(0,10)
-          });
-      });
-  }
+    axios.create({
+      baseURL: 'https://swe-endangered-animals.appspot.com/',
+      headers: {"Access-Control-Allow-Origin": "*"}
+    }).get('/all_habitat_data')
+      .then(function(data) {
+        that.setState({
+          habitats: data.data
+        });
+    });
+  };
 
   shouldComponentUpdate() {
     return true;
-  }
-
-
-  changeURL(type, data) {
-      if(typeof data !== "undefined")
-        global.instance = data;
-      this.context.router.push('/'+type+".html/");
   };
 
-  renderHabitats(habitat) {
+
+  changeURL(type, data){
+    if(typeof data !== "undefined")
+      global.instance = data;
+    this.context.router.push('/'+type+".html/");
+  };
+
+  animalFormatter(list){
+    var type = "animal";
+
+    var links = list.map(function(x, i){
+      return ( <li key={type+x+i}> { this.instanceFormatter(x, null, type) } </li> );
+    }.bind(this));
+
     return (
-      <Col key={ habitat.name } sm={ 3 }>
-        <Thumbnail src={ habitat.image } width="100%" height="33%">
-          <h3><a onClick={ () => { this.changeURL("habitat", habitat.name) } } >{ habitat.name }</a></h3>
-          <Row><Col><b>Suitability:</b></Col><Col>{ habitat.suitability }</Col></Row>
-          <Row><Col><a href="animals.html">Animals:</a></Col><Col>{ habitat.assoc_animals.length }</Col></Row>
-          <Row><Col><a href="countries.html">Countries:</a></Col><Col>{ habitat.assoc_countries.length }</Col></Row>
-        </Thumbnail>
-      </Col>
+      <div>
+        <ul>
+          { links }
+        </ul>
+      </div>
     );
+  };
+
+  countryFormatter(list){
+    var type = "country";
+    
+    var links = list.map(function(x, i){
+      return ( <li key={type+x+i}> { this.instanceFormatter(x, null, type) } </li> );
+    }.bind(this));
+
+    return (
+      <div>
+        <ul>
+          { links }
+        </ul>
+      </div>
+    );
+  };
+
+  imageFormatter(data){
+    return <img src={ data } height="250px" width="250px" />;
+  };
+
+  instanceFormatter(data, row, type){
+    if(typeof type == "undefined")
+      type = "habitat";
+    return <a onClick={ () => { this.changeURL(type, data) } } >{ data }</a>;
+  };
+
+  linkFormatter(data){
+    return <a href={ data } target="_blank">{ data }</a>
   };
 
   render() {
     if(!this.state.habitats.length)
-      return ( <div /> );
-    
+      return ( <div /> )
+
     return (
       <div>
         <NavMain activePage="habitats" />
 
-        <PageHeader
+         <PageHeader
           title="Habitats"
           subTitle=""/>
 
-        <div className="container-fluid">
-
-          { /* Habitats */ }
-
-          <Row className="container-fluid">
-            {
-              (this.state.habitats).map(function(habitat){
-                return this.renderHabitats(habitat);
-              }.bind(this))
-            }
-
-          </Row>
-
-
-        </div>
+           <BootstrapTable data={this.state.habitats} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={true}>
+            <TableHeaderColumn dataField="image"            dataAlign="center"                                dataFormat={this.imageFormatter}    > Image                 </TableHeaderColumn>
+            <TableHeaderColumn dataField="name"             dataAlign="center" dataSort={true} isKey={true}   dataFormat={this.instanceFormatter} > Name                  </TableHeaderColumn>
+            <TableHeaderColumn dataField="suitability"      dataAlign="center" dataSort={true}                                                    > Suitability           </TableHeaderColumn>
+            <TableHeaderColumn dataField="assoc_animals"    dataAlign="center"                                dataFormat={this.animalFormatter}   > Associated Animals    </TableHeaderColumn>
+            <TableHeaderColumn dataField="assoc_countries"  dataAlign="center"                                dataFormat={this.countryFormatter}  > Associated Countries  </TableHeaderColumn>
+          </BootstrapTable>
 
         <PageFooter />
       </div>
-    );
+  );
   }
 }
 
 Habitats.contextTypes = {
-      router: React.PropTypes.object.isRequired
-  };
+    router: React.PropTypes.object.isRequired
+};
 
 export default Habitats;

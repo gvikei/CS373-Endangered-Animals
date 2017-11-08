@@ -128,9 +128,9 @@ class Animals extends React.Component {
             <TableHeaderColumn dataField="citationLink"         dataAlign="center" dataSort={true}                                      > Citation             </TableHeaderColumn>
             <TableHeaderColumn dataField="conservationMeasure"  dataAlign="center" dataSort={true}                                      > Conservation Measure </TableHeaderColumn>
             <TableHeaderColumn dataField="webLink"              dataAlign="center" dataSort={true}  dataFormat={this.linkFormatter}     > Source               </TableHeaderColumn>
-            <TableHeaderColumn dataField="assoc_threats"        dataAlign="center" dataSort={true}  dataFormat={this.threatFormatter}   > Associated Threats   </TableHeaderColumn>
-            <TableHeaderColumn dataField="assoc_habitats"       dataAlign="center" dataSort={true}  dataFormat={this.habitatFormatter}  > Associated Habitats  </TableHeaderColumn>
-            <TableHeaderColumn dataField="assoc_countries"      dataAlign="center" dataSort={true}  dataFormat={this.countryFormatter}  > Associated Countries </TableHeaderColumn>
+            <TableHeaderColumn dataField="assoc_threats"        dataAlign="center"                  dataFormat={this.threatFormatter}   > Associated Threats   </TableHeaderColumn>
+            <TableHeaderColumn dataField="assoc_habitats"       dataAlign="center"                  dataFormat={this.habitatFormatter}  > Associated Habitats  </TableHeaderColumn>
+            <TableHeaderColumn dataField="assoc_countries"      dataAlign="center"                  dataFormat={this.countryFormatter}  > Associated Countries </TableHeaderColumn>
           </BootstrapTable>
 
         <PageFooter />
