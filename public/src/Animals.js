@@ -111,21 +111,41 @@ class Animals extends React.Component {
   };
 
   render() {
+        const options = {
+      page: 1,      
+      sizePerPageList: [ {
+        text: '5', value: 5
+      }, {
+        text: '10', value: 10
+      }, {
+        text: '20', value: 20
+      } ], 
+      sizePerPage: 5,  
+      pageStartIndex: 1, 
+      paginationSize: 3,  
+      prePage: 'Prev', 
+      nextPage: 'Next', 
+      firstPage: 'First', 
+      lastPage: 'Last', 
+      paginationShowsTotal: this.renderShowsTotal,  
+      paginationPosition: 'top' 
+    };
+
     if(!this.state.model.length)
       return ( <div /> )
 
     return (
-      <div>
+      <div class="container">
         <NavMain activePage={this.state.type} />
 
          <PageHeader
           title={this.state.typeProper}
           subTitle={this.state.subTitle}/>
 
-           <BootstrapTable data={this.state.model} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={true}>
-            <TableHeaderColumn dataField="imageLink"            dataAlign="center"                  dataFormat={this.imageFormatter}    > Image                </TableHeaderColumn>
-            <TableHeaderColumn dataField="name"                 dataAlign="center" dataSort={true}  dataFormat={this.instanceFormatter} > Name                 </TableHeaderColumn>
-            <TableHeaderColumn dataField="scientificName"       dataAlign="center" dataSort={true}  isKey={true}                        > Scientific Name      </TableHeaderColumn>
+           <BootstrapTable data={this.state.model} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={true} options={ options }  >
+            <TableHeaderColumn dataField="imageLink"            dataAlign="center"                  dataFormat={this.imageFormatter}    width="250"> Image                </TableHeaderColumn>
+            <TableHeaderColumn dataField="name"                 dataAlign="center" dataSort={true}  dataFormat={this.instanceFormatter} width='250'> Name                 </TableHeaderColumn>
+            <TableHeaderColumn dataField="scientificName"       dataAlign="center" dataSort={true}  isKey={true}                        height="10"> Scientific Name      </TableHeaderColumn>
             <TableHeaderColumn dataField="vulnerability"        dataAlign="center" dataSort={true}                                      > Vulnerability        </TableHeaderColumn>
             <TableHeaderColumn dataField="videoLink"            dataAlign="center" dataSort={true}  dataFormat={this.linkFormatter}     > Video                </TableHeaderColumn>
             <TableHeaderColumn dataField="citationLink"         dataAlign="center" dataSort={true}                                      > Citation             </TableHeaderColumn>
