@@ -3,7 +3,7 @@
 import 'colors';
 import yargs from 'yargs';
 import build from './build';
-import docs from '../docs/build';
+import docs from '../dev/build';
 import { setExecOptions } from './exec';
 
 
