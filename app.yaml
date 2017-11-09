@@ -1,37 +1,5 @@
-runtime: python
-threadsafe: true
+runtime: nodejs
 env: flex
-entrypoint: gunicorn -b :$PORT main:app
-
-runtime_config:
-  python_version: 3
-
-handlers:
-- url: /p/
-  static_dir: static/
-  expiration: "365d"
-
-- url: /.*
-  script: main.app
-  secure: always
 
 skip_files:
-- ^(.*/)?#.*#
-- ^(.*/)?.*/RCS/.*
-- ^(.*/)?.*\.bak$
-- ^(.*/)?.*\.py[co]
-- ^(.*/)?.*~
-- ^(.*/)?Icon\r
-- ^(.*/)?\..*
-- ^(.*/)?app\.yaml
-- ^(.*/)?app\.yml
-- ^(.*/)?index\.yaml
-- ^(.*/)?index\.yml
-- ^lib/.*
-- ^static/dev/.*
-- ^static/ext/.*\.coffee
-- ^static/ext/.*\.css
-- ^static/ext/.*\.js
-- ^static/ext/.*\.less
-- ^static/ext/.*\.json
-- ^static/src/.*
+- yarn.lock

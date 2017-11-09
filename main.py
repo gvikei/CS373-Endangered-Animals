@@ -25,37 +25,37 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-    return render_template('react-bootstrap/docs/src/HomePage.js')
+    return render_template('react-bootstrap/public/src/HomePage.js')
 
 
 # [START about]
 @app.route('/about')
 def about():
-    return render_template('react-bootstrap/docs/src/About.js')
+    return render_template('react-bootstrap/public/src/About.js')
 # [END form]
 
 # [START animals]
 @app.route('/animals')
 def animals():
-    return render_template('react-bootstrap/docs/src/Animals.js')
+    return render_template('react-bootstrap/public/src/Animals.js')
 # [END animals]
 
 # [START countries]
 @app.route('/countries')
 def countries():
-    return render_template('react-bootstrap/docs/src/Country.js')
+    return render_template('react-bootstrap/public/src/Country.js')
 # [END countries]
 
 # [START habitats]
 @app.route('/habitats')
 def habitats():
-    return render_template('react-bootstrap/docs/src/Habitats.js')
+    return render_template('react-bootstrap/public/src/Habitats.js')
 # [END habitats]
 
 # [START threats]
 @app.route('/threats')
 def threats():
-    return render_template('react-bootstrap/docs/src/Threats.js')
+    return render_template('react-bootstrap/public/src/Threats.js')
 # [END threats]
 
 @app.errorhandler(500)

@@ -1,0 +1,75 @@
+/* eslint-disable no-console, no-process-exit */
+
+import 'colors';
+import portfinder from 'portfinder';
+import { exec } from 'child-process-promise';
+import ip from 'ip';
+
+portfinder.basePort = 8080;
+
+const SIGINT = 'SIGINT';
+let processMap = {};
+
+function output(prefix, message) {
+  let formattedMessage = message.toString().trim().split('\n')
+    .reduce((acc, line) => `${acc}${acc !== '' ? '\n' : ''}${prefix} ${line}`, '');
+
+  console.log(formattedMessage);
+}
+
+function listen({ stdout, stderr }, name) {
+  stdout.on('data', data => output(`[${name}] `.grey, data));
+  stderr.on('data', data => output(`[${name}] `.grey, data));
+}
+
+function shutdown() {
+  Object.values(processMap).forEach(process => process.kill(SIGINT));
+}
+
+function catchExec(name, err) {
+  if (err.killed) {
+    console.log('Shutdown: '.cyan + name.green);
+    shutdown();
+    return false;
+  }
+
+  console.log(`${name} -- Failed`.red);
+  console.log(err.toString().red);
+  return true;
+}
+
+function runCmd(name, cmd, options) {
+  exec(cmd, options)
+    .progress((childProcess) => {
+      listen(childProcess, name);
+      processMap[name] = childProcess;
+    })
+    .then(() => console.log('Shutdown: '.cyan + name.green))
+    .catch((err) => {
+      if (catchExec(name, err)) {
+        // Restart if not explicitly shutdown
+        runCmd(name, cmd, options);
+      }
+    });
+}
+
+console.log('Starting public in Development mode'.cyan);
+
+process.on(SIGINT, shutdown);
+
+portfinder.getPorts(2, {}, (portFinderErr, [publicPort, webpackPort]) => {
+  if (portFinderErr) {
+    console.log('Failed to acquire ports'.red);
+    process.exit(1);
+  }
+
+  runCmd('webpack-dev-server', `nodemon --watch webpack --watch webpack.public.js --exec webpack-dev-server -- --config webpack.public.js --color --port ${webpackPort} --debug --hot --host ${ip.address()}`);
+
+  runCmd('public-server', 'nodemon --watch public --watch src --exec babel-node public/server.js', {
+    env: {
+      PORT: publicPort,
+      WEBPACK_DEV_PORT: webpackPort,
+      ...process.env,
+    },
+  });
+});
