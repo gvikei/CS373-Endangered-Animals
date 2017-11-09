@@ -58,7 +58,7 @@ if (development) {
     });
   });
 } else {
-  app.use(express.static(path.join(__dirname, '../docs-built')));
+  app.use(express.static(path.join(__dirname, '../dev-built')));
 }
 
 app.listen(port, () => {
