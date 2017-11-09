@@ -13,9 +13,12 @@ class Countries extends React.Component {
     super(props);
     this.state = {
         open: true,
-        countries: [],
+        model: [],
         pages: null,
-        loading: true
+        loading: true,
+        type: "country",
+        typeProper: "Countries",
+        subTitle: "Dive into rich ecosystems"
     };
     this.instanceFormatter = this.instanceFormatter.bind(this);
     this.animalFormatter = this.animalFormatter.bind(this);
@@ -26,10 +29,10 @@ class Countries extends React.Component {
     axios.create({
       baseURL: 'https://swe-endangered-animals.appspot.com/',
       headers: {"Access-Control-Allow-Origin": "*"}
-    }).get('/all_country_data')
+    }).get('/all_'+this.state.type+'_data')
       .then(function(data) {
         that.setState({
-          countries: data.data
+          model: data.data
         });
     });
   };
@@ -40,9 +43,9 @@ class Countries extends React.Component {
 
 
   changeURL(type, data){
-    if(typeof data !== "undefined")
-      global.instance = data;
-    this.context.router.push('/'+type+".html/");
+    if(typeof data == "undefined")
+      data = "";
+    this.context.router.push("/"+type+".html/?q="+data);
   };
 
   animalFormatter(list){
@@ -83,7 +86,7 @@ class Countries extends React.Component {
 
   instanceFormatter(data, row, type){
     if(typeof type == "undefined")
-      type = "country";
+      type = this.state.type;
     return <a onClick={ () => { this.changeURL(type, data) } } >{ data }</a>;
   };
 
@@ -115,18 +118,18 @@ class Countries extends React.Component {
   };
 
   render() {
-    if(!this.state.countries.length)
+    if(!this.state.model.length)
       return ( <div /> )
 
     return (
       <div>
-        <NavMain activePage="countries" />
+        <NavMain activePage={this.state.type} />
 
          <PageHeader
-          title="Countries"
-          subTitle="Click on a country to begin exploring its ecosystem."/>
+          title={this.state.typeProper}
+          subTitle={this.state.subTitle}/>
 
-           <BootstrapTable data={this.state.countries} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={true}>
+           <BootstrapTable data={this.state.model} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={true}>
             <TableHeaderColumn dataField="flag"             dataAlign="center"                                dataFormat={this.imageFormatter}    > Image                </TableHeaderColumn>
             <TableHeaderColumn dataField="name"             dataAlign="center" dataSort={true} isKey={true}   dataFormat={this.instanceFormatter} > Name                 </TableHeaderColumn>
             <TableHeaderColumn dataField="assoc_animals"    dataAlign="center"                                dataFormat={this.animalFormatter}   > Associated Animals   </TableHeaderColumn>

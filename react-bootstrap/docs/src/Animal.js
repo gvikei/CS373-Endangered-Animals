@@ -17,16 +17,26 @@ class Animal extends React.Component {
 
     this.renderAnimal = this.renderAnimal.bind(this);
     this.state = {
-      animal: {}
+      animal: {},
+      type: "animal"
     };
+
+    //Following snippet of code from ideasandpixels.com
+    var $_GET = {};
+    document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+        function decode(s) {
+            return decodeURIComponent(s.split("+").join(" "));
+        }
+
+        $_GET[decode(arguments[1])] = decode(arguments[2]);
+    });
 
     var that = this;
     axios.create({
       baseURL: 'https://swe-endangered-animals.appspot.com/',
       headers: {"Access-Control-Allow-Origin": "*"}
-    }).get('/single_animal_data/?animal_name='+global.instance)
+    }).get('/single_animal_data/?animal_name='+$_GET['q'])
       .then(function(data) {
-        console.log(data);
         that.setState({
           animal: data.data
         });
@@ -38,10 +48,10 @@ class Animal extends React.Component {
   };
 
 
-  changeURL(type, data) {
-    if(typeof data !== "undefined")
-      global.instance = data;
-    this.context.router.push('/'+type+".html/");
+  changeURL(type, data){
+    if(typeof data == "undefined")
+      data = "";
+    this.context.router.push("/"+type+".html/?q="+data);
   };
 
   formatVideo(url) {
@@ -113,7 +123,7 @@ class Animal extends React.Component {
 
     return (
       <div>
-        <NavMain activePage="animals" />
+        <NavMain activePage={this.state.type} />
 
         <PageHeader
           title={ this.state.animal.name } />

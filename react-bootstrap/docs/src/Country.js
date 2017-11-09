@@ -17,14 +17,25 @@ class Country extends React.Component {
 
     this.renderCountry = this.renderCountry.bind(this);
     this.state = {
-      country: {}
+      country: {},
+      type: "country"
     };
+
+    //Following snippet of code from ideasandpixels.com
+    var $_GET = {};
+    document.location.search.replace(/\??(?:([^=]+)=([^&]*)&?)/g, function () {
+        function decode(s) {
+            return decodeURIComponent(s.split("+").join(" "));
+        }
+
+        $_GET[decode(arguments[1])] = decode(arguments[2]);
+    });
 
     var that = this;
     axios.create({
       baseURL: 'https://swe-endangered-animals.appspot.com/',
       headers: {"Access-Control-Allow-Origin": "*"}
-    }).get('/single_country_data/?country_name='+global.instance)
+    }).get('/single_country_data/?country_name='+$_GET['q'])
       .then(function(data) {
         that.setState({
           country: data.data
@@ -37,10 +48,10 @@ class Country extends React.Component {
   };
 
 
-  changeURL(type, data) {
-    if(typeof data !== "undefined")
-      global.instance = data;
-    this.context.router.push('/'+type+".html/");
+  changeURL(type, data){
+    if(typeof data == "undefined")
+      data = "";
+    this.context.router.push("/"+type+".html/?q="+data);
   };
 
   renderCountry(instance) {
@@ -100,7 +111,7 @@ class Country extends React.Component {
     
     return (
       <div>
-        <NavMain activePage="countries" />
+        <NavMain activePage={this.state.type} />
 
         <PageHeader
           title={ this.state.country.name } />

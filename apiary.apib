@@ -3,25 +3,6 @@ HOST: https://swe-endangered-animals.appspot.com
 
 # Endangered Animals
 
-## Common name of Animal [/get_common_name_of_animal/]
-
-### GET: /get_common_name_of_animal/?sci_name [GET]
-
-Given a scientific name, retrieves the common name for an animal..
-    
-Example: Let's say you want to find the common name for the animal "Accipiter gentilis"
-    
-**HTTP Request:**
-`https://swe-endangered-animals.appspot.com/get_common_name_of_animal/?sci_name=Accipiter gentilis`
-
-+ Response 200 (application/json)
-
-    + Body
-    
-            {
-                "common_name": "Northern Goshawk"
-            }
-            
 ## Animal [/single_animal_data/]
 
 ### GET: /single_animal_data/?animal_name [GET]
@@ -44,8 +25,8 @@ Example: Let's say you want to find data on "Semi-collared Hawk"
                 "citation":"Campbell, J. 2007. Abronia oaxacae. The IUCN Red List of Threatened Species 2007: e.T63685A12697055. http://dx.doi.org/10.2305/IUCN.UK.2007.RLTS.T63685A12697055.en",
                 "conservation_measure": "Resource & habitat protection",
                 "video_url": "https://www.youtube.com/watch?v=vy2RKH2v5_E",
-                "imageLink": "http://www.planetofbirds.com/Master/ACCIPITRIFORMES/Accipitridae/pics/Nicobar%20Sparrowhawk.jpg",
-                "web_link": "http://apiv3.iucnredlist.org/api/v3/website/Accipiter collaris",
+                "imageLink": "http://faculty.ucr.edu/~chappell/INW/birds3raptors/semicollaredhawk019.jpg",
+                "webLink": "http://apiv3.iucnredlist.org/api/v3/website/Accipiter collaris",
                 "assoc_habitats":[
                     "Forest - Subtropical/Tropical Moist Montane"
                 ],
@@ -87,8 +68,8 @@ This endpoint basically calls /single_animal_data on each animal.
                     "citation":"Campbell, J. 2007. Abronia oaxacae. The IUCN Red List of Threatened Species 2007: e.T63685A12697055. http://dx.doi.org/10.2305/IUCN.UK.2007.RLTS.T63685A12697055.en",
                     "conservation_measure": "Resource & habitat protection",
                     "video_url": "https://www.youtube.com/watch?v=vy2RKH2v5_E",
-                    "imageLink": "http://www.planetofbirds.com/Master/ACCIPITRIFORMES/Accipitridae/pics/Nicobar%20Sparrowhawk.jpg",
-                    "web_link": "http://apiv3.iucnredlist.org/api/v3/website/Accipiter collaris",
+                    "imageLink": "http://faculty.ucr.edu/~chappell/INW/birds3raptors/semicollaredhawk019.jpg",
+                    "webLink": "http://apiv3.iucnredlist.org/api/v3/website/Accipiter collaris",
                     "assoc_habitats":[
                         "Forest - Subtropical/Tropical Moist Montane"
                     ],
@@ -113,8 +94,8 @@ This endpoint basically calls /single_animal_data on each animal.
                     "citation":"Flores-Villela, O. & Lopez-Luna, M.A. 2007. Abronia reidi. The IUCN Red List of Threatened Species 2007: e.T63689A12697921. http://dx.doi.org/10.2305/IUCN.UK.2007.RLTS.T63689A12697921.en",
                     "conservation_measure": "Site/area management",
                     "video_url": "https://www.youtube.com/watch?v=cUgHxoI3mFk",
-                    "imageLink": "http://www.adrianpetch.com/Absmith.jpeg",
-                    "web_link": "http://apiv3.iucnredlist.org/api/v3/website/Abronia reidi",
+                    "imageLink": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Arboreal_Alligator_Lizard_Abronia_graminea_2900px.jpg/1200px-Arboreal_Alligator_Lizard_Abronia_graminea_2900px.jpg",
+                    "webLink": "http://apiv3.iucnredlist.org/api/v3/website/Abronia reidi",
                     "assoc_habitats":[
                         "Forest - Subtropical/Tropical Moist Montane"
                     ],
@@ -147,22 +128,21 @@ Example: Let's say you want to find data on "Agro-industry farming"
     
                {
                     "name": "Agro-industry farming",
-                    "image": "https://vermont4evolution.files.wordpress.com/2011/07/mono1.jpg",
+                    "image": "http://www.blog.kpmgafrica.com/wp-content/uploads/2013/04/watering_field.jpg",
                     "timing": "ongoing",
                     "severity": "4.5",
                     "assoc_animals": [
-                        "Accipiter butleri",
-                        "Accipiter butleri",
-                        "Ablepharus bivittatus",
-                        "Accipiter collaris",
-                        "Abronia oaxacae",
-                        "Acanthochelys pallidipectoris",
-                        "Acanthosaura lepidogaster",
-                        "Abronia graminea",
-                        "Ablepharus deserti",
-                        "Acanthodactylus beershebensis",
-                        "Aburria aburri",
-                        "Acantopsis octoactinotos"
+                        "Desert Lidless Skink",
+                        "Chaco Side-necked Turtle",
+                        "Two-streaked Snake-eyed Skink",
+                        "Be’er Sheva Fringe-fingered Lizard",
+                        "Semi-collared Hawk",
+                        "Oaxaca Arboreal Alligator Lizard",
+                        "Long-faced Loach",
+                        "Wattled Guan",
+                        "Terrestrial Arboreal Alligator Lizard",
+                        "Nicobar Sparrowhawk",
+                        "Brown Pricklenape"
                     ],
                     "assoc_habitats": [
                         "Wetlands (inland) - Shrub Dominated Wetlands",
@@ -203,22 +183,21 @@ This endpoint basically calls /single_threat_data on each threat.
             [
                {
                     "name": "Agro-industry farming",
-                    "image": "https://vermont4evolution.files.wordpress.com/2011/07/mono1.jpg",
+                    "image": "http://www.blog.kpmgafrica.com/wp-content/uploads/2013/04/watering_field.jpg",
                     "timing": "ongoing",
                     "severity": "4.5",
                     "assoc_animals": [
-                        "Accipiter butleri",
-                        "Accipiter butleri",
-                        "Ablepharus bivittatus",
-                        "Accipiter collaris",
-                        "Abronia oaxacae",
-                        "Acanthochelys pallidipectoris",
-                        "Acanthosaura lepidogaster",
-                        "Abronia graminea",
-                        "Ablepharus deserti",
-                        "Acanthodactylus beershebensis",
-                        "Aburria aburri",
-                        "Acantopsis octoactinotos"
+                        "Desert Lidless Skink",
+                        "Chaco Side-necked Turtle",
+                        "Two-streaked Snake-eyed Skink",
+                        "Be’er Sheva Fringe-fingered Lizard",
+                        "Semi-collared Hawk",
+                        "Oaxaca Arboreal Alligator Lizard",
+                        "Long-faced Loach",
+                        "Wattled Guan",
+                        "Terrestrial Arboreal Alligator Lizard",
+                        "Nicobar Sparrowhawk",
+                        "Brown Pricklenape"
                     ],
                     "assoc_habitats": [
                         "Wetlands (inland) - Shrub Dominated Wetlands",
@@ -241,13 +220,13 @@ This endpoint basically calls /single_threat_data on each threat.
                 },
                 {
                     "name": "Problematic native species/diseases",
-                    "image": "http://www.gardeningknowhow.com/wp-content/uploads/2014/12/insv.jpg",
+                    "image": "http://weedcontrolfreaks.com/wp-content/uploads/2013/07/Wheat_Beans.jpg",
                     "timing": "ongoing",
                     "severity": "4.5",
                     "assoc_animals": [
-                        "Acanthodactylus blanci",
-                        "Acanthochelys pallidipectoris",
-                        "Acanthodactylus beershebensis"
+                        "Chaco Side-necked Turtle",
+                        "Be’er Sheva Fringe-fingered Lizard",
+                        "Blanc's Fringe-toed Lizard"
                     ],
                     "assoc_habitats": [
                         "Wetlands (inland) - Shrub Dominated Wetlands",
@@ -283,12 +262,23 @@ Example: Let's say you want to find data on the habitat "Artificial/Aquatic - Po
                 "image": "http://thumb1.shutterstock.com/display_pic_with_logo/1771478/323878760/stock-photo-small-artificial-decorative-pond-with-rocks-and-plants-on-the-backyard-in-summer-323878760.jpg",
                 "suitability": "Suitable",
                 "assoc_animals": [
-                    "Acanthochelys pallidipectoris"
+                    "Chaco Side-necked Turtle"
                 ],
                 "assoc_countries": [
                     "Paraguay",
                     "Argentina",
                     "Bolivia, Plurinational States of"
+                ],
+                "assoc_threats": [
+                    "Temperature extremes",
+                    "Livestock farming & ranching",
+                    "Problematic native species/diseases",
+                    "Intentional use: (subsistence/small scale) [harvest]",
+                    "Droughts",
+                    "Agro-industry grazing, ranching or farming",
+                    "Fishing & harvesting aquatic resources",
+                    "Agro-industry farming",
+                    "Annual & perennial non-timber crops"
                 ]
             }
 
@@ -313,23 +303,34 @@ This endpoint basically calls /single_habitat_data on each habitat.
                     "image": "http://thumb1.shutterstock.com/display_pic_with_logo/1771478/323878760/stock-photo-small-artificial-decorative-pond-with-rocks-and-plants-on-the-backyard-in-summer-323878760.jpg",
                     "suitability": "Suitable",
                     "assoc_animals": [
-                        "Acanthochelys pallidipectoris"
+                        "Chaco Side-necked Turtle"
                     ],
                     "assoc_countries": [
                         "Paraguay",
                         "Argentina",
                         "Bolivia, Plurinational States of"
+                    ],
+                    "assoc_threats": [
+                        "Temperature extremes",
+                        "Livestock farming & ranching",
+                        "Problematic native species/diseases",
+                        "Intentional use: (subsistence/small scale) [harvest]",
+                        "Droughts",
+                        "Agro-industry grazing, ranching or farming",
+                        "Fishing & harvesting aquatic resources",
+                        "Agro-industry farming",
+                        "Annual & perennial non-timber crops"
                     ]
                 },
                 {
                     "name": "Wetlands (inland) - Permanent Freshwater Lakes (over 8ha)",
-                    "image": "http://people.deu.edu.tr/melis.somay/resimler/swamps.jpg",
+                    "image": "https://i.pinimg.com/736x/8e/02/bf/8e02bf33325bbdc7efd4692c6d5c55b3--freshwater-fish-be-free.jpg",
                     "suitability": "Suitable",
                     "assoc_animals": [
-                        "Acanthobrama lissneri",
-                        "Acanthobrama microlepis",
-                        "Acanthobrama centisquama",
-                        "Acanthobrama tricolor"
+                        "Caucasian Bream",
+                        "Damascus Bream",
+                        "Long-spine Bream",
+                        "Jordan Bream"
                     ],
                     "assoc_countries": [
                         "Turkey",
@@ -341,6 +342,18 @@ This endpoint basically calls /single_habitat_data on each habitat.
                         "Jordan",
                         "Armenia",
                         "Palestinian Territory, Occupied"
+                    ],
+                    "assoc_threats": [
+                        "Large dams",
+                        "Abstraction of surface water (domestic use)",
+                        "Abstraction of ground water (domestic use)",
+                        "Droughts",
+                        "Abstraction of surface water (agricultural use)",
+                        "Sewage",
+                        "Abstraction of ground water (agricultural use)",
+                        "Dams & water management/use",
+                        "Small dams",
+                        "Domestic & urban waste water"
                     ]
                 }
             ]
@@ -365,12 +378,12 @@ Example: Let's say you want to find data on "Azerbaijan"
                 "flag": "http://cdn.wonderfulengineering.com/wp-content/uploads/2015/07/azerbaijan-flag-13.png",
                 "coordinate": "lat: 40.143105 lng: 47.576927",
                 "assoc_animals": [
-                    "Ablepharus bivittatus",
-                    "Accipiter badius",
-                    "Acanthobrama microlepis",
-                    "Accipiter gentilis",
-                    "Acanthis flammea",
-                    "Accipiter brevipes"
+                    "Northern Goshawk",
+                    "Two-streaked Snake-eyed Skink",
+                    "Caucasian Bream",
+                    "Levant Sparrowhawk",
+                    "Shikra",
+                    "Redpoll"
                 ],
                 "assoc_habitats": [
                     "Forest - Boreal",
@@ -413,12 +426,12 @@ This endpoint basically calls /single_country_data on each country.
                     "flag": "http://cdn.wonderfulengineering.com/wp-content/uploads/2015/07/azerbaijan-flag-13.png",
                     "coordinate": "lat: 40.143105 lng: 47.576927",
                     "assoc_animals": [
-                        "Ablepharus bivittatus",
-                        "Accipiter badius",
-                        "Acanthobrama microlepis",
-                        "Accipiter gentilis",
-                        "Acanthis flammea",
-                        "Accipiter brevipes"
+                        "Northern Goshawk",
+                        "Two-streaked Snake-eyed Skink",
+                        "Caucasian Bream",
+                        "Levant Sparrowhawk",
+                        "Shikra",
+                        "Redpoll"
                     ],
                     "assoc_habitats": [
                         "Forest - Boreal",
@@ -444,9 +457,9 @@ This endpoint basically calls /single_country_data on each country.
                     "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Flag_of_Bhutan.svg/2000px-Flag_of_Bhutan.svg.png",
                     "coordinate": "lat: 27.514162 lng: 90.433601",
                     "assoc_animals": [
-                        "Acanthocobitis botia",
-                        "Accipiter badius",
-                        "Accipiter gentilis"
+                        "Shikra",
+                        "Striped Loach",
+                        "Northern Goshawk"
                     ],
                     "assoc_habitats": [
                         "Forest - Boreal",

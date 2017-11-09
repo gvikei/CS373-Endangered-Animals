@@ -9,19 +9,19 @@ const NAV_LINKS = {
     link: '/about.html',
     title: 'About Us',
   },
-  'animals': {
+  'animal': {
     link: '/animals.html',
     title: 'Animals',
   },
-  'threats': {
+  'threat': {
     link: '/threats.html',
     title: 'Threats',
   },
-  'habitats': {
+  'habitat': {
     link: '/habitats.html',
     title: 'Habitats',
   },
-  'countries': {
+  'country': {
     link: '/countries.html',
     title: 'Countries',
   },
