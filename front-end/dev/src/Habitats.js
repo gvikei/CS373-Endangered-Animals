@@ -94,6 +94,26 @@ class Habitats extends React.Component {
   };
 
   render() {
+    const options = {
+      page: 1,      
+      sizePerPageList: [ {
+        text: '10', value: 10
+      }, {
+        text: '20', value: 20
+      }, {
+        text: '30', value: 30
+      } ], 
+      sizePerPage: 10,  
+      pageStartIndex: 1, 
+      paginationSize: 5,  
+      prePage: 'Prev', 
+      nextPage: 'Next', 
+      firstPage: 'First', 
+      lastPage: 'Last', 
+      paginationShowsTotal: this.renderShowsTotal,  
+      paginationPosition: 'top' 
+    };
+
     if(!this.state.model.length)
       return ( <div /> )
 
@@ -105,7 +125,7 @@ class Habitats extends React.Component {
           title={this.state.typeProper}
           subTitle={this.state.subTitle}/>
 
-           <BootstrapTable data={this.state.model} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={true}>
+           <BootstrapTable data={this.state.model} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={true} options={options}>
             <TableHeaderColumn dataField="image"            dataAlign="center"                                dataFormat={this.imageFormatter}    > Image                 </TableHeaderColumn>
             <TableHeaderColumn dataField="name"             dataAlign="center" dataSort={true} isKey={true}   dataFormat={this.instanceFormatter} > Name                  </TableHeaderColumn>
             <TableHeaderColumn dataField="suitability"      dataAlign="center" dataSort={true}                                                    > Suitability           </TableHeaderColumn>

@@ -114,15 +114,15 @@ class Animals extends React.Component {
     const options = {
       page: 1,      
       sizePerPageList: [ {
-        text: '5', value: 5
-      }, {
         text: '10', value: 10
       }, {
         text: '20', value: 20
+      }, {
+        text: '30', value: 30
       } ], 
-      sizePerPage: 5,  
+      sizePerPage: 10,  
       pageStartIndex: 1, 
-      paginationSize: 3,  
+      paginationSize: 5,  
       prePage: 'Prev', 
       nextPage: 'Next', 
       firstPage: 'First', 
