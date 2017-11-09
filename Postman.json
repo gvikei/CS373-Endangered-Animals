@@ -1,0 +1,895 @@
+{
+	"info": {
+		"name": "Unit tests for all functions",
+		"_postman_id": "48b6e617-48c9-5df5-198c-e86b16d97eb3",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Single animal data, regular",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"//1. Make sure response is ok\r",
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//2. Example using pm.response.to.be*\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     // assert that the status code is 200\r",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+							"     // assert that the response has a valid JSON body\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swe-endangered-animals.appspot.com/single_animal_data?animal_name=Reid's Arboreal Alligator Lizard",
+					"protocol": "https",
+					"host": [
+						"swe-endangered-animals",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"single_animal_data"
+					],
+					"query": [
+						{
+							"key": "animal_name",
+							"value": "Reid's Arboreal Alligator Lizard",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Single animal data, bad value",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"//1. Make sure response is ok\r",
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//2. Example using pm.response.to.be*\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     // assert that the status code is 200\r",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+							"     // assert that the response has a valid JSON body\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+							"});\r",
+							"\r",
+							"//3. Check if response body is equal to the error message string\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body(\"{\\\"error\\\": \\\"Animal not found in database\\\", \\\"message\\\": \\\"Your search query for abcdefghijklmnopqrstuvwxyz was not found in our database\\\"}\");\r",
+							"});\r",
+							"\r",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swe-endangered-animals.appspot.com/single_animal_data?animal_name=abcdefghijklmnopqrstuvwxyz",
+					"protocol": "https",
+					"host": [
+						"swe-endangered-animals",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"single_animal_data"
+					],
+					"query": [
+						{
+							"key": "animal_name",
+							"value": "abcdefghijklmnopqrstuvwxyz",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Single animal data, no input value entered",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"//1. Make sure response is ok\r",
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//2. Example using pm.response.to.be*\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     // assert that the status code is 200\r",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+							"     // assert that the response has a valid JSON body\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+							"});\r",
+							"\r",
+							"//3. Check if response body is equal to the error message string\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body(\"{\\\"error\\\": \\\"Empty field for parameter inside /single_animal_data/\\\", \\\"message\\\": \\\"Please enter an animal name\\\"}\");\r",
+							"});\r",
+							"\r",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swe-endangered-animals.appspot.com/single_animal_data?animal_name=",
+					"protocol": "https",
+					"host": [
+						"swe-endangered-animals",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"single_animal_data"
+					],
+					"query": [
+						{
+							"key": "animal_name",
+							"value": "",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Single threat data, regular",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"//1. Make sure response is ok\r",
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//2. Example using pm.response.to.be*\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     // assert that the status code is 200\r",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+							"     // assert that the response has a valid JSON body\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+							"});\r",
+							"\r",
+							"//3. Make sure no nulls exist\r",
+							"tests[\"Ensure there are no nulls\"] = !(responseBody.has(\"null\"));"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swe-endangered-animals.appspot.com/single_threat_data?threat_name=Problematic native species/diseases",
+					"protocol": "https",
+					"host": [
+						"swe-endangered-animals",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"single_threat_data"
+					],
+					"query": [
+						{
+							"key": "threat_name",
+							"value": "Problematic native species/diseases",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Singe threat data, bad value",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"//1. Make sure response is ok\r",
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//2. Example using pm.response.to.be*\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     // assert that the status code is 200\r",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+							"     // assert that the response has a valid JSON body\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+							"});\r",
+							"\r",
+							"//3. Check if response body is equal to the error message string\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body(\"{\\\"error\\\": \\\"Threat not found in database\\\", \\\"message\\\": \\\"Your search query for abcdefghijklmnopqrstuvwxyz was not found in our database\\\"}\");\r",
+							"});\r",
+							"\r",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swe-endangered-animals.appspot.com/single_threat_data?threat_name=abcdefghijklmnopqrstuvwxyz",
+					"protocol": "https",
+					"host": [
+						"swe-endangered-animals",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"single_threat_data"
+					],
+					"query": [
+						{
+							"key": "threat_name",
+							"value": "abcdefghijklmnopqrstuvwxyz",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Single threat data, no input value entered",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"//1. Make sure response is ok\r",
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//2. Example using pm.response.to.be*\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     // assert that the status code is 200\r",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+							"     // assert that the response has a valid JSON body\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+							"});\r",
+							"\r",
+							"//3. Check if response body is equal to the error message string\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body(\"{\\\"error\\\": \\\"Empty field for parameter inside /single_threat_data/\\\", \\\"message\\\": \\\"Please enter a threat\\\"}\");\r",
+							"});\r",
+							"\r",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swe-endangered-animals.appspot.com/single_threat_data/?threat_name=",
+					"protocol": "https",
+					"host": [
+						"swe-endangered-animals",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"single_threat_data",
+						""
+					],
+					"query": [
+						{
+							"key": "threat_name",
+							"value": "",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Single habitat data, regular",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"//1. Make sure response is ok\r",
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//2. Example using pm.response.to.be*\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     // assert that the status code is 200\r",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+							"     // assert that the response has a valid JSON body\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+							"});\r",
+							"\r",
+							"//3. Make sure no nulls exist\r",
+							"tests[\"Ensure there are no nulls\"] = !(responseBody.has(\"null\"));"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swe-endangered-animals.appspot.com/single_habitat_data/?habitat_name=Wetlands (inland) - Permanent Freshwater Lakes (over 8ha)",
+					"protocol": "https",
+					"host": [
+						"swe-endangered-animals",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"single_habitat_data",
+						""
+					],
+					"query": [
+						{
+							"key": "habitat_name",
+							"value": "Wetlands (inland) - Permanent Freshwater Lakes (over 8ha)",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Single habitat data, bad value",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"//1. Make sure response is ok\r",
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//2. Example using pm.response.to.be*\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     // assert that the status code is 200\r",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+							"     // assert that the response has a valid JSON body\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+							"});\r",
+							"\r",
+							"//3. Check if response body is equal to the error message string\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body(\"{\\\"error\\\": \\\"Habitat not found in database\\\", \\\"message\\\": \\\"Your search query for abcdefghijklmnopqrstuvwxyz was not found in our database\\\"}\");\r",
+							"});\r",
+							"\r",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swe-endangered-animals.appspot.com/single_habitat_data/?habitat_name=abcdefghijklmnopqrstuvwxyz",
+					"protocol": "https",
+					"host": [
+						"swe-endangered-animals",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"single_habitat_data",
+						""
+					],
+					"query": [
+						{
+							"key": "habitat_name",
+							"value": "abcdefghijklmnopqrstuvwxyz",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Single habitat data, no input value entered",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"//1. Make sure response is ok\r",
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//2. Example using pm.response.to.be*\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     // assert that the status code is 200\r",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+							"     // assert that the response has a valid JSON body\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+							"});\r",
+							"\r",
+							"//3. Check if response body is equal to the error message string\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body(\"{\\\"error\\\": \\\"Empty field for parameter inside /single_habitat_data/\\\", \\\"message\\\": \\\"Please enter a habitat\\\"}\");\r",
+							"});\r",
+							"\r",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swe-endangered-animals.appspot.com/single_habitat_data/?habitat_name=",
+					"protocol": "https",
+					"host": [
+						"swe-endangered-animals",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"single_habitat_data",
+						""
+					],
+					"query": [
+						{
+							"key": "habitat_name",
+							"value": "",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Single country data, regular",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"//1. Make sure response is ok\r",
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//2. Example using pm.response.to.be*\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     // assert that the status code is 200\r",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+							"     // assert that the response has a valid JSON body\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+							"});\r",
+							"\r",
+							"//3. Make sure no nulls exist\r",
+							"tests[\"Ensure there are no nulls\"] = !(responseBody.has(\"null\"));"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swe-endangered-animals.appspot.com/single_country_data/?country_name=Bhutan",
+					"protocol": "https",
+					"host": [
+						"swe-endangered-animals",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"single_country_data",
+						""
+					],
+					"query": [
+						{
+							"key": "country_name",
+							"value": "Bhutan",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Single country data, bad value",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"//1. Make sure response is ok\r",
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//2. Example using pm.response.to.be*\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     // assert that the status code is 200\r",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+							"     // assert that the response has a valid JSON body\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+							"});\r",
+							"\r",
+							"//3. Check if response body is equal to the error message string\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body(\"{\\\"error\\\": \\\"Country not found in database\\\", \\\"message\\\": \\\"Your search query for abcdefghijklmnopqrstuvwxyz was not found in our database\\\"}\");\r",
+							"});\r",
+							"\r",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swe-endangered-animals.appspot.com/single_country_data/?country_name=abcdefghijklmnopqrstuvwxyz",
+					"protocol": "https",
+					"host": [
+						"swe-endangered-animals",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"single_country_data",
+						""
+					],
+					"query": [
+						{
+							"key": "country_name",
+							"value": "abcdefghijklmnopqrstuvwxyz",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Single country data, no input valaue entered",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"//1. Make sure response is ok\r",
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//2. Example using pm.response.to.be*\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     // assert that the status code is 200\r",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+							"     // assert that the response has a valid JSON body\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+							"});\r",
+							"\r",
+							"//3. Check if response body is equal to the error message string\r",
+							"pm.test(\"Body is correct\", function () {\r",
+							"    pm.response.to.have.body(\"{\\\"error\\\": \\\"Empty field for parameter inside /single_country_data/\\\", \\\"message\\\": \\\"Please enter a country\\\"}\");\r",
+							"});\r",
+							"\r",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swe-endangered-animals.appspot.com/single_country_data/?country_name=",
+					"protocol": "https",
+					"host": [
+						"swe-endangered-animals",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"single_country_data",
+						""
+					],
+					"query": [
+						{
+							"key": "country_name",
+							"value": "",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "All animal data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"//1. Make sure response is ok\r",
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//2. Example using pm.response.to.be*\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     // assert that the status code is 200\r",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+							"     // assert that the response has a valid JSON body\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swe-endangered-animals.appspot.com/all_animal_data",
+					"protocol": "https",
+					"host": [
+						"swe-endangered-animals",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"all_animal_data"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "All threat data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"//1. Make sure response is ok\r",
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//2. Example using pm.response.to.be*\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     // assert that the status code is 200\r",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+							"     // assert that the response has a valid JSON body\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+							"});\r",
+							"\r",
+							"//3. Make sure no nulls exist\r",
+							"tests[\"Ensure there are no nulls\"] = !(responseBody.has(\"null\"));"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swe-endangered-animals.appspot.com/all_threat_data",
+					"protocol": "https",
+					"host": [
+						"swe-endangered-animals",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"all_threat_data"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "All habitat data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"//1. Make sure response is ok\r",
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//2. Example using pm.response.to.be*\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     // assert that the status code is 200\r",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+							"     // assert that the response has a valid JSON body\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+							"});\r",
+							"\r",
+							"//3. Make sure no nulls exist\r",
+							"tests[\"Ensure there are no nulls\"] = !(responseBody.has(\"null\"));"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swe-endangered-animals.appspot.com/all_habitat_data",
+					"protocol": "https",
+					"host": [
+						"swe-endangered-animals",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"all_habitat_data"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "All country data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"//1. Make sure response is ok\r",
+							"pm.test(\"response is ok\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"//2. Example using pm.response.to.be*\r",
+							"pm.test(\"response must be valid and have a body\", function () {\r",
+							"     // assert that the status code is 200\r",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants\r",
+							"     // assert that the response has a valid JSON body\r",
+							"     pm.response.to.be.withBody;\r",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed\r",
+							"});\r",
+							"\r",
+							"//3. Make sure no nulls exist\r",
+							"tests[\"Ensure there are no nulls\"] = !(responseBody.has(\"null\"));"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://swe-endangered-animals.appspot.com/all_country_data",
+					"protocol": "https",
+					"host": [
+						"swe-endangered-animals",
+						"appspot",
+						"com"
+					],
+					"path": [
+						"all_country_data"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
