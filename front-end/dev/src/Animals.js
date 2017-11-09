@@ -111,6 +111,26 @@ class Animals extends React.Component {
   };
 
   render() {
+    const options = {
+      page: 1,      
+      sizePerPageList: [ {
+        text: '5', value: 5
+      }, {
+        text: '10', value: 10
+      }, {
+        text: '20', value: 20
+      } ], 
+      sizePerPage: 5,  
+      pageStartIndex: 1, 
+      paginationSize: 3,  
+      prePage: 'Prev', 
+      nextPage: 'Next', 
+      firstPage: 'First', 
+      lastPage: 'Last', 
+      paginationShowsTotal: this.renderShowsTotal,  
+      paginationPosition: 'top' 
+    };
+
     if(!this.state.model.length)
       return ( <div /> )
 
@@ -122,7 +142,7 @@ class Animals extends React.Component {
           title={this.state.typeProper}
           subTitle={this.state.subTitle}/>
 
-           <BootstrapTable data={this.state.model} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={true}>
+           <BootstrapTable data={this.state.model} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={true} options={options}>
             <TableHeaderColumn dataField="imageLink"            thStyle = {{'white-space': 'nowrap', width: '266px'}} dataAlign="center"                  dataFormat={this.imageFormatter}    > Image                </TableHeaderColumn>
             <TableHeaderColumn dataField="name"                 thStyle = {{'white-space': 'nowrap'}} dataAlign="center" dataSort={true}  dataFormat={this.instanceFormatter} > Name                 </TableHeaderColumn>
             <TableHeaderColumn dataField="scientificName"       thStyle = {{'white-space': 'nowrap'}} dataAlign="center" dataSort={true}  isKey={true}                        > Scientific Name      </TableHeaderColumn>
