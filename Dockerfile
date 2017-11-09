@@ -5,7 +5,7 @@ ENV LAST_UPDATED 20160605T165400
 COPY . /app
 
 # Change working directory
-WORKDIR /app/react-bootstrap
+WORKDIR /app/front-end
 
 # Expose API port to the outside
 EXPOSE 8080

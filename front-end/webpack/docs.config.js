@@ -8,7 +8,7 @@ const webpackDevServerAddress = `http://${ip.address()}:${options.port}`;
 const cssSourceMap = options.debug ? '?sourceMap' : '';
 const reactHot = options.debug ? 'react-hot!' : '';
 
-const entryFile = './docs/client.js';
+const entryFile = './dev/client.js';
 const devEntryBundle = [
   'webpack/hot/dev-server',
   `webpack-dev-server/client?${webpackDevServerAddress}`,
@@ -31,7 +31,7 @@ export default {
 
   output: {
     filename: '[name].js',
-    path: './docs-built/assets',
+    path: './dev-built/assets',
     publicPath: options.debug ? `${webpackDevServerAddress}/assets/` : '/assets/',
   },
 
