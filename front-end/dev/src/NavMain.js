@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router';
-import Navbar from '../../src/Navbar';
-import Nav from '../../src/Nav';
+import Navbar from '../../components/Navbar';
+import Nav from '../../components/Nav';
 
 const NAV_LINKS = {
   'about': {
