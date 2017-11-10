@@ -48,6 +48,16 @@ class Countries extends React.Component {
     this.context.router.push("/"+type+".html/?q="+data);
   };
 
+  highlight(data) {
+    var item = document.querySelector('.form-group.form-group-sm.react-bs-table-search-form>input');
+    if (item != null) {
+      var keyword = item.value;
+      var regex = new RegExp(keyword);
+      return {__html: data.replace(regex, '<b><u>' + keyword + '</u></b>') }
+    }
+    return {__html: data}
+  };
+
   animalFormatter(list){
     var type = "animal";
 
@@ -87,7 +97,7 @@ class Countries extends React.Component {
   instanceFormatter(data, row, type){
     if(typeof type == "undefined")
       type = this.state.type;
-    return <a onClick={ () => { this.changeURL(type, data) } } >{ data }</a>;
+    return <a onClick={ () => { this.changeURL(type, data) } } dangerouslySetInnerHTML={this.highlight(data)}></a>;
   };
 
   linkFormatter(data){

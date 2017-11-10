@@ -53,9 +53,9 @@ class Animals extends React.Component {
     if (item != null) {
       var keyword = item.value;
       var regex = new RegExp(keyword);
-      return (data.replace(regex, '<b>' + keyword + '</b>'));
+      return {__html: data.replace(regex, '<b><u>' + keyword + '</u></b>') }
     }
-    else return data;
+    return {__html: data}
   };
 
   countryFormatter(list){
@@ -98,7 +98,7 @@ class Animals extends React.Component {
   instanceFormatter(data, row, type){
     if(typeof type == "undefined")
       type = this.state.type;
-    return <a onClick={ () => { this.changeURL(type, data) } } > { this.highlight(data) } </a>;
+    return <a onClick={ () => { this.changeURL(type, data) } } dangerouslySetInnerHTML={this.highlight(data)}></a>;
   };
 
   linkFormatter(data){
