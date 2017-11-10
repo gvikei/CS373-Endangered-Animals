@@ -56,23 +56,12 @@ class Habitat extends React.Component {
 
   renderHabitat(instance) {
     return (
-      <Col key={ instance.name } sm={ 3 }>
-        <Thumbnail src={ instance.image } width="100%" height="33%">
-          <Row>
-            <Col sm={2}>
-              <b>Suitability:</b>
-            </Col>
-            <Col sm={2}>
-              { instance.suitability }
-            </Col>
-          </Row>
-          <Row>
-            <Col sm={2}>
-              <a href="animals.html">Animals:</a>
-            </Col>
-            <Col sm={2}>
-              <ul>
-              {
+      <Thumbnail src={instance.image}>
+        <p></p>
+        <p><b>Suitability: &nbsp; </b>{ instance.suitability }</p>
+        <p><b>Animals: &nbsp; </b></p>
+          <ul>
+            {
                 instance.assoc_animals.map(function(animal, i){
                   return (
                     <a key={"ah"+i} onClick={() => { this.changeURL('animal', animal) }} >
@@ -80,16 +69,11 @@ class Habitat extends React.Component {
                     </a>
                   )
                 }.bind(this))
-              }
-              </ul>
-            </Col>
-          </Row>
-          <Row>
-            <Col sm={2}>
-              <a href="countries.html">Countries:</a>
-            </Col>
-            <Col sm={2}>
-              <ul>
+            }
+          </ul>
+          
+          <p><b>Countries:</b></p>
+            <ul>
               {
                 instance.assoc_countries.map(function(country, i){
                   return (
@@ -99,11 +83,9 @@ class Habitat extends React.Component {
                   )
                 }.bind(this))
               }
-              </ul>
-            </Col>
-          </Row>
-        </Thumbnail>
-      </Col>
+            </ul>
+
+      </Thumbnail>
     );
   };
 
@@ -118,9 +100,13 @@ class Habitat extends React.Component {
         <PageHeader
           title={ this.state.habitat.name } />
 
-            <Row>
+          <div className="container bs-docs-container bs-docs-single-col-container">
+            <div className="bs-docs-section">
+              <Row>
               { this.renderHabitat(this.state.habitat) }
-            </Row>
+              </Row>
+            </div>
+          </div>
 
         <PageFooter />
       </div>

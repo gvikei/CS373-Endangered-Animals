@@ -12,13 +12,13 @@ var axios = require('axios');
 
 class Animal extends React.Component {
 
-  constructor(props) {
+    constructor(props) {
     super(props);
 
     this.renderAnimal = this.renderAnimal.bind(this);
     this.state = {
-      animal: {},
-      type: "animal"
+        animal: {},
+        type: "animal"
     };
 
     //Following snippet of code from ideasandpixels.com
@@ -33,117 +33,119 @@ class Animal extends React.Component {
 
     var that = this;
     axios.create({
-      baseURL: 'https://swe-endangered-animals.appspot.com/',
-      headers: {"Access-Control-Allow-Origin": "*"}
+        baseURL: 'https://swe-endangered-animals.appspot.com/',
+        headers: {"Access-Control-Allow-Origin": "*"}
     }).get('/single_animal_data/?animal_name='+$_GET['q'])
-      .then(function(data) {
+        .then(function(data) {
         that.setState({
-          animal: data.data
+            animal: data.data
         });
     });
-  };
+    };
 
-  shouldComponentUpdate() {
+    shouldComponentUpdate() {
     return true;
-  };
+    };
 
 
-  changeURL(type, data){
+    changeURL(type, data){
     if(typeof data == "undefined")
-      data = "";
+        data = "";
     this.context.router.push("/"+type+".html/?q="+data);
-  };
+    };
 
-  formatVideo(url) {
+    formatVideo(url) {
     if(!url)
-      return;
+        return;
 
     var videoID = url.substring(url.indexOf("v=") + 2, url.length);
     var videoURL = "https://www.youtube.com/embed/" + videoID;
 
     return (
-      <iframe display="block" height="500px" width="100%" src={ videoURL }/>
+        <iframe display="block" height="500px" width="100%" src={ videoURL }/>
     );
-  };
+    };
 
-  renderAnimal() {
+    renderAnimal() {
     return (
-      <Thumbnail src={ this.state.animal.imageLink }>
-          <p><b>Scientific name: &nbsp; </b>{ this.state.animal.scientificName }</p>
-          <p><b>Vulnerability status: &nbsp; </b>{ this.state.animal.vulnerability }</p>
-          <p>{ this.formatVideo(this.state.animal.videoLink) }</p>
+        <Thumbnail src={ this.state.animal.imageLink }>
+        <p></p>
 
-          <p><b>Threats: &nbsp; </b></p>
+            <p><b>Scientific name: &nbsp; </b>{ this.state.animal.scientificName }</p>
+            <p><b>Vulnerability status: &nbsp; </b>{ this.state.animal.vulnerability }</p>
+            <p>{ this.formatVideo(this.state.animal.videoLink) }</p>
+
+            <p><b>Threats: &nbsp; </b></p>
             <ul>
-              {
+                {
                 this.state.animal.assoc_threats.map(function(threat, i){
-                  return (
+                    return (
                     <a key={"at"+i} onClick={() => { this.changeURL('threat', threat) }} >
-                      <li key={"t"+i}>{ threat }</li>
+                        <li key={"t"+i}>{ threat }</li>
                     </a>
-                  )
+                    )
                 }.bind(this))
-              }
+                }
             </ul>
 
 
-          <p><b>Habitats:</b></p>
+            <p><b>Habitats:</b></p>
             <ul>
-              {
+                {
                 this.state.animal.assoc_habitats.map(function(habitat, i){
-                  return (
+                    return (
                     <a key={"ah"+i} onClick={() => { this.changeURL('habitat', habitat) }} >
-                      <li key={"h"+i}>{ habitat }</li>
+                        <li key={"h"+i}>{ habitat }</li>
                     </a>
-                  )
+                    )
                 }.bind(this))
-              }
+                }
             </ul>
 
-          <p><b>Countries:</b></p>
+        <p><b>Countries:</b></p>
             <ul>
-              {
+            {
                 this.state.animal.assoc_countries.map(function(country, i){
-                  return (
+                    return (
                     <a key={"ac"+i} onClick={() => { this.changeURL('country', country) }} >
-                      <li key={"c"+i}>{ country }</li>
+                        <li key={"c"+i}>{ country }</li>
                     </a>
-                  )
+                    )
                 }.bind(this))
-              }
+                }
             </ul>
 
-      </Thumbnail>
+        </Thumbnail>
     );
-  };
+    };
 
-  render() {
+    render() {
     if(typeof this.state.animal.name == "undefined")
-      return ( <div /> )
+        return ( <div /> )
 
     return (
-      <div>
+        <div>
         <NavMain activePage={this.state.type} />
 
         <PageHeader
-          title={ this.state.animal.name } />
+            title={ this.state.animal.name } />
 
-          <div className="container bs-docs-container bs-docs-single-col-container">
+            <div className="container bs-docs-container bs-docs-single-col-container">
             <div className="bs-docs-section">
-          
-              <Row>
+            
+                <Row>
                 { 
-                  this.renderAnimal()
+                    this.renderAnimal()
                 }
-              </Row>
+                </Row>
 
             </div>
-          </div>
+            </div>
 
         <PageFooter />
-      </div>
+        </div>
     );
-  };
+    };
 };
 
 Animal.contextTypes = {

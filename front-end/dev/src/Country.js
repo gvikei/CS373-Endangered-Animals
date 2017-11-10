@@ -56,17 +56,12 @@ class Country extends React.Component {
 
   renderCountry(instance) {
     return (
-      <Thumbnail src={ instance.flag } width="100%" height="33%">
-
-        <br/><br/>
-
-        <Row>
-          <Col sm={2}>
-            <b><a href="animals.html">Animals</a>:</b>
-          </Col>
-          <Col sm={2}>
-            <ul>
-              {
+      
+      <Thumbnail src={instance.flag}>
+        <p></p>
+        <p><b>Animals: &nbsp; </b></p>
+          <ul>
+            {
                 instance.assoc_animals.map(function(animal, i){
                   return (
                     <a key={"ah"+i} onClick={() => { this.changeURL('animal', animal) }} >
@@ -74,15 +69,10 @@ class Country extends React.Component {
                     </a>
                   )
                 }.bind(this))
-              }
-            </ul>
-          </Col>
-        </Row>
-        <Row>
-          <Col sm={2}>
-            <b><a href="habitats.html">Habitats</a>:</b>
-          </Col>
-          <Col sm={2}>
+            }
+          </ul>
+          
+          <p><b>Habitats:</b></p>
             <ul>
               {
                 instance.assoc_habitats.map(function(habitat, i){
@@ -94,14 +84,16 @@ class Country extends React.Component {
                 }.bind(this))
               }
             </ul>
-          </Col>
-        </Row>
 
-        <br/><br/>
-        
-        <iframe id="gmap_canvas" width="100%" src={ "https://maps.google.com/maps?q=" + instance.name + "&t=k&z=6&ie=UTF8&iwloc=&output=embed" } frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0">
-        </iframe>
+          <p>
+            <ul>
+              <iframe id="gmap_canvas" width="100%" src={ "https://maps.google.com/maps?q=" + instance.name + "&t=k&z=6&ie=UTF8&iwloc=&output=embed" } frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0">
+              </iframe>
+            </ul>
+          </p>              
+
       </Thumbnail>
+
     );
   };
 
@@ -116,9 +108,13 @@ class Country extends React.Component {
         <PageHeader
           title={ this.state.country.name } />
 
+          <div className="container bs-docs-container bs-docs-single-col-container">
+            <div className="bs-docs-section">
               <Row>
                 { this.renderCountry(this.state.country) }
               </Row>
+            </div>
+          </div>
 
         <PageFooter />
       </div>
