@@ -2,10 +2,10 @@ import React, { cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import Nav from '../../src/Nav';
-import SafeAnchor from '../../src/SafeAnchor';
-import ValidComponentChildren from '../../src/utils/ValidComponentChildren';
-import createChainedFunction from '../../src/utils/createChainedFunction';
+import Nav from '../../components/Nav';
+import SafeAnchor from '../../components/SafeAnchor';
+import ValidComponentChildren from '../../components/utils/ValidComponentChildren';
+import createChainedFunction from '../../components/utils/createChainedFunction';
 
 const propTypes = {
   onSelect: PropTypes.func,

@@ -4,7 +4,7 @@ export default {
   ...baseConfig,
 
   entry: {
-    'react-bootstrap': './src/index.js',
+    'react-bootstrap': './components/index.js',
   },
 
   output: {

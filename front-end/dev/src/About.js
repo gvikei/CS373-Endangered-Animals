@@ -3,9 +3,9 @@
   import NavMain from './NavMain';
   import PageHeader from './PageHeader';
   import PageFooter from './PageFooter';
-  import Row from '../../src/Row';
-  import Col from '../../src/Col';
-  import Thumbnail from '../../src/Thumbnail';
+  import Row from '../../components/Row';
+  import Col from '../../components/Col';
+  import Thumbnail from '../../components/Thumbnail';
 
   var axios = require('axios');
 

@@ -2,10 +2,10 @@ import merge from 'lodash/merge';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Glyphicon from '../../src/Glyphicon';
-import Label from '../../src/Label';
-import Table from '../../src/Table';
-import capitalize from '../../src/utils/capitalize';
+import Glyphicon from '../../components/Glyphicon';
+import Label from '../../components/Label';
+import Table from '../../components/Table';
+import capitalize from '../../components/utils/capitalize';
 
 function cleanDocletValue(str) {
   return str.trim().replace(/^\{/, '').replace(/\}$/, '');
