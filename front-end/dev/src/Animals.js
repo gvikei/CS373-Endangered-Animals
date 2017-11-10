@@ -143,19 +143,8 @@ class Animals extends React.Component {
           subTitle={this.state.subTitle}/>
 
            <BootstrapTable data={this.state.model} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={true} options={options}>
-            <TableHeaderColumn dataField="imageLink"            thStyle = {{'white-space': 'nowrap', width: '266px'}} dataAlign="center"                  dataFormat={this.imageFormatter}    > Image                </TableHeaderColumn>
-            <TableHeaderColumn dataField="name"                 thStyle = {{'white-space': 'nowrap'}} dataAlign="center" dataSort={true}  dataFormat={this.instanceFormatter} > Name                 </TableHeaderColumn>
-            <TableHeaderColumn dataField="scientificName"       thStyle = {{'white-space': 'nowrap'}} dataAlign="center" dataSort={true}  isKey={true}                        > Scientific Name      </TableHeaderColumn>
-            <TableHeaderColumn dataField="vulnerability"        thStyle = {{'white-space': 'nowrap'}} dataAlign="center" dataSort={true}                                      > Vulnerability        </TableHeaderColumn>
-            <TableHeaderColumn dataField="videoLink"            thStyle = {{'white-space': 'nowrap'}} dataAlign="center" dataSort={true}  dataFormat={this.linkFormatter}     > Video                </TableHeaderColumn>
-            <TableHeaderColumn dataField="citationLink"         thStyle = {{'white-space': 'nowrap'}} dataAlign="left" dataSort={true}                                      > Citation             </TableHeaderColumn>
-            <TableHeaderColumn dataField="conservationMeasure"  thStyle = {{'white-space': 'nowrap'}} dataAlign="center" dataSort={true}                                      > Conservation Measure </TableHeaderColumn>
-            <TableHeaderColumn dataField="webLink"              thStyle = {{'white-space': 'nowrap'}} dataAlign="center" dataSort={true}  dataFormat={this.linkFormatter}     > Source               </TableHeaderColumn>
-            <TableHeaderColumn dataField="assoc_threats"        thStyle = {{'white-space': 'nowrap'}} dataAlign="left" dataSort={true}  dataFormat={this.threatFormatter}   > Associated Threats   </TableHeaderColumn>
-            <TableHeaderColumn dataField="assoc_habitats"       thStyle = {{'white-space': 'nowrap'}} dataAlign="left" dataSort={true}  dataFormat={this.habitatFormatter}  > Associated Habitats  </TableHeaderColumn>
-            <TableHeaderColumn dataField="assoc_countries"      thStyle = {{'white-space': 'nowrap'}} dataAlign="left" dataSort={true}  dataFormat={this.countryFormatter}  > Associated Countries </TableHeaderColumn>
+
             <TableHeaderColumn width='200' dataField="imageLink"            dataAlign="center"                  dataFormat={this.imageFormatter}    > Image                </TableHeaderColumn>
-            <TableHeaderColumn width='250' dataField="imageLink"            dataAlign="center"                  dataFormat={this.imageFormatter}    > Image                </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="name"                 dataAlign="center" dataSort={true}  dataFormat={this.instanceFormatter} > Name                 </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="scientificName"       dataAlign="center" dataSort={true}  isKey={true}                        > Scientific Name      </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="vulnerability"        dataAlign="center" dataSort={true}                                      > Vulnerability        </TableHeaderColumn>
