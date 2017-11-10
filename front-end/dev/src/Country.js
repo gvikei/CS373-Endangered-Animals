@@ -108,9 +108,13 @@ class Country extends React.Component {
         <PageHeader
           title={ this.state.country.name } />
 
+          <div className="container bs-docs-container bs-docs-single-col-container">
+            <div className="bs-docs-section">
               <Row>
                 { this.renderCountry(this.state.country) }
               </Row>
+            </div>
+          </div>
 
         <PageFooter />
       </div>
