@@ -23,7 +23,7 @@ export default class HomePage extends React.Component {
               <img src="http://www.cambridgeblog.org/wp-content/uploads/2015/05/What-is-an-Animal.jpg" />
             </Carousel.Item>
             <Carousel.Item>
-              <img src="http://animals.sandiegozoo.org/sites/default/files/2016-10/animals_hero_penguin_02_1.jpg" />
+              <img src="http://animals.sandiegozoo.org/sites/default/files/2016-11/animals_hero_african_spurred_tortoise.jpg" />
             </Carousel.Item>
           </Carousel>
         </div>
