@@ -3,48 +3,6 @@ HOST: https://swe-endangered-animals.appspot.com
 
 # Endangered Animals
 
-## Animal [/single_animal_data/]
-
-### GET: /single_animal_data/?animal_name [GET]
-
-Retrieves data for an animal: common name, scientific name, image, video, vulnerability, conservation measures, citation link, associated habitats/threats/countries.
-    
-Example: Let's say you want to find data on "Semi-collared Hawk"
-    
-**HTTP Request:**
-`https://swe-endangered-animals.appspot.com/single_animal_data?animal_name=Semi-collared Hawk`
-
-+ Response 200 (application/json)
-
-    + Body
-    
-            {
-                "common_name": "Semi-collared Hawk",
-                "scientific_name": "Accipiter collaris",
-                "vulnerability_status":"vulnerable",
-                "citation":"Campbell, J. 2007. Abronia oaxacae. The IUCN Red List of Threatened Species 2007: e.T63685A12697055. http://dx.doi.org/10.2305/IUCN.UK.2007.RLTS.T63685A12697055.en",
-                "conservation_measure": "Resource & habitat protection",
-                "video_url": "https://www.youtube.com/watch?v=vy2RKH2v5_E",
-                "imageLink": "http://faculty.ucr.edu/~chappell/INW/birds3raptors/semicollaredhawk019.jpg",
-                "webLink": "http://apiv3.iucnredlist.org/api/v3/website/Accipiter collaris",
-                "assoc_habitats":[
-                    "Forest - Subtropical/Tropical Moist Montane"
-                ],
-                "assoc_threats":[
-                    "Annual & perennial non-timber crops",
-                    "Agro-industry farming",
-                    "Livestock farming & ranching",
-                    "Agro-industry grazing, ranching or farming",
-                    "Work & other activities"
-                ],
-                "assoc_countries": [
-                    "Colombia",
-                    "Ecuador",
-                    "Peru",
-                    "Venezuela, Bolivarian Republic of"
-                ]
-            }
-            
 ## All Animals [/all_animal_data]
 
 ### GET: /all_animal_data [GET]
@@ -111,58 +69,47 @@ This endpoint basically calls /single_animal_data on each animal.
                 }
             ]
 
-## Threat [/single_threat_data/]
+## Animal [/single_animal_data/]
 
-### GET: /single_threat_data/?threat_name   [GET]
+### GET: /single_animal_data/?animal_name [GET]
 
-Retrieves data for a specific threat: name, image, timing, severity, associated animals/habitats.
-
-Example: Let's say you want to find data on "Agro-industry farming"
+Retrieves data for an animal: common name, scientific name, image, video, vulnerability, conservation measures, citation link, associated habitats/threats/countries.
+    
+Example: Let's say you want to find data on "Semi-collared Hawk"
     
 **HTTP Request:**
-`https://swe-endangered-animals.appspot.com/single_threat_data?threat_name=Agro-industry farming`
+`https://swe-endangered-animals.appspot.com/single_animal_data?animal_name=Semi-collared Hawk`
 
 + Response 200 (application/json)
 
     + Body
     
-               {
-                    "name": "Agro-industry farming",
-                    "image": "http://www.blog.kpmgafrica.com/wp-content/uploads/2013/04/watering_field.jpg",
-                    "timing": "ongoing",
-                    "severity": "4.5",
-                    "assoc_animals": [
-                        "Desert Lidless Skink",
-                        "Chaco Side-necked Turtle",
-                        "Two-streaked Snake-eyed Skink",
-                        "Be’er Sheva Fringe-fingered Lizard",
-                        "Semi-collared Hawk",
-                        "Oaxaca Arboreal Alligator Lizard",
-                        "Long-faced Loach",
-                        "Wattled Guan",
-                        "Terrestrial Arboreal Alligator Lizard",
-                        "Nicobar Sparrowhawk",
-                        "Brown Pricklenape"
-                    ],
-                    "assoc_habitats": [
-                        "Wetlands (inland) - Shrub Dominated Wetlands",
-                        "Wetlands (inland) - Permanent Rivers/Streams/Creeks (includes waterfalls)",
-                        "Forest - Temperate",
-                        "Grassland - Temperate",
-                        "Forest - Subtropical/Tropical Moist Lowland",
-                        "Desert - Temperate",
-                        "Artificial/Aquatic - Ponds (below 8ha)",
-                        "Shrubland - Subtropical/Tropical Dry",
-                        "Artificial/Terrestrial - Rural Gardens",
-                        "Wetlands (inland) - Seasonal/Intermittent Freshwater Marshes/Pools (under 8ha)",
-                        "Forest - Subtropical/Tropical Moist Montane",
-                        "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
-                        "Wetlands (inland) - Freshwater Springs and Oases",
-                        "Artificial/Terrestrial - Plantations",
-                        "Shrubland - Temperate",
-                        "Grassland - Subtropical/Tropical Seasonally Wet/Flooded"
-                    ]
-                }
+            {
+                "common_name": "Semi-collared Hawk",
+                "scientific_name": "Accipiter collaris",
+                "vulnerability_status":"vulnerable",
+                "citation":"Campbell, J. 2007. Abronia oaxacae. The IUCN Red List of Threatened Species 2007: e.T63685A12697055. http://dx.doi.org/10.2305/IUCN.UK.2007.RLTS.T63685A12697055.en",
+                "conservation_measure": "Resource & habitat protection",
+                "video_url": "https://www.youtube.com/watch?v=vy2RKH2v5_E",
+                "imageLink": "http://faculty.ucr.edu/~chappell/INW/birds3raptors/semicollaredhawk019.jpg",
+                "webLink": "http://apiv3.iucnredlist.org/api/v3/website/Accipiter collaris",
+                "assoc_habitats":[
+                    "Forest - Subtropical/Tropical Moist Montane"
+                ],
+                "assoc_threats":[
+                    "Annual & perennial non-timber crops",
+                    "Agro-industry farming",
+                    "Livestock farming & ranching",
+                    "Agro-industry grazing, ranching or farming",
+                    "Work & other activities"
+                ],
+                "assoc_countries": [
+                    "Colombia",
+                    "Ecuador",
+                    "Peru",
+                    "Venezuela, Bolivarian Republic of"
+                ]
+            }
 
 ## All Threats [/all_threat_data]
 
@@ -242,45 +189,58 @@ This endpoint basically calls /single_threat_data on each threat.
                 }
             ]
 
-## Habitat [/single_habitat_data/]
+## Threat [/single_threat_data/]
 
-### GET: /single_habitat_data/?habitat_name [GET]
+### GET: /single_threat_data/?threat_name   [GET]
 
-Retrieves data for a given habitat: name, image, suitability, associated animals/threats.
+Retrieves data for a specific threat: name, image, timing, severity, associated animals/habitats.
 
-Example: Let's say you want to find data on the habitat "Artificial/Aquatic - Ponds (below 8ha)"
+Example: Let's say you want to find data on "Agro-industry farming"
     
 **HTTP Request:**
-`https://swe-endangered-animals.appspot.com/single_habitat_data/?habitat_name=Artificial/Aquatic - Ponds (below 8ha)`
+`https://swe-endangered-animals.appspot.com/single_threat_data?threat_name=Agro-industry farming`
 
 + Response 200 (application/json)
 
     + Body
     
-            {
-                "name": "Artificial/Aquatic - Ponds (below 8ha)",
-                "image": "http://thumb1.shutterstock.com/display_pic_with_logo/1771478/323878760/stock-photo-small-artificial-decorative-pond-with-rocks-and-plants-on-the-backyard-in-summer-323878760.jpg",
-                "suitability": "Suitable",
-                "assoc_animals": [
-                    "Chaco Side-necked Turtle"
-                ],
-                "assoc_countries": [
-                    "Paraguay",
-                    "Argentina",
-                    "Bolivia, Plurinational States of"
-                ],
-                "assoc_threats": [
-                    "Temperature extremes",
-                    "Livestock farming & ranching",
-                    "Problematic native species/diseases",
-                    "Intentional use: (subsistence/small scale) [harvest]",
-                    "Droughts",
-                    "Agro-industry grazing, ranching or farming",
-                    "Fishing & harvesting aquatic resources",
-                    "Agro-industry farming",
-                    "Annual & perennial non-timber crops"
-                ]
-            }
+               {
+                    "name": "Agro-industry farming",
+                    "image": "http://www.blog.kpmgafrica.com/wp-content/uploads/2013/04/watering_field.jpg",
+                    "timing": "ongoing",
+                    "severity": "4.5",
+                    "assoc_animals": [
+                        "Desert Lidless Skink",
+                        "Chaco Side-necked Turtle",
+                        "Two-streaked Snake-eyed Skink",
+                        "Be’er Sheva Fringe-fingered Lizard",
+                        "Semi-collared Hawk",
+                        "Oaxaca Arboreal Alligator Lizard",
+                        "Long-faced Loach",
+                        "Wattled Guan",
+                        "Terrestrial Arboreal Alligator Lizard",
+                        "Nicobar Sparrowhawk",
+                        "Brown Pricklenape"
+                    ],
+                    "assoc_habitats": [
+                        "Wetlands (inland) - Shrub Dominated Wetlands",
+                        "Wetlands (inland) - Permanent Rivers/Streams/Creeks (includes waterfalls)",
+                        "Forest - Temperate",
+                        "Grassland - Temperate",
+                        "Forest - Subtropical/Tropical Moist Lowland",
+                        "Desert - Temperate",
+                        "Artificial/Aquatic - Ponds (below 8ha)",
+                        "Shrubland - Subtropical/Tropical Dry",
+                        "Artificial/Terrestrial - Rural Gardens",
+                        "Wetlands (inland) - Seasonal/Intermittent Freshwater Marshes/Pools (under 8ha)",
+                        "Forest - Subtropical/Tropical Moist Montane",
+                        "Artificial/Terrestrial - Subtropical/Tropical Heavily Degraded Former Forest",
+                        "Wetlands (inland) - Freshwater Springs and Oases",
+                        "Artificial/Terrestrial - Plantations",
+                        "Shrubland - Temperate",
+                        "Grassland - Subtropical/Tropical Seasonally Wet/Flooded"
+                    ]
+                }
 
 ## All Habitats [/all_habitat_data]
 
@@ -358,50 +318,43 @@ This endpoint basically calls /single_habitat_data on each habitat.
                 }
             ]
 
-## Country [/single_country_data/]
+## Habitat [/single_habitat_data/]
 
-### GET: /single_country_data/?country_name [GET]
+### GET: /single_habitat_data/?habitat_name [GET]
 
-Retrieves data for a specific country: name, flag, coordinates, associated animals/habitats.
+Retrieves data for a given habitat: name, image, suitability, associated animals/threats.
 
-Example: Let's say you want to find data on "Azerbaijan"
+Example: Let's say you want to find data on the habitat "Artificial/Aquatic - Ponds (below 8ha)"
     
 **HTTP Request:**
-`https://swe-endangered-animals.appspot.com/single_country_data/?country_name=Azerbaijan`
+`https://swe-endangered-animals.appspot.com/single_habitat_data/?habitat_name=Artificial/Aquatic - Ponds (below 8ha)`
 
 + Response 200 (application/json)
 
     + Body
     
             {
-                "name": "Azerbaijan",
-                "flag": "http://cdn.wonderfulengineering.com/wp-content/uploads/2015/07/azerbaijan-flag-13.png",
-                "coordinate": "lat: 40.143105 lng: 47.576927",
+                "name": "Artificial/Aquatic - Ponds (below 8ha)",
+                "image": "http://thumb1.shutterstock.com/display_pic_with_logo/1771478/323878760/stock-photo-small-artificial-decorative-pond-with-rocks-and-plants-on-the-backyard-in-summer-323878760.jpg",
+                "suitability": "Suitable",
                 "assoc_animals": [
-                    "Northern Goshawk",
-                    "Two-streaked Snake-eyed Skink",
-                    "Caucasian Bream",
-                    "Levant Sparrowhawk",
-                    "Shikra",
-                    "Redpoll"
+                    "Chaco Side-necked Turtle"
                 ],
-                "assoc_habitats": [
-                    "Forest - Boreal",
-                    "Artificial/Terrestrial - Urban Areas",
-                    "Wetlands (inland) - Permanent Rivers/Streams/Creeks (includes waterfalls)",
-                    "Savanna - Dry",
-                    "Forest - Temperate",
-                    "Grassland - Temperate",
-                    "Forest - Subtropical/Tropical Moist Lowland",
-                    "Shrubland - Subtropical/Tropical Dry",
-                    "Artificial/Terrestrial - Rural Gardens",
-                    "Wetlands (inland) - Permanent Freshwater Marshes/Pools (under 8ha)",
-                    "Grassland - Subtropical/Tropical Dry",
-                    "Artificial/Terrestrial - Plantations",
-                    "Shrubland - Mediterranean-type Shrubby Vegetation",
-                    "Wetlands (inland) - Permanent Freshwater Lakes (over 8ha)",
-                    "Grassland - Tundra",
-                    "Shrubland - Temperate"
+                "assoc_countries": [
+                    "Paraguay",
+                    "Argentina",
+                    "Bolivia, Plurinational States of"
+                ],
+                "assoc_threats": [
+                    "Temperature extremes",
+                    "Livestock farming & ranching",
+                    "Problematic native species/diseases",
+                    "Intentional use: (subsistence/small scale) [harvest]",
+                    "Droughts",
+                    "Agro-industry grazing, ranching or farming",
+                    "Fishing & harvesting aquatic resources",
+                    "Agro-industry farming",
+                    "Annual & perennial non-timber crops"
                 ]
             }
 
@@ -477,3 +430,50 @@ This endpoint basically calls /single_country_data on each country.
                     ]
                 }
             ]
+
+## Country [/single_country_data/]
+
+### GET: /single_country_data/?country_name [GET]
+
+Retrieves data for a specific country: name, flag, coordinates, associated animals/habitats.
+
+Example: Let's say you want to find data on "Azerbaijan"
+    
+**HTTP Request:**
+`https://swe-endangered-animals.appspot.com/single_country_data/?country_name=Azerbaijan`
+
++ Response 200 (application/json)
+
+    + Body
+    
+            {
+                "name": "Azerbaijan",
+                "flag": "http://cdn.wonderfulengineering.com/wp-content/uploads/2015/07/azerbaijan-flag-13.png",
+                "coordinate": "lat: 40.143105 lng: 47.576927",
+                "assoc_animals": [
+                    "Northern Goshawk",
+                    "Two-streaked Snake-eyed Skink",
+                    "Caucasian Bream",
+                    "Levant Sparrowhawk",
+                    "Shikra",
+                    "Redpoll"
+                ],
+                "assoc_habitats": [
+                    "Forest - Boreal",
+                    "Artificial/Terrestrial - Urban Areas",
+                    "Wetlands (inland) - Permanent Rivers/Streams/Creeks (includes waterfalls)",
+                    "Savanna - Dry",
+                    "Forest - Temperate",
+                    "Grassland - Temperate",
+                    "Forest - Subtropical/Tropical Moist Lowland",
+                    "Shrubland - Subtropical/Tropical Dry",
+                    "Artificial/Terrestrial - Rural Gardens",
+                    "Wetlands (inland) - Permanent Freshwater Marshes/Pools (under 8ha)",
+                    "Grassland - Subtropical/Tropical Dry",
+                    "Artificial/Terrestrial - Plantations",
+                    "Shrubland - Mediterranean-type Shrubby Vegetation",
+                    "Wetlands (inland) - Permanent Freshwater Lakes (over 8ha)",
+                    "Grassland - Tundra",
+                    "Shrubland - Temperate"
+                ]
+            }
