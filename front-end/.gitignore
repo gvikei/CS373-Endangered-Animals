@@ -10,7 +10,7 @@ es/
 !tools/es/
 dist/
 !tools/dist/
-docs-built/
+dev-built/
 tmp-bower-repo/
 tmp-docs-repo/
 .babel-cache/
