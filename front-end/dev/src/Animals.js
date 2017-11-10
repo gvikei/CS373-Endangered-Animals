@@ -155,6 +155,7 @@ class Animals extends React.Component {
             <TableHeaderColumn dataField="assoc_habitats"       thStyle = {{'white-space': 'nowrap'}} dataAlign="left" dataSort={true}  dataFormat={this.habitatFormatter}  > Associated Habitats  </TableHeaderColumn>
             <TableHeaderColumn dataField="assoc_countries"      thStyle = {{'white-space': 'nowrap'}} dataAlign="left" dataSort={true}  dataFormat={this.countryFormatter}  > Associated Countries </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="imageLink"            dataAlign="center"                  dataFormat={this.imageFormatter}    > Image                </TableHeaderColumn>
+            <TableHeaderColumn width='250' dataField="imageLink"            dataAlign="center"                  dataFormat={this.imageFormatter}    > Image                </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="name"                 dataAlign="center" dataSort={true}  dataFormat={this.instanceFormatter} > Name                 </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="scientificName"       dataAlign="center" dataSort={true}  isKey={true}                        > Scientific Name      </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="vulnerability"        dataAlign="center" dataSort={true}                                      > Vulnerability        </TableHeaderColumn>
