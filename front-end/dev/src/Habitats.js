@@ -129,8 +129,8 @@ class Habitats extends React.Component {
             <TableHeaderColumn dataField="image"            dataAlign="center"                                dataFormat={this.imageFormatter}    > Image                 </TableHeaderColumn>
             <TableHeaderColumn dataField="name"             dataAlign="center" dataSort={true} isKey={true}   dataFormat={this.instanceFormatter} > Name                  </TableHeaderColumn>
             <TableHeaderColumn dataField="suitability"      dataAlign="center" dataSort={true}                                                    > Suitability           </TableHeaderColumn>
-            <TableHeaderColumn dataField="assoc_animals"    dataAlign="center"                                dataFormat={this.animalFormatter}   > Associated Animals    </TableHeaderColumn>
-            <TableHeaderColumn dataField="assoc_countries"  dataAlign="center"                                dataFormat={this.countryFormatter}  > Associated Countries  </TableHeaderColumn>
+            <TableHeaderColumn dataField="assoc_animals"    dataAlign="left"                                dataFormat={this.animalFormatter}   > Associated Animals    </TableHeaderColumn>
+            <TableHeaderColumn dataField="assoc_countries"  dataAlign="left"                                dataFormat={this.countryFormatter}  > Associated Countries  </TableHeaderColumn>
           </BootstrapTable>
 
         <PageFooter />

@@ -130,8 +130,8 @@ class Threats extends React.Component {
             <TableHeaderColumn dataField="name"             dataAlign="center" dataSort={true} isKey={true}   dataFormat={this.instanceFormatter} > Name                  </TableHeaderColumn>
             <TableHeaderColumn dataField="severity"         dataAlign="center" dataSort={true}                                                    > Severity              </TableHeaderColumn>
             <TableHeaderColumn dataField="timing"           dataAlign="center" dataSort={true}                                                    > Timing                </TableHeaderColumn>
-            <TableHeaderColumn dataField="assoc_animals"    dataAlign="center"                                dataFormat={this.animalFormatter}   > Associated Animals    </TableHeaderColumn>
-            <TableHeaderColumn dataField="assoc_habitats"   dataAlign="center"                                dataFormat={this.habitatFormatter}  > Associated Habitats   </TableHeaderColumn>
+            <TableHeaderColumn dataField="assoc_animals"    dataAlign="left"                                dataFormat={this.animalFormatter}   > Associated Animals    </TableHeaderColumn>
+            <TableHeaderColumn dataField="assoc_habitats"   dataAlign="left"                                dataFormat={this.habitatFormatter}  > Associated Habitats   </TableHeaderColumn>
           </BootstrapTable>
 
         <PageFooter />

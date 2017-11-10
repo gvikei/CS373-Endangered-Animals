@@ -148,12 +148,12 @@ class Animals extends React.Component {
             <TableHeaderColumn dataField="scientificName"       thStyle = {{'white-space': 'nowrap'}} dataAlign="center" dataSort={true}  isKey={true}                        > Scientific Name      </TableHeaderColumn>
             <TableHeaderColumn dataField="vulnerability"        thStyle = {{'white-space': 'nowrap'}} dataAlign="center" dataSort={true}                                      > Vulnerability        </TableHeaderColumn>
             <TableHeaderColumn dataField="videoLink"            thStyle = {{'white-space': 'nowrap'}} dataAlign="center" dataSort={true}  dataFormat={this.linkFormatter}     > Video                </TableHeaderColumn>
-            <TableHeaderColumn dataField="citationLink"         thStyle = {{'white-space': 'nowrap'}} dataAlign="center" dataSort={true}                                      > Citation             </TableHeaderColumn>
+            <TableHeaderColumn dataField="citationLink"         thStyle = {{'white-space': 'nowrap'}} dataAlign="left" dataSort={true}                                      > Citation             </TableHeaderColumn>
             <TableHeaderColumn dataField="conservationMeasure"  thStyle = {{'white-space': 'nowrap'}} dataAlign="center" dataSort={true}                                      > Conservation Measure </TableHeaderColumn>
             <TableHeaderColumn dataField="webLink"              thStyle = {{'white-space': 'nowrap'}} dataAlign="center" dataSort={true}  dataFormat={this.linkFormatter}     > Source               </TableHeaderColumn>
-            <TableHeaderColumn dataField="assoc_threats"        thStyle = {{'white-space': 'nowrap'}} dataAlign="center" dataSort={true}  dataFormat={this.threatFormatter}   > Associated Threats   </TableHeaderColumn>
-            <TableHeaderColumn dataField="assoc_habitats"       thStyle = {{'white-space': 'nowrap'}} dataAlign="center" dataSort={true}  dataFormat={this.habitatFormatter}  > Associated Habitats  </TableHeaderColumn>
-            <TableHeaderColumn dataField="assoc_countries"      thStyle = {{'white-space': 'nowrap'}} dataAlign="center" dataSort={true}  dataFormat={this.countryFormatter}  > Associated Countries </TableHeaderColumn>
+            <TableHeaderColumn dataField="assoc_threats"        thStyle = {{'white-space': 'nowrap'}} dataAlign="left" dataSort={true}  dataFormat={this.threatFormatter}   > Associated Threats   </TableHeaderColumn>
+            <TableHeaderColumn dataField="assoc_habitats"       thStyle = {{'white-space': 'nowrap'}} dataAlign="left" dataSort={true}  dataFormat={this.habitatFormatter}  > Associated Habitats  </TableHeaderColumn>
+            <TableHeaderColumn dataField="assoc_countries"      thStyle = {{'white-space': 'nowrap'}} dataAlign="left" dataSort={true}  dataFormat={this.countryFormatter}  > Associated Countries </TableHeaderColumn>
           </BootstrapTable>
 
         <PageFooter />
