@@ -20,13 +20,13 @@ export default (
     <IndexRoute component={HomePage} />
     <Route path="about.html" component={About} />
     <Route path="animals.html" component={Animals} />
+    <Route path="animal.html" component={Animal} />
     <Route path="threats.html" component={Threats} />
+    <Route path="threat.html" component={Threat} />
     <Route path="habitats.html" component={Habitats} />
+    <Route path="habitat.html" component={Habitat} />
     <Route path="countries.html" component={Countries} />
     <Route path="country.html" component={Country} />
-    <Route path="animal.html" component={Animal} />
-    <Route path="habitat.html" component={Habitat} />
-    <Route path="threat.html" component={Threat} />
 
     <Route path="*" component={NotFoundPage} />
   </Route>

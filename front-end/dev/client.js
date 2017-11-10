@@ -10,6 +10,7 @@ import Root from './src/Root';
 import routes from './src/Routes';
 
 import 'bootstrap/less/bootstrap.less';
+import 'react-bootstrap-table/css/react-bootstrap-table.css';
 
 import './assets/docs.css';
 import './assets/style.css';
