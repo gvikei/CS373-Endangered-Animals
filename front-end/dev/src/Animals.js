@@ -48,6 +48,16 @@ class Animals extends React.Component {
     this.context.router.push("/"+type+".html/?q="+data);
   };
 
+  highlight(data) {
+    var item = document.querySelector('.form-group.form-group-sm.react-bs-table-search-form>input');
+    if (item != null) {
+      var keyword = item.value;
+      var regex = new RegExp(keyword);
+      return (data.replace(regex, '<b>' + keyword + '</b>'));
+    }
+    else return data;
+  };
+
   countryFormatter(list){
     var type = "country";
 
@@ -84,10 +94,11 @@ class Animals extends React.Component {
     return <img src={ data } height="250px" width="250px" />;
   };
 
+
   instanceFormatter(data, row, type){
     if(typeof type == "undefined")
       type = this.state.type;
-    return <a onClick={ () => { this.changeURL(type, data) } } >{ data }</a>;
+    return <a onClick={ () => { this.changeURL(type, data) } } > { this.highlight(data) } </a>;
   };
 
   linkFormatter(data){
