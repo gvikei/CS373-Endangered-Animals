@@ -20,9 +20,10 @@ class Habitats extends React.Component {
         typeProper: "Habitats",
         subTitle: "Witness the beauty of nature"
     };
-    this.instanceFormatter = this.instanceFormatter.bind(this);
-    this.animalFormatter = this.animalFormatter.bind(this);
-    this.countryFormatter = this.countryFormatter.bind(this);
+    this.instanceFormatter  = this.instanceFormatter.bind(this);
+    this.txtFormatter       = this.txtFormatter.bind(this);
+    this.animalFormatter    = this.animalFormatter.bind(this);
+    this.countryFormatter   = this.countryFormatter.bind(this);
 
     var that = this;
     axios.create({
@@ -99,8 +100,8 @@ class Habitats extends React.Component {
     return <a onClick={ () => { this.changeURL(type, data) } } dangerouslySetInnerHTML={this.highlight(data)}></a>;
   };
 
-  linkFormatter(data){
-    return <a href={ data } target="_blank">{ data }</a>
+  txtFormatter(data){
+    return <p dangerouslySetInnerHTML={this.highlight(data)}></p>;
   };
 
   render() {
@@ -138,9 +139,9 @@ class Habitats extends React.Component {
            <BootstrapTable data={this.state.model} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={true} options={options}>
             <TableHeaderColumn width='200' dataField="image"            dataAlign="center"                                dataFormat={this.imageFormatter}    > Image                 </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="name"             dataAlign="center" dataSort={true} isKey={true}   dataFormat={this.instanceFormatter} > Name                  </TableHeaderColumn>
-            <TableHeaderColumn width='200' dataField="suitability"      dataAlign="center" dataSort={true}                                                    > Suitability           </TableHeaderColumn>
-            <TableHeaderColumn width='200' dataField="assoc_animals"    dataAlign="left"                                dataFormat={this.animalFormatter}   > Associated Animals    </TableHeaderColumn>
-            <TableHeaderColumn width='200' dataField="assoc_countries"  dataAlign="left"                                dataFormat={this.countryFormatter}  > Associated Countries  </TableHeaderColumn>
+            <TableHeaderColumn width='200' dataField="suitability"      dataAlign="center" dataSort={true}                dataFormat={this.txtFormatter}      > Suitability           </TableHeaderColumn>
+            <TableHeaderColumn width='200' dataField="assoc_animals"    dataAlign="left"                                  dataFormat={this.animalFormatter}   > Associated Animals    </TableHeaderColumn>
+            <TableHeaderColumn width='200' dataField="assoc_countries"  dataAlign="left"                                  dataFormat={this.countryFormatter}  > Associated Countries  </TableHeaderColumn>
 
           </BootstrapTable>
 

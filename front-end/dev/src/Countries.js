@@ -20,10 +20,10 @@ class Countries extends React.Component {
         typeProper: "Countries",
         subTitle: "Dive into rich ecosystems"
     };
-    this.instanceFormatter = this.instanceFormatter.bind(this);
-    this.animalFormatter = this.animalFormatter.bind(this);
-    this.habitatFormatter = this.habitatFormatter.bind(this);
-    this.threatFormatter = this.threatFormatter.bind(this);
+    this.instanceFormatter  = this.instanceFormatter.bind(this);
+    this.animalFormatter    = this.animalFormatter.bind(this);
+    this.habitatFormatter   = this.habitatFormatter.bind(this);
+    this.threatFormatter    = this.threatFormatter.bind(this);
 
     var that = this;
     axios.create({
@@ -100,10 +100,6 @@ class Countries extends React.Component {
     return <a onClick={ () => { this.changeURL(type, data) } } dangerouslySetInnerHTML={this.highlight(data)}></a>;
   };
 
-  linkFormatter(data){
-    return <a href={ data } target="_blank">{ data }</a>
-  };
-
   mapFormatter(name){
     return (
       <iframe id="gmap_canvas" width="100%" src={ "https://maps.google.com/maps?q=" + name + "&t=k&z=6&ie=UTF8&iwloc=&output=embed" } frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0">
@@ -162,8 +158,8 @@ class Countries extends React.Component {
            <BootstrapTable data={this.state.model} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={true} options={options}>
             <TableHeaderColumn width='200' dataField="flag"             dataAlign="center"                                dataFormat={this.imageFormatter}    > Image                </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="name"             dataAlign="center" dataSort={true} isKey={true}   dataFormat={this.instanceFormatter} > Name                 </TableHeaderColumn>
-            <TableHeaderColumn width='200' dataField="assoc_animals"    dataAlign="left"                                dataFormat={this.animalFormatter}   > Associated Animals   </TableHeaderColumn>
-            <TableHeaderColumn width='200' dataField="assoc_habitats"   dataAlign="left"                                dataFormat={this.habitatFormatter}  > Associated Habitats  </TableHeaderColumn>
+            <TableHeaderColumn width='200' dataField="assoc_animals"    dataAlign="left"                                  dataFormat={this.animalFormatter}   > Associated Animals   </TableHeaderColumn>
+            <TableHeaderColumn width='200' dataField="assoc_habitats"   dataAlign="left"                                  dataFormat={this.habitatFormatter}  > Associated Habitats  </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="name"             dataAlign="center"                                dataFormat={this.mapFormatter}      > Map                  </TableHeaderColumn>
           </BootstrapTable>
 
