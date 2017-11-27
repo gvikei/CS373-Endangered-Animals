@@ -50,10 +50,10 @@ class Countries extends React.Component {
 
   highlight(data) {
     var item = document.querySelector('.form-group.form-group-sm.react-bs-table-search-form>input');
-    if (item != null) {
+    if (item && item.value && data) {
       var keyword = item.value;
-      var regex = new RegExp(keyword);
-      return {__html: data.replace(regex, '<b><u>' + keyword + '</u></b>') }
+      var regex = new RegExp(keyword, 'ig');
+      return {__html: data.replace(regex, function(match){ return '<b><u>' + match + '</u></b>' }) }
     }
     return {__html: data}
   };
