@@ -204,51 +204,62 @@ class Visualization extends React.Component {
     	type: "visualization",
 
     	data: {
-    		"name": "Group 23",
+    		"name": "Group 4",
     		"children": []
     	},
     
-	    anime: {
-	    	"name": "Anime"
+	    heroes: {
+	    	"name": "Heroes"
 	    },
 
-	    characters: {
-	    	"name": "Characters"
+	    players: {
+	    	"name": "Top Players"
 	    },
 
-	    manga: {
-	    	"name": "Manga"
+	    achievements: {
+	    	"name": "Achievements"
 	    },
 
-	    actors: {
-	    	"name": "Actors"
+	    events: {
+	    	"name": "Events"
+	    },
+
+	    skins: {
+	    	"name": "Skins"
+	    },
+
+	    items: {
+	    	"name": "Items"
 	    }
     };
 
     var that = this;
-    //LINK IS NOT WORKING
-    axios.create({
-      baseURL: 'https://weebmd.me/api',
+    var getter = axios.create({
+      baseURL: 'http://overwatchglamour.me/api',
       headers: {"Access-Control-Allow-Origin": "*"}
-    }).get('/animes')
-      .then(function(data) {
-      	console.log("DATA RECEIVED DOESN'T MATCH APIARY")
+    });
 
-      	var type = that.state.anime;
+    getter.get('/heroes/')
+      .then(function(data) {
+      	console.log(data);
+      	var type = that.state.heroes;
+      	var name_attr = "hero_name";
 
       	//REPLACE "treeData" WITH "data" ONCE API CALLS ARE VALID
       	type["children"] = [];
       	treeData.forEach(function(instance){
 	    	type.children.push({
-	    		"name": instance.attributes.title
+	    		"name": instance.attributes[name_attr]
 	    	});
 	    });
     });
 
-    this.state.data.children.push(this.state.anime);
-    this.state.data.children.push(this.state.characters);
-    this.state.data.children.push(this.state.manga);
-    this.state.data.children.push(this.state.actors);
+    this.state.data.children.push(this.state.heroes);
+    this.state.data.children.push(this.state.players);
+    this.state.data.children.push(this.state.achievements);
+    this.state.data.children.push(this.state.events);
+    this.state.data.children.push(this.state.skins);
+    this.state.data.children.push(this.state.items);
   };
 
   render() {

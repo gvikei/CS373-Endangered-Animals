@@ -29,7 +29,7 @@ const NAV_LINKS = {
   },
   'visualization': {
     link: '/visualization.html',
-    title: 'Group 23 Viz'
+    title: 'Group 4 Viz'
   }
 };
 
