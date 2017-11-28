@@ -11,6 +11,23 @@ http://overwatchglamour.me/about
 
 ---
 
+What they do well
+
+
+---
+
+What do we learn from them
+
+---
+
+What they can do better
+
+---
+
+What puzzles us about their website
+
+---
+
 - should show "not found" if there is no result for the search
 
 - Consistency:
