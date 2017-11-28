@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import Navbar from '../../components/Navbar';
 import Nav from '../../components/Nav';
-import FormControl from '../../components/FormGroup';
-import FormGroup from '../../components/FormControl';
-import Button from '../../components/Button';
+
+
 
 const NAV_LINKS = {
   'about': {
@@ -42,7 +41,11 @@ const propTypes = {
   activePage: PropTypes.string,
 };
 
+
+
+
 function NavMain({ activePage }) {
+
   return (
     <Navbar
       staticTop
@@ -57,11 +60,6 @@ function NavMain({ activePage }) {
         <Navbar.Toggle />
       </Navbar.Header>
       <Navbar.Collapse className="bs-navbar-collapse">
-        <Navbar.Form pullRight>
-          <FormGroup>
-          </FormGroup>
-          <Button type="submit">Search</Button>
-        </Navbar.Form>
 
         <Nav role="navigation" id="top">
           {Object.entries(NAV_LINKS).map(([linkName, { link, title }]) => (

@@ -37,15 +37,19 @@ const MyLargeModal = React.createClass({
       paginationPosition: 'top'
     };
 
+    var model_types = ['animal','threat','habitat','country'];
+
 
     return (
+
       <Modal {...this.props} bsSize="large" aria-labelledby="contained-modal-title-lg">
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-lg">Modal heading</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Wrapped Text</h4>
-           <BootstrapTable data={this.props.model} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={true} options={options}>
+          <h4>Animals</h4>
+
+            <BootstrapTable data={this.props.model['animal']} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={true} >
 
             <TableHeaderColumn width='200' dataField="imageLink"            dataAlign="center"                   dataFormat={this.imageFormatter}                 > Image                </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="name"                 dataAlign="center"  dataSort={true}  dataFormat={this.instanceFormatter}              > Name                 </TableHeaderColumn>
@@ -59,6 +63,34 @@ const MyLargeModal = React.createClass({
             <TableHeaderColumn width='200' dataField="assoc_habitats"       dataAlign="left"    dataSort={true}  dataFormat={this.habitatFormatter}               > Associated Habitats  </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="assoc_countries"      dataAlign="left"    dataSort={true}  dataFormat={this.countryFormatter}               > Associated Countries </TableHeaderColumn>
           </BootstrapTable>
+
+          <h4> Habitats </h4>
+           <BootstrapTable data={this.props.model['habitat']} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={true} >
+            <TableHeaderColumn width='200' dataField="image"            dataAlign="center"                                dataFormat={this.imageFormatter}    > Image                 </TableHeaderColumn>
+            <TableHeaderColumn width='200' dataField="name"             dataAlign="center" dataSort={true} isKey={true}   dataFormat={this.instanceFormatter} > Name                  </TableHeaderColumn>
+            <TableHeaderColumn width='200' dataField="suitability"      dataAlign="center" dataSort={true}                dataFormat={this.txtFormatter}      > Suitability           </TableHeaderColumn>
+            <TableHeaderColumn width='200' dataField="assoc_animals"    dataAlign="left"                                  dataFormat={this.animalFormatter}   > Associated Animals    </TableHeaderColumn>
+            <TableHeaderColumn width='200' dataField="assoc_countries"  dataAlign="left"                                  dataFormat={this.countryFormatter}  > Associated Countries  </TableHeaderColumn>
+          </BootstrapTable>
+
+          <h4> Countries </h4>
+           <BootstrapTable data={this.props.model['country']} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={true} >
+            <TableHeaderColumn width='200' dataField="image"            dataAlign="center"                                dataFormat={this.imageFormatter}    > Image                 </TableHeaderColumn>
+            <TableHeaderColumn width='200' dataField="name"             dataAlign="center" dataSort={true} isKey={true}   dataFormat={this.instanceFormatter} > Name                  </TableHeaderColumn>
+            <TableHeaderColumn width='200' dataField="suitability"      dataAlign="center" dataSort={true}                dataFormat={this.txtFormatter}      > Suitability           </TableHeaderColumn>
+            <TableHeaderColumn width='200' dataField="assoc_animals"    dataAlign="left"                                  dataFormat={this.animalFormatter}   > Associated Animals    </TableHeaderColumn>
+            <TableHeaderColumn width='200' dataField="assoc_countries"  dataAlign="left"                                  dataFormat={this.countryFormatter}  > Associated Countries  </TableHeaderColumn>
+          </BootstrapTable>
+
+          <h4> Threats </h4>
+           <BootstrapTable data={this.props.model['threat']} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={true} >
+            <TableHeaderColumn width='200' dataField="image"            dataAlign="center"                                dataFormat={this.imageFormatter}    > Image                 </TableHeaderColumn>
+            <TableHeaderColumn width='200' dataField="name"             dataAlign="center" dataSort={true} isKey={true}   dataFormat={this.instanceFormatter} > Name                  </TableHeaderColumn>
+            <TableHeaderColumn width='200' dataField="suitability"      dataAlign="center" dataSort={true}                dataFormat={this.txtFormatter}      > Suitability           </TableHeaderColumn>
+            <TableHeaderColumn width='200' dataField="assoc_animals"    dataAlign="left"                                  dataFormat={this.animalFormatter}   > Associated Animals    </TableHeaderColumn>
+            <TableHeaderColumn width='200' dataField="assoc_countries"  dataAlign="left"                                  dataFormat={this.countryFormatter}  > Associated Countries  </TableHeaderColumn>
+          </BootstrapTable>
+
 
         </Modal.Body>
         <Modal.Footer>
@@ -84,19 +116,63 @@ export default class HomePage extends React.Component {
     this.state = {
       lgModalShow: false,
       type: "animal",
-      model: [],
+      model: {}
     }
 
-    var that = this;
+     var that = this;
+
+    var copy =  {'animal':[], 'threat': [], 'habitat':[], 'country': []};
+    var model_types = ['animal','threat','habitat','country'];
+
+
     axios.create({
       baseURL: 'https://swe-endangered-animals.appspot.com/',
       headers: {"Access-Control-Allow-Origin": "*"}
-    }).get('/all_'+this.state.type+'_data')
-      .then(function(data) {
+    }).get('/all_animal_data')
+      .then(function (data) {
+        copy['animal'] = data.data;
+        console.log('copy', copy);
         that.setState({
-          model: data.data
+          model: copy
         });
-    });
+      });
+
+    axios.create({
+      baseURL: 'https://swe-endangered-animals.appspot.com/',
+      headers: {"Access-Control-Allow-Origin": "*"}
+    }).get('/all_threat_data')
+      .then(function (data) {
+        copy['threat'] = data.data;
+        console.log('copy', copy);
+        that.setState({
+          model: copy
+        });
+      });
+
+    axios.create({
+      baseURL: 'https://swe-endangered-animals.appspot.com/',
+      headers: {"Access-Control-Allow-Origin": "*"}
+    }).get('/all_habitat_data')
+      .then(function (data) {
+        copy['habitat'] = data.data;
+        console.log('copy', copy);
+        that.setState({
+          model: copy
+        });
+      });
+
+    axios.create({
+      baseURL: 'https://swe-endangered-animals.appspot.com/',
+      headers: {"Access-Control-Allow-Origin": "*"}
+    }).get('/all_country_data')
+      .then(function (data) {
+        copy['country'] = data.data;
+        console.log('copy', copy);
+        that.setState({
+          model: copy
+        });
+      });
+
   };
 
   render() {
