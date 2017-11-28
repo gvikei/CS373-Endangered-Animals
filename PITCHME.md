@@ -3,6 +3,13 @@
 
 ---
 
+## Introduction
+
+Bryan Leung											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Khuyen Duong
+										
+![](https://raw.githubusercontent.com/bryanlng/jekyll-now/master/images/IMG_9269.JPG) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![](https://scontent.fftw1-1.fna.fbcdn.net/v/t1.0-9/13516299_10207873551411360_9045318712286918375_n.jpg?oh=9c880396ff5c8a8ac48c991637b732c1&oe=5A49092A)
+
+
 ### Overwatch Glamour
 
 http://overwatchglamour.me/about
