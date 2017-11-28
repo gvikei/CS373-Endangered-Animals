@@ -7,7 +7,9 @@
 
 Bryan Leung &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Khuyen Duong &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Shiva Velingker
 
----?image=https://i.imgur.com/UXXs4fY.jpg&size=auto 90% &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ---?image=https://i.imgur.com/y35uhcL.jpg&size=auto 90% &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ---?image=https://i.imgur.com/sfK63Ow.jpg&size=auto 90%
+<img src="https://i.imgur.com/UXXs4fY.jpg" width="280" height="280"> <img src="https://i.imgur.com/y35uhcL.jpg" width="280" height="280">
+ <img src="https://i.imgur.com/sfK63Ow.jpg" width="280" height="280">
+
 
 
 ---
