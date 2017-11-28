@@ -49,9 +49,8 @@ const MyLargeModal = React.createClass({
         <Modal.Body>
           <h4>Animals</h4>
 
-            <BootstrapTable data={this.props.model['animal']} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={true} >
+            <BootstrapTable data={this.props.model['animal']} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={false} >
 
-            <TableHeaderColumn width='200' dataField="imageLink"            dataAlign="center"                   dataFormat={this.imageFormatter}                 > Image                </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="name"                 dataAlign="center"  dataSort={true}  dataFormat={this.instanceFormatter}              > Name                 </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="scientificName"       dataAlign="center"  dataSort={true}  dataFormat={this.txtFormatter}      isKey={true} > Scientific Name      </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="vulnerability"        dataAlign="center"  dataSort={true}  dataFormat={this.txtFormatter}                   > Vulnerability        </TableHeaderColumn>
@@ -65,8 +64,7 @@ const MyLargeModal = React.createClass({
           </BootstrapTable>
 
           <h4> Habitats </h4>
-           <BootstrapTable data={this.props.model['habitat']} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={true} >
-            <TableHeaderColumn width='200' dataField="image"            dataAlign="center"                                dataFormat={this.imageFormatter}    > Image                 </TableHeaderColumn>
+          <BootstrapTable data={this.props.model['habitat']} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={false} >
             <TableHeaderColumn width='200' dataField="name"             dataAlign="center" dataSort={true} isKey={true}   dataFormat={this.instanceFormatter} > Name                  </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="suitability"      dataAlign="center" dataSort={true}                dataFormat={this.txtFormatter}      > Suitability           </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="assoc_animals"    dataAlign="left"                                  dataFormat={this.animalFormatter}   > Associated Animals    </TableHeaderColumn>
@@ -74,21 +72,19 @@ const MyLargeModal = React.createClass({
           </BootstrapTable>
 
           <h4> Countries </h4>
-           <BootstrapTable data={this.props.model['country']} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={true} >
-            <TableHeaderColumn width='200' dataField="image"            dataAlign="center"                                dataFormat={this.imageFormatter}    > Image                 </TableHeaderColumn>
+          <BootstrapTable data={this.props.model['country']} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={false} >
             <TableHeaderColumn width='200' dataField="name"             dataAlign="center" dataSort={true} isKey={true}   dataFormat={this.instanceFormatter} > Name                  </TableHeaderColumn>
-            <TableHeaderColumn width='200' dataField="suitability"      dataAlign="center" dataSort={true}                dataFormat={this.txtFormatter}      > Suitability           </TableHeaderColumn>
-            <TableHeaderColumn width='200' dataField="assoc_animals"    dataAlign="left"                                  dataFormat={this.animalFormatter}   > Associated Animals    </TableHeaderColumn>
-            <TableHeaderColumn width='200' dataField="assoc_countries"  dataAlign="left"                                  dataFormat={this.countryFormatter}  > Associated Countries  </TableHeaderColumn>
+            <TableHeaderColumn width='200' dataField="assoc_animals"    dataAlign="left"                                  dataFormat={this.animalFormatter}   > Associated Animals   </TableHeaderColumn>
+            <TableHeaderColumn width='200' dataField="assoc_habitats"   dataAlign="left"                                  dataFormat={this.habitatFormatter}  > Associated Habitats  </TableHeaderColumn>
           </BootstrapTable>
 
           <h4> Threats </h4>
-           <BootstrapTable data={this.props.model['threat']} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={true} >
-            <TableHeaderColumn width='200' dataField="image"            dataAlign="center"                                dataFormat={this.imageFormatter}    > Image                 </TableHeaderColumn>
+           <BootstrapTable data={this.props.model['threat']} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={false} >
             <TableHeaderColumn width='200' dataField="name"             dataAlign="center" dataSort={true} isKey={true}   dataFormat={this.instanceFormatter} > Name                  </TableHeaderColumn>
-            <TableHeaderColumn width='200' dataField="suitability"      dataAlign="center" dataSort={true}                dataFormat={this.txtFormatter}      > Suitability           </TableHeaderColumn>
+            <TableHeaderColumn width='200' dataField="severity"         dataAlign="center" dataSort={true}                dataFormat={this.txtFormatter}      > Severity              </TableHeaderColumn>
+            <TableHeaderColumn width='200' dataField="timing"           dataAlign="center" dataSort={true}                dataFormat={this.txtFormatter}      > Timing                </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="assoc_animals"    dataAlign="left"                                  dataFormat={this.animalFormatter}   > Associated Animals    </TableHeaderColumn>
-            <TableHeaderColumn width='200' dataField="assoc_countries"  dataAlign="left"                                  dataFormat={this.countryFormatter}  > Associated Countries  </TableHeaderColumn>
+            <TableHeaderColumn width='200' dataField="assoc_habitats"   dataAlign="left"                                  dataFormat={this.habitatFormatter}  > Associated Habitats   </TableHeaderColumn>
           </BootstrapTable>
 
 
