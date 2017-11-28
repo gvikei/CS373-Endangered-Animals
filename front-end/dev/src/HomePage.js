@@ -44,14 +44,13 @@ const MyLargeModal = React.createClass({
 
       <Modal {...this.props} bsSize="large" aria-labelledby="contained-modal-title-lg">
         <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-lg">Search</Modal.Title>
+          <Modal.Title id="contained-modal-title-lg">Modal heading</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <h4>Animals</h4>
 
             <BootstrapTable data={this.props.model['animal']} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={false} >
 
-            <TableHeaderColumn width='200' dataField="imageLink"            dataAlign="center"                   dataFormat={this.imageFormatter}                 > Image                </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="name"                 dataAlign="center"  dataSort={true}  dataFormat={this.instanceFormatter}              > Name                 </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="scientificName"       dataAlign="center"  dataSort={true}  dataFormat={this.txtFormatter}      isKey={true} > Scientific Name      </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="vulnerability"        dataAlign="center"  dataSort={true}  dataFormat={this.txtFormatter}                   > Vulnerability        </TableHeaderColumn>
@@ -66,7 +65,6 @@ const MyLargeModal = React.createClass({
 
           <h4> Habitats </h4>
            <BootstrapTable data={this.props.model['habitat']} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={false} >
-            <TableHeaderColumn width='200' dataField="image"            dataAlign="center"                                dataFormat={this.imageFormatter}    > Image                 </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="name"             dataAlign="center" dataSort={true} isKey={true}   dataFormat={this.instanceFormatter} > Name                  </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="suitability"      dataAlign="center" dataSort={true}                dataFormat={this.txtFormatter}      > Suitability           </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="assoc_animals"    dataAlign="left"                                  dataFormat={this.animalFormatter}   > Associated Animals    </TableHeaderColumn>
@@ -75,7 +73,6 @@ const MyLargeModal = React.createClass({
 
           <h4> Countries </h4>
            <BootstrapTable data={this.props.model['country']} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={false} >
-            <TableHeaderColumn width='200' dataField="image"            dataAlign="center"                                dataFormat={this.imageFormatter}    > Image                 </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="name"             dataAlign="center" dataSort={true} isKey={true}   dataFormat={this.instanceFormatter} > Name                  </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="suitability"      dataAlign="center" dataSort={true}                dataFormat={this.txtFormatter}      > Suitability           </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="assoc_animals"    dataAlign="left"                                  dataFormat={this.animalFormatter}   > Associated Animals    </TableHeaderColumn>
@@ -84,7 +81,6 @@ const MyLargeModal = React.createClass({
 
           <h4> Threats </h4>
            <BootstrapTable data={this.props.model['threat']} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={false} >
-            <TableHeaderColumn width='200' dataField="image"            dataAlign="center"                                dataFormat={this.imageFormatter}    > Image                 </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="name"             dataAlign="center" dataSort={true} isKey={true}   dataFormat={this.instanceFormatter} > Name                  </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="suitability"      dataAlign="center" dataSort={true}                dataFormat={this.txtFormatter}      > Suitability           </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="assoc_animals"    dataAlign="left"                                  dataFormat={this.animalFormatter}   > Associated Animals    </TableHeaderColumn>
