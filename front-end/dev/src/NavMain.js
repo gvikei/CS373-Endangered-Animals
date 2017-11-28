@@ -27,6 +27,10 @@ const NAV_LINKS = {
     link: '/countries.html',
     title: 'Countries',
   },
+  'visualization': {
+    link: '/visualization.html',
+    title: 'Group 23 Viz'
+  }
 };
 
 // We don't want to include react-router-bootstrap as a dependency here, so we

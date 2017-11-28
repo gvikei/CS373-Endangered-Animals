@@ -11,6 +11,7 @@ import Habitats from './Habitats';
 import Habitat from './Habitat';
 import Countries from './Countries';
 import Country from './Country';
+import Visualization from './Visualization'
 import HomePage from './HomePage';
 import NotFoundPage from './NotFoundPage';
 import Root from './Root';
@@ -27,6 +28,7 @@ export default (
     <Route path="habitat.html" component={Habitat} />
     <Route path="countries.html" component={Countries} />
     <Route path="country.html" component={Country} />
+    <Route path="visualization.html" component={Visualization} />
 
     <Route path="*" component={NotFoundPage} />
   </Route>
