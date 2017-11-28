@@ -107,7 +107,6 @@ export default class HomePage extends React.Component {
     this.setState({
       lgModalShow : !this.state.lgModalShow
     });
-    console.log('lgModalShow', this.state.lgModalShow);
   }
 
   constructor(props) {
@@ -131,7 +130,6 @@ export default class HomePage extends React.Component {
     }).get('/all_animal_data')
       .then(function (data) {
         copy['animal'] = data.data;
-        console.log('copy', copy);
         that.setState({
           model: copy
         });
@@ -143,7 +141,6 @@ export default class HomePage extends React.Component {
     }).get('/all_threat_data')
       .then(function (data) {
         copy['threat'] = data.data;
-        console.log('copy', copy);
         that.setState({
           model: copy
         });
@@ -155,7 +152,6 @@ export default class HomePage extends React.Component {
     }).get('/all_habitat_data')
       .then(function (data) {
         copy['habitat'] = data.data;
-        console.log('copy', copy);
         that.setState({
           model: copy
         });
@@ -167,7 +163,6 @@ export default class HomePage extends React.Component {
     }).get('/all_country_data')
       .then(function (data) {
         copy['country'] = data.data;
-        console.log('copy', copy);
         that.setState({
           model: copy
         });

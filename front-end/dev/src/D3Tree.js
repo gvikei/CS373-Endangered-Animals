@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import d3 from 'd3';
+var d3 = require("d3");
+
 
 class D3Tree extends React.Component {
 
@@ -12,7 +13,7 @@ class D3Tree extends React.Component {
   shouldComponentUpdate() {
   	renderTree(this.props.treeData, ReactDOM.findDOMNode(this.refs.svg));
     return false;
-  };
+  };as
 
   render() {
     return (

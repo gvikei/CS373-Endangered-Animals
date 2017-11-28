@@ -241,7 +241,7 @@ class Visualization extends React.Component {
 
     getter.get('/heroes/')
       .then(function(data) {
-      	console.log(data);
+      	console.log('heroes data',data);
       	var type = that.state.heroes;
       	var name_attr = "hero_name";
 
