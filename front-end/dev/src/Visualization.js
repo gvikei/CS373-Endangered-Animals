@@ -30,10 +30,6 @@ class Visualization extends React.Component {
 	    	"name": "Achievements"
 	    },
 
-	    events: {
-	    	"name": "Events"
-	    },
-
 	    skins: {
 	    	"name": "Skins"
 	    },
@@ -46,104 +42,102 @@ class Visualization extends React.Component {
     var that = this;
 
     var getter = axios.create({
-      baseURL: 'http://overwatchglamour.me/api',
+      baseURL: 'https://swe-endangered-animals.appspot.com',
       headers: {"Access-Control-Allow-Origin": "*"}
     });
 
     //HEROES
-    getter.get('/heroes/')
+    getter.get('/overwatch_all_heroes')
       .then(function(data) {
       	console.log('heroes data',data);
       	var type = that.state.heroes;
       	var name_attr = "hero_name";
 
       	type["children"] = [];
-      	// data.forEach(function(instance){
-  	    // 	type.children.push({
-  	    // 		"name": instance.attributes[name_attr]
-  	    // 	});
-	      // });
+      	var items = data.data;
+      	if (items.length > 1) {
+      	  for (var i in items) {
+            type.children.push({
+              "name": items[i][name_attr]
+            });
+          }
+        }
+
       });
 
     //PLAYERS
-    getter.get('/players/')
+    getter.get('/overwatch_all_top_players')
       .then(function(data) {
         console.log('players data',data);
         var type = that.state.players;
         var name_attr = "top_player_name";
 
         type["children"] = [];
-        // data.forEach(function(instance){
-        //  type.children.push({
-        //    "name": instance.attributes[name_attr]
-        //  });
-        // });
+      	var items = data.data;
+      	if (items.length > 1) {
+      	  for (var i in items) {
+            type.children.push({
+              "name": items[i][name_attr]
+            });
+          }
+        }
       });
 
     //ACHIEVEMENTS
-    getter.get('/achievements/')
+    getter.get('/overwatch_all_achievements')
       .then(function(data) {
-        console.log('achievements data',data);
         var type = that.state.achievements;
         var name_attr = "achievement_name";
 
-        type["children"] = [];
-        // data.forEach(function(instance){
-        //  type.children.push({
-        //    "name": instance.attributes[name_attr]
-        //  });
-        // });
+      	type["children"] = [];
+      	var items = data.data;
+      	if (items.length > 1) {
+      	  for (var i in items) {
+            type.children.push({
+              "name": items[i][name_attr]
+            });
+          }
+        }
       });
 
-    //EVENTS
-    getter.get('/events/')
-      .then(function(data) {
-        console.log('heroes data',data);
-        var type = that.state.heroes;
-        var name_attr = "hero_name";
-
-        type["children"] = [];
-        // data.forEach(function(instance){
-        //  type.children.push({
-        //    "name": instance.attributes[name_attr]
-        //  });
-        // });
-      });
 
     //SKINS
-    getter.get('/skins/')
+    getter.get('/overwatch_all_skins')
       .then(function(data) {
-        console.log('skins data',data);
         var type = that.state.skins;
         var name_attr = "skin_name";
 
-        type["children"] = [];
-        // data.forEach(function(instance){
-        //  type.children.push({
-        //    "name": instance.attributes[name_attr]
-        //  });
-        // });
+      	type["children"] = [];
+      	var items = data.data;
+      	if (items.length > 1) {
+      	  for (var i in items) {
+            type.children.push({
+              "name": items[i][name_attr]
+            });
+          }
+        }
       });
 
     //ITEMS
-    getter.get('/items/')
+    getter.get('/overwatch_all_items')
       .then(function(data) {
-        console.log('items data',data);
         var type = that.state.items;
         var name_attr = "item_name";
 
-        type["children"] = [];
-        // data.forEach(function(instance){
-        //  type.children.push({
-        //    "name": instance.attributes[name_attr]
-        //  });
-        // });
+      	type["children"] = [];
+      	var items = data.data;
+      	if (items.length > 1) {
+      	  for (var i in items) {
+      	  type.children.push({
+  	    		"name": items[i][name_attr]
+  	    	});
+          }
+        }
       });
 
     this.state.data.children.push(this.state.heroes);
     this.state.data.children.push(this.state.players);
     this.state.data.children.push(this.state.achievements);
-    this.state.data.children.push(this.state.events);
     this.state.data.children.push(this.state.skins);
     this.state.data.children.push(this.state.items);
   };
