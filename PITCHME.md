@@ -35,7 +35,7 @@
 - Fully functional and get things done
 
 ---
-## <span class="fa-purple">What we learnt</span>
+## <span class="fa-purple">What we learned</span>
 - Teamwork
 - Start early
 - Nothing is impossible
