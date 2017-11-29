@@ -3,7 +3,7 @@
 
 ---
 
-## Introduction
+<span class="header">Introduction</span>
 
 Bryan Leung &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Khuyen Duong &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Shiva Velingker
 
