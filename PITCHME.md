@@ -53,7 +53,6 @@
 - Improve loading time of pages
 - Re-factor code to reduce duplicate code
 - Create a better user layout, font, color schemes, images
-- Integrate TravisCI with Google Cloud for continuous deployment
 
 ---
 ## <span class="fa-purple">What puzzled us</span>
@@ -128,6 +127,7 @@
     * level?
     * win rate?
 - Some of the links to images in the "Items" model are broken.
+- React...?
 
 ---
 
