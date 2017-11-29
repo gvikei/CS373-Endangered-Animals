@@ -1,6 +1,6 @@
 # Endangered Animals 
 
-##### @fa[fa-users fa-2x fa-peach] Group 22
+##### @fa[fa-users fa-2x fa-lime] Group 22
 
 ---
 
