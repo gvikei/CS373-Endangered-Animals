@@ -54,7 +54,7 @@ var renderTree = function(data, svgDomNode){
 	    if (d.children) {
 	      d._children = d.children;
 	      d._children.forEach(collapse);
-	      d.children = null;
+	      // d.children = null;
 	    }
 	}
 

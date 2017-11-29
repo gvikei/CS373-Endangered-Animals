@@ -49,18 +49,15 @@ class Visualization extends React.Component {
     //HEROES
     getter.get('/overwatch_all_heroes')
       .then(function(data) {
-      	console.log('heroes data',data);
       	var type = that.state.heroes;
       	var name_attr = "hero_name";
 
       	type["children"] = [];
       	var items = data.data;
-      	if (items.length > 1) {
-      	  for (var i in items) {
-            type.children.push({
-              "name": items[i][name_attr]
-            });
-          }
+        for(var i=0; i<items.length && i<10; i++){
+          type.children.push({
+            "name": items[i][name_attr]
+          });
         }
 
       });
@@ -68,18 +65,15 @@ class Visualization extends React.Component {
     //PLAYERS
     getter.get('/overwatch_all_top_players')
       .then(function(data) {
-        console.log('players data',data);
         var type = that.state.players;
         var name_attr = "top_player_name";
 
         type["children"] = [];
       	var items = data.data;
-      	if (items.length > 1) {
-      	  for (var i in items) {
-            type.children.push({
-              "name": items[i][name_attr]
-            });
-          }
+        for(var i=0; i<items.length && i<10; i++){
+          type.children.push({
+            "name": items[i][name_attr]
+          });
         }
       });
 
@@ -91,12 +85,10 @@ class Visualization extends React.Component {
 
       	type["children"] = [];
       	var items = data.data;
-      	if (items.length > 1) {
-      	  for (var i in items) {
-            type.children.push({
-              "name": items[i][name_attr]
-            });
-          }
+        for(var i=0; i<items.length && i<10; i++){
+          type.children.push({
+            "name": items[i][name_attr]
+          });
         }
       });
 
@@ -109,12 +101,10 @@ class Visualization extends React.Component {
 
       	type["children"] = [];
       	var items = data.data;
-      	if (items.length > 1) {
-      	  for (var i in items) {
-            type.children.push({
-              "name": items[i][name_attr]
-            });
-          }
+        for(var i=0; i<items.length && i<10; i++){
+          type.children.push({
+            "name": items[i][name_attr]
+          });
         }
       });
 
@@ -126,12 +116,10 @@ class Visualization extends React.Component {
 
       	type["children"] = [];
       	var items = data.data;
-      	if (items.length > 1) {
-      	  for (var i in items) {
+        for(var i=0; i<items.length && i<10; i++){
       	  type.children.push({
   	    		"name": items[i][name_attr]
   	    	});
-          }
         }
       });
 
