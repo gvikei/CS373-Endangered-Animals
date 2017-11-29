@@ -23,7 +23,7 @@
 
 ## <span class="fa-title">Demonstration</span>
 
-<a href = "http://endangered-animals.me/">Website</a>
+<a target="_blank" href="http://endangered-animals.me/">Website</a>
 
 ---
 
@@ -50,9 +50,9 @@
 ---
 ## <span class="fa-purple">What we could do better on</span>
 - Add more animals to the website (currently, only have 100).
-- Improve loading time of pages
+- Improve loading time of pages for scalability
 - Re-factor code to reduce duplicate code
-- Create a better user layout, font, color schemes, images
+- UI: Use a better layout, font, color schemes, images
 
 ---
 ## <span class="fa-purple">What puzzled us</span>
@@ -80,8 +80,8 @@
 
 <span class="fa-pyline">
 - Neat and simple layout; user friendly
-- Color scheme matches the game's color  (black/orange color)
-- Images are well organized; clear presentation of heroes
+- Color scheme matches the theme  (black/orange color)
+- Images are well organized; clear presentation of data
 - Site loads fast and is responsive
 </span>
 
@@ -89,12 +89,12 @@
 
 ## <span class="fa-purple">What we learned from them</span>
 
-- Interesting use of Flask with HTML templates
+- Use of Flask with HTML templates
 - In the future, we should focus more on the following: 
   * <span class="fa-pyline">font</span>
   * <span class="fa-pyline">color schemes</span>
   * <span class="fa-pyline">general theme</span>
-- Current: <span class="fa-pyline">lots of text </span>
+- Current: <span class="fa-pyline">heavy text </span>
 <br> -> Re-design layout: <span class="fa-pyline">re-arrange text, images</span>
 - Improve the overall loading speed
 
@@ -107,7 +107,7 @@
     - bad input type
     - blank input type  
     - value not in database, etc.
-- Apiary: Need to provide sample responses for each endpoint. Currently, there are none.
+- Apiary: Provide sample responses for each endpoint. Currently, there are none.
 
 
 
@@ -126,13 +126,13 @@
     * rank?
     * level?
     * win rate?
-- Some of the links to images in the "Items" model are broken.
+- All images are stored in GitHub repo; some links are broken.
 - React...?
 
 ---
 
 ## <span class="fa-title">visualization</span>
-<a href = "http://endangered-animals.me/visualization.html">Website</a>
+<a target="_blank" href="http://endangered-animals.me/visualization.html">Website</a>
 
 ---
 ## <span class="fa-title">Questions?</span>
