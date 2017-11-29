@@ -88,7 +88,7 @@
                         <Row className="show-grid">
                           <Col xs={12} md={12}>Number of commits: {this.state.stats["gvikei"]}</Col>
                           <Col xs={12} md={12}>Number of issues: 5</Col>
-                          <Col xs={12} md={12}>Number of unit tests: 0</Col>
+                          <Col xs={12} md={12}>Number of unit tests: 5</Col>
                         </Row>
                       </div>
                     </Thumbnail>
@@ -108,7 +108,7 @@
                         <Row className="show-grid">
                           <Col xs={12} md={12}>Number of commits: {this.state.stats["shivavelingker"]}</Col>
                           <Col xs={12} md={12}>Number of issues: 5</Col>
-                          <Col xs={12} md={12}>Number of unit tests: 0</Col>
+                          <Col xs={12} md={12}>Number of unit tests: 10</Col>
                         </Row>
                       </div>
                     </Thumbnail>
