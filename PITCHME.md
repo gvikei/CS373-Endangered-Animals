@@ -50,17 +50,27 @@ self critique
 ---
 
 ## <span class="fa-purple">What they can do better</span>
-<span class="fa-pyline"> REST-API </span>
+<span class="fa-pyline"> * REST-API </span>
 	- Lack or error handling
 	Ex: typing string to get hero's ID yeild 404 error rather than returning an empty list
 	- Should provide sample response for a sample input. Currently only return "200" OK reponse
 
-
 ---
-
 What puzzles us about their website
 
 ---
+
+## Self - Critique:
+
+---
+## <span class="fa-purple">What we did well</span>
+
+
+---
+
+## <span class="fa-purple">What they can do better</span>
+
+
 
 - should show "not found" if there is no result for the search
 
