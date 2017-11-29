@@ -28,7 +28,7 @@
 
 ---
 
-## <span class="fa-purple">What we did well</span>
+## <span class="fa-purple">What we did well on</span>
 
 - We have the website
 - Clean and simple layout
@@ -41,7 +41,7 @@
 - Nothing is impossible
 
 ---
-## <span class="fa-purple">What we could do better</span>
+## <span class="fa-purple">What we could do better on</span>
 - Add more animals to the website
 <br>Limitation: slow loading speed, could be improved
 - Could not show full datas
@@ -49,7 +49,7 @@
 - Made a better user layout, font, color schemes, images
 
 ---
-## <span class="fa-purple">What puzzles us</span>
+## <span class="fa-purple">What puzzled us</span>
 - Flask, Bootstrap, React
 - Google cloud deployment
 <br>
@@ -58,7 +58,7 @@
 -> Change from App Engine to manually create Docker image and managing it with Kubernetes and Container Engine
 
 ---
-## <span class="fa-title">Other Critique</span>
+## <span class="fa-title">Critique of Group 4</span>
 
 ---
 
@@ -68,7 +68,7 @@
 
 ---
 
-## <span class="fa-purple">What they do well</span>
+## <span class="fa-purple">What they did well</span>
 
 <span class="fa-pyline">
 - Neat and simple layout, themes are fit with the game (black/orange color)
@@ -78,7 +78,7 @@
 
 ---
 
-## <span class="fa-purple">What we learn from them</span>
+## <span class="fa-purple">What we learned from them</span>
 
 - Spend more time on the layout: 
 <br> <span class="fa-pyline">font, color schemes, general theme</span>
@@ -91,7 +91,7 @@
 ## <span class="fa-purple">What they can do better</span>
 - REST-API: Lack or error handling
 <br>
-Ex: typing string to get hero's ID yeild 404 error rather than returning an empty list
+Ex: typing string to get hero's ID yield 404 error rather than returning an empty list
 - Should provide sample response for a sample input. Currently only return "200" OK reponse
 - Top players should have a filter to sort the players by rank/level/win rate
 
@@ -101,7 +101,7 @@ Ex: typing string to get hero's ID yeild 404 error rather than returning an empt
 - "Hero association" in Achievements should show a list of heroes.
 
 ---
-## <span class="fa-purple">What puzzles us about their website</span>
+## <span class="fa-purple">What puzzled us about their website</span>
 - Top players are not "ranked" by any criteria, just list of names.
 - Broken links on some of the images in the "Items" model
 
