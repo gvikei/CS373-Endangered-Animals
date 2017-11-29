@@ -13,13 +13,13 @@
 
 ---
 
-<span class="name">Mantu Nguyen</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="name">Dat Vu</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class="name">Mantu Nguyen</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="name">Dat Vu</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 <img src="https://i.imgur.com/2Gy1JdL.jpg" width="280" height="280"> &nbsp;&nbsp;&nbsp; <img src="https://i.imgur.com/rC0M6v2.png" width="280" height="280">
 
 ---
 
-## Demonstration
+<span class="fa-red">## Demonstration</span>
 
 ---
 
@@ -91,7 +91,6 @@
 ## <span class="fa-purple">What they can do better</span>
 
 <span class="fa-pyline"> REST-API </span>
-<br>
 - Lack or error handling
 <br>	
 Ex: typing string to get hero's ID yeild 404 error rather than returning an empty list
