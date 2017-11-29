@@ -1,11 +1,12 @@
 # Endangered Animals 
 
+#### @fa[users fa-2x fa-yellow] Group 22
 
 ---
 
 ### <span class="header">Our Team</span>
 
-<span class="name">Bryan Leung</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="name">Khuyen Duong</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="name">Shiva Velingker</span>
+<span class="name">Bryan Leung</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="name">Khuyen Duong</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="name">Shiva Velingker</span>
 
 <img src="https://i.imgur.com/UXXs4fY.jpg" width="280" height="280"> &nbsp;&nbsp;&nbsp; <img src="https://i.imgur.com/y35uhcL.jpg" width="280" height="280"> &nbsp;&nbsp;&nbsp;
 <img src="https://i.imgur.com/sfK63Ow.jpg" width="280" height="280">
@@ -29,13 +30,23 @@ self critique
 
 ---
 
-#### <span class="fa-byline">What they do well</span>
+## <span class="fa-purple">What they do well</span>
 
-- 
+<span class="fa-gray">
+- Neat and simple layout, themes are fit with the game (black/orange color)
+- Images are well organized, clear presentation of heroes
+- The site loads fast and responsive, no broken links or user errors (spellings, ect)
+</span>
 
 ---
 
-What do we learn from them
+## <span class="fa-purple">What do we learn from them</span>
+
+<span class="fa-gray">
+- Spend more time on the layout: font, color schemes, general theme
+- Current: lots of text -> Re-design layout: re-arrange text, images
+- Improve the loading speed
+</span>
 
 ---
 

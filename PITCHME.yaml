@@ -1,3 +1,4 @@
-theme : black
+theme : beige
 theme-override : PITCHME.css
 published : true
+background : background.png
