@@ -3,7 +3,7 @@
 
 ---
 
-<span class="header">Our Team</span>
+### <span class="header">Our Team</span>
 
 <span class="name">Bryan Leung</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="name">Khuyen Duong</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="name">Shiva Velingker</span>
 
@@ -12,9 +12,9 @@
 
 ---
 
-<span style="font-size:0.6em; color:gray">Press Down key for details.</span> |
-<span style="font-size:0.6em; color:gray">See [GitPitch Wiki](https://github.com/gitpitch/gitpitch/wiki/Slide-Markdown) for details.</span>
-demonstration
+<span class="name">Mantu Nguyen</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="name">Dat Vu</span>
+
+<img src="https://i.imgur.com/2Gy1JdL.jpg" width="280" height="280"> &nbsp;&nbsp;&nbsp; <img src="https://i.imgur.com/2Gy1JdL.jpg" width="280" height="280">
 
 ---
 
@@ -63,3 +63,10 @@ Should put a filter/sort for those. noone interested in "name"
 ---
 
 visualization
+
+
+---
+
+<span style="font-size:0.6em; color:gray">Press Down key for details.</span> |
+<span style="font-size:0.6em; color:gray">See [GitPitch Wiki](https://github.com/gitpitch/gitpitch/wiki/Slide-Markdown) for details.</span>
+demonstration

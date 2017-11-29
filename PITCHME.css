@@ -7,10 +7,10 @@ span.fa-byline { color : gray; }
 
 
 span.header {
-    font-size: 0.9em;
-    font-family: "Helvetica";
+    font-family: "garamond";
 }
 
 span.name {
-	font-size: 0.6em;
+	font-family: "myriad";
+	font-size: 0.7em;
 }
