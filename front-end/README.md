@@ -1,4 +1,4 @@
-# Endandered Animals Front-End
+# Endangered Animals Front-End
 
 [Bootstrap 3][bootstrap] components built with [React][react].
 
