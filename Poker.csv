@@ -1,4 +1,15 @@
 Story Title,Estimate,Vote Started,Voting Duration,Avg Voting Time,Fastest,Slowest,Actual
+How long will it take to create a list of frequently asked questions regarding the API?,40,26/11/2017 16:35:22,0:03:36,0:02:40,Bryan Leung,Mantu Nguyen,100
+How long will it take to create the visualization?,100,26/11/2017 16:39:01,0:01:32,0:01:03,Bryan Leung,Mantu Nguyen,200
+How long will it take to create the presentation?,100,26/11/2017 16:44:21,0:01:19,0:00:48,Bryan Leung,Mantu Nguyen,200
+How long will it take to create the visualization,100,26/11/2017 16:46:43,0:00:47,0:00:23,Bryan Leung,Mantu Nguyen,200
+"How long will it take to show the data type of the output on Apiary, before a user makes the request?",5,26/11/2017 16:48:41,0:00:39,0:00:20,Bryan Leung,Mantu Nguyen,20
+"How long will it take to show the required headers for each request on apiary, before a user makes the request?",5,26/11/2017 16:50:13,0:01:00,0:00:35,Bryan Leung,Mantu Nguyen,20
+"How long will it take to show whether each input parameter is required or optional, on Apiary?",5,26/11/2017 16:52:16,0:02:03,0:01:23,Bryan Leung,Mantu Nguyen,20
+How long will it take to show the data types of each input parameter for each endpoint on Apiary?,5,26/11/2017 16:54:29,0:01:09,0:00:45,Bryan Leung,Mantu Nguyen,20
+"How long will it take to show what type of errors that the users can encounter, on the Apiary?",100,26/11/2017 16:55:59,0:00:48,0:00:23,Bryan Leung,Mantu Nguyen,200
+How long will it take to make the Apiary as straight forward as possible?,40,26/11/2017 16:57:30,0:00:58,0:00:37,Bryan Leung,Mantu Nguyen,100
+"As a user, I want to be able to view the animals in a clean, concise grid format.",20,26/11/2017 16:59:03,0:00:36,0:00:13,Bryan Leung,Mantu Nguyen,100
 "As a contractor who is taking on the project after the original developers are done with it, I want to see a UML diagram, so that I can understand how the data is being mapped out.",40,24/10/2017 18:35:40,0:00:36,0:00:23,Bryan Leung,Mantu Nguyen,120
 "As a contractor who is taking on the project after the original developers are done with it, I want to see their unit tests they wrote, so I can get a good idea of what inputs should be expected, and what outputs should be expected.",20,24/10/2017 18:34:40,0:00:24,0:00:13,Bryan Leung,Mantu Nguyen,40
 "As a contractor who is taking on the project after the original developers are done with it, I want to see a list of data sources that the original developers used, so that I can see whether they still fit my current needs",20,24/10/2017 18:33:50,0:00:45,0:00:23,Bryan Leung,Mantu Nguyen,40
