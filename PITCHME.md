@@ -83,9 +83,9 @@
 ## <span class="fa-purple">What we learned from them</span>
 
 - In the future, we should focus more on the following: 
-  *<span class="fa-pyline">font</span>
-  *<span class="fa-pyline">color schemes</span>
-  *<span class="fa-pyline">general theme</span>
+  * <span class="fa-pyline">font</span>
+  * <span class="fa-pyline">color schemes</span>
+  * <span class="fa-pyline">general theme</span>
 - Current: <span class="fa-pyline">lots of text </span>
 <br> -> Re-design layout: <span class="fa-pyline">re-arrange text, images</span>
 - Improve the loading speed
