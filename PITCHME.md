@@ -19,12 +19,21 @@
 
 ---
 
-self critique
+## Self Critique
+
+---
+
+## <span class="fa-purple">What we did well</span>
+
 
 
 ---
 
-#### [Overwatch Glamour](http://overwatchglamour.me)
+## Other Critique
+
+---
+
+### [Overwatch Glamour](http://overwatchglamour.me)
 
 ![](https://i.imgur.com/sjDHqIA.jpg)
 
@@ -57,13 +66,6 @@ self critique
 
 ---
 What puzzles us about their website
-
----
-
-## Self - Critique:
-
----
-## <span class="fa-purple">What we did well</span>
 
 
 ---
