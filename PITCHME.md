@@ -40,28 +40,29 @@
 
 ---
 ## <span class="fa-purple">What we learned</span>
-- Learned how to use React, and move away from hacky practices
-- Learned how to use Flask-SQLAlchemy, learned about how to create a RESTful API
-- Learned how to Dockerize the app; learned how to use App Engine, Container Engine
-- How teamwork is important, how to work on a team with fragmented schedules , learn from others, 
+- Learned how to use:
+  * React, and move away from hacky practices
+  * Flask-SQLAlchemy, learned about how to create a RESTful API
+  * Dockerize our app; learned how to use App Engine, Container Engine
+  * How important teamwork is
 
 
 ---
 ## <span class="fa-purple">What we could do better on</span>
 - Add more animals to the website (currently, only have 100).
 - Improve loading time of pages
-- Re-factor code for rendering models
+- Re-factor code to reduce duplicate code
 - Create a better user layout, font, color schemes, images
 
 ---
 ## <span class="fa-purple">What puzzled us</span>
 - Flask, Bootstrap, React
+  * Flask-CORS
 - Google cloud deployment
-  * Lots of 404 Errors and 502 Bad Gateway errors
+  * Running out of GCP credits
+  * Node module conflicts with Docker
   * Changed from App Engine to manually create Docker image and managing it with Kubernetes and Container Engine
-- React routing
 - Dealing with formatting and inconsistency of data from data source
-- Flask-CORS
 
 
 ---
@@ -115,8 +116,6 @@
 - When a filter button is clicked, the list of choices should be scrollable.
 - Improve search functionality:
   * If no results are found, need to display "No results found", instead of a blank page
-  * Improve search functionality:
-    * Switch current tab to the tab with the result
   * Improve highlighting to be more comprehensive.
 
 ---
@@ -128,10 +127,12 @@
     * level?
     * win rate?
 - Some of the links to images in the "Items" model are broken.
+- React...?
 
 ---
 
 ## <span class="fa-title">visualization</span>
 <a href = "http://endangered-animals.me/visualization.html">Website</a>
 
-
+---
+## <span class="fa-title">Questions?</span>
