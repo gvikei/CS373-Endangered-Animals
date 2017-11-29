@@ -153,7 +153,7 @@ class Visualization extends React.Component {
         <div>
           <NavMain activePage={this.state.type} />
 
-          <h3><center>This interactive tree diagram shows a simple representation of the data sets for Group 4.</center></h3>
+          <h3><center>This interactive tree diagram shows a simple representation of the data sets for <a href="http://overwatchglamour.me/" target="_blank">Group 4</a>.</center></h3>
 
 
         </div>
@@ -163,7 +163,7 @@ class Visualization extends React.Component {
       <div>
       	<NavMain activePage={this.state.type} />
 
-        <h3><center>This interactive tree diagram shows a simple representation of the data sets for Group 4.</center></h3>
+        <h3><center>This interactive tree diagram shows a simple representation of the data sets for <a href="http://overwatchglamour.me/" target="_blank">Group 4</a>.</center></h3>
 
         <D3Tree treeData={this.state.data}/>
 
