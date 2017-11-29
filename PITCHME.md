@@ -4,18 +4,19 @@
 
 ---
 
-### <span class="header">Our Team</span>
+### <span class="header">Our Team (frontend)</span>
 
-<span class="name">Bryan Leung</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="name">Khuyen Duong</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="name">Shiva Velingker</span>
+<span class="name">Mantu Nguyen</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="name">Khuyen Duong</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="name">Shiva Velingker</span>
 
-<img src="https://i.imgur.com/UXXs4fY.jpg" width="280" height="280"> &nbsp;&nbsp;&nbsp; <img src="https://i.imgur.com/y35uhcL.jpg" width="280" height="280"> &nbsp;&nbsp;&nbsp;
+<img src="https://i.imgur.com/2Gy1JdL.jpg" width="280" height="280"> &nbsp;&nbsp;&nbsp; <img src="https://i.imgur.com/y35uhcL.jpg" width="280" height="280"> &nbsp;&nbsp;&nbsp;
 <img src="https://i.imgur.com/sfK63Ow.jpg" width="280" height="280">
 
 ---
 
-<span class="name">Mantu Nguyen</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="name">Dat Vu</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class="name">Bryan Leung</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="name">Dat Vu</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-<img src="https://i.imgur.com/2Gy1JdL.jpg" width="280" height="280"> &nbsp;&nbsp;&nbsp; <img src="https://i.imgur.com/rC0M6v2.png" width="280" height="280">
+<img src="https://i.imgur.com/UXXs4fY.jpg" width="280" height="280"> &nbsp;&nbsp;&nbsp; <img src="https://i.imgur.com/rC0M6v2.png" width="280" height="280">
 
 ---
 
