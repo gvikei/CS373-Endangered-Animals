@@ -5,10 +5,10 @@
 
 ## Introduction
 
-Bryan Leung &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Khuyen Duong &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Shiva Velingker
+Bryan Leung &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Khuyen Duong &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Shiva Velingker
 
 <img src="https://i.imgur.com/UXXs4fY.jpg" width="280" height="280"> <img src="https://i.imgur.com/y35uhcL.jpg" width="280" height="280">
- <img src="https://i.imgur.com/sfK63Ow.jpg" width="280" height="280">
+<img src="https://i.imgur.com/sfK63Ow.jpg" width="280" height="280">
 
 
 
@@ -16,13 +16,13 @@ Bryan Leung &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 
 ### Overwatch Glamour
 
-http://overwatchglamour.me/about
+http://overwatchglamour.me
 
 ![](https://i.imgur.com/sjDHqIA.jpg)
 
 ---
 
-What they do well
+<span class="fa-byline">What they do well</span>
 
 
 ---
