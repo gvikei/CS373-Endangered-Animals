@@ -149,11 +149,21 @@ class Visualization extends React.Component {
 
   render() {
   	if(this.state.data.children.length < 5)
-  		return ( <div /> );
+  		return (
+        <div>
+          <NavMain activePage={this.state.type} />
+
+          <h3><center>This interactive tree diagram shows a simple representation of the data sets for Group 4.</center></h3>
+
+
+        </div>
+      );
 
     return (
       <div>
       	<NavMain activePage={this.state.type} />
+
+        <h3><center>This interactive tree diagram shows a simple representation of the data sets for Group 4.</center></h3>
 
         <D3Tree treeData={this.state.data}/>
 
