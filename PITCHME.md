@@ -10,20 +10,26 @@ Bryan Leung &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 <img src="https://i.imgur.com/UXXs4fY.jpg" width="280" height="280"> <img src="https://i.imgur.com/y35uhcL.jpg" width="280" height="280">
 <img src="https://i.imgur.com/sfK63Ow.jpg" width="280" height="280">
 
+---
+
+demonstration
+
+---
+
+self critique
 
 
 ---
 
-### Overwatch Glamour
-
-http://overwatchglamour.me
+#### [Overwatch Glamour](http://overwatchglamour.me)
 
 ![](https://i.imgur.com/sjDHqIA.jpg)
 
 ---
 
-<span class="fa-byline">What they do well</span>
+#### <span class="fa-byline">What they do well</span>
 
+- 
 
 ---
 
@@ -51,3 +57,7 @@ What is the ranking system? By score? By rank? By level ? By win/rate
 Should put a filter/sort for those. noone interested in "name"
 
 - Search seems to find the text in the data, not for the title. It's counter intuitive since reader only read the title.. So as the highlight 
+
+---
+
+visualization
