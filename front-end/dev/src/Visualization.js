@@ -55,11 +55,14 @@ class Visualization extends React.Component {
       	type["children"] = [];
       	var items = data.data;
         for(var i=0; i<items.length && i<10; i++){
+          if(items[i][name_attr])
           type.children.push({
             "name": items[i][name_attr]
           });
         }
-
+        type.children = (type.children.length ? type.children : null);
+        that.state.data.children.push(type);
+        that.setState({ "ready" : true });
       });
 
     //PLAYERS
@@ -71,10 +74,14 @@ class Visualization extends React.Component {
         type["children"] = [];
       	var items = data.data;
         for(var i=0; i<items.length && i<10; i++){
+          if(items[i][name_attr])
           type.children.push({
             "name": items[i][name_attr]
           });
         }
+        type.children = (type.children.length ? type.children : null);
+        that.state.data.children.push(type);
+        that.setState({ "ready" : true });
       });
 
     //ACHIEVEMENTS
@@ -86,10 +93,14 @@ class Visualization extends React.Component {
       	type["children"] = [];
       	var items = data.data;
         for(var i=0; i<items.length && i<10; i++){
+          if(items[i][name_attr])
           type.children.push({
             "name": items[i][name_attr]
           });
         }
+        type.children = (type.children.length ? type.children : null);
+        that.state.data.children.push(type);
+        that.setState({ "ready" : true });
       });
 
 
@@ -102,10 +113,14 @@ class Visualization extends React.Component {
       	type["children"] = [];
       	var items = data.data;
         for(var i=0; i<items.length && i<10; i++){
+          if(items[i][name_attr])
           type.children.push({
             "name": items[i][name_attr]
           });
         }
+        type.children = (type.children.length ? type.children : null);
+        that.state.data.children.push(type);
+        that.setState({ "ready" : true });
       });
 
     //ITEMS
@@ -117,21 +132,23 @@ class Visualization extends React.Component {
       	type["children"] = [];
       	var items = data.data;
         for(var i=0; i<items.length && i<10; i++){
+          if(items[i][name_attr])
       	  type.children.push({
   	    		"name": items[i][name_attr]
   	    	});
         }
+        type.children = (type.children.length ? type.children : null);
+        that.state.data.children.push(type);
+        that.setState({ "ready" : true });
       });
+  };
 
-    this.state.data.children.push(this.state.heroes);
-    this.state.data.children.push(this.state.players);
-    this.state.data.children.push(this.state.achievements);
-    this.state.data.children.push(this.state.skins);
-    this.state.data.children.push(this.state.items);
+  shouldComponentUpdate() {
+    return true;
   };
 
   render() {
-  	if(!this.state.data.children.length)
+  	if(this.state.data.children.length < 5)
   		return ( <div /> );
 
     return (

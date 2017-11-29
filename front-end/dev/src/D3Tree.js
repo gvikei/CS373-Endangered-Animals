@@ -12,8 +12,8 @@ class D3Tree extends React.Component {
 
   shouldComponentUpdate() {
   	renderTree(this.props.treeData, ReactDOM.findDOMNode(this.refs.svg));
-    return false;
-  };as
+    return true;
+  };
 
   render() {
     return (
@@ -80,14 +80,14 @@ var renderTree = function(data, svgDomNode){
 	  var nodeEnter = node.enter().append("g")
 	  	  .attr("class","node")
 	      .style("cursor","pointer")
-	      .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
-	      .on("click", click);
+	      .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; });
 
 	  nodeEnter.append("circle")
 	  	  .style("stroke","steelblue")
 	  	  .style("stroke-width","1.5px")
 	      .attr("r", 0)
-	      .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+	      .style("fill", function(d) { return d._children && d._children.length ? "lightsteelblue" : "#fff"; })
+	      .on("click", click);
 
 	  nodeEnter.append("text")
 	      .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
@@ -103,7 +103,7 @@ var renderTree = function(data, svgDomNode){
 
 	  nodeUpdate.select("circle")
 	      .attr("r", 4.5)
-	      .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+	      .style("fill", function(d) { return d._children && d._children.length ? "lightsteelblue" : "#fff"; });
 
 	  nodeUpdate.select("text")
 	      .style("fill-opacity", 1);
