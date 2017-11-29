@@ -32,7 +32,7 @@ self critique
 
 ## <span class="fa-purple">What they do well</span>
 
-<span class="fa-gray">
+<span class="fa-pyline">
 - Neat and simple layout, themes are fit with the game (black/orange color)
 - Images are well organized, clear presentation of heroes
 - The site loads fast and responsive, no broken links or user errors (spellings, ect)
@@ -40,17 +40,22 @@ self critique
 
 ---
 
-## <span class="fa-purple">What do we learn from them</span>
+## <span class="fa-purple">What we learn from them</span>
 
-<span class="fa-gray">
-- Spend more time on the layout: font, color schemes, general theme
-- Current: lots of text -> Re-design layout: re-arrange text, images
+<span class="fa-pyline">- Spend more time on the layout: font, color schemes, general theme</span>
+- Current: lots of text 
+-> Re-design layout: re-arrange text, images
 - Improve the loading speed
-</span>
 
 ---
 
-What they can do better
+## <span class="fa-purple">What they can do better</span>
+<span class="fa-pyline"> REST-API:
+	- Lack or error handling
+	Ex: typing string to get hero's ID yeild 404 error rather than returning an empty list
+	- Should provide sample response for a sample input. Currently only return "200" OK reponse
+</span>
+
 
 ---
 
