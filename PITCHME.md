@@ -13,6 +13,7 @@
 
 ---
 
+### <span class="header">Our Team (backend)</span>
 <span class="name">Bryan Leung</span>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="name">Dat Vu</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -33,31 +34,35 @@
 
 ## <span class="fa-purple">What we did well on</span>
 
-- We were able to complete the website, given our limited time and resources.
+- We were able to integrate React and Bootstrap early on, which cut down on our learning curve later on
 - Clean and simple layout
-- APIs and code are relatively scalable.
+- Responsive search function
 
 ---
 ## <span class="fa-purple">What we learned</span>
-- Teamwork
-- Start early
-- Nothing is impossible
+- Learned how to use React, and move away from hacky practices
+- Learned how to use Flask-SQLAlchemy, learned about how to create a RESTful API
+- Learned how to Dockerize the app; learned how to use App Engine, Container Engine
+- How teamwork is important, how to work on a team with fragmented schedules , learn from others, 
+
 
 ---
 ## <span class="fa-purple">What we could do better on</span>
 - Add more animals to the website (currently, only have 100).
 - Improve loading time of pages
-- Show more data
+- Re-factor code for rendering models
 - Create a better user layout, font, color schemes, images
 
 ---
 ## <span class="fa-purple">What puzzled us</span>
 - Flask, Bootstrap, React
 - Google cloud deployment
-<br>
-<span class="fa-pyline">From simple compile errors to 502 Bad Gateway errors</span>
-<br>
--> Change from App Engine to manually create Docker image and managing it with Kubernetes and Container Engine
+  * Lots of 404 Errors and 502 Bad Gateway errors
+  * Changed from App Engine to manually create Docker image and managing it with Kubernetes and Container Engine
+- React routing
+- Dealing with formatting and inconsistency of data from data source
+- Flask-CORS
+
 
 ---
 ## <span class="fa-title">Critique of Group 4</span>
@@ -73,7 +78,8 @@
 ## <span class="fa-purple">What they did well on</span>
 
 <span class="fa-pyline">
-- Neat and simple layout; color scheme matches the game's color  (black/orange color)
+- Neat and simple layout; user friendly
+- Color scheme matches the game's color  (black/orange color)
 - Images are well organized; clear presentation of heroes
 - Site loads fast and is responsive
 </span>
@@ -82,6 +88,7 @@
 
 ## <span class="fa-purple">What we learned from them</span>
 
+- Interesting use of Flask with HTML templates
 - In the future, we should focus more on the following: 
   * <span class="fa-pyline">font</span>
   * <span class="fa-pyline">color schemes</span>
@@ -106,7 +113,11 @@
 ---
 - Top players should have a filter to sort the players by rank/level/win rate
 - When a filter button is clicked, the list of choices should be scrollable.
-- "Hero association" in Achievements should show a list of heroes.
+- Improve search functionality:
+  * If no results are found, need to display "No results found", instead of a blank page
+  * Improve search functionality:
+    * Switch current tab to the tab with the result
+  * Improve highlighting to be more comprehensive.
 
 ---
 ## <span class="fa-purple">What puzzled us about their website</span>
@@ -121,6 +132,6 @@
 ---
 
 ## <span class="fa-title">visualization</span>
-
+<a href = "http://endangered-animals.me/visualization.html">Website</a>
 
 
