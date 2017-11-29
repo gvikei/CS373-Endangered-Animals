@@ -13,9 +13,9 @@
 
 ---
 
-<span class="name">Mantu Nguyen</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="name">Dat Vu</span>
+<span class="name">Mantu Nguyen</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="name">Dat Vu</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-<img src="https://i.imgur.com/2Gy1JdL.jpg" width="280" height="280"> &nbsp;&nbsp;&nbsp; <img src="https://i.imgur.com/2Gy1JdL.jpg" width="280" height="280">
+<img src="https://i.imgur.com/2Gy1JdL.jpg" width="280" height="280"> &nbsp;&nbsp;&nbsp; <img src="https://i.imgur.com/rC0M6v2.png" width="280" height="280">
 
 ---
 
