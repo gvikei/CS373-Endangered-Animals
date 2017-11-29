@@ -32,9 +32,9 @@
 
 ## <span class="fa-purple">What we did well on</span>
 
-- We have the website
+- We were able to complete the website, given our limited time and resources.
 - Clean and simple layout
-- Fully functional and get things done
+- APIs and code are relatively scalable.
 
 ---
 ## <span class="fa-purple">What we learned</span>
@@ -44,11 +44,10 @@
 
 ---
 ## <span class="fa-purple">What we could do better on</span>
-- Add more animals to the website
-<br>Limitation: slow loading speed, could be improved
-- Could not show full datas
-<br>Limitation: long pages
-- Made a better user layout, font, color schemes, images
+- Add more animals to the website (currently, only have 100).
+- Improve loading time of pages
+- Show more data
+- Create a better user layout, font, color schemes, images
 
 ---
 ## <span class="fa-purple">What puzzled us</span>
