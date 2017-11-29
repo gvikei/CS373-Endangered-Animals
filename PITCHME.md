@@ -88,14 +88,17 @@
   * <span class="fa-pyline">general theme</span>
 - Current: <span class="fa-pyline">lots of text </span>
 <br> -> Re-design layout: <span class="fa-pyline">re-arrange text, images</span>
-- Improve the loading speed
+- Improve the overall loading speed
 
 ---
 
 ## <span class="fa-purple">What they can do better</span>
 - REST-API: Lack of error handling
-### Ex: Need to provide better error messages than an empty list, or 
-### Need to catch common error inputs, such as a bad input type, blank input type, value not in database, etc.
+  * Ex: Need to provide better error messages than an empty list, or 
+  * Need to catch common error inputs, such as:
+    - bad input type
+    - blank input type
+    - value not in database, etc.
 - Apiary: Need to provide sample responses for each endpoint. Currently, there are none.
 - Top players should have a filter to sort the players by rank/level/win rate
 
