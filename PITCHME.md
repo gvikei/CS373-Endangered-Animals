@@ -132,7 +132,7 @@
 ---
 
 ## <span class="fa-title">visualization</span>
-<a target="_blank" href="http://endangered-animals.me/visualization.html">Website</a>
+<a target="_blank" href="http://endangered-animals.me">Website</a>
 
 ---
 ## <span class="fa-title">Questions?</span>
