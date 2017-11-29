@@ -14,6 +14,7 @@ import Button from '../../components/Button';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 
 var axios = require('axios');
+var $ = require('jQuery');
 
 const MyLargeModal = React.createClass({
   render() {
@@ -100,8 +101,19 @@ const MyLargeModal = React.createClass({
 export default class HomePage extends React.Component {
 
   handleClick(e) {
-    this.setState({
-      lgModalShow : !this.state.lgModalShow
+    var search_term = $('.form-control')[0].value;
+    var event = document.createEvent('Event');
+
+    event.initEvent('keydown');
+    event.which = event.keyCode = 13;
+
+    this.setState({ lgModalShow : !this.state.lgModalShow }, function afterModalShow() {
+      var input_boxes = document.querySelectorAll("input.form-control");
+
+      for (var i = 1; i < input_boxes.length; i++) {
+        input_boxes[i].value = search_term;
+        input_boxes[i].dispatchEvent(event);
+      }
     });
   }
 

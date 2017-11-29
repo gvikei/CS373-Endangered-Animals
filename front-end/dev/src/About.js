@@ -179,7 +179,7 @@
 
                   <Col sm={4}>
                     <h2> Additional Information </h2>
-                    <p><a href="https://utexas.app.box.com/s/sjecumzujuh5kwsqn1vrkhfjjbwwgbwr">Technical​​ Report​​ for​​ Group​​ 22</a></p>
+                    <p><a href="https://bryanlng.gitbooks.io/group-22-technical-report/content/">Technical​​ Report​​ for​​ Group​​ 22</a></p>
                     <p><a href="https://utexas.app.box.com/s/jt8v5blmmxemsq27f3s35tzo197qmosv">UML Design for Group​​ 22</a></p>
                   </Col>
                 </Row>
