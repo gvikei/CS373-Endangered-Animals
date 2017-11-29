@@ -70,19 +70,19 @@
 
 ---
 
-## <span class="fa-purple">What they did well</span>
+## <span class="fa-purple">What they did well on</span>
 
 <span class="fa-pyline">
-- Neat and simple layout, themes are fit with the game (black/orange color)
-- Images are well organized, clear presentation of heroes
-- The site loads fast and responsive, no user errors (spellings, ect)
+- Neat and simple layout; color scheme matches the game's color  (black/orange color)
+- Images are well organized; clear presentation of heroes
+- Site loads fast and is responsive
 </span>
 
 ---
 
 ## <span class="fa-purple">What we learned from them</span>
 
-- Spend more time on the layout: 
+- In the future, we should focus more on the following: 
 <br> <span class="fa-pyline">font, color schemes, general theme</span>
 - Current: <span class="fa-pyline">lots of text </span>
 <br> -> Re-design layout: <span class="fa-pyline">re-arrange text, images</span>
@@ -91,10 +91,10 @@
 ---
 
 ## <span class="fa-purple">What they can do better</span>
-- REST-API: Lack or error handling
-<br>
-Ex: typing string to get hero's ID yield 404 error rather than returning an empty list
-- Should provide sample response for a sample input. Currently only return "200" OK reponse
+- REST-API: Lack of error handling
+### Ex: Need to provide better error messages than an empty list, or 
+### Need to catch common error inputs, such as a bad input type, blank input type, value not in database, etc.
+- Apiary: Need to provide sample responses for each endpoint. Currently, there are none.
 - Top players should have a filter to sort the players by rank/level/win rate
 
 
@@ -105,7 +105,7 @@ Ex: typing string to get hero's ID yield 404 error rather than returning an empt
 ---
 ## <span class="fa-purple">What puzzled us about their website</span>
 - Top players are not "ranked" by any criteria, just list of names.
-- Broken links on some of the images in the "Items" model
+- Some of the links to images in the "Items" model are broken.
 
 ---
 
