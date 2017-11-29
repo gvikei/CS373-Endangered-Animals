@@ -30,9 +30,13 @@ self critique
 
 ---
 
-#### <span class="fa-byline">What they do well</span>
+#### <span class="fa-purple">What they do well</span>
 
-- 
+<span class="fa-gray">
+- Neat and simple layout, themes are fit with the game (black/orange color)
+- Images are well organized, clear presentation of heroes
+- The site loads fast and responsive, no broken links or user errors (spellings, ect)
+</span>
 
 ---
 

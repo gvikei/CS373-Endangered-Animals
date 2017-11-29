@@ -4,7 +4,8 @@
 .fa-lime { color : #b9ff66; }
 .fa-yellow { color : #ffff00; }
 
-span.fa-byline { color : gray; }
+span.fa-gray { color : gray; }
+span.fa-purple { color : purple; }
 
 
 span.header {
