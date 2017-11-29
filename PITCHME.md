@@ -3,7 +3,7 @@
 
 ---
 
-<span class="header">Introduction</span>
+<span class="header">Our Team</span>
 
 <span class="name">Bryan Leung</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="name">Khuyen Duong</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="name">Shiva Velingker</span>
 
