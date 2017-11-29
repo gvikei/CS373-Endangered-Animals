@@ -73,7 +73,7 @@
 <span class="fa-pyline">
 - Neat and simple layout, themes are fit with the game (black/orange color)
 - Images are well organized, clear presentation of heroes
-- The site loads fast and responsive, no broken links or user errors (spellings, ect)
+- The site loads fast and responsive, no user errors (spellings, ect)
 </span>
 
 ---
@@ -103,7 +103,7 @@ Ex: typing string to get hero's ID yeild 404 error rather than returning an empt
 ---
 ## <span class="fa-purple">What puzzles us about their website</span>
 - Top players are not "ranked" by any criteria, just list of names.
-
+- Broken links on some of the images in the "Items" model
 
 ---
 
