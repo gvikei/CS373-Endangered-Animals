@@ -20,9 +20,10 @@ class Threats extends React.Component {
         typeProper: "Threats",
         subTitle: "Understanding danger is key for protection"
     };
-    this.instanceFormatter = this.instanceFormatter.bind(this);
-    this.animalFormatter = this.animalFormatter.bind(this);
-    this.habitatFormatter = this.habitatFormatter.bind(this);
+    this.instanceFormatter  = this.instanceFormatter.bind(this);
+    this.txtFormatter       = this.txtFormatter.bind(this);
+    this.animalFormatter    = this.animalFormatter.bind(this);
+    this.habitatFormatter   = this.habitatFormatter.bind(this);
 
     var that = this;
     axios.create({
@@ -49,10 +50,10 @@ class Threats extends React.Component {
 
   highlight(data) {
     var item = document.querySelector('.form-group.form-group-sm.react-bs-table-search-form>input');
-    if (item != null) {
+    if (item && item.value && data) {
       var keyword = item.value;
-      var regex = new RegExp(keyword);
-      return {__html: data.replace(regex, '<b><u>' + keyword + '</u></b>') }
+      var regex = new RegExp(keyword, 'ig');
+      return {__html: data.replace(regex, function(match){ return '<b><u>' + match + '</u></b>' }) }
     }
     return {__html: data}
   };
@@ -99,8 +100,8 @@ class Threats extends React.Component {
     return <a onClick={ () => { this.changeURL(type, data) } } dangerouslySetInnerHTML={this.highlight(data)}></a>;
   };
 
-  linkFormatter(data){
-    return <a href={ data } target="_blank">{ data }</a>
+  txtFormatter(data){
+    return <p dangerouslySetInnerHTML={this.highlight(data)}></p>;
   };
 
   render() {
@@ -138,10 +139,10 @@ class Threats extends React.Component {
            <BootstrapTable data={this.state.model} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={true} options={options}>
             <TableHeaderColumn width='200' dataField="image"            dataAlign="center"                                dataFormat={this.imageFormatter}    > Image                 </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="name"             dataAlign="center" dataSort={true} isKey={true}   dataFormat={this.instanceFormatter} > Name                  </TableHeaderColumn>
-            <TableHeaderColumn width='200' dataField="severity"         dataAlign="center" dataSort={true}                                                    > Severity              </TableHeaderColumn>
-            <TableHeaderColumn width='200' dataField="timing"           dataAlign="center" dataSort={true}                                                    > Timing                </TableHeaderColumn>
-            <TableHeaderColumn width='200' dataField="assoc_animals"    dataAlign="left"                                dataFormat={this.animalFormatter}   > Associated Animals    </TableHeaderColumn>
-            <TableHeaderColumn width='200' dataField="assoc_habitats"   dataAlign="left"                                dataFormat={this.habitatFormatter}  > Associated Habitats   </TableHeaderColumn>
+            <TableHeaderColumn width='200' dataField="severity"         dataAlign="center" dataSort={true}                dataFormat={this.txtFormatter}      > Severity              </TableHeaderColumn>
+            <TableHeaderColumn width='200' dataField="timing"           dataAlign="center" dataSort={true}                dataFormat={this.txtFormatter}      > Timing                </TableHeaderColumn>
+            <TableHeaderColumn width='200' dataField="assoc_animals"    dataAlign="left"                                  dataFormat={this.animalFormatter}   > Associated Animals    </TableHeaderColumn>
+            <TableHeaderColumn width='200' dataField="assoc_habitats"   dataAlign="left"                                  dataFormat={this.habitatFormatter}  > Associated Habitats   </TableHeaderColumn>
           </BootstrapTable>
 
         <PageFooter />

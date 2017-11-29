@@ -1,10 +1,10 @@
 {
-  "name": "react-bootstrap",
-  "version": "0.31.3",
-  "description": "Bootstrap 3 components built with React",
+  "name": "endangered-animals",
+  "version": "1.0.0",
+  "description": "Aggregator of data from several sources for display",
   "repository": {
     "type": "git",
-    "url": "react-bootstrap/react-bootstrap"
+    "url": "gvikei/idb"
   },
   "homepage": "https://react-bootstrap.github.io/",
   "scripts": {
@@ -79,6 +79,7 @@
     "colors": "^1.1.2",
     "cross-env": "^2.0.0",
     "css-loader": "^0.23.1",
+    "d3": "^3.5.17",
     "dom-helpers": "^3.2.0",
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-15": "^1.0.1",
@@ -99,6 +100,7 @@
     "ip": "^1.1.3",
     "json-loader": "^0.5.7",
     "jsonp": "^0.2.1",
+    "jquery": "^3.2.1",
     "karma": "^1.1.1",
     "karma-chrome-launcher": "^1.0.1",
     "karma-cli": "^1.0.1",
@@ -133,6 +135,7 @@
     "react-test-renderer": "^15.6.2",
     "react-waypoint": "^3.0.0",
     "release-script": "^1.0.2",
+    "request": "^2.83.0",
     "rimraf": "^2.5.3",
     "semver": "^5.2.0",
     "sinon": "^2.3.2",

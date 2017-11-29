@@ -20,10 +20,10 @@ class Countries extends React.Component {
         typeProper: "Countries",
         subTitle: "Dive into rich ecosystems"
     };
-    this.instanceFormatter = this.instanceFormatter.bind(this);
-    this.animalFormatter = this.animalFormatter.bind(this);
-    this.habitatFormatter = this.habitatFormatter.bind(this);
-    this.threatFormatter = this.threatFormatter.bind(this);
+    this.instanceFormatter  = this.instanceFormatter.bind(this);
+    this.animalFormatter    = this.animalFormatter.bind(this);
+    this.habitatFormatter   = this.habitatFormatter.bind(this);
+    this.threatFormatter    = this.threatFormatter.bind(this);
 
     var that = this;
     axios.create({
@@ -50,10 +50,10 @@ class Countries extends React.Component {
 
   highlight(data) {
     var item = document.querySelector('.form-group.form-group-sm.react-bs-table-search-form>input');
-    if (item != null) {
+    if (item && item.value && data) {
       var keyword = item.value;
-      var regex = new RegExp(keyword);
-      return {__html: data.replace(regex, '<b><u>' + keyword + '</u></b>') }
+      var regex = new RegExp(keyword, 'ig');
+      return {__html: data.replace(regex, function(match){ return '<b><u>' + match + '</u></b>' }) }
     }
     return {__html: data}
   };
@@ -98,10 +98,6 @@ class Countries extends React.Component {
     if(typeof type == "undefined")
       type = this.state.type;
     return <a onClick={ () => { this.changeURL(type, data) } } dangerouslySetInnerHTML={this.highlight(data)}></a>;
-  };
-
-  linkFormatter(data){
-    return <a href={ data } target="_blank">{ data }</a>
   };
 
   mapFormatter(name){
@@ -162,8 +158,8 @@ class Countries extends React.Component {
            <BootstrapTable data={this.state.model} striped={true} hover={true} ref='table' pagination={true} search={true} columnFilter={true} options={options}>
             <TableHeaderColumn width='200' dataField="flag"             dataAlign="center"                                dataFormat={this.imageFormatter}    > Image                </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="name"             dataAlign="center" dataSort={true} isKey={true}   dataFormat={this.instanceFormatter} > Name                 </TableHeaderColumn>
-            <TableHeaderColumn width='200' dataField="assoc_animals"    dataAlign="left"                                dataFormat={this.animalFormatter}   > Associated Animals   </TableHeaderColumn>
-            <TableHeaderColumn width='200' dataField="assoc_habitats"   dataAlign="left"                                dataFormat={this.habitatFormatter}  > Associated Habitats  </TableHeaderColumn>
+            <TableHeaderColumn width='200' dataField="assoc_animals"    dataAlign="left"                                  dataFormat={this.animalFormatter}   > Associated Animals   </TableHeaderColumn>
+            <TableHeaderColumn width='200' dataField="assoc_habitats"   dataAlign="left"                                  dataFormat={this.habitatFormatter}  > Associated Habitats  </TableHeaderColumn>
             <TableHeaderColumn width='200' dataField="name"             dataAlign="center"                                dataFormat={this.mapFormatter}      > Map                  </TableHeaderColumn>
           </BootstrapTable>
 

@@ -4,6 +4,8 @@ import { Link } from 'react-router';
 import Navbar from '../../components/Navbar';
 import Nav from '../../components/Nav';
 
+
+
 const NAV_LINKS = {
   'about': {
     link: '/about.html',
@@ -25,6 +27,10 @@ const NAV_LINKS = {
     link: '/countries.html',
     title: 'Countries',
   },
+  'visualization': {
+    link: '/visualization.html',
+    title: 'Group 4 Viz'
+  }
 };
 
 // We don't want to include react-router-bootstrap as a dependency here, so we
@@ -39,7 +45,11 @@ const propTypes = {
   activePage: PropTypes.string,
 };
 
+
+
+
 function NavMain({ activePage }) {
+
   return (
     <Navbar
       staticTop
@@ -54,6 +64,7 @@ function NavMain({ activePage }) {
         <Navbar.Toggle />
       </Navbar.Header>
       <Navbar.Collapse className="bs-navbar-collapse">
+
         <Nav role="navigation" id="top">
           {Object.entries(NAV_LINKS).map(([linkName, { link, title }]) => (
             <Wrapper key={linkName}>
