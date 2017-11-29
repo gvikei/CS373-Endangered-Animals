@@ -94,22 +94,28 @@
 
 ## <span class="fa-purple">What they can do better</span>
 - REST-API: Lack of error handling
-  * Ex: Need to provide better error messages than an empty list, or 
+  * Ex: Need to provide better error messages than an empty list or a "502 Bad Gateway Error"
   * Need to catch common error inputs, such as:
     - bad input type
-    - blank input type
+    - blank input type  
     - value not in database, etc.
 - Apiary: Need to provide sample responses for each endpoint. Currently, there are none.
-- Top players should have a filter to sort the players by rank/level/win rate
+
 
 
 ---
-- List of choices when click on filter button should be scrollable.
+- Top players should have a filter to sort the players by rank/level/win rate
+- When a filter button is clicked, the list of choices should be scrollable.
 - "Hero association" in Achievements should show a list of heroes.
 
 ---
 ## <span class="fa-purple">What puzzled us about their website</span>
-- Top players are not "ranked" by any criteria, just list of names.
+- What makes a player a "Top Player"?
+  * Currently, top players are not "ranked" by any criteria, just list of names.
+  * Is a top player the one who has the highest...:
+    * rank?
+    * level?
+    * win rate?
 - Some of the links to images in the "Items" model are broken.
 
 ---
