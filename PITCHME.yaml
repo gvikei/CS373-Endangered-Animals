@@ -1,4 +1,4 @@
-theme : black
+theme : sky
 theme-override : PITCHME.css
 published : true
-background : background.jpg
+background : background.png
