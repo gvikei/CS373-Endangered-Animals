@@ -7,5 +7,9 @@ span.fa-byline { color : gray; }
 
 
 span.header {
-    font: 15px arial, sans-serif;
+    font: 30px Times New Roman, sans-serif;
+}
+
+span.name {
+	font: 20px;
 }
