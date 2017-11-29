@@ -49,6 +49,14 @@
 - Made a better user layout, font, color schemes, images
 
 ---
+## <span class="fa-purple">What puzzles us</span>
+- Flask, Bootstrap, React
+- Google cloud deployment
+<br>
+<span class="fa-pyline">From simple compile errors to 502 Bad Gateway errors</span>
+-> Change from App Engine to manually create Docker image and managing it with Kubernetes and Container Engine
+
+---
 ## Other Critique
 
 ---
@@ -79,11 +87,13 @@
 ---
 
 ## <span class="fa-purple">What they can do better</span>
+
 <span class="fa-pyline"> REST-API </span>
 <br>
-	- Lack or error handling
-	Ex: typing string to get hero's ID yeild 404 error rather than returning an empty list
-	- Should provide sample response for a sample input. Currently only return "200" OK reponse
+- Lack or error handling
+<br>	
+Ex: typing string to get hero's ID yeild 404 error rather than returning an empty list
+- Should provide sample response for a sample input. Currently only return "200" OK reponse
 
 ---
 What puzzles us about their website
