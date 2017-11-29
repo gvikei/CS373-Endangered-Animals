@@ -54,6 +54,7 @@
 - Google cloud deployment
 <br>
 <span class="fa-pyline">From simple compile errors to 502 Bad Gateway errors</span>
+<br>
 -> Change from App Engine to manually create Docker image and managing it with Kubernetes and Container Engine
 
 ---
@@ -79,9 +80,10 @@
 
 ## <span class="fa-purple">What we learn from them</span>
 
-- Spend more time on the layout: <span class="fa-pyline">font, color schemes, general theme</span>
+- Spend more time on the layout: 
+<br> <span class="fa-pyline">font, color schemes, general theme</span>
 - Current: <span class="fa-pyline">lots of text </span>
--> Re-design layout: <span class="fa-pyline">re-arrange text, images</span>
+<br> -> Re-design layout: <span class="fa-pyline">re-arrange text, images</span>
 - Improve the loading speed
 
 ---
