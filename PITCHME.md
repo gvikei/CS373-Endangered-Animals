@@ -38,9 +38,9 @@
 ---
 ## <span class="fa-purple">What we could do better</span>
 - Add more animals to the website
-Limitation: slow loading speed, could be improved
+<br>Limitation: slow loading speed, could be improved
 - Could not show full datas
-Limitation: long pages
+<br>Limitation: long pages
 - Made a better user layout, font, color schemes, images
 
 ---
@@ -74,7 +74,8 @@ Limitation: long pages
 ---
 
 ## <span class="fa-purple">What they can do better</span>
-<span class="fa-pyline"> * REST-API </span>
+<span class="fa-pyline"> REST-API </span>
+<br>
 	- Lack or error handling
 	Ex: typing string to get hero's ID yeild 404 error rather than returning an empty list
 	- Should provide sample response for a sample input. Currently only return "200" OK reponse
