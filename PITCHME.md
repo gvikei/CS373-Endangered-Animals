@@ -5,9 +5,9 @@
 
 <span class="header">Introduction</span>
 
-<span class="name"Bryan Leung</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="name">Khuyen Duong</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="name">Shiva Velingker</span>
+<span class="name">Bryan Leung</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="name">Khuyen Duong</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="name">Shiva Velingker</span>
 
-<img src="https://i.imgur.com/UXXs4fY.jpg" width="280" height="280"> <img src="https://i.imgur.com/y35uhcL.jpg" width="280" height="280">
+<img src="https://i.imgur.com/UXXs4fY.jpg" width="280" height="280"> &nbsp;&nbsp;&nbsp; <img src="https://i.imgur.com/y35uhcL.jpg" width="280" height="280"> &nbsp;&nbsp;&nbsp;
 <img src="https://i.imgur.com/sfK63Ow.jpg" width="280" height="280">
 
 ---
