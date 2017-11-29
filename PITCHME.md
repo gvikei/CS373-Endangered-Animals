@@ -95,9 +95,11 @@
 <br>	
 Ex: typing string to get hero's ID yeild 404 error rather than returning an empty list
 - Should provide sample response for a sample input. Currently only return "200" OK reponse
+- Top players should have a filter to sort the players by rank/level/win rate
 
 ---
-What puzzles us about their website
+## <span class="fa-purple">What puzzles us about their website</span>
+- None, aside from small 
 
 
 ---
