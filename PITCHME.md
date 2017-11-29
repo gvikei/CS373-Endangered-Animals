@@ -36,8 +36,6 @@
 - Nothing is impossible
 
 ---
-
----
 ## <span class="fa-purple">What we could do better</span>
 - Add more animals to the website
 Limitation: slow loading speed, could be improved
@@ -45,6 +43,7 @@ Limitation: slow loading speed, could be improved
 Limitation: long pages
 - Made a better user layout, font, color schemes, images
 
+---
 ## Other Critique
 
 ---
