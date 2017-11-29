@@ -30,7 +30,7 @@ self critique
 
 ---
 
-#### <span class="fa-purple">What they do well</span>
+## <span class="fa-purple">What they do well</span>
 
 <span class="fa-gray">
 - Neat and simple layout, themes are fit with the game (black/orange color)
@@ -40,7 +40,13 @@ self critique
 
 ---
 
-What do we learn from them
+## <span class="fa-purple">What do we learn from them</span>
+
+<span class="fa-gray">
+- Spend more time on the layout: font, color schemes, general theme
+- Current: lots of text -> Re-design layout: re-arrange text, images
+- Improve the loading speed
+</span>
 
 ---
 
