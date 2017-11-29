@@ -25,9 +25,25 @@
 
 ## <span class="fa-purple">What we did well</span>
 
-
+- We have the website
+- Clean and simple layout
+- Fully functional and get things done
 
 ---
+## <span class="fa-purple">What we learnt</span>
+- Teamwork
+- Start early
+- Nothing is impossible
+
+---
+
+---
+## <span class="fa-purple">What we could do better</span>
+- Add more animals to the website
+Limitation: slow loading speed, could be improved
+- Could not show full datas
+Limitation: long pages
+- Made a better user layout, font, color schemes, images
 
 ## Other Critique
 
