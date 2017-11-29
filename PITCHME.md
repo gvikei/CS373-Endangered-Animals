@@ -19,12 +19,12 @@
 
 ---
 
-## <span class="fa-red">Demonstration</span>
+## <span class="fa-tittle">Demonstration</span>
 
 ---
 
 
-## <span class="fa-red">Self Critique</span>
+## <span class="fa-tittle">Self Critique</span>
 
 ---
 
@@ -58,7 +58,7 @@
 -> Change from App Engine to manually create Docker image and managing it with Kubernetes and Container Engine
 
 ---
-## <span class="fa-red">Other Critique</span>
+## <span class="fa-tittle">Other Critique</span>
 
 ---
 
@@ -102,7 +102,7 @@ What puzzles us about their website
 
 ---
 
-## <span class="fa-red">visualization</span>
+## <span class="fa-tittle">visualization</span>
 
 
 
