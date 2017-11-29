@@ -40,10 +40,11 @@
 
 ---
 ## <span class="fa-purple">What we learned</span>
-- Learned how to use React, and move away from hacky practices
-- Learned how to use Flask-SQLAlchemy, learned about how to create a RESTful API
-- Learned how to Dockerize the app; learned how to use App Engine, Container Engine
-- How teamwork is important, how to work on a team with fragmented schedules , learn from others, 
+- Learned how to use:
+  * React, and move away from hacky practices
+  * Flask-SQLAlchemy, learned about how to create a RESTful API
+  * Dockerize our app; learned how to use App Engine, Container Engine
+  * How important teamwork is
 
 
 ---
