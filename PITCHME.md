@@ -42,19 +42,18 @@ self critique
 
 ## <span class="fa-purple">What we learn from them</span>
 
-<span class="fa-pyline">- Spend more time on the layout: font, color schemes, general theme</span>
-- Current: lots of text 
--> Re-design layout: re-arrange text, images
+- Spend more time on the layout: <span class="fa-pyline">font, color schemes, general theme</span>
+- Current: <span class="fa-pyline">lots of text </span>
+-> Re-design layout: <span class="fa-pyline">re-arrange text, images</span>
 - Improve the loading speed
 
 ---
 
 ## <span class="fa-purple">What they can do better</span>
-<span class="fa-pyline"> REST-API:
+<span class="fa-pyline"> REST-API </span>
 	- Lack or error handling
 	Ex: typing string to get hero's ID yeild 404 error rather than returning an empty list
 	- Should provide sample response for a sample input. Currently only return "200" OK reponse
-</span>
 
 
 ---
