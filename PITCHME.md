@@ -1,6 +1,6 @@
 # Endangered Animals 
 
-#### @fa[users fa-2x fa-yellow] Group 22
+### @fa[users fa-2x fa-yellow] Group 22
 
 ---
 
@@ -13,18 +13,56 @@
 
 ---
 
-<span class="name">Mantu Nguyen</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="name">Dat Vu</span>
+<span class="name">Mantu Nguyen</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="name">Dat Vu</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-<img src="https://i.imgur.com/2Gy1JdL.jpg" width="280" height="280"> &nbsp;&nbsp;&nbsp; <img src="https://i.imgur.com/2Gy1JdL.jpg" width="280" height="280">
-
----
-
-self critique
-
+<img src="https://i.imgur.com/2Gy1JdL.jpg" width="280" height="280"> &nbsp;&nbsp;&nbsp; <img src="https://i.imgur.com/rC0M6v2.png" width="280" height="280">
 
 ---
 
-#### [Overwatch Glamour](http://overwatchglamour.me)
+## <span class="fa-title">Demonstration</span>
+
+---
+
+
+## <span class="fa-title">Self Critique</span>
+
+---
+
+## <span class="fa-purple">What we did well</span>
+
+- We have the website
+- Clean and simple layout
+- Fully functional and get things done
+
+---
+## <span class="fa-purple">What we learnt</span>
+- Teamwork
+- Start early
+- Nothing is impossible
+
+---
+## <span class="fa-purple">What we could do better</span>
+- Add more animals to the website
+<br>Limitation: slow loading speed, could be improved
+- Could not show full datas
+<br>Limitation: long pages
+- Made a better user layout, font, color schemes, images
+
+---
+## <span class="fa-purple">What puzzles us</span>
+- Flask, Bootstrap, React
+- Google cloud deployment
+<br>
+<span class="fa-pyline">From simple compile errors to 502 Bad Gateway errors</span>
+<br>
+-> Change from App Engine to manually create Docker image and managing it with Kubernetes and Container Engine
+
+---
+## <span class="fa-title">Other Critique</span>
+
+---
+
+### [Overwatch Glamour](http://overwatchglamour.me)
 
 ![](https://i.imgur.com/sjDHqIA.jpg)
 
@@ -32,52 +70,44 @@ self critique
 
 ## <span class="fa-purple">What they do well</span>
 
-<span class="fa-gray">
+<span class="fa-pyline">
 - Neat and simple layout, themes are fit with the game (black/orange color)
 - Images are well organized, clear presentation of heroes
-- The site loads fast and responsive, no broken links or user errors (spellings, ect)
+- The site loads fast and responsive, no user errors (spellings, ect)
 </span>
 
 ---
 
-## <span class="fa-purple">What do we learn from them</span>
+## <span class="fa-purple">What we learn from them</span>
 
-<span class="fa-gray">
-- Spend more time on the layout: font, color schemes, general theme
-- Current: lots of text -> Re-design layout: re-arrange text, images
+- Spend more time on the layout: 
+<br> <span class="fa-pyline">font, color schemes, general theme</span>
+- Current: <span class="fa-pyline">lots of text </span>
+<br> -> Re-design layout: <span class="fa-pyline">re-arrange text, images</span>
 - Improve the loading speed
-</span>
 
 ---
 
-What they can do better
-
----
-
-What puzzles us about their website
-
----
-
-- should show "not found" if there is no result for the search
-
-- Consistency:
-- front page "overwatch image" isn't stretched full screen like others, better to remove
-
-- Ambiguity of top players
-http://overwatchglamour.me/players
-
-What is the ranking system? By score? By rank? By level ? By win/rate
-Should put a filter/sort for those. noone interested in "name"
-
-- Search seems to find the text in the data, not for the title. It's counter intuitive since reader only read the title.. So as the highlight 
-
----
-
-visualization
+## <span class="fa-purple">What they can do better</span>
+- REST-API: Lack or error handling
+<br>
+Ex: typing string to get hero's ID yeild 404 error rather than returning an empty list
+- Should provide sample response for a sample input. Currently only return "200" OK reponse
+- Top players should have a filter to sort the players by rank/level/win rate
 
 
 ---
+- List of choices when click on filter button should be scrollable.
+- "Hero association" in Achievements should show a list of heroes.
 
-<span style="font-size:0.6em; color:gray">Press Down key for details.</span> |
-<span style="font-size:0.6em; color:gray">See [GitPitch Wiki](https://github.com/gitpitch/gitpitch/wiki/Slide-Markdown) for details.</span>
-demonstration
+---
+## <span class="fa-purple">What puzzles us about their website</span>
+- Top players are not "ranked" by any criteria, just list of names.
+- Broken links on some of the images in the "Items" model
+
+---
+
+## <span class="fa-title">visualization</span>
+
+
+

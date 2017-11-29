@@ -24,6 +24,7 @@ class D3Tree extends React.Component {
 }
 
 var renderTree = function(data, svgDomNode){
+	/* Code adapted from: https://bl.ocks.org/mbostock/4339083 */
 
 	var margin = {top: 20, right: 120, bottom: 20, left: 120},
 	    width = 960 - margin.right - margin.left,
@@ -54,7 +55,7 @@ var renderTree = function(data, svgDomNode){
 	    if (d.children) {
 	      d._children = d.children;
 	      d._children.forEach(collapse);
-	      d.children = null;
+	      // d.children = null;
 	    }
 	}
 

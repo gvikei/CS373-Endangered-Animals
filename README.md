@@ -14,6 +14,9 @@ Use the following hierarchy to understand the layout of this repository for wher
    |---models.py
    |---tests.py
    |
+   |-selenium
+   |---tests.py      # Front-end unit tests
+   |
    |-front-end
    |---components    # React base components folder; no code here has been modified
    |---dev

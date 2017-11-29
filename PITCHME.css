@@ -4,13 +4,14 @@
 .fa-lime { color : #b9ff66; }
 .fa-yellow { color : #ffff00; }
 
-span.fa-gray { color : gray; }
+span.fa-pyline { color : gray; }
 span.fa-purple { color : purple; }
-
+span.fa-title { color : red; }
 
 span.header {
-    font-family: "Myriad";
+    font-family: "Verdana";
 }
+
 
 span.name {
 	font-size: 0.7em;
