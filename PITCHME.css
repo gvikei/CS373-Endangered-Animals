@@ -6,11 +6,12 @@
 
 span.fa-pyline { color : gray; }
 span.fa-purple { color : purple; }
-
+span.fa-title { color : red; }
 
 span.header {
-    font-family: "Myriad";
+    font-family: "Verdana";
 }
+
 
 span.name {
 	font-size: 0.7em;
