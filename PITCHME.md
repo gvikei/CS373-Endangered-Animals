@@ -90,9 +90,13 @@
 
 ## <span class="fa-purple">What they can do better</span>
 - REST-API: Lack or error handling
+<br>
 Ex: typing string to get hero's ID yeild 404 error rather than returning an empty list
 - Should provide sample response for a sample input. Currently only return "200" OK reponse
 - Top players should have a filter to sort the players by rank/level/win rate
+
+
+---
 - List of choices when click on filter button should be scrollable.
 - "Hero association" in Achievements should show a list of heroes.
 
