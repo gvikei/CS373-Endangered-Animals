@@ -11,4 +11,4 @@ WORKDIR /app/front-end
 EXPOSE 8080
 
 # Launch application
-CMD ["npm","run", "docs-prod"]
+CMD ["npm","run", "docs"]

@@ -47,7 +47,6 @@
   "dependencies": {
     "ajv": "^5.3.0",
     "axios": "^0.16.2",
-    "babel-cli": "^6.11.4",
     "babel-core": "^6.13.2",
     "babel-eslint": "^8.0.1",
     "babel-loader": "^6.2.5",
@@ -154,7 +153,7 @@
     "docsRepo": "git@github.com:react-bootstrap/react-bootstrap.github.io.git"
   },
   "devDependencies": {
-    "jquery": "^3.2.1",
-    "babel-cli": "^6.26.0"
+    "babel-cli": "^6.26.0",
+    "jquery": "^3.2.1"
   }
 }
